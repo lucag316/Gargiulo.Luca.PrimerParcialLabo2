@@ -30,7 +30,7 @@
         {
             btnCancelar = new Button();
             btnIniciarSesion = new Button();
-            txtContraseña = new TextBox();
+            txtClave = new TextBox();
             txtCorreo = new TextBox();
             lblClave = new Label();
             lblCorreo = new Label();
@@ -44,6 +44,7 @@
             btnCancelar.TabIndex = 11;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnIniciarSesion
             // 
@@ -53,13 +54,14 @@
             btnIniciarSesion.TabIndex = 10;
             btnIniciarSesion.Text = "&Iniciar sesion";
             btnIniciarSesion.UseVisualStyleBackColor = true;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
-            // txtContraseña
+            // txtClave
             // 
-            txtContraseña.Location = new Point(68, 112);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(281, 23);
-            txtContraseña.TabIndex = 9;
+            txtClave.Location = new Point(68, 112);
+            txtClave.Name = "txtClave";
+            txtClave.Size = new Size(281, 23);
+            txtClave.TabIndex = 9;
             // 
             // txtCorreo
             // 
@@ -93,7 +95,7 @@
             ClientSize = new Size(423, 247);
             Controls.Add(btnCancelar);
             Controls.Add(btnIniciarSesion);
-            Controls.Add(txtContraseña);
+            Controls.Add(txtClave);
             Controls.Add(txtCorreo);
             Controls.Add(lblClave);
             Controls.Add(lblCorreo);
@@ -108,7 +110,7 @@
 
         private Button btnCancelar;
         private Button btnIniciarSesion;
-        private TextBox txtContraseña;
+        private TextBox txtClave;
         private TextBox txtCorreo;
         private Label lblClave;
         private Label lblCorreo;
