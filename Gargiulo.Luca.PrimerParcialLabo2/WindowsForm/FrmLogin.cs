@@ -1,3 +1,5 @@
+using Entidades;
+
 namespace WindowsForm
 {
     public partial class FrmLogin : Form
