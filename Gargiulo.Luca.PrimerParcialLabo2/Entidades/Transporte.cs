@@ -14,15 +14,27 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Transporte(int velocidad, int capacidadPasajeros, int cargaMaxima)
+        public Transporte() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
+        {
+            
+        }
+        public Transporte(int velocidad, int capacidadPasajeros)
         {
             this.velocidad = velocidad;
             this.capacidadPasajeros = capacidadPasajeros;
+        }
+
+        public Transporte(int velocidad, int capacidadPasajeros, int cargaMaxima):this(velocidad, capacidadPasajeros)
+        {
             this.cargaMaxima = cargaMaxima;
         }
         #endregion
 
         #region Metodos
+        public string Mostrar()
+        {
+            return $"{this.velocidad} - {this.capacidadPasajeros} - {this.cargaMaxima}";
+        }
         #endregion
 
         #region Sobrecargas
