@@ -41,9 +41,9 @@
             lblCorreo.AutoSize = true;
             lblCorreo.Location = new Point(35, 18);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(162, 15);
+            lblCorreo.Size = new Size(108, 15);
             lblCorreo.TabIndex = 0;
-            lblCorreo.Text = "Ingrese su correo electronico:";
+            lblCorreo.Text = "Correo electronico:";
             // 
             // lblContraseña
             // 
@@ -76,6 +76,7 @@
             btnIniciarSesion.TabIndex = 4;
             btnIniciarSesion.Text = "&Iniciar sesion";
             btnIniciarSesion.UseVisualStyleBackColor = true;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // btnCancelar
             // 
@@ -85,6 +86,7 @@
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // Login
             // 

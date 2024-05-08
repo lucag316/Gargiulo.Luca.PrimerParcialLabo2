@@ -1,8 +1,8 @@
 namespace WindowsForm
 {
-    public partial class FormPrincipal : Form
+    public partial class FrmLogin : Form
     {
-        public FormPrincipal()
+        public FrmLogin()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsForm
 {
-    partial class FormPrincipal
+    partial class FrmLogin
     {
         /// <summary>
         ///  Required designer variable.

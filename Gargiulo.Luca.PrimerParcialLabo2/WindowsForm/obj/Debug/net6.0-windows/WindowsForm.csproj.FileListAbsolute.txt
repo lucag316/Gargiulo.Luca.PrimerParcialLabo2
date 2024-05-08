@@ -1,0 +1,17 @@
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.Login.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.csproj.GenerateResource.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.AssemblyInfoInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.AssemblyInfo.cs
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.csproj.CoreCompileInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.genruntimeconfig.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.FrmPrincipal.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\WindowsForm.exe
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\WindowsForm.deps.json
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\WindowsForm.runtimeconfig.json
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\WindowsForm.dll
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\WindowsForm.pdb
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.dll
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\refint\WindowsForm.dll
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.pdb
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\ref\WindowsForm.dll
