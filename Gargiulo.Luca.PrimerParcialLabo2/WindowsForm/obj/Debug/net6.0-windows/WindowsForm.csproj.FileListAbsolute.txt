@@ -14,3 +14,4 @@ C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Garg
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.pdb
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\ref\WindowsForm.dll
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.FrmLogin.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.FrmPrincipal.resources
