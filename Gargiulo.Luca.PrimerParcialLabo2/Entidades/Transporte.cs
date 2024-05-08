@@ -5,9 +5,9 @@ namespace Entidades
     public class Transporte
     {
         #region Atributos
-        private int velocidad;
-        private int capacidadPasajeros;
-        private int cargaMaxima;
+        public int velocidad;
+        public int capacidadPasajeros;
+        public int cargaMaxima;
         #endregion
 
         #region Propiedades
@@ -33,7 +33,7 @@ namespace Entidades
         #region Metodos
         public string Mostrar()
         {
-            return $"{this.velocidad} - {this.capacidadPasajeros} - {this.cargaMaxima}";
+            return $"{this.velocidad} KM - {this.capacidadPasajeros} pasajeros - {this.cargaMaxima} KILOS";
         }
         #endregion
 

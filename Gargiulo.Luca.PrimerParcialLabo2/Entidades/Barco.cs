@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Barco
+    public class Barco
     {
         #region Atributos
         #endregion
