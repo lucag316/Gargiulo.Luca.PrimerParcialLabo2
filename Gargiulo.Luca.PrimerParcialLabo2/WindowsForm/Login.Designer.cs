@@ -32,7 +32,7 @@
             lblContraseña = new Label();
             txtCorreo = new TextBox();
             txtContraseña = new TextBox();
-            btnAceptar = new Button();
+            btnIniciarSesion = new Button();
             btnCancelar = new Button();
             SuspendLayout();
             // 
@@ -68,14 +68,14 @@
             txtContraseña.Size = new Size(281, 23);
             txtContraseña.TabIndex = 3;
             // 
-            // btnAceptar
+            // btnIniciarSesion
             // 
-            btnAceptar.Location = new Point(35, 135);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(109, 38);
-            btnAceptar.TabIndex = 4;
-            btnAceptar.Text = "&Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
+            btnIniciarSesion.Location = new Point(35, 135);
+            btnIniciarSesion.Name = "btnIniciarSesion";
+            btnIniciarSesion.Size = new Size(109, 38);
+            btnIniciarSesion.TabIndex = 4;
+            btnIniciarSesion.Text = "&Iniciar sesion";
+            btnIniciarSesion.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -92,7 +92,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(357, 199);
             Controls.Add(btnCancelar);
-            Controls.Add(btnAceptar);
+            Controls.Add(btnIniciarSesion);
             Controls.Add(txtContraseña);
             Controls.Add(txtCorreo);
             Controls.Add(lblContraseña);
@@ -110,7 +110,7 @@
         private Label lblContraseña;
         private TextBox txtCorreo;
         private TextBox txtContraseña;
-        private Button btnAceptar;
+        private Button btnIniciarSesion;
         private Button btnCancelar;
     }
 }
