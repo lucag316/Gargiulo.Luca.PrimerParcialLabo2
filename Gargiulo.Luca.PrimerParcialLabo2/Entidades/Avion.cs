@@ -35,7 +35,7 @@ namespace Entidades
         #region Metodos
         public string MostrarAvion()
         {
-            return $"{this.altitudMaxima} de altura - Tipo de alas: {this.tipoDeAlas}";
+            return $" {this.altitudMaxima} de altura - Tipo de alas: {this.tipoDeAlas}";
         }
         #endregion
 

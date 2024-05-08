@@ -36,7 +36,7 @@ namespace Entidades
         #region Metodos
         public string MostrarAuto()
         {
-            return $"{this.numeroDePuertas} puertas - Transmision: {this.transmision}";
+            return $" {this.numeroDePuertas} puertas - Transmision: {this.transmision}";
         }
         #endregion
 

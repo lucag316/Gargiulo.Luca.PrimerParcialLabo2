@@ -33,7 +33,7 @@ namespace Entidades
         #region Metodos
         public string Mostrar()
         {
-            return $"{this.velocidad} KM - {this.capacidadPasajeros} pasajeros - {this.cargaMaxima} KILOS";
+            return $" {this.velocidad} KM - {this.capacidadPasajeros} pasajeros - {this.cargaMaxima} KILOS";
         }
         #endregion
 
