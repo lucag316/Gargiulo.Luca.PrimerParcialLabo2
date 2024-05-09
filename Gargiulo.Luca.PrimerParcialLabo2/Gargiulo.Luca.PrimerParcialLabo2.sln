@@ -4,16 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrimerParcialLabo2", "PrimerParcialLabo2", "{F785742D-4C28-42FD-8FF0-8C34C48CCC63}"
+	ProjectSection(SolutionItems) = preProject
+		usuarios.json = usuarios.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Probando", "Probando", "{6D42E5D6-A99E-4166-8AA2-5138EDDCCB2A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "probandoo", "probandoo\probandoo.csproj", "{2946ADF4-1215-44D2-8BC0-0D1810A3EF0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{100FA678-98BF-4A8D-A2B8-D24992A8C612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{100FA678-98BF-4A8D-A2B8-D24992A8C612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "probando", "probando\probando.csproj", "{84CEE0F4-F671-4BDD-A020-24389D699932}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "probando", "probando\probando.csproj", "{84CEE0F4-F671-4BDD-A020-24389D699932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsForm", "WindowsForm\WindowsForm.csproj", "{7899ADAE-FE6F-490D-9427-C5083F32CA03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsForm", "WindowsForm\WindowsForm.csproj", "{7899ADAE-FE6F-490D-9427-C5083F32CA03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

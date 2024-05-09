@@ -1,9 +1,13 @@
 using Entidades;
+using System.Text.Json;
+using System.Xml.Serialization;
 
 namespace WindowsForm
 {
     public partial class FrmLogin : Form
     {
+        private List<Usuario> usuarios;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -36,5 +40,16 @@ namespace WindowsForm
                 txtClave.Clear();
             }
         }
+
+        public void DeserializarJSON()
+        {
+            using (StreamReader streamReader = new StreamReader("./usuarios.json"))
+            {
+                string jsonUsuarios = streamReader.ReadToEnd();
+
+                this.usuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonUsuarios);
+            }
+        }
+
     }
 }
