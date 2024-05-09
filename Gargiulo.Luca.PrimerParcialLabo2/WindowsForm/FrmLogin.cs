@@ -1,4 +1,5 @@
 using Entidades;
+//using Newtonsoft.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -26,7 +27,6 @@ namespace WindowsForm
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //List<Usuario> listaUsuarios = DeserializarUsuariosJSON(this.pathJsonUsuarios);
             bool usuarioValidado = VerificarUsuario(txtCorreo.Text, txtClave.Text);
 
             if (usuarioValidado)
@@ -90,11 +90,6 @@ namespace WindowsForm
                 this.Close(); // Otra acción en caso de exceder el número de intentos
             }*/
 
-
-
-
-
-
             /*if (usuarioValidado)
             {
                 FrmPrincipal frmPrincipal = new FrmPrincipal();
@@ -111,19 +106,32 @@ namespace WindowsForm
             }*/
         }
         private void btnCancelar_Click(object sender, EventArgs e)
-        {//CREO QUE NI HACE FALTA SI TIRO EL MENSAJE DE ERROR, PERO NO SE QUE FORMA ES MEJOR
-            txtCorreo.Clear();//limpio los text box
+        {
+            txtCorreo.Clear();
             txtClave.Clear();
         }
 
         private List<Usuario> DeserializarUsuariosJSON(string pathArchivo)
+        {
+            List<Usuario> listaAux = new List<Usuario>();
+
+            using (StreamReader streamReader = new StreamReader(pathArchivo))
+            {
+                string jsonUsuarios = streamReader.ReadToEnd();
+
+                listaAux = JsonSerializer.Deserialize<List<Usuario>>(jsonUsuarios);
+            }
+            return listaAux;
+        }
+
+        /*private List<Usuario> DeserializarUsuariosJSON(string pathArchivo)
         {
             string jsonString = File.ReadAllText(pathArchivo);// lee el contenido del JSON en una cadena
         
             List<Usuario> listaUsuarios =  JsonSerializer.Deserialize<List<Usuario>>(jsonString);
 
             return listaUsuarios;
-        }
+        }*/
 
         private bool VerificarUsuario(string correo, string clave)
         {
@@ -131,14 +139,13 @@ namespace WindowsForm
 
             foreach (Usuario usuario in this.usuarios)
             {
-                if(usuario.Correo == correo && usuario.Clave == clave)
+                if(usuario.correo == correo && usuario.clave == clave)
                 {
                     estaElUsuario = true;
-                    break; //aca creo que va break para que cuando lo encuentre para de iterar
+                    break;
                 }
             }
             return estaElUsuario;
         }
-
     }
 }

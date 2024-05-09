@@ -19,3 +19,4 @@ C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Garg
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\Entidades.pdb
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.csproj.AssemblyReference.cache
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.csproj.CopyComplete
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

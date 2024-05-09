@@ -8,12 +8,24 @@ namespace Entidades
 {
     public class Usuario
     {
-        public string Apellido { get; set; }
-        public string Nombre { get; set; }
-        public int Legajo { get; set; }
-        public string Correo { get; set; }
-        public string Clave { get; set; }
-        public string Perfil { get; set; }
+        private string _correo;
+        private string _clave;
+
+        public string apellido { get; set; }
+        public string nombre { get; set; }
+        public int legajo { get; set; }
+        public string correo
+        {
+            get { return this._correo; }
+            set { this._correo = value; }
+        }
+        
+        public string clave
+        {
+            get { return this._clave; }
+            set { this._clave = value;}
+        }
+        public string perfil { get; set; }
 
     }
 }

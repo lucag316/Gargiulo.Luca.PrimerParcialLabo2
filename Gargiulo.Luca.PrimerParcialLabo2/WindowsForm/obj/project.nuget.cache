@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mnwEclPEvtQTqaivvLjsMzO8SyjcU8ORjU9HeOaAyyiO72z/+dl5Yaz0XQBblOJ0ntscWeWIByeoCh0obAfevg==",
+  "dgSpecHash": "1u5K2qyw0OPVZUK/jV5iQZaCTfl+VWstqIXcXSv3CUEd07XzZ3pOg1Xjr1kTuozDeueIxWgF71VEyOrfOxJVDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\WindowsForm\\WindowsForm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\luca_\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
