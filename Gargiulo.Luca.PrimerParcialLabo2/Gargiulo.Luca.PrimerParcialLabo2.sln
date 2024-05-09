@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrimerParcialLabo2", "PrimerParcialLabo2", "{F785742D-4C28-42FD-8FF0-8C34C48CCC63}"
-	ProjectSection(SolutionItems) = preProject
-		usuarios.json = usuarios.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Probando", "Probando", "{6D42E5D6-A99E-4166-8AA2-5138EDDCCB2A}"
 EndProject
