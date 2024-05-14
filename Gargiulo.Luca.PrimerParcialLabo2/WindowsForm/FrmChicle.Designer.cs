@@ -159,6 +159,7 @@
             Controls.Add(btnAceptar);
             Name = "FrmChicle";
             Text = "Formulario chicle";
+            Load += FrmChicle_Load;
             ResumeLayout(false);
             PerformLayout();
         }

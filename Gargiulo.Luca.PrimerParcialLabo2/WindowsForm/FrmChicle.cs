@@ -16,5 +16,10 @@ namespace WindowsForm
         {
             InitializeComponent();
         }
+
+        private void FrmChicle_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

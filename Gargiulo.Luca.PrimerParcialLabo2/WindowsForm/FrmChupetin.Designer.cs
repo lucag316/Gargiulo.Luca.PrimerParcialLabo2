@@ -159,6 +159,7 @@
             Controls.Add(btnAceptar);
             Name = "FrmChupetin";
             Text = "Formulario chupetin";
+            Load += FrmChupetin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

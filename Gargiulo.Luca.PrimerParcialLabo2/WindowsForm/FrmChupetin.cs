@@ -16,5 +16,10 @@ namespace WindowsForm
         {
             InitializeComponent();
         }
+
+        private void FrmChupetin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
