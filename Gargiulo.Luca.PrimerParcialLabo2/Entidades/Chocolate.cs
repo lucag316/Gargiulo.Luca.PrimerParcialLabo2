@@ -34,7 +34,7 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public string MostrarAuto()
+        public override string Mostrar()
         {
             return $" Relleno: {this.relleno} - Tipo de Cacao:: {this.tipoDeCacao}";
         }

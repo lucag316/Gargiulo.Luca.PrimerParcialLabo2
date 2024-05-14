@@ -36,7 +36,7 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public string Mostrar()
+        public virtual string Mostrar()
         {
             return $" ${this.precio} - Marca: {this.marca} - Popularidad: {this.popularidad}";
         }

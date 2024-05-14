@@ -43,7 +43,8 @@ namespace WindowsForm
 
             if (dialogResultRta == DialogResult.OK)
             {
-                this.golosinas.Add();
+                Golosina golosina = frmEntidades.Golosina;//agregar chocolate a la lista de golosinas
+                this.golosinas.Add(golosina);//agrego a la lista la golosina
                 this.ActualizarVisor();
             }
         }

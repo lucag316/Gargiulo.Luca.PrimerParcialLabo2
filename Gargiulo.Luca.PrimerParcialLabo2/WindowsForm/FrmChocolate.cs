@@ -25,14 +25,14 @@ namespace WindowsForm
             InitializeComponent();
         }
 
-        public FrmChocolate(Chocolate chocolate):this()
+        public FrmChocolate(Chocolate chocolate) : this()
         {
-            this.chocolate = chocolate;
-            this.txtPrecio.Text = chocolate.precio.ToString();//atributo heredado de golosina
-            this.txtMarca.Text = chocolate.marca;
-            this.txtPopularidad.Text = chocolate.popularidad;
-            this.txtRelleno.Text = chocolate.relleno;
-            this.txtTipoDeCacao.Text = chocolate.tipoDeCacao;
+            //this.chocolate = chocolate;
+            //this.txtPrecio.Text = chocolate.precio.ToString();//atributo heredado de golosina
+            //this.txtMarca.Text = chocolate.marca;
+            //this.txtPopularidad.Text = chocolate.popularidad;
+            //this.txtRelleno.Text = chocolate.relleno;
+            //this.txtTipoDeCacao.Text = chocolate.tipoDeCacao;
         }
 
         private void FrmChocolate_Load(object sender, EventArgs e)
@@ -45,8 +45,14 @@ namespace WindowsForm
             double precio = Convert.ToDouble(txtPrecio.Text);
 
             this.chocolate = new Chocolate(txtRelleno.Text, txtTipoDeCacao.Text);
+
             this.DialogResult = DialogResult.OK;
             //this.Close();//???
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
