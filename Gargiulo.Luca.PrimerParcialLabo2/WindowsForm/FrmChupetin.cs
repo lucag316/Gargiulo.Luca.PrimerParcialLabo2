@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,13 @@ namespace WindowsForm
 {
     public partial class FrmChupetin : Form
     {
+        private Chupetin chupetin;
+
+        public Chupetin Chupetin
+        {
+            get { return this.chupetin; }
+        }
+
         public FrmChupetin()
         {
             InitializeComponent();

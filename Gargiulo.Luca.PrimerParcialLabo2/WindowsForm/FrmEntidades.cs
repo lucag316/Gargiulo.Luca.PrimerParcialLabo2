@@ -58,5 +58,33 @@ namespace WindowsForm
             }
 
         }
+
+        private void btnChicle_Click(object sender, EventArgs e)
+        {
+            FrmChicle frmChicle = new FrmChicle();
+            frmChicle.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dialogResultRta = frmChicle.ShowDialog();
+            if (dialogResultRta == DialogResult.OK)
+            {
+                // Devolver el objeto Chocolate al formulario principal
+                // Obtener el Chocolate creado en FrmChocolate y asignarlo a la propiedad Golosina
+                //this.golosina = frmChocolate.Chocolate;
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void btnChupetin_Click(object sender, EventArgs e)
+        {
+            FrmChupetin frmChupetin = new FrmChupetin();
+            frmChupetin.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dialogResultRta = frmChupetin.ShowDialog();
+            if (dialogResultRta == DialogResult.OK)
+            {
+                // Devolver el objeto Chocolate al formulario principal
+                // Obtener el Chocolate creado en FrmChocolate y asignarlo a la propiedad Golosina
+                //this.golosina = frmChocolate.Chocolate;
+                this.DialogResult = DialogResult.OK;
+            }
+        }
     }
 }

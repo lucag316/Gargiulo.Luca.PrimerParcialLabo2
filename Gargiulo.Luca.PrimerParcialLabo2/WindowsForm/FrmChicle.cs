@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,17 @@ using System.Windows.Forms;
 
 namespace WindowsForm
 {
+
+    
     public partial class FrmChicle : Form
     {
+        private Chicle chicle;
+
+        public Chicle Chicle
+        {
+            get { return this.chicle; }
+        }
+
         public FrmChicle()
         {
             InitializeComponent();

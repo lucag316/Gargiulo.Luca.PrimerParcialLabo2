@@ -51,6 +51,7 @@
             btnChicle.TabIndex = 1;
             btnChicle.Text = "&Chicle";
             btnChicle.UseVisualStyleBackColor = true;
+            btnChicle.Click += btnChicle_Click;
             // 
             // btnChupetin
             // 
@@ -60,6 +61,7 @@
             btnChupetin.TabIndex = 2;
             btnChupetin.Text = "&Chupetin";
             btnChupetin.UseVisualStyleBackColor = true;
+            btnChupetin.Click += btnChupetin_Click;
             // 
             // FrmEntidades
             // 
