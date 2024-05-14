@@ -144,7 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(388, 258);
+            ClientSize = new Size(388, 274);
             Controls.Add(btnCancelar);
             Controls.Add(txtTipoDePalo);
             Controls.Add(lblTipoDePalo);
@@ -158,7 +158,7 @@
             Controls.Add(lblPrecio);
             Controls.Add(btnAceptar);
             Name = "FrmChupetin";
-            Text = "FrmChupetin";
+            Text = "Formulario chupetin";
             ResumeLayout(false);
             PerformLayout();
         }

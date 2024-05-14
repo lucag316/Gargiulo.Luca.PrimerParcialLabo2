@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             btnCancelar = new Button();
-            txtTipoDeCacao = new TextBox();
-            lblTipoDeCacao = new Label();
-            txtRelleno = new TextBox();
-            lblRelleno = new Label();
+            txtDuracionDeSabor = new TextBox();
+            lblDuracionDeSabor = new Label();
+            txtElasticidad = new TextBox();
+            lblElasticidad = new Label();
             txtPopularidad = new TextBox();
             lblPopularidad = new Label();
             txtMarca = new TextBox();
@@ -51,37 +51,37 @@
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // txtTipoDeCacao
+            // txtDuracionDeSabor
             // 
-            txtTipoDeCacao.Location = new Point(205, 129);
-            txtTipoDeCacao.Name = "txtTipoDeCacao";
-            txtTipoDeCacao.Size = new Size(128, 23);
-            txtTipoDeCacao.TabIndex = 22;
+            txtDuracionDeSabor.Location = new Point(205, 129);
+            txtDuracionDeSabor.Name = "txtDuracionDeSabor";
+            txtDuracionDeSabor.Size = new Size(128, 23);
+            txtDuracionDeSabor.TabIndex = 22;
             // 
-            // lblTipoDeCacao
+            // lblDuracionDeSabor
             // 
-            lblTipoDeCacao.AutoSize = true;
-            lblTipoDeCacao.Location = new Point(205, 111);
-            lblTipoDeCacao.Name = "lblTipoDeCacao";
-            lblTipoDeCacao.Size = new Size(85, 15);
-            lblTipoDeCacao.TabIndex = 21;
-            lblTipoDeCacao.Text = "Tipo de Cacao:";
+            lblDuracionDeSabor.AutoSize = true;
+            lblDuracionDeSabor.Location = new Point(205, 111);
+            lblDuracionDeSabor.Name = "lblDuracionDeSabor";
+            lblDuracionDeSabor.Size = new Size(106, 15);
+            lblDuracionDeSabor.TabIndex = 21;
+            lblDuracionDeSabor.Text = "Duracion de sabor:";
             // 
-            // txtRelleno
+            // txtElasticidad
             // 
-            txtRelleno.Location = new Point(205, 69);
-            txtRelleno.Name = "txtRelleno";
-            txtRelleno.Size = new Size(128, 23);
-            txtRelleno.TabIndex = 20;
+            txtElasticidad.Location = new Point(205, 69);
+            txtElasticidad.Name = "txtElasticidad";
+            txtElasticidad.Size = new Size(128, 23);
+            txtElasticidad.TabIndex = 20;
             // 
-            // lblRelleno
+            // lblElasticidad
             // 
-            lblRelleno.AutoSize = true;
-            lblRelleno.Location = new Point(205, 51);
-            lblRelleno.Name = "lblRelleno";
-            lblRelleno.Size = new Size(49, 15);
-            lblRelleno.TabIndex = 19;
-            lblRelleno.Text = "Relleno:";
+            lblElasticidad.AutoSize = true;
+            lblElasticidad.Location = new Point(205, 51);
+            lblElasticidad.Name = "lblElasticidad";
+            lblElasticidad.Size = new Size(66, 15);
+            lblElasticidad.TabIndex = 19;
+            lblElasticidad.Text = "Elasticidad:";
             // 
             // txtPopularidad
             // 
@@ -144,12 +144,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(392, 280);
+            ClientSize = new Size(376, 264);
             Controls.Add(btnCancelar);
-            Controls.Add(txtTipoDeCacao);
-            Controls.Add(lblTipoDeCacao);
-            Controls.Add(txtRelleno);
-            Controls.Add(lblRelleno);
+            Controls.Add(txtDuracionDeSabor);
+            Controls.Add(lblDuracionDeSabor);
+            Controls.Add(txtElasticidad);
+            Controls.Add(lblElasticidad);
             Controls.Add(txtPopularidad);
             Controls.Add(lblPopularidad);
             Controls.Add(txtMarca);
@@ -158,7 +158,7 @@
             Controls.Add(lblPrecio);
             Controls.Add(btnAceptar);
             Name = "FrmChicle";
-            Text = "FrmChicle";
+            Text = "Formulario chicle";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,10 +166,10 @@
         #endregion
 
         private Button btnCancelar;
-        private TextBox txtTipoDeCacao;
-        private Label lblTipoDeCacao;
-        private TextBox txtRelleno;
-        private Label lblRelleno;
+        private TextBox txtDuracionDeSabor;
+        private Label lblDuracionDeSabor;
+        private TextBox txtElasticidad;
+        private Label lblElasticidad;
         private TextBox txtPopularidad;
         private Label lblPopularidad;
         private TextBox txtMarca;
