@@ -47,6 +47,7 @@
             btnAgregar.TabIndex = 0;
             btnAgregar.Text = "&Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // lstGolosinas
             // 

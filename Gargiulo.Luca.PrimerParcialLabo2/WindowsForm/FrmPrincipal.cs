@@ -34,5 +34,22 @@ namespace WindowsForm
                 this.lstGolosinas.Items.Add(golosina.Mostrar());
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmEntidades frmEntidades = new FrmEntidades();
+            frmEntidades.ShowDialog();
+            //fijarse como en el crud anterior el if del dialogResult
+        }
+
+        /*
+         * // Abre el formulario de agregar entidad cuando se hace clic en el botón "Agregar"
+            AgregarForm agregarForm = new AgregarForm();
+            agregarForm.ShowDialog();
+
+            // Actualiza los datos en el DataGridView después de agregar una entidad
+            // Ejemplo:
+            // dataGridView.DataSource = ObtenerDatosEntidad();
+         * */
     }
 }
