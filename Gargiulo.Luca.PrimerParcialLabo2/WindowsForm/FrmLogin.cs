@@ -11,7 +11,7 @@ namespace WindowsForm
         private List<Usuario> usuarios;
         public int intentos = 0;
 
-        private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\WindowsForm\\usuarios.json";
+        private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
         public FrmLogin()
         {
             InitializeComponent();
