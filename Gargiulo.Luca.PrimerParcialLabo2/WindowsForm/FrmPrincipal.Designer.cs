@@ -119,6 +119,7 @@
             MainMenuStrip = menuStrip1;
             Name = "FrmPrincipal";
             Text = "Formulario principal";
+            Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

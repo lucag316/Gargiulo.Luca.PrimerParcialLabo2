@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Golosinas
+    public class Golosina
     {
         #region Atributos
         public double precio;
@@ -19,17 +19,17 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Golosinas() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
+        public Golosina() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
         {
 
         }
-        public Golosinas(double precio, string marca)
+        public Golosina(double precio, string marca)
         {
             this.precio = precio;
             this.marca = marca;
         }
 
-        public Golosinas(double precio, string marca, string popularidad) : this(precio, marca)
+        public Golosina(double precio, string marca, string popularidad) : this(precio, marca)
         {
             this.popularidad = popularidad;
         }
