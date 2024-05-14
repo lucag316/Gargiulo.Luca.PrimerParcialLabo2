@@ -6,41 +6,40 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Barco
+    public class Chupetin
     {
         #region Atributos
-        public int numeroDeCubiertas;
-        public string tipoDeCasco;
+        public string tipoDePalo;
+        public string dureza;
         #endregion
 
         #region Propiedades
         #endregion
 
         #region Constructor
-        public Barco()
+        public Chupetin()
         {
 
         }
-        public Barco(int numeroDeCubiertas)
+        public Chupetin(string tipoDePalo)
         {
-            this.numeroDeCubiertas = numeroDeCubiertas;
+            this.tipoDePalo = tipoDePalo;
         }
-        public Barco(int numeroDeCubiertas, string tipoDeCasco) : this(numeroDeCubiertas)
+        public Chupetin(string tipoDePalo, string dureza) : this(tipoDePalo)
         {
-            this.tipoDeCasco = tipoDeCasco;
+            this.dureza = dureza;
         }
         #endregion
 
         #region Metodos
         public string MostrarBarco()
         {
-            return $" {this.numeroDeCubiertas} cubiertas - Tipo de casco: {this.tipoDeCasco}";
+            return $" Tipo de palo: {this.tipoDePalo} - Dureza: {this.dureza}";
         }
         #endregion
 
         #region Sobrecargas
         #endregion
-
 
 
     }

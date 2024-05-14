@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Auto
+    internal class Chocolate
     {
         #region Atributos
-        public int numeroDePuertas;
-        public string transmision; //automatico/manual
+        public string relleno; //nuez,mani,almendras, etc
+        public string tipoDeCacao; //blanco,negro,con leche,etc
         #endregion
 
         #region Propiedades
         #endregion
 
         #region Constructor
-        public Auto()
+        public Chocolate()
         {
 
         }
-        public Auto(int numeroDePuertas)
+        public Chocolate(string relleno)
         {
-            this.numeroDePuertas = numeroDePuertas;
-            
+            this.relleno = relleno;
+
         }
-        public Auto(int numeroDePuertas, string transmision):this(numeroDePuertas)
+        public Chocolate(string relleno, string tipoDeCacao) : this(relleno)
         {
-            this.transmision = transmision;
+            this.tipoDeCacao = tipoDeCacao;
 
         }
         #endregion
@@ -36,13 +36,11 @@ namespace Entidades
         #region Metodos
         public string MostrarAuto()
         {
-            return $" {this.numeroDePuertas} puertas - Transmision: {this.transmision}";
+            return $" Relleno: {this.relleno} - Tipo de Cacao:: {this.tipoDeCacao}";
         }
         #endregion
 
         #region Sobrecargas
         #endregion
-
-
     }
 }
