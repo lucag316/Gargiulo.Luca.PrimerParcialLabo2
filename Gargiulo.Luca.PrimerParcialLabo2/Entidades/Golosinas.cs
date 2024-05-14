@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Golosinas
+    public class Golosinas
     {
         #region Atributos
         public double precio;
