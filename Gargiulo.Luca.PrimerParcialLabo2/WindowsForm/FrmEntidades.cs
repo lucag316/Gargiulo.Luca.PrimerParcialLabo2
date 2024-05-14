@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,11 @@ namespace WindowsForm
 {
     public partial class FrmEntidades : Form
     {
-        public string EntidadSeleccionada { get; private set; }
+        private Golosina golosina;
+        public Golosina Golosina
+        {
+            get { return this.golosina; }
+        }
 
         public FrmEntidades()
         {
@@ -26,9 +31,12 @@ namespace WindowsForm
         private void btnChocolate_Click(object sender, EventArgs e)
         {
             FrmChocolate frmChocolate = new FrmChocolate();
+            frmChocolate.StartPosition = FormStartPosition.CenterScreen;
             DialogResult dialogResultRta = frmChocolate.ShowDialog();
             if (dialogResultRta == DialogResult.OK)
             {
+                // Devolver el objeto Chocolate al formulario principal
+      
                 this.DialogResult = DialogResult.OK;
             }
 

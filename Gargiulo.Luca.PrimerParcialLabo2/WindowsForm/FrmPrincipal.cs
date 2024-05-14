@@ -43,7 +43,7 @@ namespace WindowsForm
 
             if (dialogResultRta == DialogResult.OK)
             {
-                //this.golosinas.Add(frmEntidades.EntidadSeleccionada);
+                this.golosinas.Add();
                 this.ActualizarVisor();
             }
         }

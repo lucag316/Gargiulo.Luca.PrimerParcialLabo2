@@ -9,7 +9,7 @@ namespace WindowsForm
     public partial class FrmLogin : Form
     {
         private List<Usuario> usuarios;
-        public int intentos = 0;
+        //public int intentos = 0;
 
         private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
         public FrmLogin()
@@ -41,7 +41,7 @@ namespace WindowsForm
                 MessageBox.Show("Datos Incorrectos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCorreo.Clear();
                 txtClave.Clear();
-                this.intentos++;
+                //this.intentos++;
             }
 
 

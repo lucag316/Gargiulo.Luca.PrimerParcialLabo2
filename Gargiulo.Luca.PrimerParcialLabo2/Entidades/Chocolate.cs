@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Chocolate
+    public class Chocolate : Golosina
     {
         #region Atributos
         public string relleno; //nuez,mani,almendras, etc
