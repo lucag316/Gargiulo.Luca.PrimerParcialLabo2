@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnAgregar = new Button();
-            listBox1 = new ListBox();
+            lstGolosinas = new ListBox();
             btnModificar = new Button();
             btnEliminar = new Button();
             button1 = new Button();
@@ -48,14 +48,14 @@
             btnAgregar.Text = "&Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lstGolosinas
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(12, 60);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(776, 289);
-            listBox1.TabIndex = 1;
+            lstGolosinas.FormattingEnabled = true;
+            lstGolosinas.ItemHeight = 15;
+            lstGolosinas.Location = new Point(12, 60);
+            lstGolosinas.Name = "lstGolosinas";
+            lstGolosinas.Size = new Size(776, 289);
+            lstGolosinas.TabIndex = 1;
             // 
             // btnModificar
             // 
@@ -113,7 +113,7 @@
             Controls.Add(button1);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
-            Controls.Add(listBox1);
+            Controls.Add(lstGolosinas);
             Controls.Add(btnAgregar);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -128,7 +128,7 @@
         #endregion
 
         private Button btnAgregar;
-        private ListBox listBox1;
+        private ListBox lstGolosinas;
         private Button btnModificar;
         private Button btnEliminar;
         private Button button1;
