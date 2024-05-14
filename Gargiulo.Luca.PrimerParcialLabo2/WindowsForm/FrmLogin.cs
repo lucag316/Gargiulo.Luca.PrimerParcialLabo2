@@ -34,6 +34,7 @@ namespace WindowsForm
                 FrmPrincipal frmPrincipal = new FrmPrincipal();
                 frmPrincipal.Show();
                 this.Hide();
+                //hay otra forma de crear con Thread por lo del error MSB3027
             }
             else
             {
