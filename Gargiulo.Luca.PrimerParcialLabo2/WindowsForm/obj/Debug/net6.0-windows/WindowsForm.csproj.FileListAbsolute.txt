@@ -21,3 +21,4 @@ C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Garg
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.csproj.CopyComplete
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.FrmEntidades.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\WindowsForm\obj\Debug\net6.0-windows\WindowsForm.FrmChocolate.resources

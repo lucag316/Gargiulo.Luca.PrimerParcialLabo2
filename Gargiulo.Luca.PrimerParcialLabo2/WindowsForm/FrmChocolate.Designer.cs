@@ -50,6 +50,7 @@
             btnAceptar.TabIndex = 0;
             btnAceptar.Text = "&Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // lblPrecio
             // 
@@ -158,7 +159,8 @@
             Controls.Add(lblPrecio);
             Controls.Add(btnAceptar);
             Name = "FrmChocolate";
-            Text = "FrmChocolate";
+            Text = "Formulario Chocolate";
+            Load += FrmChocolate_Load;
             ResumeLayout(false);
             PerformLayout();
         }

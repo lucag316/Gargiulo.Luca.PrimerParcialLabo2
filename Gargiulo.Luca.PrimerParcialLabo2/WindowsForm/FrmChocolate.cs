@@ -16,5 +16,17 @@ namespace WindowsForm
         {
             InitializeComponent();
         }
+
+        private void FrmChocolate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            string detalle = $"Precio: {txtPrecio.Text}";
+            this.Tag = detalle;
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

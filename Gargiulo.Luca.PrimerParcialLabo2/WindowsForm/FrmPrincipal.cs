@@ -38,18 +38,14 @@ namespace WindowsForm
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmEntidades frmEntidades = new FrmEntidades();
-            frmEntidades.ShowDialog();
-            //fijarse como en el crud anterior el if del dialogResult
+            frmEntidades.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dialogResultRta = frmEntidades.ShowDialog();
+
+            if (dialogResultRta == DialogResult.OK)
+            {
+                //this.golosinas.Add(frmEntidades.EntidadSeleccionada);
+                this.ActualizarVisor();
+            }
         }
-
-        /*
-         * // Abre el formulario de agregar entidad cuando se hace clic en el botón "Agregar"
-            AgregarForm agregarForm = new AgregarForm();
-            agregarForm.ShowDialog();
-
-            // Actualiza los datos en el DataGridView después de agregar una entidad
-            // Ejemplo:
-            // dataGridView.DataSource = ObtenerDatosEntidad();
-         * */
     }
 }

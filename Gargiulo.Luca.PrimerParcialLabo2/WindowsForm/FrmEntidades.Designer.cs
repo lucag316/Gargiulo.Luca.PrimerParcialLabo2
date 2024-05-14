@@ -41,6 +41,7 @@
             btnChocolate.TabIndex = 0;
             btnChocolate.Text = "&Chocolate";
             btnChocolate.UseVisualStyleBackColor = true;
+            btnChocolate.Click += btnChocolate_Click;
             // 
             // btnChicle
             // 
@@ -70,6 +71,7 @@
             Controls.Add(btnChocolate);
             Name = "FrmEntidades";
             Text = "Formulario Entidades";
+            Load += FrmEntidades_Load;
             ResumeLayout(false);
         }
 
