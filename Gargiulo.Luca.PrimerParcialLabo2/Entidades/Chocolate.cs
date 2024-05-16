@@ -9,24 +9,26 @@ namespace Entidades
     public class Chocolate : Golosina
     {
         #region Atributos
-        public string relleno; //nuez,mani,almendras, etc
-        public string tipoDeCacao; //blanco,negro,con leche,etc
+        protected Rellenos relleno;
+        protected TiposDeCacao tipoDeCacao;
         #endregion
 
         #region Propiedades
         #endregion
 
         #region Constructor
-        public Chocolate()
+        public Chocolate(int codigo, double precio, double cantidad) : base(codigo, precio, cantidad)
         {
-
+            this.relleno = Rellenos.SinRelleno; 
+            this.tipoDeCacao = TiposDeCacao.Negro;
+            //como no los completa, lo pongo por defecto, creo que esta bien
         }
-        public Chocolate(string relleno)
+        public Chocolate(int codigo, double precio, double cantidad, Rellenos relleno): this(codigo, precio, cantidad)
         {
             this.relleno = relleno;
-
+            this.tipoDeCacao = TiposDeCacao.Negro; // no se bien si hay que agregarla
         }
-        public Chocolate(string relleno, string tipoDeCacao) : this(relleno)
+        public Chocolate(int codigo, double precio, double cantidad, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, precio, cantidad, relleno)
         {
             this.tipoDeCacao = tipoDeCacao;
 

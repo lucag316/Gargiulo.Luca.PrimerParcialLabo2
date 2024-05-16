@@ -7,6 +7,7 @@
 
 public enum Rellenos
 {
+    SinRelleno,
     Nuez,
     Almendra,
     Mani,
@@ -14,4 +15,12 @@ public enum Rellenos
     DulceDeLeche,
     Nutela,
     Yogurt
+}
+
+public enum TiposDeCacao
+{
+    Blanco,
+    Negro,
+    Amargo,
+    ConLeche
 }

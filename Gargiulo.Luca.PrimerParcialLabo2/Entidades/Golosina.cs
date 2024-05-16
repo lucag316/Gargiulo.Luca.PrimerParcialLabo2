@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Golosina
+    public abstract class Golosina
     {
         #region Atributos
+        protected int codigo;
         protected double precio;
-        protected string marca;
-        protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
+        protected double cantidad;
+        //protected string marca;
+        //protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
         //public Datetime fechaDeCaducidad; //puede ser
         #endregion
 
@@ -23,15 +25,15 @@ namespace Entidades
         {
 
         }
-        public Golosina(double precio, string marca)
+        public Golosina(int codigo, double precio)
         {
+            this.codigo = codigo;
             this.precio = precio;
-            this.marca = marca;
         }
 
-        public Golosina(double precio, string marca, string popularidad) : this(precio, marca)
+        public Golosina(int codigo, double precio, double cantidad) : this(codigo, precio)
         {
-            this.popularidad = popularidad;
+            this.cantidad = cantidad;
         }
         #endregion
 
@@ -40,9 +42,9 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine($"Codigo: {this.codigo}");
             sb.AppendLine($"Precio: {this.precio}");
-            sb.AppendLine($"Marca: {this.marca}");
-            sb.Append($"Popilaridad: {this.popularidad}");
+            sb.Append($"Cantidad: {this.cantidad}");
 
             return sb.ToString();
         }
