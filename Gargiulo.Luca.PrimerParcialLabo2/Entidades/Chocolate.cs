@@ -46,6 +46,20 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("=============== CHOCOLATE ===============");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Relleno: {this.relleno}");
+            sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
+            sb.AppendLine("=========================================\n");
+
+            return sb.ToString();
+        }
+
         #endregion
 
         #region Sobrecargas

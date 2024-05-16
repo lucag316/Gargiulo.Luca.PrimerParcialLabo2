@@ -23,12 +23,15 @@ namespace Entidades
         #region Constructor
         public Golosina() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
         {
-
+            this.codigo = 0;
+            this.precio = 0;
+            this.cantidad = 0;
         }
-        public Golosina(int codigo, double precio)
+        public Golosina(int codigo, double precio) : this()
         {
             this.codigo = codigo;
             this.precio = precio;
+            this.cantidad = 0;
         }
 
         public Golosina(int codigo, double precio, double cantidad) : this(codigo, precio)
@@ -38,7 +41,7 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public virtual string Mostrar()
+        public virtual string Mostrar() // esta al pedo porque hace lo mismo que el ToString
         {
             StringBuilder sb = new StringBuilder();
 
@@ -51,7 +54,13 @@ namespace Entidades
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Codigo: {this.codigo}");
+            sb.AppendLine($"Precio: {this.precio}");
+            sb.Append($"Cantidad: {this.cantidad}");// creo que no hace falta el  ToString si ya esta en el return
+
+            return sb.ToString();
         }
 
         public override bool Equals(object? obj)
