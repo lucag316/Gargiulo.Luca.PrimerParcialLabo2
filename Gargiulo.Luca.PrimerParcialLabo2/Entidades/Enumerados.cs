@@ -4,3 +4,14 @@
     // buscar enumerados para que pueda los 3
     //capaz puedo hacer lista de marcas de los 3
 }
+
+public enum Rellenos
+{
+    Nuez,
+    Almendra,
+    Mani,
+    Caramelo,
+    DulceDeLeche,
+    Nutela,
+    Yogurt
+}

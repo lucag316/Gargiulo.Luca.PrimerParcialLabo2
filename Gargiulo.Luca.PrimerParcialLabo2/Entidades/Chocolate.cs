@@ -36,7 +36,13 @@ namespace Entidades
         #region Metodos
         public override string Mostrar()
         {
-            return $" Relleno: {this.relleno} - Tipo de Cacao:: {this.tipoDeCacao}";
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(base.Mostrar());
+            sb.AppendLine($"Relleno: {this.relleno}");
+            sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
+
+            return sb.ToString();
         }
         #endregion
 
