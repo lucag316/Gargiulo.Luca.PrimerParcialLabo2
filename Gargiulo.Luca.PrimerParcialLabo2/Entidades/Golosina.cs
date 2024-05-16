@@ -9,9 +9,9 @@ namespace Entidades
     public class Golosina
     {
         #region Atributos
-        public double precio;
-        public string marca;
-        public string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
+        protected double precio;
+        protected string marca;
+        protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
         //public Datetime fechaDeCaducidad; //puede ser
         #endregion
 
@@ -38,8 +38,25 @@ namespace Entidades
         #region Metodos
         public virtual string Mostrar()
         {
-            return $" ${this.precio} - Marca: {this.marca} - Popularidad: {this.popularidad}";
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Precio: {this.precio}");
+            sb.AppendLine($"Marca: {this.marca}");
+            sb.Append($"Popilaridad: {this.popularidad}");
+
+            return sb.ToString();
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
         #endregion
 
         #region Sobrecargas
