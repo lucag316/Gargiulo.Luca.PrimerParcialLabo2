@@ -9,11 +9,13 @@ namespace Entidades
     public class Chicle : Golosina
     {
         #region Atributos
-        public string elasticidad; //mucha, poca, normal, etc
-        public string duracionSabor; 
+        private string elasticidad; //mucha, poca, normal, etc
+        private string duracionSabor; 
         #endregion
 
         #region Propiedades
+        public string Elasticidad { get { return this.elasticidad; } }
+        public string DuracionSabor { get { return this.duracionSabor; } }
         #endregion
 
         #region Constructor
@@ -53,7 +55,7 @@ namespace Entidades
 
             if (base.Equals(obj) && obj is Chicle chicle)
             {
-                if (this == chicle) //aca no se si poner this.codigo == chocolate.codigo
+                if (this.Elasticidad == chicle.Elasticidad && this.DuracionSabor == chicle.DuracionSabor) //aca no se si poner this.codigo == chocolate.codigo
                 {
                     mismoChicle = true;
                 }
@@ -75,6 +77,20 @@ namespace Entidades
         #endregion
 
         #region Sobrecargas
+        public static bool operator ==(Chicle chicle1, Chicle chicle2)
+        {
+            bool mismoChicle = false;
+
+            if (chicle1.Equals(chicle2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            {
+                mismoChicle = true;
+            }
+            return mismoChicle;
+        }
+        public static bool operator !=(Chicle chicle1, Chicle chicle2)
+        {
+            return !(chicle1 == chicle2); // aca llamo al == de g1 y g2
+        }
         #endregion
 
 

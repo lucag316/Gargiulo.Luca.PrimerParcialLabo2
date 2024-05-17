@@ -14,6 +14,8 @@ namespace Entidades
         #endregion
 
         #region Propiedades
+        public Rellenos Relleno { get { return this.relleno; } }
+        public TiposDeCacao TipoDeCacao { get { return this.tipoDeCacao; } }
         #endregion
 
         #region Constructor
@@ -54,14 +56,13 @@ namespace Entidades
 
             if (base.Equals(obj) && obj is Chocolate chocolate)
             {
-                if (this == chocolate) //aca no se si poner this.codigo == chocolate.codigo
+                if (this.Relleno == chocolate.Relleno && this.TipoDeCacao == chocolate.TipoDeCacao) //aca no se si poner this.codigo == chocolate.codigo
                 {
                     mismoChocolate = true;
                 }
             }
             return mismoChocolate;
         }
-
         public override int GetHashCode()
         {
             return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
@@ -76,6 +77,21 @@ namespace Entidades
         #endregion
 
         #region Sobrecarga de operadores
+        public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
+        {
+            bool mismoChocolate = false;
+
+            if (chocolate1.Equals(chocolate2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            {
+                mismoChocolate = true;
+            }
+            return mismoChocolate;
+        }
+        public static bool operator !=(Chocolate chocolate1, Chocolate chocolate2)
+        {
+            return !(chocolate1 == chocolate2); // aca llamo al == de g1 y g2
+        }
+
         #endregion
     }
 }

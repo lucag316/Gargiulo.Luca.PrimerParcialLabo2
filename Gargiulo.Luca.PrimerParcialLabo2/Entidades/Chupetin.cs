@@ -9,12 +9,14 @@ namespace Entidades
     public class Chupetin : Golosina
     {
         #region Atributos
-        public string formaChupetin;
-        public string dureza;
+        private string formaChupetin;
+        private string dureza;
         //tipo de palo
         #endregion
 
         #region Propiedades
+        public string FormaChupetin { get { return this.formaChupetin; } }
+        public string Dureza {  get { return this.dureza; } }
         #endregion
         
         #region Constructor
@@ -46,13 +48,26 @@ namespace Entidades
 
             return sb.ToString();
         }
-        public override bool Equals(object? obj)
+        /*public override bool Equals(object? obj)
         {
             bool mismoChupetin = false;
 
             if (base.Equals(obj) && obj is Chupetin chupetin)
             {
                 if (this == chupetin) //aca no se si poner this.codigo == chocolate.codigo
+                {
+                    mismoChupetin = true;
+                }
+            }
+            return mismoChupetin;
+        }*/
+        public override bool Equals(object? obj)
+        {
+            bool mismoChupetin = false;
+
+            if (base.Equals(obj) && obj is Chupetin chupetin)
+            {
+                if (this.FormaChupetin == chupetin.FormaChupetin && this.Dureza == chupetin.Dureza) //aca no se si poner this.codigo == chocolate.codigo
                 {
                     mismoChupetin = true;
                 }
@@ -74,6 +89,21 @@ namespace Entidades
         #endregion
 
         #region Sobrecargas
+
+        public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
+        {
+            bool mismoChupetin = false;
+
+            if (chupetin1.Equals(chupetin2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            {
+                mismoChupetin = true;
+            }
+            return mismoChupetin;
+        }
+        public static bool operator !=(Chupetin chupetin1, Chupetin chupetin2)
+        {
+            return !(chupetin1 == chupetin2); // aca llamo al == de g1 y g2
+        }
         #endregion
 
 

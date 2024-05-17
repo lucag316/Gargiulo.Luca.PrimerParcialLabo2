@@ -9,9 +9,9 @@ namespace Entidades
     public abstract class Golosina
     {
         #region Atributos
-        protected int codigo;
-        protected float peso;
-        protected double precio;
+        private int codigo;
+        private float peso;
+        private double precio;
         //protected string marca;
         //protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
         //public Datetime fechaDeCaducidad; //puede ser
@@ -120,6 +120,7 @@ namespace Entidades
 
         #endregion
         #region Operadores implicitos y explicitos
+        #endregion
 
         #region Sobrecargas
         #endregion
