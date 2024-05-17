@@ -66,6 +66,7 @@ namespace Entidades
             return sb.ToString();
         }
 
+        //puedo hacer protegido el Mostrar y pasarselo a ToString con this.Mostrar(), en To string no hago nada
         public override string ToString()// si no sobreescribo el ToString, devuelve namespace.clase
         {
             StringBuilder sb = new StringBuilder();
@@ -96,7 +97,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return this.Codigo;
         }
 
         #endregion
