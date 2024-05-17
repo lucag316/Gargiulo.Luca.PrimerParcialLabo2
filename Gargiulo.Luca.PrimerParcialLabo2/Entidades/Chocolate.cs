@@ -35,7 +35,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos
+        #region Metodos Sobrescritos
         public override string ToString()//podria tener un mostrar y poner this.Mostrar() adentro de este
         {
             StringBuilder sb = new StringBuilder();
@@ -48,6 +48,25 @@ namespace Entidades
 
             return sb.ToString();
         }
+        public override bool Equals(object? obj)
+        {
+            bool mismoChocolate = false;
+
+            if (base.Equals(obj) && obj is Chocolate chocolate)
+            {
+                if (this == chocolate) //aca no se si poner this.codigo == chocolate.codigo
+                {
+                    mismoChocolate = true;
+                }
+            }
+            return mismoChocolate;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
+        }
+
         public override string MostrarEnVisor()
         {
             string mensaje = $"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
@@ -56,6 +75,9 @@ namespace Entidades
         }
 
         #endregion
+
+       
+
 
         #region Sobrecargas
         #endregion

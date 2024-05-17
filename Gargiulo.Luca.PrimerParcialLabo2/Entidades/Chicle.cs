@@ -34,7 +34,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos
+        #region Metodos Sobrescritos
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -46,6 +46,23 @@ namespace Entidades
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
+        }
+        public override bool Equals(object? obj)
+        {
+            bool mismoChicle = false;
+
+            if (base.Equals(obj) && obj is Chicle chicle)
+            {
+                if (this == chicle) //aca no se si poner this.codigo == chocolate.codigo
+                {
+                    mismoChicle = true;
+                }
+            }
+            return mismoChicle;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
         }
 
         public override string MostrarEnVisor()

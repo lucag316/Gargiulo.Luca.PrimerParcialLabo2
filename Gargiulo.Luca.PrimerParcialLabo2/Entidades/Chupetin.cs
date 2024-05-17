@@ -46,6 +46,23 @@ namespace Entidades
 
             return sb.ToString();
         }
+        public override bool Equals(object? obj)
+        {
+            bool mismoChupetin = false;
+
+            if (base.Equals(obj) && obj is Chupetin chupetin)
+            {
+                if (this == chupetin) //aca no se si poner this.codigo == chocolate.codigo
+                {
+                    mismoChupetin = true;
+                }
+            }
+            return mismoChupetin;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
+        }
 
         public override string MostrarEnVisor()
         {
