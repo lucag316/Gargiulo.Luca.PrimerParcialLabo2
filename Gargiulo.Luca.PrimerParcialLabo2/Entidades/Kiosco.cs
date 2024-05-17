@@ -16,6 +16,8 @@ namespace Entidades
         private double precioChicle;
         private double precioChupetin;
 
+        private double capacidadGolosinas = 10;
+
         private string detalle;
         #endregion
 
@@ -63,11 +65,13 @@ namespace Entidades
         {
             this.golosinas =new List<Golosina>();
         }
-        public Kiosco(double precioChocolate, double precioChicle, double precioChupetin) : this()
+        public Kiosco(double precioChocolate, double precioChicle, double precioChupetin, double capacidadGolosinas) : this()
         {
             this.precioChocolate = precioChocolate;
             this.precioChicle = precioChicle;
             this.precioChupetin = precioChupetin;
+
+            this.capacidadGolosinas = capacidadGolosinas;
         }
         #endregion
 
@@ -105,22 +109,44 @@ namespace Entidades
             }
             return retorno;
         }
-        
+
 
         #region Operadores suma y resta
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
         {
-            if (!kiosco.Golosinas.Contains(golosina)) // capaz es comparando, agregar si no esta por ejemplo fijandose que codigo es
+            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
+            { 
+                if (kiosco != golosina) //(!kiosco.Golosinas.Contains(golosina))// capaz es comparando, agregar si no esta por ejemplo fijandose que codigo es
+                { //si la golosina no esta en el kiosco, la agrego
+                    kiosco.Golosinas.Add(golosina);
+                }
+                else
+                {
+                    Console.WriteLine("La golosina ya esta en el kiosco");
+                }
+            }
+            else
             {
-                kiosco.Golosinas.Add(golosina);
+                Console.WriteLine("No se puede agregar mas, es la capacidad maxima del kiosco");
             }
             return kiosco;
         }
         public static Kiosco operator -(Kiosco kiosco, Golosina golosina)
         {
-            if (kiosco.Golosinas.Contains(golosina))
+            if(kiosco.Golosinas.Count > 0)
             {
-                kiosco.Golosinas.Remove(golosina);
+                if (kiosco == golosina)//si la golosina esta en el kiosco, la saco, //(kiosco.Golosinas.Contains(golosina)), NO SE QUE SERIA MEJOR
+                {
+                    kiosco.Golosinas.Remove(golosina);
+                }
+                else
+                {
+                    Console.WriteLine("La golosina no esta en el kiosco");
+                }
+            }
+            else
+            {
+                Console.WriteLine("El kiosco no tiene golosinas");
             }
             return kiosco;
         }
@@ -135,6 +161,16 @@ namespace Entidades
             {
                 estaEnKiosco = true;
             }
+            // NO SE QUE FORMA SERIA MEJOR
+            //foreach(Golosina item in kiosco.Golosinas)
+            //{
+            //    if(item == golosina)
+            //    {
+            //        estaEnKiosco = true;
+            //        break;
+            //    }
+            //}
+
             return estaEnKiosco;
         }
         public static bool operator !=(Kiosco kiosco, Golosina golosina)
@@ -142,6 +178,9 @@ namespace Entidades
             return !(kiosco == golosina); // va hacia el ==
         }
         #endregion
+
+        //PODRIA HACER UN MOSTRAR KIOSCO
+
 
     }
 }

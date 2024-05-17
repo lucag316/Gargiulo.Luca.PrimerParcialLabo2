@@ -66,7 +66,7 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public override string ToString()
+        public override string ToString()// si no sobreescribo el ToString, devuelve namespace.clase
         {
             StringBuilder sb = new StringBuilder();
 
@@ -79,11 +79,43 @@ namespace Entidades
 
         public abstract string MostrarEnVisor();
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object? obj) //Equals determinna si dos objetos son iguales
         {
-            return base.Equals(obj);
+            bool mismaGolosina = false;
+            //por ej, verifico si el obj es del mismo tipo osea si es Golosina
+            if (obj != null && GetType() == obj.GetType()) // podria poner    obj is Golosina, digo si no es nul para no cerrucho verde
+            {
+                Golosina g = (Golosina)obj;
+
+                if(g == this) // voy al == de Golosina y Golosina
+                {
+                    mismaGolosina = true;
+                }
+            }
+            return mismaGolosina;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
+        #endregion
+
+        #region Operadores de igualdad
+        public static bool operator ==(Golosina golosina1, Golosina golosina2)
+        {
+            bool mismaGolosina = false;
+
+            if(golosina1.codigo == golosina2.codigo)
+            {
+                mismaGolosina = true;
+            }
+            return mismaGolosina;
+        }
+        public static bool operator !=(Golosina golosina1, Golosina golosina2)
+        {
+            return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
+        }
         #endregion
 
         #region Sobrecargas
