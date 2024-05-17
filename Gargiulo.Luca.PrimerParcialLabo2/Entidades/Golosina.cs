@@ -86,9 +86,9 @@ namespace Entidades
             //por ej, verifico si el obj es del mismo tipo osea si es Golosina
             if (obj != null && GetType() == obj.GetType()) // podria poner    obj is Golosina, digo si no es nul para no cerrucho verde
             {
-                Golosina g = (Golosina)obj;
+                Golosina golosina = (Golosina)obj;
 
-                if(g == this) // voy al == de Golosina y Golosina
+                if(golosina.Codigo == this.Codigo && golosina.Peso == this.Peso) // voy al == de Golosina y Golosina
                 {
                     mismaGolosina = true;
                 }
@@ -97,17 +97,17 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return this.Codigo;
+            return HashCode.Combine(this.codigo, this.peso); //buscar algo para entender mejor
         }
 
         #endregion
 
-        #region Operadores de igualdad
+        #region Sobrecarga de operadores
         public static bool operator ==(Golosina golosina1, Golosina golosina2)
         {
             bool mismaGolosina = false;
 
-            if(golosina1.codigo == golosina2.codigo)
+            if(golosina1.Equals(golosina2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
             {
                 mismaGolosina = true;
             }
@@ -117,7 +117,9 @@ namespace Entidades
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
+
         #endregion
+        #region Operadores implicitos y explicitos
 
         #region Sobrecargas
         #endregion

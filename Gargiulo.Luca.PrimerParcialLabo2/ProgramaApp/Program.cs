@@ -26,7 +26,7 @@ internal class Program
 
         Console.WriteLine($"Esta la siguiente golosina en el kiosco: \n{chupetin2} Respuesta:" + (kiosco == chupetin2));
 
-        //Console.WriteLine(kiosco.Golosinas.Equals(chocolate1));
+        Console.WriteLine(chupetin1.Equals(chocolate1));
         /*
         Console.WriteLine(chocolate1.ToString());
         Console.WriteLine(chicle1.ToString());

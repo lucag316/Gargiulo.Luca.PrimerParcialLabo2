@@ -73,13 +73,9 @@ namespace Entidades
             //fijarme si poner todo o no, para no repetir
             return mensaje;
         }
-
         #endregion
 
-       
-
-
-        #region Sobrecargas
+        #region Sobrecarga de operadores
         #endregion
     }
 }
