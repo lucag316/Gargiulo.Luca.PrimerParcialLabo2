@@ -12,11 +12,7 @@ namespace Entidades
         #region Atributos
         private List<Golosina> golosinas;
 
-        //private double precioChocolate;
-        //private double precioChicle;
-        //private double precioChupetin;
-
-        private double capacidadGolosinasDistintas = 10;
+        private double capacidadGolosinasDistintas;
 
         private string detalle;
         #endregion
@@ -54,8 +50,7 @@ namespace Entidades
 
                 sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
                 sb.AppendLine($"         ${precioTotal.ToString()}");
-                sb.AppendLine("=================================================\n");
-
+                sb.AppendLine("===============================================\n");
 
                 return sb.ToString();
             }
@@ -66,17 +61,15 @@ namespace Entidades
         private Kiosco() //no me acuerdo porque privado, pero solo inicializo la lista de golosinas
         {
             this.golosinas =new List<Golosina>();
+            this.capacidadGolosinasDistintas = 10; //fijarse si esta bien puesto aca
         }
         public Kiosco(double capacidadGolosinasDistintas) : this()
         {
-            /*this.precioChocolate = precioChocolate;
-            this.precioChicle = precioChicle;
-            this.precioChupetin = precioChupetin;*/
-
             this.capacidadGolosinasDistintas = capacidadGolosinasDistintas;
         }
         #endregion
 
+        #region Metodos
         public double CalcularPrecioTotal() //calcular el precio total de la lista
         {
             double precioTotal = 0;
@@ -87,9 +80,6 @@ namespace Entidades
             }
             return precioTotal;
         }
-
-
-        //puedo tener un ordenar o un mostrar aca?
 
         public int CompararGolosinasPorCodigo(Golosina golosina1, Golosina golosina2, bool ascendente)
         {
@@ -123,7 +113,7 @@ namespace Entidades
             }
             return retorno;
         }
-
+        #endregion
 
         #region Operadores suma y resta
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
@@ -192,9 +182,5 @@ namespace Entidades
             return !(kiosco == golosina); // va hacia el ==
         }
         #endregion
-
-        //PODRIA HACER UN MOSTRAR KIOSCO
-
-
     }
 }

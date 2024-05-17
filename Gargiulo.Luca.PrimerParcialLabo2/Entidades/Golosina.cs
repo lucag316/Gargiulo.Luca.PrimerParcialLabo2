@@ -96,7 +96,7 @@ namespace Entidades
             sb.AppendLine($"Codigo: {this.codigo}");
             sb.AppendLine($"Peso: {this.peso} g");// creo que no hace falta el  ToString si ya esta en el return
             sb.AppendLine($"Precio: ${this.precio}");
-            sb.AppendLine($"Cantidad: ${this.cantidad}");
+            sb.AppendLine($"Cantidad: {this.cantidad} unidades");
 
             return sb.ToString();
         }

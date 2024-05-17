@@ -20,7 +20,7 @@ namespace Entidades
 
         #region Constructor
 
-        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio)
+        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.elasticidad = "nada";
             this.duracionSabor = "poca";
