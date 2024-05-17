@@ -25,7 +25,7 @@ namespace Entidades
                 return this.codigo;
             }
         }
-        public int Peso
+        public float Peso
         {
             get
             {
@@ -59,9 +59,9 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Codigo: {this.codigo}");
-            sb.Append($"Peso: {this.peso} kg");
-            sb.AppendLine($"Precio: {this.precio}");
+            sb.AppendLine($"Codigo de barra: {this.codigo}");
+            sb.AppendLine($"Peso: {this.peso} kg");
+            sb.AppendLine($"Precio: ${this.precio}");
 
             return sb.ToString();
         }
@@ -71,8 +71,8 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Codigo: {this.codigo}");
-            sb.Append($"Peso: {this.peso} kg");// creo que no hace falta el  ToString si ya esta en el return
-            sb.AppendLine($"Precio: {this.precio}");
+            sb.AppendLine($"Peso: {this.peso} g");// creo que no hace falta el  ToString si ya esta en el return
+            sb.AppendLine($"Precio: ${this.precio}");
 
             return sb.ToString();
         }

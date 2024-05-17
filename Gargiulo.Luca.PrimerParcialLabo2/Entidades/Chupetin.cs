@@ -39,7 +39,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             //fijarse bien porque ademas segurolo tengo que hacer en una linea
             sb.AppendLine("=============== CHUPETIN ===============");
-            sb.AppendLine(base.ToString());
+            sb.Append(base.ToString());
             sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
             sb.AppendLine($"Dureza: {this.dureza}");
             sb.AppendLine("========================================\n");

@@ -41,7 +41,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("=============== CHOCOLATE ===============");
-            sb.AppendLine(base.ToString());
+            sb.Append(base.ToString());
             sb.AppendLine($"Relleno: {this.relleno}");
             sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
             sb.AppendLine("=========================================\n");

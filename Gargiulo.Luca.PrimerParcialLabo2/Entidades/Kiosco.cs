@@ -32,11 +32,11 @@ namespace Entidades
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("=============== PRECIOS GOLOSINAS ===============");
-                sb.AppendLine("   Precio chocolate: " + this.precioChocolate.ToString());
-                sb.AppendLine("   Precio chicle: " + this.precioChicle.ToString());
-                sb.AppendLine("   Precio chupetin: " + this.precioChupetin.ToString());
-                sb.AppendLine("=================================================");
+                sb.AppendLine("\n=============== PRECIOS GOLOSINAS ===============");
+                sb.AppendLine($"   Precio chocolate: ${this.precioChocolate.ToString()}");
+                sb.AppendLine($"   Precio chicle: {this.precioChicle.ToString()}");
+                sb.AppendLine($"   Precio chupetin: {this.precioChupetin.ToString()}");
+                sb.AppendLine("=================================================\n");
 
                 foreach (Golosina golosina in Golosinas)
                 {

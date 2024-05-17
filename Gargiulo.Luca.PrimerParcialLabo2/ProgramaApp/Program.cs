@@ -17,7 +17,7 @@ internal class Program
 
         //fijarse como mostrar bien la lista
 
-        Console.WriteLine();
+        Console.WriteLine(kiosco.Detalle);
         /*
         Console.WriteLine(chocolate1.ToString());
         Console.WriteLine(chicle1.ToString());

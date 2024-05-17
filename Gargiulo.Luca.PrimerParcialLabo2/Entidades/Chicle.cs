@@ -39,11 +39,11 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("=============== CHICLE ===============");
-            sb.AppendLine(base.ToString());
+            sb.AppendLine("=============== CHICLE =================");
+            sb.Append(base.ToString());
             sb.AppendLine($"Elasticidad: {this.elasticidad}");
             sb.AppendLine($"Duracion del sabor: {this.duracionSabor}");
-            sb.AppendLine("======================================\n");
+            sb.AppendLine("========================================\n");
 
             return sb.ToString();
         }
