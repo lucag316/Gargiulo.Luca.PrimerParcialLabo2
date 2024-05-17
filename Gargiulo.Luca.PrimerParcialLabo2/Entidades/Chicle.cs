@@ -20,23 +20,33 @@ namespace Entidades
 
         #region Constructor
 
-        public Chicle(int codigo, float peso, double precio) : base(codigo, peso, precio)
+        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio)
         {
             this.elasticidad = "nada";
             this.duracionSabor = "poca";
         }
-        public Chicle(int codigo, float peso, double precio, string elasticidad) : this(codigo, peso, precio)
+        public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad) : this(codigo, peso, precio, cantidad)
         {
             this.elasticidad = elasticidad;
             this.duracionSabor = "poca";
         }
-        public Chicle(int codigo, float peso, double precio, string elasticidad, string duracionSabor) : this(codigo, peso, precio, elasticidad)
+        public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad, string duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
         {
             this.duracionSabor = duracionSabor;
         }
         #endregion
 
         #region Metodos Sobrescritos
+        public override double CalcularPrecioFinal()
+        {
+            double precioFinal = base.CalcularPrecioFinal();
+            //si compro mas de 5 chicles aplico 15% de descuento
+            if (Cantidad > 5) //aca no se si tendria que poner this.Cantidad
+            {
+                precioFinal *= 0.85;
+            }
+            return precioFinal;
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

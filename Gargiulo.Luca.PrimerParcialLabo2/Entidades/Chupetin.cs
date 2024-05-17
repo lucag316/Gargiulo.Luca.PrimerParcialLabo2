@@ -20,22 +20,33 @@ namespace Entidades
         #endregion
         
         #region Constructor
-        public Chupetin(int codigo, float peso, double precio) : base (codigo, peso, precio)
+        public Chupetin(int codigo, float peso, double precio, int cantidad) : base (codigo, peso, precio)
         {
             this.formaChupetin = "redondo";
             this.dureza = "mucha";
         }
-        public Chupetin(int codigo, float peso, double precio, string formaChupetin) : this(codigo, peso, precio)
+        public Chupetin(int codigo, float peso, double precio, int cantidad, string formaChupetin) : this(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = formaChupetin;
         }
-        public Chupetin(int codigo, float peso, double precio, string formaChupetin, string dureza) : this(codigo, peso, precio, formaChupetin)
+        public Chupetin(int codigo, float peso, double precio, int cantidad, string formaChupetin, string dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
         {
             this.dureza = dureza;
         }
         #endregion
 
         #region Metodos
+
+        public override double CalcularPrecioFinal()
+        {
+            double precioFinal = base.CalcularPrecioFinal();
+            //si compro mas de 2 chupetines aplico 20% de descuento
+            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
+            {
+                precioFinal *= 0.80;
+            }
+            return precioFinal;
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

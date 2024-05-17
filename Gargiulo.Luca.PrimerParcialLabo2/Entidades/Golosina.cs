@@ -12,6 +12,7 @@ namespace Entidades
         private int codigo;
         private float peso;
         private double precio;
+        protected int cantidad;
         //protected string marca;
         //protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
         //public Datetime fechaDeCaducidad; //puede ser
@@ -32,6 +33,20 @@ namespace Entidades
                 return this.peso;
             }
         }
+        public double Precio
+        {
+            get
+            {
+                return this.precio;
+            }
+        }
+        public double Cantidad
+        {
+            get
+            {
+                return this.cantidad;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -40,17 +55,24 @@ namespace Entidades
             this.codigo = 0;
             this.peso = 0;
             this.precio = 0;
+            this.cantidad = 0;
         }
         public Golosina(int codigo, float peso) : this()
         {
             this.codigo = codigo;
             this.peso = peso;
             this.precio = 0;
+            this.cantidad= 0;
         }
 
         public Golosina(int codigo, float peso, double precio) : this(codigo, peso)
         {
             this.precio = precio;
+            this.cantidad = 0;
+        }
+        public Golosina(int codigo, float peso, double precio, int cantidad) : this(codigo, peso, precio)
+        {
+            this.cantidad = cantidad;
         }
         #endregion
 
@@ -74,11 +96,12 @@ namespace Entidades
             sb.AppendLine($"Codigo: {this.codigo}");
             sb.AppendLine($"Peso: {this.peso} g");// creo que no hace falta el  ToString si ya esta en el return
             sb.AppendLine($"Precio: ${this.precio}");
+            sb.AppendLine($"Cantidad: ${this.cantidad}");
 
             return sb.ToString();
         }
 
-        public abstract string MostrarEnVisor();
+        
 
         public override bool Equals(object? obj) //Equals determinna si dos objetos son iguales
         {
@@ -98,6 +121,14 @@ namespace Entidades
         public override int GetHashCode()
         {
             return HashCode.Combine(this.codigo, this.peso); //buscar algo para entender mejor
+        }
+
+        public abstract string MostrarEnVisor();
+
+
+        public virtual double CalcularPrecioFinal()
+        {
+            return this.Precio * this.Cantidad;
         }
 
         #endregion

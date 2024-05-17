@@ -12,11 +12,11 @@ namespace Entidades
         #region Atributos
         private List<Golosina> golosinas;
 
-        private double precioChocolate;
-        private double precioChicle;
-        private double precioChupetin;
+        //private double precioChocolate;
+        //private double precioChicle;
+        //private double precioChupetin;
 
-        private double capacidadGolosinas = 10;
+        private double capacidadGolosinasDistintas = 10;
 
         private string detalle;
         #endregion
@@ -34,12 +34,7 @@ namespace Entidades
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("\n=============== PRECIOS GOLOSINAS ===============");
-                sb.AppendLine($"   Precio chocolate: ${this.precioChocolate.ToString()}");
-                sb.AppendLine($"   Precio chicle: {this.precioChicle.ToString()}");
-                sb.AppendLine($"   Precio chupetin: {this.precioChupetin.ToString()}");
-                sb.AppendLine("=================================================\n");
-
+                
                 foreach (Golosina golosina in Golosinas)
                 {
                     if (golosina is Chocolate)// si golosina es un Chocolate
@@ -55,6 +50,13 @@ namespace Entidades
                         sb.AppendLine(((Chupetin)golosina).ToString());
                     }
                 }
+                double precioTotal = CalcularPrecioTotal();
+
+                sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
+                sb.AppendLine($"         ${precioTotal.ToString()}");
+                sb.AppendLine("=================================================\n");
+
+
                 return sb.ToString();
             }
         }
@@ -65,15 +67,27 @@ namespace Entidades
         {
             this.golosinas =new List<Golosina>();
         }
-        public Kiosco(double precioChocolate, double precioChicle, double precioChupetin, double capacidadGolosinas) : this()
+        public Kiosco(double capacidadGolosinasDistintas) : this()
         {
-            this.precioChocolate = precioChocolate;
+            /*this.precioChocolate = precioChocolate;
             this.precioChicle = precioChicle;
-            this.precioChupetin = precioChupetin;
+            this.precioChupetin = precioChupetin;*/
 
-            this.capacidadGolosinas = capacidadGolosinas;
+            this.capacidadGolosinasDistintas = capacidadGolosinasDistintas;
         }
         #endregion
+
+        public double CalcularPrecioTotal() //calcular el precio total de la lista
+        {
+            double precioTotal = 0;
+
+            foreach (Golosina golosina in Golosinas)
+            {
+                precioTotal += golosina.CalcularPrecioFinal();
+            }
+            return precioTotal;
+        }
+
 
         //puedo tener un ordenar o un mostrar aca?
 
@@ -114,7 +128,7 @@ namespace Entidades
         #region Operadores suma y resta
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
         {
-            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
+            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
             { 
                 if (kiosco != golosina) //(!kiosco.Golosinas.Contains(golosina))// capaz es comparando, agregar si no esta por ejemplo fijandose que codigo es
                 { //si la golosina no esta en el kiosco, la agrego

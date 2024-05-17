@@ -19,18 +19,18 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Chocolate(int codigo, float peso, double precio) : base(codigo, peso, precio)
+        public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.relleno = Rellenos.SinRelleno; 
             this.tipoDeCacao = TiposDeCacao.Negro;
             //como no los completa, lo pongo por defecto, creo que esta bien
         }
-        public Chocolate(int codigo, float peso, double precio, Rellenos relleno): this(codigo, peso, precio)
+        public Chocolate(int codigo, float peso, double precio, int cantidad, Rellenos relleno): this(codigo, peso, precio, cantidad)
         {
             this.relleno = relleno;
             this.tipoDeCacao = TiposDeCacao.Negro; // no se bien si hay que agregarla
         }
-        public Chocolate(int codigo, float peso, double precio, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, peso, precio, relleno)
+        public Chocolate(int codigo, float peso, double precio, int cantidad, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, peso, precio, cantidad, relleno)
         {
             this.tipoDeCacao = tipoDeCacao;
 
@@ -73,6 +73,17 @@ namespace Entidades
             string mensaje = $"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
             //fijarme si poner todo o no, para no repetir
             return mensaje;
+        }
+
+        public override double CalcularPrecioFinal()
+        {
+            double precioFinal = base.CalcularPrecioFinal();
+            //si compro mas de 3 chocolates aplico 30% de descuento
+            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
+            {
+                precioFinal *= 0.7;
+            }
+            return precioFinal;
         }
         #endregion
 
