@@ -48,6 +48,12 @@ namespace Entidades
 
             return sb.ToString();
         }
+        public override string MostrarEnVisor()
+        {
+            string mensaje = $"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
+            //fijarme si poner todo o no, para no repetir codigo
+            return mensaje;
+        }
 
         #endregion
 

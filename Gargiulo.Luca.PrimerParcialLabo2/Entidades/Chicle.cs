@@ -47,6 +47,14 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        public override string MostrarEnVisor()
+        {
+            string mensaje = $"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
+            //fijarme si poner todo o no, para no repetir codigo
+            return mensaje;
+        }
+
         #endregion
 
         #region Sobrecargas

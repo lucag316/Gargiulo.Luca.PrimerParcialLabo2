@@ -63,6 +63,8 @@ namespace Entidades
             return sb.ToString();
         }
 
+        public abstract string MostrarEnVisor();
+
         public override bool Equals(object? obj)
         {
             return base.Equals(obj);

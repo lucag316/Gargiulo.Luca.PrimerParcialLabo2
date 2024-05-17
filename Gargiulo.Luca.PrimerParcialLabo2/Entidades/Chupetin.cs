@@ -46,6 +46,14 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        public override string MostrarEnVisor()
+        {
+            string mensaje = $"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
+            //fijarme si poner todo o no, para no repetir codigo
+            return mensaje;
+        }
+
         #endregion
 
         #region Sobrecargas
