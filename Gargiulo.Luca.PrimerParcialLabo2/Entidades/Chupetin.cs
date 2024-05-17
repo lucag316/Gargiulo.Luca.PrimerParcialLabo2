@@ -6,35 +6,45 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Chupetin
+    public class Chupetin : Golosina
     {
         #region Atributos
-        public string tipoDePalo;
+        public string formaChupetin;
         public string dureza;
+        //tipo de palo
         #endregion
 
         #region Propiedades
         #endregion
-
+        
         #region Constructor
-        public Chupetin()
+        public Chupetin(int codigo, double precio, double cantidad) : base (codigo, precio, cantidad)
         {
-
+            this.formaChupetin = "redondo";
+            this.dureza = "mucha";
         }
-        public Chupetin(string tipoDePalo)
+        public Chupetin(int codigo, double precio, double cantidad, string formaChupetin) : this(codigo, precio, cantidad)
         {
-            this.tipoDePalo = tipoDePalo;
+            this.formaChupetin = formaChupetin;
         }
-        public Chupetin(string tipoDePalo, string dureza) : this(tipoDePalo)
+        public Chupetin(int codigo, double precio, double cantidad, string formaChupetin, string dureza) : this(codigo, precio, cantidad, formaChupetin)
         {
             this.dureza = dureza;
         }
         #endregion
 
         #region Metodos
-        public string MostrarBarco()
+        public override string ToString()
         {
-            return $" Tipo de palo: {this.tipoDePalo} - Dureza: {this.dureza}";
+            StringBuilder sb = new StringBuilder();
+            //fijarse bien porque ademas segurolo tengo que hacer en una linea
+            sb.AppendLine("=============== CHUPETIN ===============");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
+            sb.AppendLine($"Dureza: {this.dureza}");
+            sb.AppendLine("========================================\n");
+
+            return sb.ToString();
         }
         #endregion
 
