@@ -18,6 +18,13 @@ namespace Entidades
         #endregion
 
         #region Propiedades
+        public int Codigo
+        {
+            get
+            {
+                return this.codigo;
+            }
+        }
         #endregion
 
         #region Constructor

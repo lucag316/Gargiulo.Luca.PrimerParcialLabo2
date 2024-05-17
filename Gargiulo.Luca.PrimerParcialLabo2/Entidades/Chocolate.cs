@@ -36,7 +36,7 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public override string ToString()
+        public override string ToString()//podria tener un mostrar y poner this.Mostrar() adentro de este
         {
             StringBuilder sb = new StringBuilder();
 
