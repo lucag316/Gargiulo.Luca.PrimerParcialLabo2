@@ -3,6 +3,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+
+
         Chocolate chocolate1 = new Chocolate(0, 0, 0);
         Chicle chicle1 = new Chicle(1, 2, 5, "mucha", "larga");
         Chupetin chupetin1 = new Chupetin(2, 10, 1);
@@ -15,6 +17,8 @@ internal class Program
         Console.WriteLine(chupetin2.ToString());
 
 
+
+        Console.WriteLine();
 
 
         Console.ReadKey();
