@@ -36,17 +36,6 @@ namespace Entidades
         #endregion
 
         #region Metodos
-        public override string Mostrar()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(base.Mostrar());
-            sb.AppendLine($"Relleno: {this.relleno}");
-            sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
-
-            return sb.ToString();
-        }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
