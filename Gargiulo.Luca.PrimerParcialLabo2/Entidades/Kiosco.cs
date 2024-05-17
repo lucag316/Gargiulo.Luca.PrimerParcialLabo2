@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,14 +9,17 @@ namespace Entidades
 {
     public class Kiosco
     {
+        #region Atributos
         private List<Golosina> golosinas;
 
-        private double precioGolosina; //o cambiar el precio de la otra clase o de este
+        private double precioChocolate;
+        private double precioChicle;
+        private double precioChupetin;
 
-        //atributos de comprar o vender?capaz puedo poner
+        private string detalle;
+        #endregion
 
-        private string detalle;//podria crearle tipo un string para que muestre bien lindo
-
+        #region Propiedades
         public List<Golosina> Golosinas
         {
             get
@@ -23,33 +27,81 @@ namespace Entidades
                 return this.golosinas;
             }
         }
+        public string Detalle
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("=============== PRECIOS GOLOSINAS ===============");
+                sb.AppendLine("   Precio chocolate: " + this.precioChocolate.ToString());
+                sb.AppendLine("   Precio chicle: " + this.precioChicle.ToString());
+                sb.AppendLine("   Precio chupetin: " + this.precioChupetin.ToString());
+                sb.AppendLine("=================================================");
 
+                foreach (Golosina golosina in Golosinas)
+                {
+                    if (golosina is Chocolate)// si golosina es un Chocolate
+                    {
+                        sb.AppendLine(((Chocolate)golosina).ToString());//lo casteo para tener ese metodo
+                    }
+                    else if (golosina is Chicle)
+                    {
+                        sb.AppendLine(((Chicle)golosina).ToString());
+                    }
+                    else if (golosina is Chupetin)
+                    {
+                        sb.AppendLine(((Chupetin)golosina).ToString());
+                    }
+                }
+                return sb.ToString();
+            }
+        }
+        #endregion
 
+        #region Constructores
         private Kiosco() //no me acuerdo porque privado, pero solo inicializo la lista de golosinas
         {
             this.golosinas =new List<Golosina>();
         }
-        public Kiosco(double precioGolosina) : this()
+        public Kiosco(double precioChocolate, double precioChicle, double precioChupetin) : this()
         {
-            this.precioGolosina = precioGolosina;
+            this.precioChocolate = precioChocolate;
+            this.precioChicle = precioChicle;
+            this.precioChupetin = precioChupetin;
         }
-
+        #endregion
 
         //puedo tener un ordenar o un mostrar aca?
 
-        //Agregar la posibilidad de poder ordenar los objetos de la colección con, al menos,
-        //dos criterios distintos de ordenamiento.Cada criterio de ordenación deberá incluir el modo
-        //ascendente y descendente.
-        public static int OrdenarGolosinasPorCodigo(Golosina golosina1, Golosina golosina2, bool ascendente)
+        public int CompararGolosinasPorCodigo(Golosina golosina1, Golosina golosina2, bool ascendente)
         {
             int retorno;
             if (ascendente)// si ascendente es true
             {               // si golosina1 tiene un Codigo menor que golosina 2, retorna un valor negativo
                 retorno = golosina1.Codigo.CompareTo(golosina2.Codigo);//si tiene el mismo codigo, retorna 0, si golosina1 es mayor a 2, retorna un valor positivo
+                //if(int.Parse(golosina1.Codigo) > int.Parse(golosina2.Codigo)); ES LO MISMO
             }
             else
             {
                 retorno = golosina2.Codigo.CompareTo(golosina1.Codigo);
+            }
+            return retorno;
+        }
+        public void OrdenarGolosinasPorCodigo(bool ascendente)
+        {
+            Golosinas.Sort((golosina1, golosina2) => CompararGolosinasPorCodigo(golosina1, golosina2, ascendente));
+        }//no me salia de otra manera, no entendi bien el landa
+
+        public static int OrdenarGolosinasPorPeso(Golosina golosina1, Golosina golosina2, bool ascendente)
+        {
+            int retorno;
+            if (ascendente)// si ascendente es true
+            {               // si golosina1 tiene un Peso menor que golosina 2, retorna un valor negativo
+                retorno = golosina1.Peso.CompareTo(golosina2.Peso);//si tiene el mismo Peso, retorna 0, si golosina1 es mayor a 2, retorna un valor positivo
+            }
+            else
+            {
+                retorno = golosina2.Peso.CompareTo(golosina1.Peso);
             }
             return retorno;
         }

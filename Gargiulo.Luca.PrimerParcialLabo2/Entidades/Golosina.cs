@@ -10,8 +10,8 @@ namespace Entidades
     {
         #region Atributos
         protected int codigo;
+        protected float peso;
         protected double precio;
-        protected double cantidad;
         //protected string marca;
         //protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
         //public Datetime fechaDeCaducidad; //puede ser
@@ -25,25 +25,32 @@ namespace Entidades
                 return this.codigo;
             }
         }
+        public int Peso
+        {
+            get
+            {
+                return this.peso;
+            }
+        }
         #endregion
 
         #region Constructor
         public Golosina() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
         {
             this.codigo = 0;
+            this.peso = 0;
             this.precio = 0;
-            this.cantidad = 0;
         }
-        public Golosina(int codigo, double precio) : this()
+        public Golosina(int codigo, float peso) : this()
         {
             this.codigo = codigo;
-            this.precio = precio;
-            this.cantidad = 0;
+            this.peso = peso;
+            this.precio = 0;
         }
 
-        public Golosina(int codigo, double precio, double cantidad) : this(codigo, precio)
+        public Golosina(int codigo, float peso, double precio) : this(codigo, peso)
         {
-            this.cantidad = cantidad;
+            this.precio = precio;
         }
         #endregion
 
@@ -53,8 +60,8 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Codigo: {this.codigo}");
+            sb.Append($"Peso: {this.peso} kg");
             sb.AppendLine($"Precio: {this.precio}");
-            sb.Append($"Cantidad: {this.cantidad}");
 
             return sb.ToString();
         }
@@ -64,8 +71,8 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Codigo: {this.codigo}");
+            sb.Append($"Peso: {this.peso} kg");// creo que no hace falta el  ToString si ya esta en el return
             sb.AppendLine($"Precio: {this.precio}");
-            sb.Append($"Cantidad: {this.cantidad}");// creo que no hace falta el  ToString si ya esta en el return
 
             return sb.ToString();
         }

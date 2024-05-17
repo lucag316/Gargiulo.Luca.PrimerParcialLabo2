@@ -17,18 +17,18 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Chocolate(int codigo, double precio, double cantidad) : base(codigo, precio, cantidad)
+        public Chocolate(int codigo, float peso, double precio) : base(codigo, peso, precio)
         {
             this.relleno = Rellenos.SinRelleno; 
             this.tipoDeCacao = TiposDeCacao.Negro;
             //como no los completa, lo pongo por defecto, creo que esta bien
         }
-        public Chocolate(int codigo, double precio, double cantidad, Rellenos relleno): this(codigo, precio, cantidad)
+        public Chocolate(int codigo, float peso, double precio, Rellenos relleno): this(codigo, peso, precio)
         {
             this.relleno = relleno;
             this.tipoDeCacao = TiposDeCacao.Negro; // no se bien si hay que agregarla
         }
-        public Chocolate(int codigo, double precio, double cantidad, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, precio, cantidad, relleno)
+        public Chocolate(int codigo, float peso, double precio, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, peso, precio, relleno)
         {
             this.tipoDeCacao = tipoDeCacao;
 

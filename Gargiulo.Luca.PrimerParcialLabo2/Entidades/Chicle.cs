@@ -18,17 +18,17 @@ namespace Entidades
 
         #region Constructor
 
-        public Chicle(int codigo, double precio, double cantidad) : base(codigo, precio, cantidad)
+        public Chicle(int codigo, float peso, double precio) : base(codigo, peso, precio)
         {
             this.elasticidad = "nada";
             this.duracionSabor = "poca";
         }
-        public Chicle(int codigo, double precio, double cantidad, string elasticidad) : this(codigo, precio, cantidad)
+        public Chicle(int codigo, float peso, double precio, string elasticidad) : this(codigo, peso, precio)
         {
             this.elasticidad = elasticidad;
             this.duracionSabor = "poca";
         }
-        public Chicle(int codigo, double precio, double cantidad, string elasticidad, string duracionSabor) : this(codigo, precio, cantidad, elasticidad)
+        public Chicle(int codigo, float peso, double precio, string elasticidad, string duracionSabor) : this(codigo, peso, precio, elasticidad)
         {
             this.duracionSabor = duracionSabor;
         }

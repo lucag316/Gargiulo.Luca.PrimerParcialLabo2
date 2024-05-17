@@ -18,16 +18,16 @@ namespace Entidades
         #endregion
         
         #region Constructor
-        public Chupetin(int codigo, double precio, double cantidad) : base (codigo, precio, cantidad)
+        public Chupetin(int codigo, float peso, double precio) : base (codigo, peso, precio)
         {
             this.formaChupetin = "redondo";
             this.dureza = "mucha";
         }
-        public Chupetin(int codigo, double precio, double cantidad, string formaChupetin) : this(codigo, precio, cantidad)
+        public Chupetin(int codigo, float peso, double precio, string formaChupetin) : this(codigo, peso, precio)
         {
             this.formaChupetin = formaChupetin;
         }
-        public Chupetin(int codigo, double precio, double cantidad, string formaChupetin, string dureza) : this(codigo, precio, cantidad, formaChupetin)
+        public Chupetin(int codigo, float peso, double precio, string formaChupetin, string dureza) : this(codigo, peso, precio, formaChupetin)
         {
             this.dureza = dureza;
         }

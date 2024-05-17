@@ -3,7 +3,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Kiosco kiosco = new Kiosco(1);
+        Kiosco kiosco = new Kiosco(1, 2, 3);
 
         Chocolate chocolate1 = new Chocolate(0, 0, 0);
         Chicle chicle1 = new Chicle(1, 2, 5, "mucha", "larga");
@@ -15,7 +15,9 @@ internal class Program
         kiosco += chupetin1;
         kiosco += chupetin2;
 
-        Console.WriteLine(kiosco.ToString());
+        //fijarse como mostrar bien la lista
+
+        Console.WriteLine();
         /*
         Console.WriteLine(chocolate1.ToString());
         Console.WriteLine(chicle1.ToString());
