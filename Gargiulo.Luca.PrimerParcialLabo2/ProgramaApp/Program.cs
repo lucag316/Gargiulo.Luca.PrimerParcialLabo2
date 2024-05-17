@@ -15,9 +15,15 @@ internal class Program
         kiosco += chupetin1;
         kiosco += chupetin2;
 
+        kiosco -= chupetin1; 
+
         //fijarse como mostrar bien la lista
 
         Console.WriteLine(kiosco.Detalle);
+
+        Console.WriteLine($"Esta la siguiente golosina en el kiosco: \n{chupetin2} Respuesta:" + (kiosco == chupetin2));
+
+
         /*
         Console.WriteLine(chocolate1.ToString());
         Console.WriteLine(chicle1.ToString());
