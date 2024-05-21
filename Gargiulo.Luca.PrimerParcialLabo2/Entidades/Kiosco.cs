@@ -88,7 +88,7 @@ namespace Entidades
             }
             else
             {
-                this.Golosinas.Sort((golosina2, golosina1) => golosina2.Codigo.CompareTo(golosina1.Codigo));
+                this.Golosinas.Sort((golosina1, golosina2) => golosina2.Codigo.CompareTo(golosina1.Codigo));
             }
         }
         public void OrdenarGolosinasPorPeso(bool ascendente)
@@ -99,7 +99,7 @@ namespace Entidades
             }
             else
             {
-                this.Golosinas.Sort((golosina2, golosina1) => golosina2.Peso.CompareTo(golosina1.Peso));
+                this.Golosinas.Sort((golosina1, golosina2) => golosina2.Peso.CompareTo(golosina1.Peso));
             }
         }
 

@@ -18,17 +18,13 @@ namespace Entidades
         #region Propiedades
         public int Codigo
         {
-            get
-            {
-                return this.codigo;
-            }
+            get { return this.codigo; }
+            set { this.codigo = value; }
         }
         public float Peso
         {
-            get
-            {
-                return this.peso;
-            }
+            get { return this.peso; }
+            set { this.peso = value; }
         }
         public double Precio
         {
