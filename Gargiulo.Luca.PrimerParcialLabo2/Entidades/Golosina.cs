@@ -100,7 +100,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.peso); //buscar algo para entender mejor
+            return base.GetHashCode();
         }
         #endregion
 

@@ -75,7 +75,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
+            return base.GetHashCode();
         }
         #endregion
 
