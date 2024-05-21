@@ -58,14 +58,11 @@ namespace Entidades
         {
             this.codigo = codigo;
             this.peso = peso;
-            this.precio = 0;
-            this.cantidad= 0;
         }
 
         public Golosina(int codigo, float peso, double precio) : this(codigo, peso)
         {
             this.precio = precio;
-            this.cantidad = 0;
         }
         public Golosina(int codigo, float peso, double precio, int cantidad) : this(codigo, peso, precio)
         {

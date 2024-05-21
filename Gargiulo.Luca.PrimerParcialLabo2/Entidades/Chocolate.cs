@@ -9,28 +9,27 @@ namespace Entidades
     public class Chocolate : Golosina
     {
         #region Atributos
-        protected Rellenos relleno;
-        protected TiposDeCacao tipoDeCacao;
+        protected ERellenos relleno;
+        protected ETiposDeCacao tipoDeCacao;
         #endregion
 
         #region Propiedades
-        public Rellenos Relleno { get { return this.relleno; } }
-        public TiposDeCacao TipoDeCacao { get { return this.tipoDeCacao; } }
+        public ERellenos Relleno { get { return this.relleno; } }
+        public ETiposDeCacao TipoDeCacao { get { return this.tipoDeCacao; } }
         #endregion
 
         #region Constructor
         public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            this.relleno = Rellenos.SinRelleno; 
-            this.tipoDeCacao = TiposDeCacao.Negro;
+            this.relleno = ERellenos.SinRelleno; 
+            this.tipoDeCacao = ETiposDeCacao.Negro;
             //como no los completa, lo pongo por defecto, creo que esta bien
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, Rellenos relleno): this(codigo, peso, precio, cantidad)
+        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno): this(codigo, peso, precio, cantidad)
         {
             this.relleno = relleno;
-            this.tipoDeCacao = TiposDeCacao.Negro; // no se bien si hay que agregarla
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, Rellenos relleno, TiposDeCacao tipoDeCacao) : this(codigo, peso, precio, cantidad, relleno)
+        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao) : this(codigo, peso, precio, cantidad, relleno)
         {
             this.tipoDeCacao = tipoDeCacao;
 

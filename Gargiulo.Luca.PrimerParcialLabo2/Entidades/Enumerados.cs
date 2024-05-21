@@ -5,7 +5,7 @@
     //capaz puedo hacer lista de marcas de los 3
 }
 
-public enum Rellenos
+public enum ERellenos
 {
     SinRelleno,
     Nuez,
@@ -17,14 +17,14 @@ public enum Rellenos
     Yogurt
 }
 
-public enum TiposDeCacao
+public enum ETiposDeCacao
 {
     Blanco,
     Negro,
     Amargo,
     ConLeche
 }
-public enum FormasDeChupetin
+public enum EFormasDeChupetin
 {
     Redondo,
     Corazon,
@@ -32,7 +32,7 @@ public enum FormasDeChupetin
     PicoDulce,
     Pirulin
 }
-public enum NivelesDeDureza
+public enum ENivelesDeDureza
 {
     Derretido,
     MuyPoca,
@@ -42,7 +42,7 @@ public enum NivelesDeDureza
     MuyAlta,
     Irrompible
 }
-public enum NivelesDeElasticidad
+public enum ENivelesDeElasticidad
 {
     NoTiene,
     MuyPoca,

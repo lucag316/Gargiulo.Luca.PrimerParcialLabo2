@@ -27,7 +27,6 @@ namespace Entidades
         public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad) : this(codigo, peso, precio, cantidad)
         {
             this.elasticidad = elasticidad;
-            this.duracionSabor = "poca";
         }
         public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad, string duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
         {
