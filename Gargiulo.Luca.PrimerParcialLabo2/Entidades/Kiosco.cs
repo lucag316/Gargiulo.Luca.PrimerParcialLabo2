@@ -11,9 +11,7 @@ namespace Entidades
     {
         #region Atributos
         private List<Golosina> golosinas;
-
         private double capacidadGolosinasDistintas;
-
         private string detalle;
         #endregion
 
@@ -81,38 +79,31 @@ namespace Entidades
             return precioTotal;
         }
 
-        public int CompararGolosinasPorCodigo(Golosina golosina1, Golosina golosina2, bool ascendente)
-        {
-            int retorno;
-            if (ascendente)// si ascendente es true
-            {               // si golosina1 tiene un Codigo menor que golosina 2, retorna un valor negativo
-                retorno = golosina1.Codigo.CompareTo(golosina2.Codigo);//si tiene el mismo codigo, retorna 0, si golosina1 es mayor a 2, retorna un valor positivo
-                //if(int.Parse(golosina1.Codigo) > int.Parse(golosina2.Codigo)); ES LO MISMO
-            }
-            else
-            {
-                retorno = golosina2.Codigo.CompareTo(golosina1.Codigo);
-            }
-            return retorno;
-        }
+
         public void OrdenarGolosinasPorCodigo(bool ascendente)
         {
-            Golosinas.Sort((golosina1, golosina2) => CompararGolosinasPorCodigo(golosina1, golosina2, ascendente));
-        }//no me salia de otra manera, no entendi bien el landa
-
-        public static int OrdenarGolosinasPorPeso(Golosina golosina1, Golosina golosina2, bool ascendente)
-        {
-            int retorno;
-            if (ascendente)// si ascendente es true
-            {               // si golosina1 tiene un Peso menor que golosina 2, retorna un valor negativo
-                retorno = golosina1.Peso.CompareTo(golosina2.Peso);//si tiene el mismo Peso, retorna 0, si golosina1 es mayor a 2, retorna un valor positivo
+            if (ascendente)
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina1.Codigo.CompareTo(golosina2.Codigo));
             }
             else
             {
-                retorno = golosina2.Peso.CompareTo(golosina1.Peso);
+                this.Golosinas.Sort((golosina2, golosina1) => golosina2.Codigo.CompareTo(golosina1.Codigo));
             }
-            return retorno;
         }
+        public void OrdenarGolosinasPorPeso(bool ascendente)
+        {
+            if (ascendente)
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina1.Peso.CompareTo(golosina2.Peso));
+            }
+            else
+            {
+                this.Golosinas.Sort((golosina2, golosina1) => golosina2.Peso.CompareTo(golosina1.Peso));
+            }
+        }
+
+
         #endregion
 
         #region Operadores suma y resta
@@ -161,19 +152,19 @@ namespace Entidades
         {
             bool estaEnKiosco = false;
 
-            if (kiosco.Golosinas.Contains(golosina))
-            {
-                estaEnKiosco = true;
-            }
-            // NO SE QUE FORMA SERIA MEJOR
-            //foreach(Golosina item in kiosco.Golosinas)
+            //if (kiosco.Golosinas.Contains(golosina))
             //{
-            //    if(item == golosina)
-            //    {
-            //        estaEnKiosco = true;
-            //        break;
-            //    }
+            //    estaEnKiosco = true;
             //}
+            // NO SE QUE FORMA SERIA MEJOR | //podemos hacer contains solo si tenemos Equals sobrecargado
+            foreach (Golosina item in kiosco.Golosinas)
+            {
+                if (item == golosina)
+                {
+                    estaEnKiosco = true;
+                    break;
+                }
+            }
 
             return estaEnKiosco;
         }
@@ -182,5 +173,18 @@ namespace Entidades
             return !(kiosco == golosina); // va hacia el ==
         }
         #endregion
+
+        #region Operadores implicitos y explicitos
+        public static implicit operator List<Golosina>(Kiosco kiosco)
+        {
+            return kiosco.Golosinas;
+        }
+        public static explicit operator string (Kiosco kiosco)
+        {
+            return kiosco.ToString();
+        }
+        #endregion
+
+
     }
 }

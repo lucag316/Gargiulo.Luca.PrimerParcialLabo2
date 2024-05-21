@@ -52,10 +52,10 @@ namespace Entidades
         public override bool Equals(object? obj)
         {
             bool mismoChocolate = false;
-
-            if (base.Equals(obj) && obj is Chocolate chocolate)
+            //por ej, verifico si el obj es del mismo tipo osea si es Golosina
+            if (obj is Chocolate)
             {
-                if (this.Relleno == chocolate.Relleno && this.TipoDeCacao == chocolate.TipoDeCacao) //aca no se si poner this.codigo == chocolate.codigo
+                if (((Chocolate)obj) == this) // voy al == de Golosina y Golosina
                 {
                     mismoChocolate = true;
                 }
@@ -92,10 +92,11 @@ namespace Entidades
         {
             bool mismoChocolate = false;
 
-            if (chocolate1.Equals(chocolate2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            if (chocolate1.Codigo == chocolate2.Codigo && chocolate1.Peso == chocolate2.Peso)
             {
                 mismoChocolate = true;
             }
+
             return mismoChocolate;
         }
         public static bool operator !=(Chocolate chocolate1, Chocolate chocolate2)

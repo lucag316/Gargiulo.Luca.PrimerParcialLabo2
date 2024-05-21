@@ -47,26 +47,13 @@ namespace Entidades
 
             return sb.ToString();
         }
-        /*public override bool Equals(object? obj)
-        {
-            bool mismoChupetin = false;
-
-            if (base.Equals(obj) && obj is Chupetin chupetin)
-            {
-                if (this == chupetin) //aca no se si poner this.codigo == chocolate.codigo
-                {
-                    mismoChupetin = true;
-                }
-            }
-            return mismoChupetin;
-        }*/
         public override bool Equals(object? obj)
         {
             bool mismoChupetin = false;
 
-            if (base.Equals(obj) && obj is Chupetin chupetin)
+            if (obj is Chupetin)
             {
-                if (this.FormaChupetin == chupetin.FormaChupetin && this.Dureza == chupetin.Dureza) //aca no se si poner this.codigo == chocolate.codigo
+                if (((Chupetin)obj) == this)
                 {
                     mismoChupetin = true;
                 }
@@ -103,15 +90,16 @@ namespace Entidades
         {
             bool mismoChupetin = false;
 
-            if (chupetin1.Equals(chupetin2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            if (chupetin1.Codigo == chupetin2.Codigo && chupetin1.Peso == chupetin2.Peso)
             {
                 mismoChupetin = true;
             }
+
             return mismoChupetin;
         }
         public static bool operator !=(Chupetin chupetin1, Chupetin chupetin2)
         {
-            return !(chupetin1 == chupetin2); // aca llamo al == de g1 y g2
+            return !(chupetin1 == chupetin2);
         }
         #endregion
     }

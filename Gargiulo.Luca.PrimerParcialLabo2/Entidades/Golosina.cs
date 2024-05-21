@@ -76,10 +76,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Codigo: {this.codigo}");
-            sb.AppendLine($"Peso: {this.peso} g");// creo que no hace falta el  ToString si ya esta en el return
-            sb.AppendLine($"Precio: ${this.precio}");
-            sb.AppendLine($"Cantidad: {this.cantidad} unidades");
+            sb.AppendLine($"Codigo: {this.codigo.ToString()}");
+            sb.AppendLine($"Peso: {this.peso.ToString()} g");
+            sb.AppendLine($"Precio: ${this.precio.ToString()}");
+            sb.AppendLine($"Cantidad: {this.cantidad.ToString()} unidades");
 
             return sb.ToString();
         }
@@ -87,11 +87,9 @@ namespace Entidades
         {
             bool mismaGolosina = false;
             //por ej, verifico si el obj es del mismo tipo osea si es Golosina
-            if (obj != null && GetType() == obj.GetType()) // podria poner    obj is Golosina, digo si no es nul para no cerrucho verde
+            if (obj is Golosina)
             {
-                Golosina golosina = (Golosina)obj;
-
-                if(golosina.Codigo == this.Codigo && golosina.Peso == this.Peso) // voy al == de Golosina y Golosina
+                if(((Golosina)obj) == this) // voy al == de Golosina y Golosina
                 {
                     mismaGolosina = true;
                 }
@@ -123,26 +121,21 @@ namespace Entidades
         #endregion
 
         #region Sobrecarga de operadores de igualdad
-        public static bool operator ==(Golosina golosina1, Golosina golosina2)
+        public static bool operator ==(Golosina golosina1, Golosina golosina2) //DICE RELACIONARLO CON equals, y si pongo == en equals y listo?
         {
             bool mismaGolosina = false;
 
-            if(golosina1.Equals(golosina2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso)
             {
                 mismaGolosina = true;
             }
+
             return mismaGolosina;
         }
         public static bool operator !=(Golosina golosina1, Golosina golosina2)
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
-        #endregion
-
-        #region Operadores implicitos y explicitos
-        #endregion
-
-        #region Sobrecargas
         #endregion
     }
 }

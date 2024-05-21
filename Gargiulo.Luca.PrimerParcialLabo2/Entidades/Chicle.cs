@@ -51,9 +51,9 @@ namespace Entidades
         {
             bool mismoChicle = false;
 
-            if (base.Equals(obj) && obj is Chicle chicle)
+            if (obj is Chicle)
             {
-                if (this.Elasticidad == chicle.Elasticidad && this.DuracionSabor == chicle.DuracionSabor) //aca no se si poner this.codigo == chocolate.codigo
+                if (((Chicle)obj) == this)
                 {
                     mismoChicle = true;
                 }
@@ -90,10 +90,11 @@ namespace Entidades
         {
             bool mismoChicle = false;
 
-            if (chicle1.Equals(chicle2))// en Equals comparo codigo y peso, decia que tenia que usarlo en ==
+            if (chicle1.Codigo == chicle2.Codigo && chicle1.Peso == chicle2.Peso)
             {
                 mismoChicle = true;
             }
+
             return mismoChicle;
         }
         public static bool operator !=(Chicle chicle1, Chicle chicle2)
