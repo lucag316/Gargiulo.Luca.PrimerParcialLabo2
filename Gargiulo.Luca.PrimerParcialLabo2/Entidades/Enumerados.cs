@@ -24,3 +24,32 @@ public enum TiposDeCacao
     Amargo,
     ConLeche
 }
+public enum FormasDeChupetin
+{
+    Redondo,
+    Corazon,
+    Paleta,
+    PicoDulce,
+    Pirulin
+}
+public enum NivelesDeDureza
+{
+    Derretido,
+    MuyPoca,
+    Poca,
+    Media,
+    Alta,
+    MuyAlta,
+    Irrompible
+}
+public enum NivelesDeElasticidad
+{
+    NoTiene,
+    MuyPoca,
+    Poca,
+    Media,
+    Alta,
+    MuyAlta,
+    SuperElastico
+}
+
