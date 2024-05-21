@@ -37,7 +37,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos Sobrescritos
+        #region Metodos ToString, Equals, GetHashCode Sobrescritos
         public override string ToString()//podria tener un mostrar y poner this.Mostrar() adentro de este
         {
             StringBuilder sb = new StringBuilder();
@@ -67,14 +67,15 @@ namespace Entidades
         {
             return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
         }
+        #endregion
 
+        #region Metodos sobrescritos
         public override string MostrarEnVisor()
         {
             string mensaje = $"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
             //fijarme si poner todo o no, para no repetir
             return mensaje;
         }
-
         public override double CalcularPrecioFinal()
         {
             double precioFinal = base.CalcularPrecioFinal();
@@ -87,7 +88,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Sobrecarga de operadores
+        #region Sobrecarga de operadores de igualdad
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
             bool mismoChocolate = false;

@@ -11,7 +11,6 @@ namespace Entidades
         #region Atributos
         private string formaChupetin;
         private string dureza;
-        //tipo de palo
         #endregion
 
         #region Propiedades
@@ -35,22 +34,11 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos
-
-        public override double CalcularPrecioFinal()
-        {
-            double precioFinal = base.CalcularPrecioFinal();
-            //si compro mas de 2 chupetines aplico 20% de descuento
-            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
-            {
-                precioFinal *= 0.80;
-            }
-            return precioFinal;
-        }
+        #region Metodos ToString, Equals, GetHashCode Sobrescritos
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            //fijarse bien porque ademas segurolo tengo que hacer en una linea
+
             sb.AppendLine("=============== CHUPETIN ===============");
             sb.Append(base.ToString());
             sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
@@ -89,18 +77,28 @@ namespace Entidades
         {
             return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
         }
+        #endregion
 
+        #region Metodos sobrescritos
         public override string MostrarEnVisor()
         {
             string mensaje = $"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
             //fijarme si poner todo o no, para no repetir codigo
             return mensaje;
         }
-
+        public override double CalcularPrecioFinal()
+        {
+            double precioFinal = base.CalcularPrecioFinal();
+            //si compro mas de 2 chupetines aplico 20% de descuento
+            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
+            {
+                precioFinal *= 0.80;
+            }
+            return precioFinal;
+        }
         #endregion
 
-        #region Sobrecargas
-
+        #region Sobrecargas de operadores de igualdad
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
             bool mismoChupetin = false;
@@ -116,7 +114,5 @@ namespace Entidades
             return !(chupetin1 == chupetin2); // aca llamo al == de g1 y g2
         }
         #endregion
-
-
     }
 }

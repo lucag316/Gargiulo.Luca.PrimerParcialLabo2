@@ -13,9 +13,6 @@ namespace Entidades
         private float peso;
         private double precio;
         protected int cantidad;
-        //protected string marca;
-        //protected string popularidad;//nivel 1,2,3 o bajo, normal, alto puede ser
-        //public Datetime fechaDeCaducidad; //puede ser
         #endregion
 
         #region Propiedades
@@ -76,18 +73,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos
-        public virtual string Mostrar() // esta al pedo porque hace lo mismo que el ToString
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Codigo de barra: {this.codigo}");
-            sb.AppendLine($"Peso: {this.peso} kg");
-            sb.AppendLine($"Precio: ${this.precio}");
-
-            return sb.ToString();
-        }
-
+        #region Metodos ToString, Equals, GetHashCode
         //puedo hacer protegido el Mostrar y pasarselo a ToString con this.Mostrar(), en To string no hago nada
         public override string ToString()// si no sobreescribo el ToString, devuelve namespace.clase
         {
@@ -100,9 +86,6 @@ namespace Entidades
 
             return sb.ToString();
         }
-
-        
-
         public override bool Equals(object? obj) //Equals determinna si dos objetos son iguales
         {
             bool mismaGolosina = false;
@@ -122,18 +105,27 @@ namespace Entidades
         {
             return HashCode.Combine(this.codigo, this.peso); //buscar algo para entender mejor
         }
+        #endregion
 
+        #region Metodos virtuales y abstractos
+        public virtual string Mostrar() // esta al pedo porque hace lo mismo que el ToString
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Codigo de barra: {this.codigo}");
+            sb.AppendLine($"Peso: {this.peso} kg");
+            sb.AppendLine($"Precio: ${this.precio}");
+
+            return sb.ToString();
+        }
         public abstract string MostrarEnVisor();
-
-
         public virtual double CalcularPrecioFinal()
         {
             return this.Precio * this.Cantidad;
         }
-
         #endregion
 
-        #region Sobrecarga de operadores
+        #region Sobrecarga de operadores de igualdad
         public static bool operator ==(Golosina golosina1, Golosina golosina2)
         {
             bool mismaGolosina = false;
@@ -148,8 +140,8 @@ namespace Entidades
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
-
         #endregion
+
         #region Operadores implicitos y explicitos
         #endregion
 

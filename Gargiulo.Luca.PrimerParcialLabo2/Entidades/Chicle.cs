@@ -19,7 +19,6 @@ namespace Entidades
         #endregion
 
         #region Constructor
-
         public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.elasticidad = "nada";
@@ -36,17 +35,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos Sobrescritos
-        public override double CalcularPrecioFinal()
-        {
-            double precioFinal = base.CalcularPrecioFinal();
-            //si compro mas de 5 chicles aplico 15% de descuento
-            if (Cantidad > 5) //aca no se si tendria que poner this.Cantidad
-            {
-                precioFinal *= 0.85;
-            }
-            return precioFinal;
-        }
+        #region Metodos ToString, Equals, GetHashCode Sobrescritos
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -76,17 +65,28 @@ namespace Entidades
         {
             return HashCode.Combine(base.GetHashCode(), this); //ver bien que hace esto, no entendi bien
         }
+        #endregion
 
+        #region Metodos sobrescritos
+        public override double CalcularPrecioFinal()
+        {
+            double precioFinal = base.CalcularPrecioFinal();
+            //si compro mas de 5 chicles aplico 15% de descuento
+            if (Cantidad > 5) //aca no se si tendria que poner this.Cantidad
+            {
+                precioFinal *= 0.85;
+            }
+            return precioFinal;
+        }
         public override string MostrarEnVisor()
         {
             string mensaje = $"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
             //fijarme si poner todo o no, para no repetir codigo
             return mensaje;
         }
-
         #endregion
 
-        #region Sobrecargas
+        #region Sobrecargas de operadores de igualdad
         public static bool operator ==(Chicle chicle1, Chicle chicle2)
         {
             bool mismoChicle = false;
@@ -102,7 +102,5 @@ namespace Entidades
             return !(chicle1 == chicle2); // aca llamo al == de g1 y g2
         }
         #endregion
-
-
     }
 }
