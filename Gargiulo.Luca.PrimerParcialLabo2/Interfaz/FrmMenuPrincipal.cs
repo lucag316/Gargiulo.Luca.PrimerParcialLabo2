@@ -14,6 +14,8 @@ namespace Interfaz
     public partial class FrmMenuPrincipal : Form
     {
         List<Golosina> golosinas;
+        private string pathArchivoJson = "golosinas.json";
+        private string pathArchivoXml = "golosinas.Xml";
 
         public FrmMenuPrincipal()
         {
@@ -24,6 +26,9 @@ namespace Interfaz
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
+            //tratar de cargar la lista del archivo al principio
+            //CargarGolosinas();
+            //ActualizarVisorGolosinas();
         }
 
         private void ActualizarVisorGolosinas()
@@ -134,7 +139,7 @@ namespace Interfaz
                 MessageBox.Show("Por favor, seleccione una golosina para modificar.");
                 return;//VA O NO VA?
             }
-
+            //CREO QUE DE ACA -----------------
             Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
 
             FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla, creo que esta bien, //el formuladio de edicion
@@ -157,12 +162,18 @@ namespace Interfaz
                 frmGolosina.ShowDialog();
 
                 if (frmGolosina.DialogResult == DialogResult.OK)
-                {
+                {//HASTA ACA, NOVA -----------------CREO
                     this.golosinas.RemoveAt(i); //lo elimino
                     this.ActualizarVisorGolosinas();
                 }
             }
         }
 
+        private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //guardo en json
+            Serializadora.SerializarGolosinasJSON(this.golosinas, pathArchivoJson);
+            MessageBox.Show("Lista de golosinas guardada correctamente.");
+        }
     }
 }
