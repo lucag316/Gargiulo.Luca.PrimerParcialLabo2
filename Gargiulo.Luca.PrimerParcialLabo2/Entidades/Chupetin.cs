@@ -19,6 +19,10 @@ namespace Entidades
         #endregion
 
         #region Constructor
+        public Chupetin() //constructor sin parametros para poder usar JSON
+        {
+
+        }
         public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = EFormasDeChupetin.Redondo;

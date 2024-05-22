@@ -19,6 +19,10 @@ namespace Entidades
         #endregion
 
         #region Constructor
+        public Chocolate()  //constructor sin parametros para poder usar JSON
+        {
+
+        }
         public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.relleno = ERellenos.SinRelleno; 

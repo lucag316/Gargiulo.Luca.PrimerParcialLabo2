@@ -19,6 +19,10 @@ namespace Entidades
         #endregion
 
         #region Constructor
+        public Chicle() //constructor sin parametros para poder usar JSON
+        {
+
+        }
         public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.elasticidad = ENivelesDeElasticidad.Media;
