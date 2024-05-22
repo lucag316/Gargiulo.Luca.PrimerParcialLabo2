@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChicle));
             SuspendLayout();
             // 
             // FrmChicle
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(636, 403);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmChicle";
-            Text = "FrmChicle";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Chicle";
             Load += FrmChicle_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

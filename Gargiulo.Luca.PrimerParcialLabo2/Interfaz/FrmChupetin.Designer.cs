@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChupetin));
             SuspendLayout();
             // 
             // FrmChupetin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(648, 432);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmChupetin";
-            Text = "FrmChupetin";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Chupetin";
             Load += FrmChupetin_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -31,13 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChocolate));
             lblRelleno = new Label();
             lblTipoDeCacao = new Label();
-            txtRelleno = new TextBox();
-            txtTipoDeCacao = new TextBox();
             SuspendLayout();
-            // 
-            // txtCantidad
-            // 
-
             // 
             // lblRelleno
             // 
@@ -59,24 +53,6 @@
             lblTipoDeCacao.TabIndex = 27;
             lblTipoDeCacao.Text = "Tipo de cacao:";
             // 
-            // txtRelleno
-            // 
-            txtRelleno.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtRelleno.Location = new Point(303, 108);
-            txtRelleno.Name = "txtRelleno";
-            txtRelleno.PlaceholderText = "Ingrese Relleno";
-            txtRelleno.Size = new Size(128, 22);
-            txtRelleno.TabIndex = 31;
-            // 
-            // txtTipoDeCacao
-            // 
-            txtTipoDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtTipoDeCacao.Location = new Point(303, 165);
-            txtTipoDeCacao.Name = "txtTipoDeCacao";
-            txtTipoDeCacao.PlaceholderText = "Ingrese Tipo De Cacao";
-            txtTipoDeCacao.Size = new Size(128, 22);
-            txtTipoDeCacao.TabIndex = 32;
-            // 
             // FrmChocolate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -84,13 +60,11 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(561, 343);
-            Controls.Add(txtTipoDeCacao);
-            Controls.Add(txtRelleno);
             Controls.Add(lblTipoDeCacao);
             Controls.Add(lblRelleno);
             Name = "FrmChocolate";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Formulario Chocolate";
+            Text = "Chocolate";
             Load += FrmChocolate_Load;
             Controls.SetChildIndex(txtPrecio, 0);
             Controls.SetChildIndex(txtCodigo, 0);
@@ -98,8 +72,6 @@
             Controls.SetChildIndex(txtCantidad, 0);
             Controls.SetChildIndex(lblRelleno, 0);
             Controls.SetChildIndex(lblTipoDeCacao, 0);
-            Controls.SetChildIndex(txtRelleno, 0);
-            Controls.SetChildIndex(txtTipoDeCacao, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,7 +79,5 @@
         #endregion
         private Label lblRelleno;
         private Label lblTipoDeCacao;
-        private TextBox txtRelleno;
-        private TextBox txtTipoDeCacao;
     }
 }
