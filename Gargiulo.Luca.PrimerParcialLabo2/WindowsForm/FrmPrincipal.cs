@@ -48,5 +48,7 @@ namespace WindowsForm
                 this.ActualizarVisor();
             }
         }
+
+
     }
 }
