@@ -44,6 +44,12 @@
             oToolStripMenuItem = new ToolStripMenuItem();
             serializarToolStripMenuItem = new ToolStripMenuItem();
             sERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
+            dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
+            jSONToolStripMenuItem = new ToolStripMenuItem();
+            xMLToolStripMenuItem = new ToolStripMenuItem();
+            dESERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
+            jSONToolStripMenuItem1 = new ToolStripMenuItem();
+            xMLToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,7 +108,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { cRUDToolStripMenuItem, serializarToolStripMenuItem, sERIALIZARToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { cRUDToolStripMenuItem, sERIALIZARToolStripMenuItem1, dESERIALIZARToolStripMenuItem1, serializarToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -122,53 +128,41 @@
             // 
             aGREGARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem1, cHICLEToolStripMenuItem1, cHUPETINToolStripMenuItem1 });
             aGREGARToolStripMenuItem.Name = "aGREGARToolStripMenuItem";
-            aGREGARToolStripMenuItem.Size = new Size(151, 22);
+            aGREGARToolStripMenuItem.Size = new Size(180, 22);
             aGREGARToolStripMenuItem.Text = "AGREGAR";
             // 
             // cHOCOLATEToolStripMenuItem1
             // 
             cHOCOLATEToolStripMenuItem1.Name = "cHOCOLATEToolStripMenuItem1";
-            cHOCOLATEToolStripMenuItem1.Size = new Size(153, 22);
+            cHOCOLATEToolStripMenuItem1.Size = new Size(180, 22);
             cHOCOLATEToolStripMenuItem1.Text = "CHOCOLATE";
             cHOCOLATEToolStripMenuItem1.Click += cHOCOLATEToolStripMenuItem1_Click;
             // 
             // cHICLEToolStripMenuItem1
             // 
             cHICLEToolStripMenuItem1.Name = "cHICLEToolStripMenuItem1";
-            cHICLEToolStripMenuItem1.Size = new Size(153, 22);
+            cHICLEToolStripMenuItem1.Size = new Size(180, 22);
             cHICLEToolStripMenuItem1.Text = "CHICLE";
             cHICLEToolStripMenuItem1.Click += cHICLEToolStripMenuItem1_Click;
             // 
             // cHUPETINToolStripMenuItem1
             // 
             cHUPETINToolStripMenuItem1.Name = "cHUPETINToolStripMenuItem1";
-            cHUPETINToolStripMenuItem1.Size = new Size(153, 22);
+            cHUPETINToolStripMenuItem1.Size = new Size(180, 22);
             cHUPETINToolStripMenuItem1.Text = "CHUPETIN";
             cHUPETINToolStripMenuItem1.Click += cHUPETINToolStripMenuItem1_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(151, 22);
+            toolStripMenuItem1.Size = new Size(180, 22);
             toolStripMenuItem1.Text = "MODIFICAR";
             // 
             // oToolStripMenuItem
             // 
             oToolStripMenuItem.Name = "oToolStripMenuItem";
-            oToolStripMenuItem.Size = new Size(151, 22);
+            oToolStripMenuItem.Size = new Size(180, 22);
             oToolStripMenuItem.Text = "ELIMINAR";
-            // 
-            // serializarToolStripMenuItem
-            // 
-            serializarToolStripMenuItem.Name = "serializarToolStripMenuItem";
-            serializarToolStripMenuItem.Size = new Size(97, 20);
-            serializarToolStripMenuItem.Text = "DESEREALIZAR";
-            // 
-            // sERIALIZARToolStripMenuItem1
-            // 
-            sERIALIZARToolStripMenuItem1.Name = "sERIALIZARToolStripMenuItem1";
-            sERIALIZARToolStripMenuItem1.Size = new Size(80, 20);
-            sERIALIZARToolStripMenuItem1.Text = "SERIALIZAR";
             // 
             // FrmMenuPrincipal
             // 
@@ -210,5 +204,11 @@
         private ToolStripMenuItem cHUPETINToolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem oToolStripMenuItem;
+        private ToolStripMenuItem dESERIALIZARToolStripMenuItem;
+        private ToolStripMenuItem jSONToolStripMenuItem;
+        private ToolStripMenuItem xMLToolStripMenuItem;
+        private ToolStripMenuItem dESERIALIZARToolStripMenuItem1;
+        private ToolStripMenuItem jSONToolStripMenuItem1;
+        private ToolStripMenuItem xMLToolStripMenuItem1;
     }
 }

@@ -75,7 +75,5 @@ namespace Entidades
                 return auxGolosinas;
             }
         }
-    }
-
-    }
+    }  
 }
