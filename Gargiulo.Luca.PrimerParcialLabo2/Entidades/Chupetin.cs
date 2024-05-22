@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Chupetin : Golosina
+    public class Chupetin: Golosina
     {
         #region Atributos
         private string formaChupetin;
@@ -15,11 +15,11 @@ namespace Entidades
 
         #region Propiedades
         public string FormaChupetin { get { return this.formaChupetin; } }
-        public string Dureza {  get { return this.dureza; } }
+        public string Dureza { get { return this.dureza; } }
         #endregion
-        
+
         #region Constructor
-        public Chupetin(int codigo, float peso, double precio, int cantidad) : base (codigo, peso, precio, cantidad)
+        public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = "redondo";
             this.dureza = "mucha";

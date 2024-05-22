@@ -91,7 +91,7 @@ namespace Entidades
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
             bool mismoChocolate = false;
-
+            //invocar al == de la clase base
             if (chocolate1.Codigo == chocolate2.Codigo && chocolate1.Peso == chocolate2.Peso)
             {
                 mismoChocolate = true;
