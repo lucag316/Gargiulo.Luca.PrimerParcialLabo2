@@ -32,18 +32,18 @@
             button1 = new Button();
             btnEliminar = new Button();
             btnModificar = new Button();
-            lstVisor = new ListBox();
+            lstVisorGolosinas = new ListBox();
             btnAgregar = new Button();
             menuStrip1 = new MenuStrip();
-            serializarToolStripMenuItem = new ToolStripMenuItem();
-            sERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
             cRUDToolStripMenuItem = new ToolStripMenuItem();
             aGREGARToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            oToolStripMenuItem = new ToolStripMenuItem();
             cHOCOLATEToolStripMenuItem1 = new ToolStripMenuItem();
             cHICLEToolStripMenuItem1 = new ToolStripMenuItem();
             cHUPETINToolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            oToolStripMenuItem = new ToolStripMenuItem();
+            serializarToolStripMenuItem = new ToolStripMenuItem();
+            sERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,14 +78,14 @@
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             // 
-            // lstVisor
+            // lstVisorGolosinas
             // 
-            lstVisor.FormattingEnabled = true;
-            lstVisor.ItemHeight = 14;
-            lstVisor.Location = new Point(14, 68);
-            lstVisor.Name = "lstVisor";
-            lstVisor.Size = new Size(886, 270);
-            lstVisor.TabIndex = 7;
+            lstVisorGolosinas.FormattingEnabled = true;
+            lstVisorGolosinas.ItemHeight = 14;
+            lstVisorGolosinas.Location = new Point(14, 68);
+            lstVisorGolosinas.Name = "lstVisorGolosinas";
+            lstVisorGolosinas.Size = new Size(886, 270);
+            lstVisorGolosinas.TabIndex = 7;
             // 
             // btnAgregar
             // 
@@ -108,18 +108,6 @@
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
-            // serializarToolStripMenuItem
-            // 
-            serializarToolStripMenuItem.Name = "serializarToolStripMenuItem";
-            serializarToolStripMenuItem.Size = new Size(97, 20);
-            serializarToolStripMenuItem.Text = "DESEREALIZAR";
-            // 
-            // sERIALIZARToolStripMenuItem1
-            // 
-            sERIALIZARToolStripMenuItem1.Name = "sERIALIZARToolStripMenuItem1";
-            sERIALIZARToolStripMenuItem1.Size = new Size(80, 20);
-            sERIALIZARToolStripMenuItem1.Text = "SERIALIZAR";
-            // 
             // cRUDToolStripMenuItem
             // 
             cRUDToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARToolStripMenuItem, toolStripMenuItem1, oToolStripMenuItem });
@@ -132,38 +120,51 @@
             // 
             aGREGARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem1, cHICLEToolStripMenuItem1, cHUPETINToolStripMenuItem1 });
             aGREGARToolStripMenuItem.Name = "aGREGARToolStripMenuItem";
-            aGREGARToolStripMenuItem.Size = new Size(180, 22);
+            aGREGARToolStripMenuItem.Size = new Size(151, 22);
             aGREGARToolStripMenuItem.Text = "AGREGAR";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(180, 22);
-            toolStripMenuItem1.Text = "MODIFICAR";
-            // 
-            // oToolStripMenuItem
-            // 
-            oToolStripMenuItem.Name = "oToolStripMenuItem";
-            oToolStripMenuItem.Size = new Size(180, 22);
-            oToolStripMenuItem.Text = "ELIMINAR";
             // 
             // cHOCOLATEToolStripMenuItem1
             // 
             cHOCOLATEToolStripMenuItem1.Name = "cHOCOLATEToolStripMenuItem1";
-            cHOCOLATEToolStripMenuItem1.Size = new Size(180, 22);
+            cHOCOLATEToolStripMenuItem1.Size = new Size(153, 22);
             cHOCOLATEToolStripMenuItem1.Text = "CHOCOLATE";
+            cHOCOLATEToolStripMenuItem1.Click += cHOCOLATEToolStripMenuItem1_Click;
             // 
             // cHICLEToolStripMenuItem1
             // 
             cHICLEToolStripMenuItem1.Name = "cHICLEToolStripMenuItem1";
-            cHICLEToolStripMenuItem1.Size = new Size(180, 22);
+            cHICLEToolStripMenuItem1.Size = new Size(153, 22);
             cHICLEToolStripMenuItem1.Text = "CHICLE";
             // 
             // cHUPETINToolStripMenuItem1
             // 
             cHUPETINToolStripMenuItem1.Name = "cHUPETINToolStripMenuItem1";
-            cHUPETINToolStripMenuItem1.Size = new Size(180, 22);
+            cHUPETINToolStripMenuItem1.Size = new Size(153, 22);
             cHUPETINToolStripMenuItem1.Text = "CHUPETIN";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(151, 22);
+            toolStripMenuItem1.Text = "MODIFICAR";
+            // 
+            // oToolStripMenuItem
+            // 
+            oToolStripMenuItem.Name = "oToolStripMenuItem";
+            oToolStripMenuItem.Size = new Size(151, 22);
+            oToolStripMenuItem.Text = "ELIMINAR";
+            // 
+            // serializarToolStripMenuItem
+            // 
+            serializarToolStripMenuItem.Name = "serializarToolStripMenuItem";
+            serializarToolStripMenuItem.Size = new Size(97, 20);
+            serializarToolStripMenuItem.Text = "DESEREALIZAR";
+            // 
+            // sERIALIZARToolStripMenuItem1
+            // 
+            sERIALIZARToolStripMenuItem1.Name = "sERIALIZARToolStripMenuItem1";
+            sERIALIZARToolStripMenuItem1.Size = new Size(80, 20);
+            sERIALIZARToolStripMenuItem1.Text = "SERIALIZAR";
             // 
             // FrmMenuPrincipal
             // 
@@ -174,7 +175,7 @@
             Controls.Add(button1);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
-            Controls.Add(lstVisor);
+            Controls.Add(lstVisorGolosinas);
             Controls.Add(btnAgregar);
             Controls.Add(menuStrip1);
             Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -193,7 +194,7 @@
         private Button button1;
         private Button btnEliminar;
         private Button btnModificar;
-        private ListBox lstVisor;
+        private ListBox lstVisorGolosinas;
         private Button btnAgregar;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem serializarToolStripMenuItem;

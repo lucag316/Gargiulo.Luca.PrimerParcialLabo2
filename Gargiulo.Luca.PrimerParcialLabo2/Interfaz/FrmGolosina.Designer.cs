@@ -97,6 +97,7 @@
             btnCancelar.TabIndex = 37;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // lblCodigo
             // 
@@ -162,16 +163,15 @@
         }
 
         #endregion
-
-        private TextBox txtCantidad;
-        private TextBox txtPeso;
-        private TextBox txtCodigo;
         private Label lblCantidad;
         private Label lblPeso;
         private Button btnCancelar;
         private Label lblCodigo;
-        private TextBox txtPrecio;
         private Label lblPrecio;
         private Button btnAceptar;
+        protected TextBox txtCantidad;
+        protected TextBox txtPeso;
+        protected TextBox txtCodigo;
+        protected TextBox txtPrecio;
     }
 }

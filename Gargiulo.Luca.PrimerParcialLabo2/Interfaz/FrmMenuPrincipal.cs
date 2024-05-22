@@ -26,6 +26,29 @@ namespace Interfaz
             this.IsMdiContainer = true;
         }
 
+        private void ActualizarVisorGolosinas()
+        {
+            this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
+
+            foreach(Golosina golosina in this.golosinas)
+            {//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
+                this.lstVisorGolosinas.Items.Add(golosina.ToString());//ver bien porque hay varios tipos de golosinas
+                //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
+            }
+        }
+
+        private void cHOCOLATEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmChocolate frmChocolate = new FrmChocolate();
+            frmChocolate.ShowDialog(); //lo muestro en forma modal
+
+            if (frmChocolate.DialogResult == DialogResult.OK)
+            {
+                this.golosinas.Add(frmChocolate.MiChocolate);
+                this.ActualizarVisorGolosinas();
+            }
+        }
+
 
     }
 }
