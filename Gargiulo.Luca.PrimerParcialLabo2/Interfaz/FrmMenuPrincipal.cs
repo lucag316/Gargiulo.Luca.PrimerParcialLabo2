@@ -79,14 +79,14 @@ namespace Interfaz
             if (i < 0)
             {
                 MessageBox.Show("Por favor, seleccione una golosina para modificar.");
-                //return;VA O NO VA?
+                return;//VA O NO VA?
             }
 
             Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
 
             FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla, creo que esta bien, //el formuladio de edicion
 
-            if(golosinaSeleccionada is Chocolate)
+            if (golosinaSeleccionada is Chocolate)
             {
                 frmGolosina = new FrmChocolate((Chocolate)golosinaSeleccionada);
             }
@@ -110,20 +110,58 @@ namespace Interfaz
                     //---
                     if (frmGolosina is FrmChocolate frmChocolate)
                     {
-                        this.golosinas[i] = frmChocolate.MiChocolate;
+                        this.golosinas[i] = frmChocolate.MiChocolate; //lo modifico
                     }
                     else if (frmGolosina is FrmChicle frmChicle)
                     {
-                        this.golosinas[i] = frmChicle.MiChicle;
+                        this.golosinas[i] = frmChicle.MiChicle; //lo modifico
                     }
                     else if (frmGolosina is FrmChupetin frmChupetin)
                     {
-                        this.golosinas[i] = frmChupetin.MiChupetin;
+                        this.golosinas[i] = frmChupetin.MiChupetin; //lo modifico
                     }
                     this.ActualizarVisorGolosinas();
                 }
             }
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int i = this.lstVisorGolosinas.SelectedIndex;//el indice que selecciono
+
+            if (i < 0)
+            {
+                MessageBox.Show("Por favor, seleccione una golosina para modificar.");
+                return;//VA O NO VA?
+            }
+
+            Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
+
+            FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla, creo que esta bien, //el formuladio de edicion
+
+            if (golosinaSeleccionada is Chocolate)
+            {
+                frmGolosina = new FrmChocolate((Chocolate)golosinaSeleccionada);
+            }
+            else if (golosinaSeleccionada is Chicle)
+            {
+                frmGolosina = new FrmChicle((Chicle)golosinaSeleccionada);//ACTUALIZAR CHICLE COMO HICE CON CHOCOLATE
+            }
+            else if (golosinaSeleccionada is Chupetin)
+            {
+                frmGolosina = new FrmChupetin((Chupetin)golosinaSeleccionada);
+            }
+
+            if (frmGolosina != null)
+            {
+                frmGolosina.ShowDialog();
+
+                if (frmGolosina.DialogResult == DialogResult.OK)
+                {
+                    this.golosinas.RemoveAt(i); //lo elimino
+                    this.ActualizarVisorGolosinas();
+                }
+            }
+        }
     }
 }
