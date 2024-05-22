@@ -11,37 +11,33 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class FrmChocolate : FrmGolosina
+    public partial class FrmChupetin : FrmGolosina
     {
-        protected Chocolate miChocolate;
+        protected Chupetin miChupetin;
 
-        public Chocolate MiChocolate { get { return this.miChocolate; } }
+        public Chupetin MiChupetin { get { return this.miChupetin; } }
 
-        public FrmChocolate()
+        public FrmChupetin()
         {
             InitializeComponent();
         }
 
-        private void FrmChocolate_Load(object sender, EventArgs e)
+        private void FrmChupetin_Load(object sender, EventArgs e)
         {
 
         }
 
-        //antes tenia solo dos referencias, me fije que le faltaba viendo ejercicios, y se lo agregue y funciono
-        protected override void btnAceptar_Click(object sender, EventArgs e) //heredo del btnAceptar de Golosina
+        protected override void btnAceptar_Click(object sender, EventArgs e)
         {
             int codigo = int.Parse(base.txtCodigo.Text);//fijarse en las propiedades del frmGolosinas, que los txtBox sea protected, NO privados
             float precio = float.Parse(base.txtPrecio.Text);
             float peso = float.Parse(base.txtPeso.Text);
             int cantidad = int.Parse(base.txtCantidad.Text);
 
-            //SUPONGO QUE ACA VAN LOS DEMAS DATOS
-
-            this.miChocolate = new Chocolate(codigo, peso, precio, cantidad);
+            this.miChupetin = new Chupetin(codigo, peso, precio, cantidad);
 
             base.btnAceptar_Click(sender, e);
         }
-
 
     }
 }

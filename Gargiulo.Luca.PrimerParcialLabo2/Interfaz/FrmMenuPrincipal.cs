@@ -30,10 +30,11 @@ namespace Interfaz
         {
             this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
 
-            foreach(Golosina golosina in this.golosinas)
+            foreach (Golosina golosina in this.golosinas)
             {//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
-                this.lstVisorGolosinas.Items.Add(golosina.ToString());//ver bien porque hay varios tipos de golosinas
+                //this.lstVisorGolosinas.Items.Add(golosina.ToString());//LA COMENTE YO//ver bien porque hay varios tipos de golosinas
                 //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
+                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());
             }
         }
 
@@ -49,6 +50,35 @@ namespace Interfaz
             }
         }
 
+        private void cHICLEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmChicle frmChicle = new FrmChicle();
+            frmChicle.ShowDialog(); //lo muestro en forma modal
+
+            if (frmChicle.DialogResult == DialogResult.OK)
+            {
+                this.golosinas.Add(frmChicle.MiChicle);
+                this.ActualizarVisorGolosinas();
+            }
+        }
+        private void cHUPETINToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmChupetin frmChupetin = new FrmChupetin();
+            frmChupetin.ShowDialog(); //lo muestro en forma modal
+
+            if (frmChupetin.DialogResult == DialogResult.OK)
+            {
+                this.golosinas.Add(frmChupetin.MiChupetin);
+                this.ActualizarVisorGolosinas();
+            }
+        }
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            int i = this.lstVisorGolosinas.SelectedIndex;//el indice que selecciono
+
+
+
+        }
 
     }
 }

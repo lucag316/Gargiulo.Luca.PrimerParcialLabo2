@@ -22,3 +22,5 @@ C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Garg
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.csproj.AssemblyReference.cache
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.csproj.CopyComplete
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmGolosina.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmChicle.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmChupetin.resources
