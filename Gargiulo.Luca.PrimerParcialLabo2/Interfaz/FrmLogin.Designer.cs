@@ -47,6 +47,7 @@
             btnIniciarSesion.TabIndex = 0;
             btnIniciarSesion.Text = "&Iniciar sesion";
             btnIniciarSesion.UseVisualStyleBackColor = false;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // txtClave
             // 
