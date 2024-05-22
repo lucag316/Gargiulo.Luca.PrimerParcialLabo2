@@ -20,6 +20,22 @@ namespace Interfaz
         public FrmChicle()
         {
             InitializeComponent();
+            foreach (ENivelesDeElasticidad elasticidad in Enum.GetValues(typeof(ENivelesDeElasticidad)))
+            {
+                this.cboElasticidad.Items.Add(elasticidad);
+            }
+            this.cboElasticidad.SelectedItem = ENivelesDeElasticidad.Media; //valor predeterminado
+
+            foreach (ENivelesDuracionDeSabor duracionSabor in Enum.GetValues(typeof(ENivelesDuracionDeSabor)))
+            {
+                this.cboDuracionSabor.Items.Add(duracionSabor);
+            }
+            this.cboDuracionSabor.SelectedItem = ENivelesDuracionDeSabor.Media; //valor predeterminado
+        }
+        public FrmChicle(Chicle chicle) : this()
+        {
+            this.cboElasticidad.SelectedItem = chicle.Elasticidad;
+            this.cboDuracionSabor.SelectedItem = chicle.DuracionSabor;
         }
 
         private void FrmChicle_Load(object sender, EventArgs e)
@@ -34,7 +50,10 @@ namespace Interfaz
             float peso = float.Parse(base.txtPeso.Text);
             int cantidad = int.Parse(base.txtCantidad.Text);
 
-            this.miChicle = new Chicle(codigo, peso, precio, cantidad);
+            ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
+            ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
+
+            this.miChicle = new Chicle(codigo, peso, precio, cantidad, elasticidad, duracionSabor);
 
             base.btnAceptar_Click(sender, e);
         }

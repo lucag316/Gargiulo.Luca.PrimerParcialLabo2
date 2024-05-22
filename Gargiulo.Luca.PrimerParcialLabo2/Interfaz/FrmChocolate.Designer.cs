@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChocolate));
             lblRelleno = new Label();
             lblTipoDeCacao = new Label();
+            cboRelleno = new ComboBox();
+            cboTipoDeCacao = new ComboBox();
             SuspendLayout();
             // 
             // lblRelleno
@@ -53,6 +55,24 @@
             lblTipoDeCacao.TabIndex = 27;
             lblTipoDeCacao.Text = "Tipo de cacao:";
             // 
+            // cboRelleno
+            // 
+            cboRelleno.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cboRelleno.FormattingEnabled = true;
+            cboRelleno.Location = new Point(303, 108);
+            cboRelleno.Name = "cboRelleno";
+            cboRelleno.Size = new Size(121, 22);
+            cboRelleno.TabIndex = 45;
+            // 
+            // cboTipoDeCacao
+            // 
+            cboTipoDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cboTipoDeCacao.FormattingEnabled = true;
+            cboTipoDeCacao.Location = new Point(303, 165);
+            cboTipoDeCacao.Name = "cboTipoDeCacao";
+            cboTipoDeCacao.Size = new Size(121, 22);
+            cboTipoDeCacao.TabIndex = 46;
+            // 
             // FrmChocolate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -60,6 +80,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(561, 343);
+            Controls.Add(cboTipoDeCacao);
+            Controls.Add(cboRelleno);
             Controls.Add(lblTipoDeCacao);
             Controls.Add(lblRelleno);
             Name = "FrmChocolate";
@@ -72,6 +94,8 @@
             Controls.SetChildIndex(txtCantidad, 0);
             Controls.SetChildIndex(lblRelleno, 0);
             Controls.SetChildIndex(lblTipoDeCacao, 0);
+            Controls.SetChildIndex(cboRelleno, 0);
+            Controls.SetChildIndex(cboTipoDeCacao, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -79,5 +103,7 @@
         #endregion
         private Label lblRelleno;
         private Label lblTipoDeCacao;
+        private ComboBox cboRelleno;
+        private ComboBox cboTipoDeCacao;
     }
 }

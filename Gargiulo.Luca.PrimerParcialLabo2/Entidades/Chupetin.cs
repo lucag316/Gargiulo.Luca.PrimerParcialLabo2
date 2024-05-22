@@ -9,26 +9,26 @@ namespace Entidades
     public class Chupetin: Golosina
     {
         #region Atributos
-        private string formaChupetin;
-        private string dureza;
+        protected EFormasDeChupetin formaChupetin;
+        protected ENivelesDeDureza dureza;
         #endregion
 
         #region Propiedades
-        public string FormaChupetin { get { return this.formaChupetin; } }
-        public string Dureza { get { return this.dureza; } }
+        public EFormasDeChupetin FormaChupetin { get { return this.formaChupetin; } }
+        public ENivelesDeDureza Dureza { get { return this.dureza; } }
         #endregion
 
         #region Constructor
         public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            this.formaChupetin = "redondo";
-            this.dureza = "mucha";
+            this.formaChupetin = EFormasDeChupetin.Redondo;
+            this.dureza = ENivelesDeDureza.Media;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad, string formaChupetin) : this(codigo, peso, precio, cantidad)
+        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin) : this(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = formaChupetin;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad, string formaChupetin, string dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
+        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
         {
             this.dureza = dureza;
         }

@@ -53,3 +53,13 @@ public enum ENivelesDeElasticidad
     SuperElastico
 }
 
+public enum ENivelesDuracionDeSabor
+{
+    NoTiene,
+    MuyPoca,
+    Poca,
+    Media,
+    Alta,
+    MuyAlta,
+}
+

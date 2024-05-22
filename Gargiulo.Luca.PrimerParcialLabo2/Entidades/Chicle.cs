@@ -9,26 +9,26 @@ namespace Entidades
     public class Chicle : Golosina
     {
         #region Atributos
-        private string elasticidad; //mucha, poca, normal, etc
-        private string duracionSabor; 
+        protected ENivelesDeElasticidad elasticidad; //mucha, poca, normal, etc
+        protected ENivelesDuracionDeSabor duracionSabor; 
         #endregion
 
         #region Propiedades
-        public string Elasticidad { get { return this.elasticidad; } }
-        public string DuracionSabor { get { return this.duracionSabor; } }
+        public ENivelesDeElasticidad Elasticidad { get { return this.elasticidad; } }
+        public ENivelesDuracionDeSabor DuracionSabor { get { return this.duracionSabor; } }
         #endregion
 
         #region Constructor
         public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            this.elasticidad = "nada";
-            this.duracionSabor = "poca";
+            this.elasticidad = ENivelesDeElasticidad.Media;
+            this.duracionSabor = ENivelesDuracionDeSabor.Media;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad) : this(codigo, peso, precio, cantidad)
+        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad) : this(codigo, peso, precio, cantidad)
         {
             this.elasticidad = elasticidad;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad, string elasticidad, string duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
+        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
         {
             this.duracionSabor = duracionSabor;
         }
