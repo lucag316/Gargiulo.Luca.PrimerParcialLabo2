@@ -41,10 +41,12 @@ namespace Interfaz
             //this.lstVisorGolosinas.Items.Add(kiosco.MostrarListaEnVisor());
 
             foreach (Golosina golosina in kiosco.Golosinas)// THIS.GOLOSINAS POR KIOSCO.GOLOSINAS
+            { 
+                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());//CAMBIAR Y USAR UN DETALLE DE KIOSCO PERO QUE 
+            }
             //{//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
             //    //this.lstVisorGolosinas.Items.Add(golosina.ToString());//LA COMENTE YO//ver bien porque hay varios tipos de golosinas
             //    //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
-                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());//CAMBIAR Y USAR UN DETALLE DE KIOSCO PERO QUE 
                 
             //}
         }
@@ -52,11 +54,11 @@ namespace Interfaz
         private void cHOCOLATEToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmChocolate frmChocolate = new FrmChocolate();
-            frmChocolate.ShowDialog(); //lo muestro en forma modal
+            frmChocolate.ShowDialog();
 
             if (frmChocolate.DialogResult == DialogResult.OK)
             {
-                kiosco += frmChocolate.MiChocolate;    //LO AGREGO SOLO DE ESTA MANERA
+                kiosco += frmChocolate.MiChocolate;
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -64,11 +66,11 @@ namespace Interfaz
         private void cHICLEToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmChicle frmChicle = new FrmChicle();
-            frmChicle.ShowDialog(); //lo muestro en forma modal
+            frmChicle.ShowDialog();
 
             if (frmChicle.DialogResult == DialogResult.OK)
             {
-                kiosco += frmChicle.MiChicle;    //LO AGREGO SOLO DE ESTA MANERA
+                kiosco += frmChicle.MiChicle;
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -90,7 +92,7 @@ namespace Interfaz
             if (i < 0)
             {
                 MessageBox.Show("Por favor, seleccione una golosina para modificar.", "Seleccion requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;//VA O NO VA?
+                return;
             }
 
             Golosina golosinaSeleccionada = kiosco.Golosinas[i];//la golosina que seleccione en el visor
@@ -116,20 +118,17 @@ namespace Interfaz
 
                 if (frmGolosina.DialogResult == DialogResult.OK)
                 {
-                    //this.golosinas[i] = (Golosina)frmGolosina.Tag;//BUSCAR QUE HACE TAG
-                    //this.golosinas[i] = golosinaSeleccionada;
-                    //---
                     if (frmGolosina is FrmChocolate frmChocolate)
                     {
                         kiosco.Golosinas[i] = frmChocolate.MiChocolate; //lo modifico
                     }
                     else if (frmGolosina is FrmChicle frmChicle)
                     {
-                        kiosco.Golosinas[i] = frmChicle.MiChicle; //lo modifico
+                        kiosco.Golosinas[i] = frmChicle.MiChicle;
                     }
                     else if (frmGolosina is FrmChupetin frmChupetin)
                     {
-                        kiosco.Golosinas[i] = frmChupetin.MiChupetin; //lo modifico
+                        kiosco.Golosinas[i] = frmChupetin.MiChupetin;
                     }
                     this.ActualizarVisorGolosinas();
                 }
@@ -143,11 +142,9 @@ namespace Interfaz
             if (i < 0)
             {
                 MessageBox.Show("Por favor, seleccione una golosina para eliminar.", "Seleccion requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;//VA O NO VA?
+                return;
             }
-            //no se si va este--
-            //Golosina golosinaSeleccionada = kiosco.Golosinas[i];//la golosina que seleccione en el visor
-            //---
+            
             DialogResult dialogResult = MessageBox.Show("Esta seguro que desa eliminar esta golosina?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
