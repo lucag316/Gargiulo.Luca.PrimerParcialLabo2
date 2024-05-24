@@ -175,5 +175,10 @@ namespace Interfaz
             Serializadora.SerializarGolosinasJSON(this.golosinas, pathArchivoJson);
             MessageBox.Show("Lista de golosinas guardada correctamente.");
         }
+
+        private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Serializadora.SerializarGolosinasXML(this.golosinas, pathArchivoXml);//creo que podria usar el mismo path y agrego + ...
+        }
     }
 }

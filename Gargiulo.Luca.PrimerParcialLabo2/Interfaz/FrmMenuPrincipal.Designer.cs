@@ -54,6 +54,13 @@
             xMLToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem1 = new ToolStripMenuItem();
             xMLToolStripMenuItem1 = new ToolStripMenuItem();
+            gOLOSINASToolStripMenuItem = new ToolStripMenuItem();
+            aGREGARToolStripMenuItem1 = new ToolStripMenuItem();
+            mODIFICARToolStripMenuItem = new ToolStripMenuItem();
+            eLIMINARToolStripMenuItem = new ToolStripMenuItem();
+            cHOCOLATEToolStripMenuItem = new ToolStripMenuItem();
+            cHICLEToolStripMenuItem = new ToolStripMenuItem();
+            cHUPETINToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -112,7 +119,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { cRUDToolStripMenuItem, aRCHIVOSToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, cRUDToolStripMenuItem, aRCHIVOSToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -132,40 +139,40 @@
             // 
             aGREGARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem1, cHICLEToolStripMenuItem1, cHUPETINToolStripMenuItem1 });
             aGREGARToolStripMenuItem.Name = "aGREGARToolStripMenuItem";
-            aGREGARToolStripMenuItem.Size = new Size(151, 22);
+            aGREGARToolStripMenuItem.Size = new Size(180, 22);
             aGREGARToolStripMenuItem.Text = "AGREGAR";
             // 
             // cHOCOLATEToolStripMenuItem1
             // 
             cHOCOLATEToolStripMenuItem1.Name = "cHOCOLATEToolStripMenuItem1";
-            cHOCOLATEToolStripMenuItem1.Size = new Size(153, 22);
+            cHOCOLATEToolStripMenuItem1.Size = new Size(180, 22);
             cHOCOLATEToolStripMenuItem1.Text = "CHOCOLATE";
             cHOCOLATEToolStripMenuItem1.Click += cHOCOLATEToolStripMenuItem1_Click;
             // 
             // cHICLEToolStripMenuItem1
             // 
             cHICLEToolStripMenuItem1.Name = "cHICLEToolStripMenuItem1";
-            cHICLEToolStripMenuItem1.Size = new Size(153, 22);
+            cHICLEToolStripMenuItem1.Size = new Size(180, 22);
             cHICLEToolStripMenuItem1.Text = "CHICLE";
             cHICLEToolStripMenuItem1.Click += cHICLEToolStripMenuItem1_Click;
             // 
             // cHUPETINToolStripMenuItem1
             // 
             cHUPETINToolStripMenuItem1.Name = "cHUPETINToolStripMenuItem1";
-            cHUPETINToolStripMenuItem1.Size = new Size(153, 22);
+            cHUPETINToolStripMenuItem1.Size = new Size(180, 22);
             cHUPETINToolStripMenuItem1.Text = "CHUPETIN";
             cHUPETINToolStripMenuItem1.Click += cHUPETINToolStripMenuItem1_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(151, 22);
+            toolStripMenuItem1.Size = new Size(180, 22);
             toolStripMenuItem1.Text = "MODIFICAR";
             // 
             // oToolStripMenuItem
             // 
             oToolStripMenuItem.Name = "oToolStripMenuItem";
-            oToolStripMenuItem.Size = new Size(151, 22);
+            oToolStripMenuItem.Size = new Size(180, 22);
             oToolStripMenuItem.Text = "ELIMINAR";
             // 
             // aRCHIVOSToolStripMenuItem
@@ -195,6 +202,7 @@
             xMLToolStripMenuItem2.Name = "xMLToolStripMenuItem2";
             xMLToolStripMenuItem2.Size = new Size(180, 22);
             xMLToolStripMenuItem2.Text = "XML";
+            xMLToolStripMenuItem2.Click += xMLToolStripMenuItem2_Click;
             // 
             // dESERIALIZARToolStripMenuItem2
             // 
@@ -239,6 +247,51 @@
             // 
             xMLToolStripMenuItem1.Name = "xMLToolStripMenuItem1";
             xMLToolStripMenuItem1.Size = new Size(32, 19);
+            // 
+            // gOLOSINASToolStripMenuItem
+            // 
+            gOLOSINASToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARToolStripMenuItem1, mODIFICARToolStripMenuItem, eLIMINARToolStripMenuItem });
+            gOLOSINASToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            gOLOSINASToolStripMenuItem.Name = "gOLOSINASToolStripMenuItem";
+            gOLOSINASToolStripMenuItem.Size = new Size(87, 20);
+            gOLOSINASToolStripMenuItem.Text = "GOLOSINAS";
+            // 
+            // aGREGARToolStripMenuItem1
+            // 
+            aGREGARToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem, cHICLEToolStripMenuItem, cHUPETINToolStripMenuItem });
+            aGREGARToolStripMenuItem1.Name = "aGREGARToolStripMenuItem1";
+            aGREGARToolStripMenuItem1.Size = new Size(180, 22);
+            aGREGARToolStripMenuItem1.Text = "AGREGAR";
+            // 
+            // mODIFICARToolStripMenuItem
+            // 
+            mODIFICARToolStripMenuItem.Name = "mODIFICARToolStripMenuItem";
+            mODIFICARToolStripMenuItem.Size = new Size(180, 22);
+            mODIFICARToolStripMenuItem.Text = "MODIFICAR";
+            // 
+            // eLIMINARToolStripMenuItem
+            // 
+            eLIMINARToolStripMenuItem.Name = "eLIMINARToolStripMenuItem";
+            eLIMINARToolStripMenuItem.Size = new Size(180, 22);
+            eLIMINARToolStripMenuItem.Text = "ELIMINAR";
+            // 
+            // cHOCOLATEToolStripMenuItem
+            // 
+            cHOCOLATEToolStripMenuItem.Name = "cHOCOLATEToolStripMenuItem";
+            cHOCOLATEToolStripMenuItem.Size = new Size(180, 22);
+            cHOCOLATEToolStripMenuItem.Text = "CHOCOLATE";
+            // 
+            // cHICLEToolStripMenuItem
+            // 
+            cHICLEToolStripMenuItem.Name = "cHICLEToolStripMenuItem";
+            cHICLEToolStripMenuItem.Size = new Size(180, 22);
+            cHICLEToolStripMenuItem.Text = "CHICLE";
+            // 
+            // cHUPETINToolStripMenuItem
+            // 
+            cHUPETINToolStripMenuItem.Name = "cHUPETINToolStripMenuItem";
+            cHUPETINToolStripMenuItem.Size = new Size(180, 22);
+            cHUPETINToolStripMenuItem.Text = "CHUPETIN";
             // 
             // FrmMenuPrincipal
             // 
@@ -290,5 +343,12 @@
         private ToolStripMenuItem dESERIALIZARToolStripMenuItem2;
         private ToolStripMenuItem jSONToolStripMenuItem3;
         private ToolStripMenuItem xMLToolStripMenuItem3;
+        private ToolStripMenuItem gOLOSINASToolStripMenuItem;
+        private ToolStripMenuItem aGREGARToolStripMenuItem1;
+        private ToolStripMenuItem cHOCOLATEToolStripMenuItem;
+        private ToolStripMenuItem cHICLEToolStripMenuItem;
+        private ToolStripMenuItem cHUPETINToolStripMenuItem;
+        private ToolStripMenuItem mODIFICARToolStripMenuItem;
+        private ToolStripMenuItem eLIMINARToolStripMenuItem;
     }
 }
