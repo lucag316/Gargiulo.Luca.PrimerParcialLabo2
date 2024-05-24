@@ -16,11 +16,13 @@ namespace Interfaz
         List<Golosina> golosinas;
         private string pathArchivoJson = "golosinas.json";
         private string pathArchivoXml = "golosinas.Xml";
+        private string path;
 
         public FrmMenuPrincipal()
         {
             InitializeComponent();
             this.golosinas = new List<Golosina>();
+            
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -172,8 +174,10 @@ namespace Interfaz
         private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //guardo en json
-            Serializadora.SerializarGolosinasJSON(this.golosinas, pathArchivoJson);
-            MessageBox.Show("Lista de golosinas guardada correctamente.");
+            Serializadora serializadora = new Serializadora("Golosinas");
+            
+            serializadora.SerializarGolosinasJSON(this.golosinas);
+            MessageBox.Show("Lista de golosinas guardada correctamente en JSON.");
         }
 
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)

@@ -7,12 +7,28 @@ using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace Entidades
 {
     public class Serializadora
     {
+        private string path;
 
+        public  string Path { get { return this.path; } }
+
+        public Serializadora(string path)
+        {
+            this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//me develve el path de la carpeta
+            this.path += "/GolosinasSerializadas";
+
+            if (!Directory.Exists(this.path))
+            {
+                Directory.CreateDirectory(this.path);
+            }
+
+            this.path += "/" + path;
+        }
 
         public static List<Usuario> DeserializarUsuariosJSON(string pathArchivo)
         {
@@ -27,12 +43,12 @@ namespace Entidades
             return listaAux;
         }
 
-        public static void SerializarGolosinasJSON(List<Golosina> golosinas, string pathArchivo)
+        public void SerializarGolosinasJSON(List<Golosina> golosinas)
         {
             JsonSerializerOptions opciones = new JsonSerializerOptions();
             opciones.WriteIndented = true;  //le doy true para que se vea mejor
 
-            using (StreamWriter streamWriter = new StreamWriter(pathArchivo + ".json")) //instancio un SW que me va a escribir el archivo
+            using (StreamWriter streamWriter = new StreamWriter( this.Path + ".json")) //instancio un SW que me va a escribir el archivo
             {
                 string objJon = JsonSerializer.Serialize(golosinas, opciones); //lo que voy a serializar y el identado opcional
 
