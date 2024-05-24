@@ -13,14 +13,16 @@ namespace Interfaz
 {
     public partial class FrmMenuPrincipal : Form
     {
-        List<Golosina> golosinas;
+        List<Golosina> golosinas;//SACAR SI YA USO KIOSCO
+        private Kiosco kiosco;
         //private string pathArchivoJson = "golosinas.json";
         //private string pathArchivoXml = "golosinas.Xml";
 
         public FrmMenuPrincipal()
         {
             InitializeComponent();
-            this.golosinas = new List<Golosina>();
+            //this.golosinas = new List<Golosina>();//SACAR SI YA USO KIOSCO
+            this.kiosco = new Kiosco();
             
         }
 
@@ -29,19 +31,22 @@ namespace Interfaz
             this.IsMdiContainer = true;
             //tratar de cargar la lista del archivo al principio
             //CargarGolosinas();
-            //ActualizarVisorGolosinas();
+            ActualizarVisorGolosinas();
         }
 
         private void ActualizarVisorGolosinas()
         {
             this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
 
-            foreach (Golosina golosina in this.golosinas)
-            {//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
-                //this.lstVisorGolosinas.Items.Add(golosina.ToString());//LA COMENTE YO//ver bien porque hay varios tipos de golosinas
-                //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
-                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());
-            }
+            //this.lstVisorGolosinas.Items.Add(kiosco.MostrarListaEnVisor());
+
+            foreach (Golosina golosina in kiosco.Golosinas)// THIS.GOLOSINAS POR KIOSCO.GOLOSINAS
+            //{//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
+            //    //this.lstVisorGolosinas.Items.Add(golosina.ToString());//LA COMENTE YO//ver bien porque hay varios tipos de golosinas
+            //    //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
+                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());//CAMBIAR Y USAR UN DETALLE DE KIOSCO PERO QUE 
+                
+            //}
         }
 
         private void cHOCOLATEToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -51,7 +56,7 @@ namespace Interfaz
 
             if (frmChocolate.DialogResult == DialogResult.OK)
             {
-                this.golosinas.Add(frmChocolate.MiChocolate);
+                kiosco += frmChocolate.MiChocolate;    //LO AGREGO SOLO DE ESTA MANERA
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -63,7 +68,7 @@ namespace Interfaz
 
             if (frmChicle.DialogResult == DialogResult.OK)
             {
-                this.golosinas.Add(frmChicle.MiChicle);
+                kiosco += frmChicle.MiChicle;    //LO AGREGO SOLO DE ESTA MANERA
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -74,7 +79,7 @@ namespace Interfaz
 
             if (frmChupetin.DialogResult == DialogResult.OK)
             {
-                this.golosinas.Add(frmChupetin.MiChupetin);
+                kiosco += frmChupetin.MiChupetin;    //LO AGREGO SOLO DE ESTA MANERA // no se si aca va this.kiosco
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -88,7 +93,7 @@ namespace Interfaz
                 return;//VA O NO VA?
             }
 
-            Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
+            Golosina golosinaSeleccionada = kiosco.Golosinas[i];//la golosina que seleccione en el visor
 
             FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla, creo que esta bien, //el formuladio de edicion
 
@@ -116,15 +121,15 @@ namespace Interfaz
                     //---
                     if (frmGolosina is FrmChocolate frmChocolate)
                     {
-                        this.golosinas[i] = frmChocolate.MiChocolate; //lo modifico
+                        kiosco.Golosinas[i] = frmChocolate.MiChocolate; //lo modifico
                     }
                     else if (frmGolosina is FrmChicle frmChicle)
                     {
-                        this.golosinas[i] = frmChicle.MiChicle; //lo modifico
+                        kiosco.Golosinas[i] = frmChicle.MiChicle; //lo modifico
                     }
                     else if (frmGolosina is FrmChupetin frmChupetin)
                     {
-                        this.golosinas[i] = frmChupetin.MiChupetin; //lo modifico
+                        kiosco.Golosinas[i] = frmChupetin.MiChupetin; //lo modifico
                     }
                     this.ActualizarVisorGolosinas();
                 }
@@ -141,13 +146,13 @@ namespace Interfaz
                 return;//VA O NO VA?
             }
             //no se si va este--
-            Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
+            //Golosina golosinaSeleccionada = kiosco.Golosinas[i];//la golosina que seleccione en el visor
             //---
             DialogResult dialogResult = MessageBox.Show("Esta seguro que desa eliminar esta golosina?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.golosinas.RemoveAt(i); //lo elimino
+                this.kiosco.Golosinas.RemoveAt(i); //lo elimino
                 this.ActualizarVisorGolosinas();
             }
             
@@ -158,7 +163,7 @@ namespace Interfaz
             //guardo en json
             Serializadora serializadoraJson = new Serializadora("Golosinas");
             
-            serializadoraJson.SerializarGolosinasJSON(this.golosinas);
+            serializadoraJson.SerializarGolosinasJSON(kiosco.Golosinas);
             MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
         }
 
@@ -166,7 +171,7 @@ namespace Interfaz
         {
             Serializadora serializadoraXml = new Serializadora("Golosinas");
 
-            serializadoraXml.SerializarGolosinasXML(this.golosinas);
+            serializadoraXml.SerializarGolosinasXML(kiosco.Golosinas);
             MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
         }
     }

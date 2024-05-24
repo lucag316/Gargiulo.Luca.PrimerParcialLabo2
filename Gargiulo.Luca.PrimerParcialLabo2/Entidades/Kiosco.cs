@@ -56,7 +56,7 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        private Kiosco() //no me acuerdo porque privado, pero solo inicializo la lista de golosinas
+        public Kiosco() //no me acuerdo porque privado, pero solo inicializo la lista de golosinas
         {
             this.golosinas =new List<Golosina>();
             this.capacidadGolosinasDistintas = 10; //fijarse si esta bien puesto aca
@@ -68,6 +68,38 @@ namespace Entidades
         #endregion
 
         #region Metodos
+
+        public string MostrarListaEnVisor()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<Golosina> listaLocalGolosinas = this.Golosinas;
+
+            foreach (Golosina golosina in listaLocalGolosinas)
+            {
+                if (golosina is Chocolate)// si golosina es un Chocolate
+                {
+                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor());//lo casteo para tener ese metodo
+                }
+                else if (golosina is Chicle)
+                {
+                    sb.AppendLine(((Chicle)golosina).MostrarEnVisor());
+                }
+                else if (golosina is Chupetin)
+                {
+                    sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
+                }
+            }
+            /*
+            double precioTotal = CalcularPrecioTotal();
+
+            //sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
+            //sb.AppendLine($"         ${precioTotal.ToString()}");
+            //sb.AppendLine("===============================================\n");
+            */
+            return sb.ToString();
+        }
+
         public double CalcularPrecioTotal() //calcular el precio total de la lista
         {
             double precioTotal = 0;
