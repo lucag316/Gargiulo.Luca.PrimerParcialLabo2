@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [Serializable]
+    [XmlInclude(typeof(Chocolate))]
+    [XmlInclude(typeof(Chicle))]
+    [XmlInclude(typeof(Chupetin))]
+
     public abstract class Golosina
     {
         #region Atributos

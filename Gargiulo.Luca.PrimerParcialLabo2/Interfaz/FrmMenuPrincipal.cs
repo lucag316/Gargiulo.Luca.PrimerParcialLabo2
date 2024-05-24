@@ -14,9 +14,8 @@ namespace Interfaz
     public partial class FrmMenuPrincipal : Form
     {
         List<Golosina> golosinas;
-        private string pathArchivoJson = "golosinas.json";
-        private string pathArchivoXml = "golosinas.Xml";
-        private string path;
+        //private string pathArchivoJson = "golosinas.json";
+        //private string pathArchivoXml = "golosinas.Xml";
 
         public FrmMenuPrincipal()
         {
@@ -174,15 +173,18 @@ namespace Interfaz
         private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //guardo en json
-            Serializadora serializadora = new Serializadora("Golosinas");
+            Serializadora serializadoraJson = new Serializadora("Golosinas");
             
-            serializadora.SerializarGolosinasJSON(this.golosinas);
-            MessageBox.Show("Lista de golosinas guardada correctamente en JSON.");
+            serializadoraJson.SerializarGolosinasJSON(this.golosinas);
+            MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
         }
 
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Serializadora.SerializarGolosinasXML(this.golosinas, pathArchivoXml);//creo que podria usar el mismo path y agrego + ...
+            Serializadora serializadoraXml = new Serializadora("Golosinas");
+
+            serializadoraXml.SerializarGolosinasXML(this.golosinas);
+            MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
         }
     }
 }

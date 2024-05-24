@@ -55,9 +55,9 @@ namespace Entidades
                 streamWriter.WriteLine(objJon); //aca lo escribo
             }
         }
-        public static void SerializarGolosinasXML(List<Golosina> golosinas, string pathArchivo)
+        public void SerializarGolosinasXML(List<Golosina> golosinas)
         {
-            using (XmlTextWriter xmlWriter = new XmlTextWriter(pathArchivo + ".xml", Encoding.UTF8)) //primero lo instancio
+            using (XmlTextWriter xmlWriter = new XmlTextWriter(this.Path + ".xml", Encoding.UTF8)) //primero lo instancio
             {
                 XmlSerializer serXml = new XmlSerializer(typeof(List<Golosina>)); //lo serializo
 

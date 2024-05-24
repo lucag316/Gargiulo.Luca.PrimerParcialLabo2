@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Chicle : Golosina
     {
         #region Atributos
@@ -19,7 +20,7 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Chicle() //constructor sin parametros para poder usar JSON
+        public Chicle() : base()//constructor sin parametros para poder usar JSON
         {
 
         }

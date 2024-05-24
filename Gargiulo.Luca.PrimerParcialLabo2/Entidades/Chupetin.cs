@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Chupetin: Golosina
     {
         #region Atributos
@@ -19,7 +20,7 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        public Chupetin() //constructor sin parametros para poder usar JSON
+        public Chupetin() : base() //constructor sin parametros para poder usar JSON
         {
 
         }
