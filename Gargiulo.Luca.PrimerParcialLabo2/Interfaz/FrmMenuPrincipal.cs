@@ -13,17 +13,12 @@ namespace Interfaz
 {
     public partial class FrmMenuPrincipal : Form
     {
-        List<Golosina> golosinas;//SACAR SI YA USO KIOSCO
         private Kiosco kiosco;
-        //private string pathArchivoJson = "golosinas.json";
-        //private string pathArchivoXml = "golosinas.Xml";
 
         public FrmMenuPrincipal()
         {
             InitializeComponent();
-            //this.golosinas = new List<Golosina>();//SACAR SI YA USO KIOSCO
             this.kiosco = new Kiosco();
-            
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -38,17 +33,10 @@ namespace Interfaz
         {
             this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
 
-            //this.lstVisorGolosinas.Items.Add(kiosco.MostrarListaEnVisor());
-
             foreach (Golosina golosina in kiosco.Golosinas)// THIS.GOLOSINAS POR KIOSCO.GOLOSINAS
             { 
                 this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());//CAMBIAR Y USAR UN DETALLE DE KIOSCO PERO QUE 
             }
-            //{//LLAMARIA A UN MOSTRAR EN VISOR DE LAS CLASES, ASI SE VE BIEN
-            //    //this.lstVisorGolosinas.Items.Add(golosina.ToString());//LA COMENTE YO//ver bien porque hay varios tipos de golosinas
-            //    //this.lstVisorGolosinas.Text += golosina.ToString();//para un richBox, aca no creo que funcione
-                
-            //}
         }
 
         private void cHOCOLATEToolStripMenuItem1_Click(object sender, EventArgs e)
