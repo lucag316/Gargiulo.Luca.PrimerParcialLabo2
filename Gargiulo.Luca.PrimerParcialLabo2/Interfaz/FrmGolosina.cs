@@ -24,6 +24,57 @@ namespace Interfaz
 
         protected virtual void btnAceptar_Click(object sender, EventArgs e)//lo hago virtual para heredarlo, protected porque no puede ser privadi
         {
+            int codigo;
+            float precio;
+            float peso;
+            int cantidad;
+
+            if (string.IsNullOrWhiteSpace(this.txtCodigo.Text))
+            {
+                this.txtCodigo.Text = "0";
+            }
+            if (string.IsNullOrWhiteSpace(this.txtPrecio.Text))
+            {
+                this.txtPrecio.Text = "0";
+            }
+            if (string.IsNullOrWhiteSpace(this.txtPeso.Text))
+            {
+                this.txtPeso.Text = "0";
+            }
+            if (string.IsNullOrWhiteSpace(this.txtCantidad.Text))
+            {
+                this.txtCantidad.Text = "0";
+            }
+
+            if (!int.TryParse(this.txtCodigo.Text, out codigo))
+            {
+                MessageBox.Show("Por favor, ingrese un codigo valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; //hago return para salir sin hacer mas nada, si no lo pongo no vuelve
+            }
+            if (!float.TryParse(this.txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("Por favor, ingrese un precio valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!float.TryParse(this.txtPeso.Text, out peso))
+            {
+                MessageBox.Show("Por favor, ingrese un peso valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(this.txtCantidad.Text, out cantidad))
+            {
+                MessageBox.Show("Por favor, ingrese una cantidad valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+
+            if (codigo < 0 || precio < 0 || peso < 0 || cantidad < 0)
+            {
+                MessageBox.Show("Por favor, ingrese valores positivos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             this.DialogResult = DialogResult.OK;
         }
 

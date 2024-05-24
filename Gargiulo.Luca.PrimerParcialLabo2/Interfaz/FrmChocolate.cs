@@ -49,21 +49,22 @@ namespace Interfaz
         //antes tenia solo dos referencias, me fije que le faltaba viendo ejercicios, y se lo agregue y funciono
         protected override void btnAceptar_Click(object sender, EventArgs e) //heredo del btnAceptar de Golosina
         {
-            int codigo = int.Parse(base.txtCodigo.Text);//fijarse en las propiedades del frmGolosinas, que los txtBox sea protected, NO privados
-            float precio = float.Parse(base.txtPrecio.Text);
-            float peso = float.Parse(base.txtPeso.Text);
-            int cantidad = int.Parse(base.txtCantidad.Text);
-
-            ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
-            ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
-
-            //SUPONGO QUE ACA VAN LOS DEMAS DATOS
-
-            this.miChocolate = new Chocolate(codigo, peso, precio, cantidad, relleno, tipoDeCacao);
 
             base.btnAceptar_Click(sender, e);
+
+            //lo puse en un if porque sino me controlaba la excepcion en FrmGolosina pero cuando pasaba por aca, la volvia a tirar
+            if (this.DialogResult == DialogResult.OK)
+            {
+                ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
+                ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
+
+                this.miChocolate = new Chocolate(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                relleno,
+                                                tipoDeCacao);
+            }
         }
-
-
     }
 }
