@@ -50,6 +50,7 @@ namespace Entidades
 
             using (StreamWriter streamWriter = new StreamWriter( this.Path + ".json")) //instancio un SW que me va a escribir el archivo
             {
+
                 string objJon = JsonSerializer.Serialize(golosinas, opciones); //lo que voy a serializar y el identado opcional
 
                 streamWriter.WriteLine(objJon); //aca lo escribo

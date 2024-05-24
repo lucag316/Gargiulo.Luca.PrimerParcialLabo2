@@ -29,7 +29,13 @@ namespace Interfaz
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que desea cancelar?", "Confirmar cancelacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
             //this.Close()//FIJARME SI VAN LOS CANCEL ACA
         }
     }

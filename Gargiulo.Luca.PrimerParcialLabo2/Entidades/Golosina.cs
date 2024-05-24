@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,7 +12,7 @@ namespace Entidades
     [XmlInclude(typeof(Chocolate))]
     [XmlInclude(typeof(Chicle))]
     [XmlInclude(typeof(Chupetin))]
-
+    [DataContract]//para json
     public abstract class Golosina
     {
         #region Atributos
@@ -22,6 +23,7 @@ namespace Entidades
         #endregion
 
         #region Propiedades
+       
         public int Codigo
         {
             get { return this.codigo; }
@@ -99,10 +101,10 @@ namespace Entidades
             }
             return mismaGolosina;
         }
-        public override int GetHashCode()
+        /*public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
+        }*/
         #endregion
 
         #region Metodos virtuales y abstractos

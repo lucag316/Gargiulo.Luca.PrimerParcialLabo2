@@ -84,7 +84,7 @@ namespace Interfaz
 
             if (i < 0)
             {
-                MessageBox.Show("Por favor, seleccione una golosina para modificar.");
+                MessageBox.Show("Por favor, seleccione una golosina para modificar.", "Seleccion requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;//VA O NO VA?
             }
 
@@ -137,37 +137,20 @@ namespace Interfaz
 
             if (i < 0)
             {
-                MessageBox.Show("Por favor, seleccione una golosina para modificar.");
+                MessageBox.Show("Por favor, seleccione una golosina para eliminar.", "Seleccion requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;//VA O NO VA?
             }
-            //CREO QUE DE ACA -----------------
+            //no se si va este--
             Golosina golosinaSeleccionada = this.golosinas[i];//la golosina que seleccione en el visor
+            //---
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que desa eliminar esta golosina?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla, creo que esta bien, //el formuladio de edicion
-
-            if (golosinaSeleccionada is Chocolate)
+            if (dialogResult == DialogResult.Yes)
             {
-                frmGolosina = new FrmChocolate((Chocolate)golosinaSeleccionada);
+                this.golosinas.RemoveAt(i); //lo elimino
+                this.ActualizarVisorGolosinas();
             }
-            else if (golosinaSeleccionada is Chicle)
-            {
-                frmGolosina = new FrmChicle((Chicle)golosinaSeleccionada);//ACTUALIZAR CHICLE COMO HICE CON CHOCOLATE
-            }
-            else if (golosinaSeleccionada is Chupetin)
-            {
-                frmGolosina = new FrmChupetin((Chupetin)golosinaSeleccionada);
-            }
-
-            if (frmGolosina != null)
-            {
-                frmGolosina.ShowDialog();
-
-                if (frmGolosina.DialogResult == DialogResult.OK)
-                {//HASTA ACA, NOVA -----------------CREO
-                    this.golosinas.RemoveAt(i); //lo elimino
-                    this.ActualizarVisorGolosinas();
-                }
-            }
+            
         }
 
         private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)

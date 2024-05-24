@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -15,7 +16,10 @@ namespace Entidades
         #endregion
 
         #region Propiedades
+        [JsonPropertyName("formaChupetin")]
         public EFormasDeChupetin FormaChupetin { get { return this.formaChupetin; } }
+
+        [JsonPropertyName("dureza")]
         public ENivelesDeDureza Dureza { get { return this.dureza; } }
         #endregion
 
@@ -65,16 +69,16 @@ namespace Entidades
             }
             return mismoChupetin;
         }
-        public override int GetHashCode()
+        /*public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
+        }*/
         #endregion
 
         #region Metodos sobrescritos
         public override string MostrarEnVisor()
         {
-            string mensaje = $"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
+            string mensaje = $"CHUPETIN: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
             //fijarme si poner todo o no, para no repetir codigo
             return mensaje;
         }

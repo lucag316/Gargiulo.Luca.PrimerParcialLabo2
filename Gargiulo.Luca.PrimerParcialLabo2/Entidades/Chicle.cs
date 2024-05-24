@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -11,11 +12,14 @@ namespace Entidades
     {
         #region Atributos
         protected ENivelesDeElasticidad elasticidad; //mucha, poca, normal, etc
-        protected ENivelesDuracionDeSabor duracionSabor; 
+        protected ENivelesDuracionDeSabor duracionSabor;
         #endregion
 
         #region Propiedades
+        [JsonPropertyName("elasticidad")]
         public ENivelesDeElasticidad Elasticidad { get { return this.elasticidad; } }
+
+        [JsonPropertyName("duracionSabor")]
         public ENivelesDuracionDeSabor DuracionSabor { get { return this.duracionSabor; } }
         #endregion
 
@@ -65,10 +69,10 @@ namespace Entidades
             }
             return mismoChicle;
         }
-        public override int GetHashCode()
+        /*public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
+        }*/
         #endregion
 
         #region Metodos sobrescritos
@@ -84,7 +88,7 @@ namespace Entidades
         }
         public override string MostrarEnVisor()
         {
-            string mensaje = $"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
+            string mensaje = $"CHICLE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
             //fijarme si poner todo o no, para no repetir codigo
             return mensaje;
         }

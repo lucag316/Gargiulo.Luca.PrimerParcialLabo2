@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -15,7 +16,10 @@ namespace Entidades
         #endregion
 
         #region Propiedades
+        [JsonPropertyName("relleno")]
         public ERellenos Relleno { get { return this.relleno; } }
+
+        [JsonPropertyName("tipoDeCacao")]
         public ETiposDeCacao TipoDeCacao { get { return this.tipoDeCacao; } }
         #endregion
 
@@ -67,16 +71,16 @@ namespace Entidades
             }
             return mismoChocolate;
         }
-        public override int GetHashCode()
+        /*public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
+        }*/
         #endregion
 
         #region Metodos sobrescritos
         public override string MostrarEnVisor()
         {
-            string mensaje = $"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
+            string mensaje = $"CHOCOLATE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
             //fijarme si poner todo o no, para no repetir
             return mensaje;
         }
