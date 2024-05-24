@@ -45,17 +45,21 @@ namespace Interfaz
 
         protected override void btnAceptar_Click(object sender, EventArgs e)
         {
-            int codigo = int.Parse(base.txtCodigo.Text);
-            float precio = float.Parse(base.txtPrecio.Text);
-            float peso = float.Parse(base.txtPeso.Text);
-            int cantidad = int.Parse(base.txtCantidad.Text);
-
-            ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
-            ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
-
-            this.miChicle = new Chicle(codigo, peso, precio, cantidad, elasticidad, duracionSabor);
-
             base.btnAceptar_Click(sender, e);
+
+            
+            if (this.DialogResult == DialogResult.OK)
+            {
+                ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
+                ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
+
+                this.miChicle = new Chicle(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                elasticidad,
+                                                duracionSabor);
+            }
         }
     }
 }

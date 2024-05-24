@@ -36,7 +36,6 @@ namespace Interfaz
 
         public FrmChocolate(Chocolate chocolate) : this()
         {
-            //ACA VAN LOS DEMAS O NO?
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
         }

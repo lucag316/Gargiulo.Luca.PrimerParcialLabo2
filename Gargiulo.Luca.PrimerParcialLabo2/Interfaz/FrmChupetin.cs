@@ -48,18 +48,20 @@ namespace Interfaz
 
         protected override void btnAceptar_Click(object sender, EventArgs e)
         {
-            int codigo = int.Parse(base.txtCodigo.Text);//fijarse en las propiedades del frmGolosinas, que los txtBox sea protected, NO privados
-            float precio = float.Parse(base.txtPrecio.Text);
-            float peso = float.Parse(base.txtPeso.Text);
-            int cantidad = int.Parse(base.txtCantidad.Text);
-
-            EFormasDeChupetin formaChupetin = (EFormasDeChupetin)this.cboFormaChupetin.SelectedItem;
-            ENivelesDeDureza dureza = (ENivelesDeDureza)this.cboDureza.SelectedItem;
-
-            this.miChupetin = new Chupetin(codigo, peso, precio, cantidad, formaChupetin, dureza);
-
             base.btnAceptar_Click(sender, e);
-        }
+            
+            if (this.DialogResult == DialogResult.OK)
+            {
+                EFormasDeChupetin formaChupetin = (EFormasDeChupetin)this.cboFormaChupetin.SelectedItem;
+                ENivelesDeDureza dureza = (ENivelesDeDureza)this.cboDureza.SelectedItem;
 
+                this.miChupetin = new Chupetin(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                formaChupetin,
+                                                dureza);
+            }
+        }
     }
 }
