@@ -15,12 +15,14 @@ namespace Interfaz
     {
         private Kiosco kiosco;
         private string operador;
+        private UsuarioLog usuarioLogueado;
 
         public FrmMenuPrincipal(string nombreOperador)
         {
             InitializeComponent();
             this.kiosco = new Kiosco();
             this.operador = nombreOperador;
+            this.usuarioLogueado = new UsuarioLog("usuarios.log");
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -352,6 +354,23 @@ namespace Interfaz
                     e.Cancel = true; // lo cancelo al cierre
                 }
             }
+        }
+
+        private void uSUARIOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
+            frmVisualizadorUsuariosLog.ShowDialog();
+        }
+
+        private void vOLVERToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Cierra el formulario actual 
+            this.Close();
+
+            // Muestro el formulario del login
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
+
         }
     }
 }

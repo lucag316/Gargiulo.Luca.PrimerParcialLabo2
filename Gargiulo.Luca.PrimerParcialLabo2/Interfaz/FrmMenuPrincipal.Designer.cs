@@ -52,6 +52,7 @@
             pORPESOToolStripMenuItem = new ToolStripMenuItem();
             aSCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
             dESCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
+            uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
@@ -65,6 +66,7 @@
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             ofdAbrirXml = new OpenFileDialog();
             sfdGuardarXml = new SaveFileDialog();
+            vOLVERToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -80,7 +82,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -238,6 +240,14 @@
             dESCENDENTEToolStripMenuItem1.Text = "DESCENDENTE";
             dESCENDENTEToolStripMenuItem1.Click += dESCENDENTEToolStripMenuItem1_Click;
             // 
+            // uSUARIOSToolStripMenuItem
+            // 
+            uSUARIOSToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            uSUARIOSToolStripMenuItem.Name = "uSUARIOSToolStripMenuItem";
+            uSUARIOSToolStripMenuItem.Size = new Size(153, 20);
+            uSUARIOSToolStripMenuItem.Text = "USUARIOS LOGUEADOS";
+            uSUARIOSToolStripMenuItem.Click += uSUARIOSToolStripMenuItem_Click;
+            // 
             // dETALLEToolStripMenuItem
             // 
             dETALLEToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -309,6 +319,14 @@
             // 
             ofdAbrirXml.FileName = "ofdAbrirXml";
             // 
+            // vOLVERToolStripMenuItem
+            // 
+            vOLVERToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            vOLVERToolStripMenuItem.Name = "vOLVERToolStripMenuItem";
+            vOLVERToolStripMenuItem.Size = new Size(68, 20);
+            vOLVERToolStripMenuItem.Text = "VOLVER";
+            vOLVERToolStripMenuItem.Click += vOLVERToolStripMenuItem_Click;
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
@@ -369,5 +387,7 @@
         private SaveFileDialog sfdGuardarXml;
         private ToolStripMenuItem dETALLEToolStripMenuItem;
         private ToolStripMenuItem iNFORMACIONToolStripMenuItem;
+        private ToolStripMenuItem uSUARIOSToolStripMenuItem;
+        private ToolStripMenuItem vOLVERToolStripMenuItem;
     }
 }

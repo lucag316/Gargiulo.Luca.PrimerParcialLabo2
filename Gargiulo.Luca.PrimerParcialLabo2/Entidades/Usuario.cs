@@ -8,8 +8,12 @@ namespace Entidades
 {
     public class Usuario
     {
+        private string _nombre;
+        private string _apellido;
+        private string _legajo;
         private string _correo;
         private string _clave;
+        private string _perfil;
 
         public string apellido { get; set; }
         public string nombre { get; set; }

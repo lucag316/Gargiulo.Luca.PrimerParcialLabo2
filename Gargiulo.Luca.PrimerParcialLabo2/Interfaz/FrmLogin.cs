@@ -54,8 +54,13 @@ namespace Interfaz
             //bool usuarioValidado = VerificarUsuario(txtCorreo.Text, txtClave.Text);
             Usuario usuarioLogueado = ObtenerUsuario(txtCorreo.Text, txtClave.Text);
 
+
             if (usuarioLogueado != null)
             {
+                //registro el acceso
+                UsuarioLog usuarioLog = new UsuarioLog("usuarios.log");
+                usuarioLog.RegistrarAcceso(usuarioLogueado);
+
                 FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(usuarioLogueado.nombre);
                 frmMenuPrincipal.Show();
                 this.Hide();
@@ -67,7 +72,5 @@ namespace Interfaz
                 txtClave.Clear();
             }
         }
-
-        
     }
 }
