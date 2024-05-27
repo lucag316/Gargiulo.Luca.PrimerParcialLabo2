@@ -14,11 +14,13 @@ namespace Interfaz
     public partial class FrmMenuPrincipal : Form
     {
         private Kiosco kiosco;
+        private string operador;
 
-        public FrmMenuPrincipal()
+        public FrmMenuPrincipal(string nombreOperador)
         {
             InitializeComponent();
             this.kiosco = new Kiosco();
+            this.operador = nombreOperador;
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -26,9 +28,15 @@ namespace Interfaz
             this.IsMdiContainer = true;
             //tratar de cargar la lista del archivo al principio
             //CargarGolosinas();
+            ActualizarBarraDeInformacion();
             ActualizarVisorGolosinas();
         }
 
+        private void ActualizarBarraDeInformacion()
+        {
+            this.toolStripStatusLabel2.Text = $"Operador: {this.operador}";
+            this.toolStripStatusLabel3.Text = $"Fecha: {DateTime.Now.ToString("dd/MM/yyyy")}";//actualizo la fecha
+        }
         private void ActualizarVisorGolosinas()
         {
             this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas

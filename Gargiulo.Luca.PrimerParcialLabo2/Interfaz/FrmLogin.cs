@@ -21,7 +21,7 @@ namespace Interfaz
 
         }
 
-        private bool VerificarUsuario(string correo, string clave)
+        /*private bool VerificarUsuario(string correo, string clave)
         {
             bool estaElUsuario = false;
 
@@ -34,15 +34,29 @@ namespace Interfaz
                 }
             }
             return estaElUsuario;
+        }*/
+        private Usuario ObtenerUsuario(string correo, string clave)
+        {
+
+            foreach (Usuario usuario in this.usuarios)
+            {
+                if (usuario.correo == correo && usuario.clave == clave)
+                {
+                    return usuario;
+                }
+            }
+            return null;
+
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            bool usuarioValidado = VerificarUsuario(txtCorreo.Text, txtClave.Text);
+            //bool usuarioValidado = VerificarUsuario(txtCorreo.Text, txtClave.Text);
+            Usuario usuarioLogueado = ObtenerUsuario(txtCorreo.Text, txtClave.Text);
 
-            if (usuarioValidado)
+            if (usuarioLogueado != null)
             {
-                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(usuarioLogueado.nombre);
                 frmMenuPrincipal.Show();
                 this.Hide();
             }
