@@ -56,12 +56,24 @@
             dESERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
             jSONToolStripMenuItem3 = new ToolStripMenuItem();
             xMLToolStripMenuItem3 = new ToolStripMenuItem();
+            oRDENARToolStripMenuItem = new ToolStripMenuItem();
+            pORCODIGOToolStripMenuItem = new ToolStripMenuItem();
+            aSCENDENTEToolStripMenuItem = new ToolStripMenuItem();
+            dESCENDENTEToolStripMenuItem = new ToolStripMenuItem();
+            pORPESOToolStripMenuItem = new ToolStripMenuItem();
+            aSCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
+            dESCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem = new ToolStripMenuItem();
             xMLToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem1 = new ToolStripMenuItem();
             xMLToolStripMenuItem1 = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            toolStripStatusLabel2 = new ToolStripStatusLabel();
+            toolStripStatusLabel3 = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -119,7 +131,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, cRUDToolStripMenuItem, aRCHIVOSToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, cRUDToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -232,7 +244,7 @@
             // 
             sERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { jSONToolStripMenuItem2, xMLToolStripMenuItem2 });
             sERIALIZARToolStripMenuItem2.Name = "sERIALIZARToolStripMenuItem2";
-            sERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
+            sERIALIZARToolStripMenuItem2.Size = new Size(154, 22);
             sERIALIZARToolStripMenuItem2.Text = "SERIALIZAR";
             // 
             // jSONToolStripMenuItem2
@@ -253,22 +265,72 @@
             // 
             dESERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { jSONToolStripMenuItem3, xMLToolStripMenuItem3 });
             dESERIALIZARToolStripMenuItem2.Name = "dESERIALIZARToolStripMenuItem2";
-            dESERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
+            dESERIALIZARToolStripMenuItem2.Size = new Size(154, 22);
             dESERIALIZARToolStripMenuItem2.Text = "DESERIALIZAR";
             // 
             // jSONToolStripMenuItem3
             // 
             jSONToolStripMenuItem3.Name = "jSONToolStripMenuItem3";
-            jSONToolStripMenuItem3.Size = new Size(180, 22);
+            jSONToolStripMenuItem3.Size = new Size(102, 22);
             jSONToolStripMenuItem3.Text = "JSON";
             jSONToolStripMenuItem3.Click += jSONToolStripMenuItem3_Click;
             // 
             // xMLToolStripMenuItem3
             // 
             xMLToolStripMenuItem3.Name = "xMLToolStripMenuItem3";
-            xMLToolStripMenuItem3.Size = new Size(180, 22);
+            xMLToolStripMenuItem3.Size = new Size(102, 22);
             xMLToolStripMenuItem3.Text = "XML";
             xMLToolStripMenuItem3.Click += xMLToolStripMenuItem3_Click;
+            // 
+            // oRDENARToolStripMenuItem
+            // 
+            oRDENARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pORCODIGOToolStripMenuItem, pORPESOToolStripMenuItem });
+            oRDENARToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            oRDENARToolStripMenuItem.Name = "oRDENARToolStripMenuItem";
+            oRDENARToolStripMenuItem.Size = new Size(77, 20);
+            oRDENARToolStripMenuItem.Text = "ORDENAR";
+            // 
+            // pORCODIGOToolStripMenuItem
+            // 
+            pORCODIGOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem, dESCENDENTEToolStripMenuItem });
+            pORCODIGOToolStripMenuItem.Name = "pORCODIGOToolStripMenuItem";
+            pORCODIGOToolStripMenuItem.Size = new Size(152, 22);
+            pORCODIGOToolStripMenuItem.Text = "POR CODIGO";
+            // 
+            // aSCENDENTEToolStripMenuItem
+            // 
+            aSCENDENTEToolStripMenuItem.Name = "aSCENDENTEToolStripMenuItem";
+            aSCENDENTEToolStripMenuItem.Size = new Size(164, 22);
+            aSCENDENTEToolStripMenuItem.Text = "ASCENDENTE";
+            aSCENDENTEToolStripMenuItem.Click += aSCENDENTEToolStripMenuItem_Click;
+            // 
+            // dESCENDENTEToolStripMenuItem
+            // 
+            dESCENDENTEToolStripMenuItem.Name = "dESCENDENTEToolStripMenuItem";
+            dESCENDENTEToolStripMenuItem.Size = new Size(164, 22);
+            dESCENDENTEToolStripMenuItem.Text = "DESCENDENTE";
+            dESCENDENTEToolStripMenuItem.Click += dESCENDENTEToolStripMenuItem_Click;
+            // 
+            // pORPESOToolStripMenuItem
+            // 
+            pORPESOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem1, dESCENDENTEToolStripMenuItem1 });
+            pORPESOToolStripMenuItem.Name = "pORPESOToolStripMenuItem";
+            pORPESOToolStripMenuItem.Size = new Size(152, 22);
+            pORPESOToolStripMenuItem.Text = "POR PESO";
+            // 
+            // aSCENDENTEToolStripMenuItem1
+            // 
+            aSCENDENTEToolStripMenuItem1.Name = "aSCENDENTEToolStripMenuItem1";
+            aSCENDENTEToolStripMenuItem1.Size = new Size(164, 22);
+            aSCENDENTEToolStripMenuItem1.Text = "ASCENDENTE";
+            aSCENDENTEToolStripMenuItem1.Click += aSCENDENTEToolStripMenuItem1_Click;
+            // 
+            // dESCENDENTEToolStripMenuItem1
+            // 
+            dESCENDENTEToolStripMenuItem1.Name = "dESCENDENTEToolStripMenuItem1";
+            dESCENDENTEToolStripMenuItem1.Size = new Size(164, 22);
+            dESCENDENTEToolStripMenuItem1.Text = "DESCENDENTE";
+            dESCENDENTEToolStripMenuItem1.Click += dESCENDENTEToolStripMenuItem1_Click;
             // 
             // dESERIALIZARToolStripMenuItem
             // 
@@ -295,12 +357,39 @@
             xMLToolStripMenuItem1.Name = "xMLToolStripMenuItem1";
             xMLToolStripMenuItem1.Size = new Size(32, 19);
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
+            statusStrip1.Location = new Point(0, 398);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(914, 22);
+            statusStrip1.TabIndex = 12;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(0, 17);
+            // 
+            // toolStripStatusLabel2
+            // 
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new Size(56, 17);
+            toolStripStatusLabel2.Text = "NOMBRE";
+            // 
+            // toolStripStatusLabel3
+            // 
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            toolStripStatusLabel3.Size = new Size(44, 17);
+            toolStripStatusLabel3.Text = "FECHA";
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 420);
+            Controls.Add(statusStrip1);
             Controls.Add(button1);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
@@ -314,6 +403,8 @@
             Load += FrmMenuPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -352,5 +443,16 @@
         private ToolStripMenuItem cHUPETINToolStripMenuItem;
         private ToolStripMenuItem mODIFICARToolStripMenuItem;
         private ToolStripMenuItem eLIMINARToolStripMenuItem;
+        private ToolStripMenuItem oRDENARToolStripMenuItem;
+        private ToolStripMenuItem pORCODIGOToolStripMenuItem;
+        private ToolStripMenuItem aSCENDENTEToolStripMenuItem;
+        private ToolStripMenuItem dESCENDENTEToolStripMenuItem;
+        private ToolStripMenuItem pORPESOToolStripMenuItem;
+        private ToolStripMenuItem aSCENDENTEToolStripMenuItem1;
+        private ToolStripMenuItem dESCENDENTEToolStripMenuItem1;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel toolStripStatusLabel2;
+        private ToolStripStatusLabel toolStripStatusLabel3;
     }
 }

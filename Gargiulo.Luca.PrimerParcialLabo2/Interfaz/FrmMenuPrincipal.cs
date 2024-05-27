@@ -164,12 +164,16 @@ namespace Interfaz
         {
             try
             {
-                Serializadora deserializadoraJson = new Serializadora("Golosinas");
-                //List<Golosina> golosinasDeserializadas = Deser
+                Serializadora deserializadoraJson = new Serializadora("Golosinas", kiosco.Golosinas);
+                List<Golosina> golosinasDeserializadas = deserializadoraJson.DeserializarGolosinasJSON();
+                this.kiosco.Golosinas.Clear();
+                this.kiosco += golosinasDeserializadas; //para no usar AddRange
+                this.ActualizarVisorGolosinas();
+                MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo JSON.");
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
             }
         }
 
@@ -178,9 +182,9 @@ namespace Interfaz
             try
             {
                 Serializadora deserializadoraXml = new Serializadora("Golosinas", kiosco.Golosinas);
-                List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazrGolosinasXML();
+                List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
                 this.kiosco.Golosinas.Clear();
-                this.kiosco.Golosinas.AddRange(golosinasDeserializadas); //+= golosinasDeserializadas;//hacer una sobrecarga de Kiosco += Lista
+                this.kiosco += golosinasDeserializadas; //para no usar AddRange
                 this.ActualizarVisorGolosinas();
                 MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
             }
@@ -189,5 +193,64 @@ namespace Interfaz
                 MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
             }
         }
+
+        private void aSCENDENTEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                kiosco.OrdenarGolosinasPorCodigo(true);
+                this.ActualizarVisorGolosinas();
+                MessageBox.Show("Lista de golosinas fue ordenada por codigo, forma ascendente, correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas: {ex.Message}");
+            }
+
+        }
+
+        private void dESCENDENTEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                kiosco.OrdenarGolosinasPorCodigo(false);
+                this.ActualizarVisorGolosinas();
+                MessageBox.Show("Lista de golosinas fue ordenada por codigo, forma descendente, correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas: {ex.Message}");
+            }
+        }
+
+        private void aSCENDENTEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                kiosco.OrdenarGolosinasPorPeso(true);
+                this.ActualizarVisorGolosinas();
+                MessageBox.Show("Lista de golosinas fue ordenada por peso, forma ascendente, correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas: {ex.Message}");
+            }
+        }
+
+        private void dESCENDENTEToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                kiosco.OrdenarGolosinasPorPeso(false);
+                this.ActualizarVisorGolosinas();
+                MessageBox.Show("Lista de golosinas fue ordenada por peso, forma descendente, correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas: {ex.Message}");
+            }
+        }
+
+
     }
 }

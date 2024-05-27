@@ -139,6 +139,7 @@ namespace Entidades
         #endregion
 
         #region Operadores suma y resta
+
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
         {
             if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
@@ -174,6 +175,25 @@ namespace Entidades
             else
             {
                 Console.WriteLine("El kiosco no tiene golosinas");
+            }
+            return kiosco;
+        }
+        public static Kiosco operator +(Kiosco kiosco, List<Golosina> listaGolosina)
+        {
+            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
+            {
+                if (kiosco != null  && listaGolosina != null) 
+                { 
+                    kiosco.Golosinas.AddRange(listaGolosina);
+                }
+                else
+                {
+                    Console.WriteLine("Error, no se puede operar valores nulos");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se puede agregar mas, es la capacidad maxima del kiosco");
             }
             return kiosco;
         }
