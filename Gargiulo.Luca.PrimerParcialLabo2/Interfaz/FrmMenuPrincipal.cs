@@ -30,6 +30,7 @@ namespace Interfaz
             //CargarGolosinas();
             ActualizarBarraDeInformacion();
             ActualizarVisorGolosinas();
+
         }
         #region Metodos
         private void ActualizarBarraDeInformacion()
@@ -149,9 +150,9 @@ namespace Interfaz
                 this.kiosco.Golosinas.RemoveAt(i); //lo elimino
                 this.ActualizarVisorGolosinas();
             }
-        } 
+        }
 
-        
+
         #endregion
 
         #region Ordenar
@@ -278,6 +279,19 @@ namespace Interfaz
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
+                }
+            }
+        }
+
+        private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult dialogResult = MessageBox.Show("Esta seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = true; // lo cancelo al cierre
                 }
             }
         }

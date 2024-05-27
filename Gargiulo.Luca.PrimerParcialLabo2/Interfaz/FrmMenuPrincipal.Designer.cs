@@ -52,6 +52,8 @@
             pORPESOToolStripMenuItem = new ToolStripMenuItem();
             aSCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
             dESCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
+            dETALLEToolStripMenuItem = new ToolStripMenuItem();
+            iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem = new ToolStripMenuItem();
             xMLToolStripMenuItem = new ToolStripMenuItem();
@@ -63,8 +65,6 @@
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             ofdAbrirXml = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
-            dETALLEToolStripMenuItem = new ToolStripMenuItem();
-            iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -100,7 +100,7 @@
             // 
             aGREGARToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem, cHICLEToolStripMenuItem, cHUPETINToolStripMenuItem });
             aGREGARToolStripMenuItem1.Name = "aGREGARToolStripMenuItem1";
-            aGREGARToolStripMenuItem1.Size = new Size(180, 22);
+            aGREGARToolStripMenuItem1.Size = new Size(141, 22);
             aGREGARToolStripMenuItem1.Text = "AGREGAR";
             // 
             // cHOCOLATEToolStripMenuItem
@@ -127,14 +127,14 @@
             // mODIFICARToolStripMenuItem
             // 
             mODIFICARToolStripMenuItem.Name = "mODIFICARToolStripMenuItem";
-            mODIFICARToolStripMenuItem.Size = new Size(180, 22);
+            mODIFICARToolStripMenuItem.Size = new Size(141, 22);
             mODIFICARToolStripMenuItem.Text = "MODIFICAR";
             mODIFICARToolStripMenuItem.Click += mODIFICARToolStripMenuItem_Click;
             // 
             // eLIMINARToolStripMenuItem
             // 
             eLIMINARToolStripMenuItem.Name = "eLIMINARToolStripMenuItem";
-            eLIMINARToolStripMenuItem.Size = new Size(180, 22);
+            eLIMINARToolStripMenuItem.Size = new Size(141, 22);
             eLIMINARToolStripMenuItem.Text = "ELIMINAR";
             eLIMINARToolStripMenuItem.Click += eLIMINARToolStripMenuItem_Click;
             // 
@@ -200,7 +200,7 @@
             // 
             pORCODIGOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem, dESCENDENTEToolStripMenuItem });
             pORCODIGOToolStripMenuItem.Name = "pORCODIGOToolStripMenuItem";
-            pORCODIGOToolStripMenuItem.Size = new Size(180, 22);
+            pORCODIGOToolStripMenuItem.Size = new Size(152, 22);
             pORCODIGOToolStripMenuItem.Text = "POR CODIGO";
             // 
             // aSCENDENTEToolStripMenuItem
@@ -221,7 +221,7 @@
             // 
             pORPESOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem1, dESCENDENTEToolStripMenuItem1 });
             pORPESOToolStripMenuItem.Name = "pORPESOToolStripMenuItem";
-            pORPESOToolStripMenuItem.Size = new Size(180, 22);
+            pORPESOToolStripMenuItem.Size = new Size(152, 22);
             pORPESOToolStripMenuItem.Text = "POR PESO";
             // 
             // aSCENDENTEToolStripMenuItem1
@@ -237,6 +237,20 @@
             dESCENDENTEToolStripMenuItem1.Size = new Size(164, 22);
             dESCENDENTEToolStripMenuItem1.Text = "DESCENDENTE";
             dESCENDENTEToolStripMenuItem1.Click += dESCENDENTEToolStripMenuItem1_Click;
+            // 
+            // dETALLEToolStripMenuItem
+            // 
+            dETALLEToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dETALLEToolStripMenuItem.Name = "dETALLEToolStripMenuItem";
+            dETALLEToolStripMenuItem.Size = new Size(71, 20);
+            dETALLEToolStripMenuItem.Text = "DETALLE";
+            // 
+            // iNFORMACIONToolStripMenuItem
+            // 
+            iNFORMACIONToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iNFORMACIONToolStripMenuItem.Name = "iNFORMACIONToolStripMenuItem";
+            iNFORMACIONToolStripMenuItem.Size = new Size(105, 20);
+            iNFORMACIONToolStripMenuItem.Text = "INFORMACION";
             // 
             // dESERIALIZARToolStripMenuItem
             // 
@@ -295,20 +309,6 @@
             // 
             ofdAbrirXml.FileName = "ofdAbrirXml";
             // 
-            // dETALLEToolStripMenuItem
-            // 
-            dETALLEToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dETALLEToolStripMenuItem.Name = "dETALLEToolStripMenuItem";
-            dETALLEToolStripMenuItem.Size = new Size(71, 20);
-            dETALLEToolStripMenuItem.Text = "DETALLE";
-            // 
-            // iNFORMACIONToolStripMenuItem
-            // 
-            iNFORMACIONToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            iNFORMACIONToolStripMenuItem.Name = "iNFORMACIONToolStripMenuItem";
-            iNFORMACIONToolStripMenuItem.Size = new Size(105, 20);
-            iNFORMACIONToolStripMenuItem.Text = "INFORMACION";
-            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
@@ -322,6 +322,7 @@
             Name = "FrmMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            FormClosing += FrmMenuPrincipal_FormClosing;
             Load += FrmMenuPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
