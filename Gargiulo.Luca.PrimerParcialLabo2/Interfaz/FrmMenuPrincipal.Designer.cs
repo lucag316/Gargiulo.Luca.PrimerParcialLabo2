@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPrincipal));
-            button1 = new Button();
             btnEliminar = new Button();
             btnModificar = new Button();
             lstVisorGolosinas = new ListBox();
@@ -42,13 +41,6 @@
             cHUPETINToolStripMenuItem = new ToolStripMenuItem();
             mODIFICARToolStripMenuItem = new ToolStripMenuItem();
             eLIMINARToolStripMenuItem = new ToolStripMenuItem();
-            cRUDToolStripMenuItem = new ToolStripMenuItem();
-            aGREGARToolStripMenuItem = new ToolStripMenuItem();
-            cHOCOLATEToolStripMenuItem1 = new ToolStripMenuItem();
-            cHICLEToolStripMenuItem1 = new ToolStripMenuItem();
-            cHUPETINToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            oToolStripMenuItem = new ToolStripMenuItem();
             aRCHIVOSToolStripMenuItem = new ToolStripMenuItem();
             sERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
             jSONToolStripMenuItem2 = new ToolStripMenuItem();
@@ -63,6 +55,13 @@
             pORPESOToolStripMenuItem = new ToolStripMenuItem();
             aSCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
             dESCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
+            cRUDToolStripMenuItem = new ToolStripMenuItem();
+            aGREGARToolStripMenuItem = new ToolStripMenuItem();
+            cHOCOLATEToolStripMenuItem1 = new ToolStripMenuItem();
+            cHICLEToolStripMenuItem1 = new ToolStripMenuItem();
+            cHUPETINToolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            oToolStripMenuItem = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem = new ToolStripMenuItem();
             xMLToolStripMenuItem = new ToolStripMenuItem();
@@ -75,15 +74,6 @@
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(815, 13);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 21);
-            button1.TabIndex = 10;
-            button1.Text = "leer";
-            button1.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
@@ -131,7 +121,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, cRUDToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem, cRUDToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -183,54 +173,6 @@
             eLIMINARToolStripMenuItem.Name = "eLIMINARToolStripMenuItem";
             eLIMINARToolStripMenuItem.Size = new Size(141, 22);
             eLIMINARToolStripMenuItem.Text = "ELIMINAR";
-            // 
-            // cRUDToolStripMenuItem
-            // 
-            cRUDToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARToolStripMenuItem, toolStripMenuItem1, oToolStripMenuItem });
-            cRUDToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            cRUDToolStripMenuItem.Name = "cRUDToolStripMenuItem";
-            cRUDToolStripMenuItem.Size = new Size(55, 20);
-            cRUDToolStripMenuItem.Text = "CRUD";
-            // 
-            // aGREGARToolStripMenuItem
-            // 
-            aGREGARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem1, cHICLEToolStripMenuItem1, cHUPETINToolStripMenuItem1 });
-            aGREGARToolStripMenuItem.Name = "aGREGARToolStripMenuItem";
-            aGREGARToolStripMenuItem.Size = new Size(151, 22);
-            aGREGARToolStripMenuItem.Text = "AGREGAR";
-            // 
-            // cHOCOLATEToolStripMenuItem1
-            // 
-            cHOCOLATEToolStripMenuItem1.Name = "cHOCOLATEToolStripMenuItem1";
-            cHOCOLATEToolStripMenuItem1.Size = new Size(153, 22);
-            cHOCOLATEToolStripMenuItem1.Text = "CHOCOLATE";
-            cHOCOLATEToolStripMenuItem1.Click += cHOCOLATEToolStripMenuItem1_Click;
-            // 
-            // cHICLEToolStripMenuItem1
-            // 
-            cHICLEToolStripMenuItem1.Name = "cHICLEToolStripMenuItem1";
-            cHICLEToolStripMenuItem1.Size = new Size(153, 22);
-            cHICLEToolStripMenuItem1.Text = "CHICLE";
-            cHICLEToolStripMenuItem1.Click += cHICLEToolStripMenuItem1_Click;
-            // 
-            // cHUPETINToolStripMenuItem1
-            // 
-            cHUPETINToolStripMenuItem1.Name = "cHUPETINToolStripMenuItem1";
-            cHUPETINToolStripMenuItem1.Size = new Size(153, 22);
-            cHUPETINToolStripMenuItem1.Text = "CHUPETIN";
-            cHUPETINToolStripMenuItem1.Click += cHUPETINToolStripMenuItem1_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(151, 22);
-            toolStripMenuItem1.Text = "MODIFICAR";
-            // 
-            // oToolStripMenuItem
-            // 
-            oToolStripMenuItem.Name = "oToolStripMenuItem";
-            oToolStripMenuItem.Size = new Size(151, 22);
-            oToolStripMenuItem.Text = "ELIMINAR";
             // 
             // aRCHIVOSToolStripMenuItem
             // 
@@ -332,6 +274,54 @@
             dESCENDENTEToolStripMenuItem1.Text = "DESCENDENTE";
             dESCENDENTEToolStripMenuItem1.Click += dESCENDENTEToolStripMenuItem1_Click;
             // 
+            // cRUDToolStripMenuItem
+            // 
+            cRUDToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aGREGARToolStripMenuItem, toolStripMenuItem1, oToolStripMenuItem });
+            cRUDToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cRUDToolStripMenuItem.Name = "cRUDToolStripMenuItem";
+            cRUDToolStripMenuItem.Size = new Size(55, 20);
+            cRUDToolStripMenuItem.Text = "CRUD";
+            // 
+            // aGREGARToolStripMenuItem
+            // 
+            aGREGARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHOCOLATEToolStripMenuItem1, cHICLEToolStripMenuItem1, cHUPETINToolStripMenuItem1 });
+            aGREGARToolStripMenuItem.Name = "aGREGARToolStripMenuItem";
+            aGREGARToolStripMenuItem.Size = new Size(151, 22);
+            aGREGARToolStripMenuItem.Text = "AGREGAR";
+            // 
+            // cHOCOLATEToolStripMenuItem1
+            // 
+            cHOCOLATEToolStripMenuItem1.Name = "cHOCOLATEToolStripMenuItem1";
+            cHOCOLATEToolStripMenuItem1.Size = new Size(153, 22);
+            cHOCOLATEToolStripMenuItem1.Text = "CHOCOLATE";
+            cHOCOLATEToolStripMenuItem1.Click += cHOCOLATEToolStripMenuItem1_Click;
+            // 
+            // cHICLEToolStripMenuItem1
+            // 
+            cHICLEToolStripMenuItem1.Name = "cHICLEToolStripMenuItem1";
+            cHICLEToolStripMenuItem1.Size = new Size(153, 22);
+            cHICLEToolStripMenuItem1.Text = "CHICLE";
+            cHICLEToolStripMenuItem1.Click += cHICLEToolStripMenuItem1_Click;
+            // 
+            // cHUPETINToolStripMenuItem1
+            // 
+            cHUPETINToolStripMenuItem1.Name = "cHUPETINToolStripMenuItem1";
+            cHUPETINToolStripMenuItem1.Size = new Size(153, 22);
+            cHUPETINToolStripMenuItem1.Text = "CHUPETIN";
+            cHUPETINToolStripMenuItem1.Click += cHUPETINToolStripMenuItem1_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(151, 22);
+            toolStripMenuItem1.Text = "MODIFICAR";
+            // 
+            // oToolStripMenuItem
+            // 
+            oToolStripMenuItem.Name = "oToolStripMenuItem";
+            oToolStripMenuItem.Size = new Size(151, 22);
+            oToolStripMenuItem.Text = "ELIMINAR";
+            // 
             // dESERIALIZARToolStripMenuItem
             // 
             dESERIALIZARToolStripMenuItem.Name = "dESERIALIZARToolStripMenuItem";
@@ -373,15 +363,17 @@
             // 
             // toolStripStatusLabel2
             // 
+            toolStripStatusLabel2.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(56, 17);
-            toolStripStatusLabel2.Text = "NOMBRE";
+            toolStripStatusLabel2.Size = new Size(72, 17);
+            toolStripStatusLabel2.Text = "NOMBRE: ";
             // 
             // toolStripStatusLabel3
             // 
+            toolStripStatusLabel3.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            toolStripStatusLabel3.Size = new Size(44, 17);
-            toolStripStatusLabel3.Text = "FECHA";
+            toolStripStatusLabel3.Size = new Size(69, 17);
+            toolStripStatusLabel3.Text = " -  FECHA: ";
             // 
             // FrmMenuPrincipal
             // 
@@ -390,7 +382,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 420);
             Controls.Add(statusStrip1);
-            Controls.Add(button1);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(lstVisorGolosinas);
@@ -410,8 +401,6 @@
         }
 
         #endregion
-
-        private Button button1;
         private Button btnEliminar;
         private Button btnModificar;
         private ListBox lstVisorGolosinas;
