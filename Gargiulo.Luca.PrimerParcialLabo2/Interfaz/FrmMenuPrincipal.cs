@@ -211,6 +211,82 @@ namespace Interfaz
         }
         #endregion
 
+        public void AbrirXML()
+        {
+            using (OpenFileDialog odfAbrirXml = new OpenFileDialog())
+            {
+                ofdAbrirXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+                ofdAbrirXml.Title = "Abrir archivo XML";
+
+                if (ofdAbrirXml.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = ofdAbrirXml.FileName;
+
+                    if (!File.Exists(pathArchivo))
+                    {
+                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
+                        return;
+                    }
+                    MessageBox.Show($"Ruta del archivo: {pathArchivo}");
+                    try
+                    {
+                        Serializadora deserializadoraXml = new Serializadora(pathArchivo);
+                        List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
+                        this.kiosco.Golosinas.Clear();
+                        this.kiosco += golosinasDeserializadas;
+                        this.ActualizarVisorGolosinas();
+                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        public void GuardarXML()
+        {
+            using (SaveFileDialog sfdGuardarXml = new SaveFileDialog())
+            {
+                sfdGuardarXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+                sfdGuardarXml.Title = "Guardar archivo XML";
+                sfdGuardarXml.FileName = "Golosinas.xml";
+
+                if (sfdGuardarXml.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = sfdGuardarXml.FileName;
+
+                    //if (!File.Exists(pathArchivo))
+                    //{
+                    //    MessageBox.Show($"El archivo no existe: {pathArchivo}");
+                    //    return;
+                    //}
+                    //MessageBox.Show($"Ruta del archivo: {pathArchivo}");
+                    try
+                    {
+                        Serializadora serializadoraXml = new Serializadora(pathArchivo);
+
+                        serializadoraXml.SerializarGolosinasXML(kiosco.Golosinas); //creo que vas el this. aca this.kiosco...
+                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+
         #region Archivos
         private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -222,10 +298,11 @@ namespace Interfaz
         }
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Serializadora serializadoraXml = new Serializadora("Golosinas");
+            GuardarXML();
+            //Serializadora serializadoraXml = new Serializadora("Golosinas");
 
-            serializadoraXml.SerializarGolosinasXML(kiosco.Golosinas);
-            MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
+            //serializadoraXml.SerializarGolosinasXML(kiosco.Golosinas);
+            //MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
         }
         private void jSONToolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -262,26 +339,7 @@ namespace Interfaz
         }
         #endregion
 
-        public void AbrirXML()
-        {
-            if (ofdAbrirXml.ShowDialog() == DialogResult.OK)
-            {
-                string pathArchivo = ofdAbrirXml.FileName;
-                try
-                {
-                    Serializadora deserializadoraXml = new Serializadora(pathArchivo);
-                    List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
-                    this.kiosco.Golosinas.Clear();
-                    this.kiosco += golosinasDeserializadas;
-                    this.ActualizarVisorGolosinas();
-                    MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-                }
-            }
-        }
+
 
         private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {

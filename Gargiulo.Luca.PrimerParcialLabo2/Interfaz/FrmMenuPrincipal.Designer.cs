@@ -64,7 +64,7 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             ofdAbrirXml = new OpenFileDialog();
-            saveFileDialog1 = new SaveFileDialog();
+            sfdGuardarXml = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -366,7 +366,7 @@
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private OpenFileDialog ofdAbrirXml;
-        private SaveFileDialog saveFileDialog1;
+        private SaveFileDialog sfdGuardarXml;
         private ToolStripMenuItem dETALLEToolStripMenuItem;
         private ToolStripMenuItem iNFORMACIONToolStripMenuItem;
     }

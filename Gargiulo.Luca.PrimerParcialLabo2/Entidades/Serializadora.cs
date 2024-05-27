@@ -16,19 +16,37 @@ namespace Entidades
         private string path;
         public List<Golosina> listaGolosinas;
 
-        public  string Path { get { return this.path; } }
+        public string Path { get { return this.path; } }
 
-        public Serializadora(string path)
+        public Serializadora(string pathArchivo)
         {
-            this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//me develve el path de la carpeta
-            this.path += "/GolosinasSerializadas";
-
-            if (!Directory.Exists(this.path))
+            if (System.IO.Path.IsPathRooted(pathArchivo))
             {
-                Directory.CreateDirectory(this.path);
+                // Si la ruta es absoluta, la usamos directamente
+                this.path = pathArchivo;
+            }
+            else
+            {
+                // Si la ruta es relativa, la concatenamos con el directorio predeterminado
+                this.path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GolosinasSerializadas", pathArchivo);
             }
 
-            this.path += "/" + path;
+            //this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//me develve el path de la carpeta
+            //this.path += "/GolosinasSerializadas";
+
+            string directory = System.IO.Path.GetDirectoryName(this.path);
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            //if (!Directory.Exists(this.path))
+            //{
+            //    Directory.CreateDirectory(this.path);
+            //}
+
+            //this.path += "/" + path;
         }
         public Serializadora(string path, List<Golosina> listaGolosinas) : this(path)
         {
@@ -62,7 +80,7 @@ namespace Entidades
         }
         public void SerializarGolosinasXML(List<Golosina> golosinas)
         {
-            using (XmlTextWriter xmlWriter = new XmlTextWriter(this.Path + ".xml", Encoding.UTF8)) //primero lo instancio
+            using (XmlTextWriter xmlWriter = new XmlTextWriter(this.Path, Encoding.UTF8)) //no hacia falta agregar + .xml//primero lo instancio
             {
                 XmlSerializer serXml = new XmlSerializer(typeof(List<Golosina>)); //lo serializo
 
@@ -88,7 +106,7 @@ namespace Entidades
             //List<Golosina> auxGolosinas = new List<Golosina>();  //instancio una lista de golosinas vacia
             this.listaGolosinas = new List<Golosina>();
 
-            using (XmlTextReader xmlReader = new XmlTextReader(this.path + ".xml"))
+            using (XmlTextReader xmlReader = new XmlTextReader(this.path))// + .xml
             {
                 XmlSerializer serXml = new XmlSerializer (typeof(List<Golosina>)); //instancio el serializer
 
