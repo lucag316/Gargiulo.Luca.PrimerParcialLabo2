@@ -372,5 +372,16 @@ namespace Interfaz
             frmLogin.Show();
 
         }
+
+        private void dETALLEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDetalleKiosco frmDetalleKiosco = new FrmDetalleKiosco();
+
+            frmDetalleKiosco.MostrarDetalleEnVisor(this.kiosco.MostrarDetalleEnVisor());
+
+            frmDetalleKiosco.ShowDialog();
+
+             
+        }
     }
 }

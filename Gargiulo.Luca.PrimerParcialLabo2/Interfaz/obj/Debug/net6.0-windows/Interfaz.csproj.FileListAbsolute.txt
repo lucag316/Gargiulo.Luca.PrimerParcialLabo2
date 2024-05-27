@@ -26,3 +26,4 @@ C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Garg
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\ref\Interfaz.dll
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.AbrirXml.resources
 C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmVisualizadorUsuariosLog.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmDetalleKiosco.resources

@@ -69,6 +69,36 @@ namespace Entidades
 
         #region Metodos
 
+        public string MostrarDetalleEnVisor()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<Golosina> listaLocalGolosinas = this.Golosinas;
+
+            foreach (Golosina golosina in listaLocalGolosinas)
+            {
+                if (golosina is Chocolate)// si golosina es un Chocolate
+                {
+                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor());//lo casteo para tener ese metodo
+                }
+                else if (golosina is Chicle)
+                {
+                    sb.AppendLine(((Chicle)golosina).MostrarEnVisor());
+                }
+                else if (golosina is Chupetin)
+                {
+                    sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
+                }
+                double precioTotal = CalcularPrecioTotal();
+
+                sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
+                sb.AppendLine($"         ${precioTotal.ToString()}");
+                sb.AppendLine("===============================================\n");
+            }
+            return sb.ToString();
+
+        }
+
         public string MostrarListaEnVisor()
         {
             StringBuilder sb = new StringBuilder();
@@ -90,13 +120,6 @@ namespace Entidades
                     sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
                 }
             }
-            /*
-            double precioTotal = CalcularPrecioTotal();
-
-            //sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
-            //sb.AppendLine($"         ${precioTotal.ToString()}");
-            //sb.AppendLine("===============================================\n");
-            */
             return sb.ToString();
         }
 
@@ -110,7 +133,6 @@ namespace Entidades
             }
             return precioTotal;
         }
-
 
         public void OrdenarGolosinasPorCodigo(bool ascendente)
         {

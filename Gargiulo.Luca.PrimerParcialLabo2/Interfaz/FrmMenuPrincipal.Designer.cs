@@ -55,6 +55,7 @@
             uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
+            vOLVERToolStripMenuItem = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem = new ToolStripMenuItem();
             jSONToolStripMenuItem = new ToolStripMenuItem();
             xMLToolStripMenuItem = new ToolStripMenuItem();
@@ -66,7 +67,6 @@
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             ofdAbrirXml = new OpenFileDialog();
             sfdGuardarXml = new SaveFileDialog();
-            vOLVERToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -254,6 +254,7 @@
             dETALLEToolStripMenuItem.Name = "dETALLEToolStripMenuItem";
             dETALLEToolStripMenuItem.Size = new Size(71, 20);
             dETALLEToolStripMenuItem.Text = "DETALLE";
+            dETALLEToolStripMenuItem.Click += dETALLEToolStripMenuItem_Click;
             // 
             // iNFORMACIONToolStripMenuItem
             // 
@@ -261,6 +262,14 @@
             iNFORMACIONToolStripMenuItem.Name = "iNFORMACIONToolStripMenuItem";
             iNFORMACIONToolStripMenuItem.Size = new Size(105, 20);
             iNFORMACIONToolStripMenuItem.Text = "INFORMACION";
+            // 
+            // vOLVERToolStripMenuItem
+            // 
+            vOLVERToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            vOLVERToolStripMenuItem.Name = "vOLVERToolStripMenuItem";
+            vOLVERToolStripMenuItem.Size = new Size(68, 20);
+            vOLVERToolStripMenuItem.Text = "VOLVER";
+            vOLVERToolStripMenuItem.Click += vOLVERToolStripMenuItem_Click;
             // 
             // dESERIALIZARToolStripMenuItem
             // 
@@ -318,14 +327,6 @@
             // ofdAbrirXml
             // 
             ofdAbrirXml.FileName = "ofdAbrirXml";
-            // 
-            // vOLVERToolStripMenuItem
-            // 
-            vOLVERToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            vOLVERToolStripMenuItem.Name = "vOLVERToolStripMenuItem";
-            vOLVERToolStripMenuItem.Size = new Size(68, 20);
-            vOLVERToolStripMenuItem.Text = "VOLVER";
-            vOLVERToolStripMenuItem.Click += vOLVERToolStripMenuItem_Click;
             // 
             // FrmMenuPrincipal
             // 
