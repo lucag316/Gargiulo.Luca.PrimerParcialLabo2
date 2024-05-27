@@ -14,6 +14,7 @@ namespace Entidades
     public class Serializadora
     {
         private string path;
+        public List<Golosina> listaGolosinas;
 
         public  string Path { get { return this.path; } }
 
@@ -28,6 +29,10 @@ namespace Entidades
             }
 
             this.path += "/" + path;
+        }
+        public Serializadora(string path, List<Golosina> listaGolosinas) : this(path)
+        {
+            this.listaGolosinas = listaGolosinas;
         }
 
         public static List<Usuario> DeserializarUsuariosJSON(string pathArchivo)
@@ -50,8 +55,7 @@ namespace Entidades
 
             using (StreamWriter streamWriter = new StreamWriter( this.Path + ".json")) //instancio un SW que me va a escribir el archivo
             {
-
-                string objJon = JsonSerializer.Serialize(golosinas, opciones); //lo que voy a serializar y el identado opcional
+                string objJon = JsonSerializer.Serialize((object[])golosinas.ToArray(), opciones); //lo que voy a serializar y el identado opcional
 
                 streamWriter.WriteLine(objJon); //aca lo escribo
             }
@@ -66,11 +70,11 @@ namespace Entidades
             }
         }
 
-        public static List<Golosina> DeserializarGolosinasJSON(string pathArchivo)
+        public List<Golosina> DeserializarGolosinasJSON()
         {
             List<Golosina> listaAux = new List<Golosina>();  //creo una lista vacia auxiliar donde guardo a las golosinas que se deserialicen
 
-            using (StreamReader streamReader = new StreamReader(pathArchivo))
+            using (StreamReader streamReader = new StreamReader(this.path + ".json"))
             {
                 string jsonGolosinas = streamReader.ReadToEnd(); //leo todo completo hasta el final
 
@@ -79,17 +83,18 @@ namespace Entidades
             return listaAux;
         }
 
-        public static List<Golosina> DeserialiazrGolosinasXML(string pathArchivo)
+        public List<Golosina> DeserialiazrGolosinasXML()
         {
-            List<Golosina> auxGolosinas = new List<Golosina>();  //instancio una lista de golosinas vacia
+            //List<Golosina> auxGolosinas = new List<Golosina>();  //instancio una lista de golosinas vacia
+            this.listaGolosinas = new List<Golosina>();
 
-            using (XmlTextReader xmlReader = new XmlTextReader(pathArchivo))
+            using (XmlTextReader xmlReader = new XmlTextReader(this.path + ".xml"))
             {
                 XmlSerializer serXml = new XmlSerializer (typeof(List<Golosina>)); //instancio el serializer
 
-                auxGolosinas = (List<Golosina>)serXml.Deserialize(xmlReader); //deseralizo el xmltextreader y lo casteo
+                this.listaGolosinas = (List<Golosina>)serXml.Deserialize(xmlReader); //deseralizo el xmltextreader y lo casteo
 
-                return auxGolosinas;
+                return this.listaGolosinas;
             }
         }
     }  
