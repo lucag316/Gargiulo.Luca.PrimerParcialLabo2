@@ -17,10 +17,18 @@ namespace Entidades
 
         #region Propiedades
         [JsonPropertyName("elasticidad")]
-        public ENivelesDeElasticidad Elasticidad { get { return this.elasticidad; } }
+        public ENivelesDeElasticidad Elasticidad
+        {
+            get { return this.elasticidad; }
+            set { this.elasticidad = value; }
+        }
 
         [JsonPropertyName("duracionSabor")]
-        public ENivelesDuracionDeSabor DuracionSabor { get { return this.duracionSabor; } }
+        public ENivelesDuracionDeSabor DuracionSabor
+        {
+            get { return this.duracionSabor; }
+            set { this.duracionSabor = value; }
+        }
         #endregion
 
         #region Constructor

@@ -36,17 +36,13 @@ namespace Entidades
         }
         public double Precio
         {
-            get
-            {
-                return this.precio;
-            }
+            get { return this.precio; }
+            set { this.precio = value; }
         }
-        public double Cantidad
+        public int Cantidad
         {
-            get
-            {
-                return this.cantidad;
-            }
+            get { return this.cantidad; }
+            set { this.cantidad = value; }
         }
         #endregion
 

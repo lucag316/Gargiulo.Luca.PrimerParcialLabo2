@@ -17,10 +17,18 @@ namespace Entidades
 
         #region Propiedades
         [JsonPropertyName("formaChupetin")]
-        public EFormasDeChupetin FormaChupetin { get { return this.formaChupetin; } }
+        public EFormasDeChupetin FormaChupetin
+        {
+            get { return this.formaChupetin;}
+            set { this.formaChupetin = value;}
+        }
 
         [JsonPropertyName("dureza")]
-        public ENivelesDeDureza Dureza { get { return this.dureza; } }
+        public ENivelesDeDureza Dureza
+        {
+            get { return this.dureza; }
+            set { this.dureza = value; }
+        }
         #endregion
 
         #region Constructor

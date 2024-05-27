@@ -17,10 +17,18 @@ namespace Entidades
 
         #region Propiedades
         [JsonPropertyName("relleno")]
-        public ERellenos Relleno { get { return this.relleno; } }
+        public ERellenos Relleno
+        {
+            get { return this.relleno; }
+            set { this.relleno = value;}
+        }
 
         [JsonPropertyName("tipoDeCacao")]
-        public ETiposDeCacao TipoDeCacao { get { return this.tipoDeCacao; } }
+        public ETiposDeCacao TipoDeCacao
+        {
+            get { return this.tipoDeCacao; }
+            set { this.tipoDeCacao = value; }
+        }
         #endregion
 
         #region Constructor
