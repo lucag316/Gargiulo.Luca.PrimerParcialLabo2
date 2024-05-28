@@ -263,6 +263,7 @@
             iNFORMACIONToolStripMenuItem.Name = "iNFORMACIONToolStripMenuItem";
             iNFORMACIONToolStripMenuItem.Size = new Size(105, 20);
             iNFORMACIONToolStripMenuItem.Text = "INFORMACION";
+            iNFORMACIONToolStripMenuItem.Click += iNFORMACIONToolStripMenuItem_Click;
             // 
             // vOLVERToolStripMenuItem
             // 

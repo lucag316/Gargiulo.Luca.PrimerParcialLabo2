@@ -427,5 +427,23 @@ namespace Interfaz
 
             frmDetalleKiosco.ShowDialog();
         }
+
+        private void iNFORMACIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder info = new StringBuilder();
+
+            info.AppendLine("");
+            info.AppendLine("=========== DESCUENTOS ===========");
+            info.AppendLine("CHOCOLATE: Si la cantidad es mayor a 3, tiene un 30% de descuento");
+            info.AppendLine("CHICLE: Si la cantidad es mayor a 5, tiene un 15% de descuento");
+            info.AppendLine("CHUPETIN: Si la cantidad es mayor a 2, tiene un 20% de descuento");
+            info.AppendLine("=================================");
+            info.AppendLine("");
+
+            string infosString = info.ToString();
+
+            MessageBox.Show(infosString, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }

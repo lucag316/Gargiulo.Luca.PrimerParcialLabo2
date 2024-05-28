@@ -86,30 +86,58 @@ namespace Entidades
 
             List<Golosina> listaLocalGolosinas = this.Golosinas;
 
-            sb.AppendLine("=============== LISTA DE GOLOSINAS ===============");
+            int totalChocolates = 0;
+            int totalChicles = 0;
+            int totalChupetines = 0;
+            int totalGolosinas = 0;
+
+            double totalPrecioChocolates = 0;
+            double totalPrecioChicles = 0;
+            double totalPrecioChupetines = 0;
+            double totalPrecioGolosinas = 0;
+
+            sb.AppendLine("============== LISTA DE GOLOSINAS ==============");
 
             foreach (Golosina golosina in listaLocalGolosinas)
             {
                 if (golosina is Chocolate)// si golosina es un Chocolate
                 {
                     sb.AppendLine(((Chocolate)golosina).MostrarEnVisor());//lo casteo para tener ese metodo
+                    totalChocolates += golosina.Cantidad;
+                    totalPrecioChocolates += golosina.CalcularPrecioFinal();
                 }
                 else if (golosina is Chicle)
                 {
                     sb.AppendLine(((Chicle)golosina).MostrarEnVisor());
+                    totalChicles += golosina.Cantidad;
+                    totalPrecioChicles += golosina.CalcularPrecioFinal();
                 }
                 else if (golosina is Chupetin)
                 {
                     sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
+                    totalChupetines += golosina.Cantidad;
+                    totalPrecioChupetines += golosina.CalcularPrecioFinal();
                 }
             }
+            totalGolosinas = totalChocolates + totalChicles + totalChupetines;
             double precioTotal = CalcularPrecioTotal();
-            sb.AppendLine("==================================================");
+            sb.AppendLine("================================================");
             sb.AppendLine("");
             sb.AppendLine("");
-            sb.AppendLine("================== PRECIO TOTAL ==================");
-            sb.AppendLine($"                   ${precioTotal.ToString()}");
-            sb.AppendLine("==================================================");
+            sb.AppendLine("================= CANTIDADES ===================");
+            sb.AppendLine($"Total de Chocolates: {totalChocolates}");
+            sb.AppendLine($"Total de Chicles: {totalChicles}");
+            sb.AppendLine($"Total de Chupetines: {totalChupetines}");
+            sb.AppendLine($"Total de Golosinas: {totalGolosinas}");
+            sb.AppendLine("================================================");
+            sb.AppendLine("");
+            sb.AppendLine("==================== PRECIOS ====================");
+            sb.AppendLine($"Precio total de Chocolates: ${totalPrecioChocolates:F2}");
+            sb.AppendLine($"Precio total de Chicles: ${totalPrecioChicles:F2}");
+            sb.AppendLine($"Precio toal de Chupetines: ${totalPrecioChupetines:F2}");
+            sb.AppendLine("================================================");
+            sb.AppendLine($"  TOTAL: ${precioTotal:F2}");
+            sb.AppendLine("================================================");
             sb.AppendLine("");
 
             return sb.ToString();
