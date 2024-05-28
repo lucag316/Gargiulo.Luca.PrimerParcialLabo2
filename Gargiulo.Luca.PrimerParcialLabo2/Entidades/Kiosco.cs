@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -7,28 +8,30 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Representa un kiosco que almacena golosinas.
+    /// </summary>
     public class Kiosco
     {
         #region Atributos
-        private List<Golosina> golosinas;
-        private double capacidadGolosinasDistintas;
+        private List<Golosina> golosinas;       // lista de golosinas disponibles en el kiosco
+        private double capacidadGolosinasDistintas;   //Capacidad maxima de tipos diferentes de golosinas que el kiosco puede almacenar.
         private string detalle;
         #endregion
 
         #region Propiedades
         public List<Golosina> Golosinas
         {
-            get
-            {
-                return this.golosinas;
-            }
+            get { return this.golosinas; }
         }
+
         public string Detalle
         {
             get
             {
                 StringBuilder sb = new StringBuilder();
-                
+                sb.AppendLine("=============== LISTA DE GOLOSINAS ===============");
+
                 foreach (Golosina golosina in Golosinas)
                 {
                     if (golosina is Chocolate)// si golosina es un Chocolate
@@ -56,10 +59,14 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        public Kiosco() //no me acuerdo porque privado, pero solo inicializo la lista de golosinas
+
+        /// <summary>
+        /// Constructor sin parametros que inicializa la lista de golosinas y establece una capacidad predeterminada.
+        /// </summary>
+        public Kiosco()
         {
-            this.golosinas =new List<Golosina>();
-            this.capacidadGolosinasDistintas = 10; //fijarse si esta bien puesto aca
+            this.golosinas = new List<Golosina>();
+            this.capacidadGolosinasDistintas = 10;
         }
         public Kiosco(double capacidadGolosinasDistintas) : this()
         {
@@ -69,6 +76,10 @@ namespace Entidades
 
         #region Metodos
 
+        /// <summary>
+        /// Muestra los detalles de todas las golosinas en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena con los detalles de todas las golosinas.</returns>
         public string MostrarDetalleEnVisor()
         {
             StringBuilder sb = new StringBuilder();
@@ -100,10 +111,14 @@ namespace Entidades
             sb.AppendLine($"                   ${precioTotal.ToString()}");
             sb.AppendLine("==================================================");
             sb.AppendLine("");
-            return sb.ToString();
 
+            return sb.ToString();
         }
 
+        /// <summary>
+        /// Muestra una lista de golosinas en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena con la lista de golosinas.</returns>
         public string MostrarListaEnVisor()
         {
             StringBuilder sb = new StringBuilder();
@@ -114,7 +129,7 @@ namespace Entidades
             {
                 if (golosina is Chocolate)// si golosina es un Chocolate
                 {
-                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor());//lo casteo para tener ese metodo
+                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor()); //lo casteo para tener ese metodo
                 }
                 else if (golosina is Chicle)
                 {
@@ -128,7 +143,11 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public double CalcularPrecioTotal() //calcular el precio total de la lista
+        /// <summary>
+        /// Calcula el precio total de todas las golosinas en el kiosco.
+        /// </summary>
+        /// <returns>El precio total de todas las golosinas.</returns>
+        public double CalcularPrecioTotal()
         {
             double precioTotal = 0;
 
@@ -139,6 +158,10 @@ namespace Entidades
             return precioTotal;
         }
 
+        /// <summary>
+        /// Ordena las golosinas por codigo de barra.
+        /// </summary>
+        //// <param name="ascendente">Si es true, ordena de forma ascendente; de lo contrario, de forma descendente.</param>
         public void OrdenarGolosinasPorCodigo(bool ascendente)
         {
             if (ascendente)
@@ -161,18 +184,22 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Peso.CompareTo(golosina1.Peso));
             }
         }
-
-
         #endregion
 
         #region Operadores suma y resta
 
+        /// <summary>
+        /// Agrega una golosina al kiosco si no excede la capacidad maxima.
+        /// </summary>
+        //// <param name="kiosco">El kiosco al que se agrega la golosina.</param>
+        //// <param name="golosina">La golosina a agregar.</param>
+        /// <returns>El kiosco con la golosina agregada.</returns>
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
         {
-            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
+            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas)
             { 
-                if (kiosco != golosina) //(!kiosco.Golosinas.Contains(golosina))// capaz es comparando, agregar si no esta por ejemplo fijandose que codigo es
-                { //si la golosina no esta en el kiosco, la agrego
+                if (kiosco != golosina) //si la golosina no esta en el kiosco, la agrego
+                { 
                     kiosco.Golosinas.Add(golosina);
                 }
                 else
@@ -186,11 +213,18 @@ namespace Entidades
             }
             return kiosco;
         }
+
+        /// <summary>
+        /// Elimina una golosina del kiosco, solo si esta.
+        /// </summary>
+        //// <param name="kiosco">El kiosco del que se elimina la golosina.</param>
+        //// <param name="golosina">La golosina a eliminar.</param>
+        /// <returns>El kiosco con la golosina eliminada.</returns>
         public static Kiosco operator -(Kiosco kiosco, Golosina golosina)
         {
             if(kiosco.Golosinas.Count > 0)
             {
-                if (kiosco == golosina)//si la golosina esta en el kiosco, la saco, //(kiosco.Golosinas.Contains(golosina)), NO SE QUE SERIA MEJOR
+                if (kiosco == golosina)//si la golosina esta en el kiosco, la saco
                 {
                     kiosco.Golosinas.Remove(golosina);
                 }
@@ -205,11 +239,18 @@ namespace Entidades
             }
             return kiosco;
         }
+
+        /// <summary>
+        /// Agrega una lista de golosinas al kiosco si no excede la capacidad maxima.
+        /// </summary>
+        //// <param name="kiosco">El kiosco al que se agregan las golosinas.</param>
+        //// <param name="listaGolosina">La lista de golosinas a agregar.</param>
+        /// <returns>El kiosco con las golosinas agregadas.</returns>
         public static Kiosco operator +(Kiosco kiosco, List<Golosina> listaGolosina)
         {
-            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas) // si la cantidad de golosinas en la lista, es menor a la capacidad/stock que tiene el kiosco
+            if (kiosco.Golosinas.Count + listaGolosina.Count <= kiosco.capacidadGolosinasDistintas)
             {
-                if (kiosco != null  && listaGolosina != null) 
+                if (listaGolosina != null) 
                 { 
                     kiosco.Golosinas.AddRange(listaGolosina);
                 }
@@ -227,15 +268,17 @@ namespace Entidades
         #endregion
 
         #region Operadores de igualdad
+
+        /// <summary>
+        /// Determina si una golosina esta en el kiosco.
+        /// </summary>
+        //// <param name="kiosco">El kiosco en el que se busca la golosina.</param>
+        //// <param name="golosina">La golosina a buscar.</param>
+        /// <returns>true si la golosina esta en el kiosco; de lo contrario, false.</returns>
         public static bool operator ==(Kiosco kiosco, Golosina golosina)
         {
             bool estaEnKiosco = false;
 
-            //if (kiosco.Golosinas.Contains(golosina))
-            //{
-            //    estaEnKiosco = true;
-            //}
-            // NO SE QUE FORMA SERIA MEJOR | //podemos hacer contains solo si tenemos Equals sobrecargado
             foreach (Golosina item in kiosco.Golosinas)
             {
                 if (item == golosina)
@@ -244,7 +287,6 @@ namespace Entidades
                     break;
                 }
             }
-
             return estaEnKiosco;
         }
         public static bool operator !=(Kiosco kiosco, Golosina golosina)
@@ -254,16 +296,39 @@ namespace Entidades
         #endregion
 
         #region Operadores implicitos y explicitos
+
+        /// <summary>
+        /// Convierte un kiosco en una lista de golosinas implicitamente.
+        /// </summary>
+        //// <param name="kiosco">El kiosco a convertir.</param>
         public static implicit operator List<Golosina>(Kiosco kiosco)
         {
             return kiosco.Golosinas;
         }
+
+        /// <summary>
+        /// Convierte un kiosco en una cadena explicitamente.
+        /// </summary>
+        //// <param name="kiosco">El kiosco a convertir.</param>
         public static explicit operator string (Kiosco kiosco)
         {
             return kiosco.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            throw new NotImplementedException();
+        }
         #endregion
-
-
     }
 }
