@@ -20,5 +20,8 @@ Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un ar
 - Tambien se puede ordenar la lista de golosinas por codigo o peso, de forma ascendente o descendente, desde las opciones del menu.
 - La aplicacion permite cargar y guardar datos de golosinas en archivos XML o JSON desde el menu correspondiente.
 
+### FrmVisualizadorUsuariosLog
+En el menu se puede clickear una opcion del menuStrip para visualizar el registro de usuarios en un Listbox.  Carga el contenido del archivo de registros de usuarios y lo muestra en una lista.
+
 ### Diagrama de Clases
-![Diagrama de Clases](C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ClassDiagram1.png)
+![Diagrama de Clases](\Gargiulo.Luca.PrimerParcialLabo2\ClassDiagram1.png)
