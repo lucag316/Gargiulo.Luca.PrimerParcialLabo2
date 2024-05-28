@@ -5,14 +5,23 @@ namespace Interfaz
     public partial class FrmLogin : Form
     {
         private List<Usuario> usuarios;
-
-        //private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
         private string pathJsonUsuarios = "../../../../usuarios.json";
+        //private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
+
         public FrmLogin()
         {
             InitializeComponent();
             this.CenterToScreen();
-            this.usuarios = Serializadora.DeserializarUsuariosJSON(pathJsonUsuarios);
+
+            try
+            {
+                this.usuarios = Serializadora.DeserializarUsuariosJSON(pathJsonUsuarios);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -20,20 +29,12 @@ namespace Interfaz
 
         }
 
-        /*private bool VerificarUsuario(string correo, string clave)
-        {
-            bool estaElUsuario = false;
-
-            foreach (Usuario usuario in this.usuarios)
-            {
-                if (usuario.correo == correo && usuario.clave == clave)
-                {
-                    estaElUsuario = true;
-                    break;//rompo el bucle
-                }
-            }
-            return estaElUsuario;
-        }*/
+        /// <summary>
+        /// Busca un usuario en la lista segun el correo electronico y la clave proporcionados.
+        /// </summary>
+        //// <param name="correo">Correo electronico del usuario.</param>
+        //// <param name="clave">Clave del usuario.</param>
+        /// <returns>El objeto Usuario correspondiente o null si no se encuentra.</returns>
         private Usuario ObtenerUsuario(string correo, string clave)
         {
 
@@ -45,13 +46,11 @@ namespace Interfaz
                 }
             }
             return null;
-
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //bool usuarioValidado = VerificarUsuario(txtCorreo.Text, txtClave.Text);
-            Usuario usuarioLogueado = ObtenerUsuario(txtCorreo.Text, txtClave.Text);
+            Usuario usuarioLogueado = ObtenerUsuario(txtCorreo.Text, txtClave.Text);    //veo si el usuario y contraseña se validos
 
 
             if (usuarioLogueado != null)
