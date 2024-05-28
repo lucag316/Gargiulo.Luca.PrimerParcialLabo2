@@ -31,16 +31,16 @@ namespace Entidades
         }
         #endregion
 
-        #region Constructor
-        public Chocolate()  : base()//constructor sin parametros para poder usar JSON
+        #region Constructores
+        public Chocolate() : base()//constructor sin parametros para poder usar JSON
         {
-
+            this.relleno = ERellenos.SinRelleno;
+            this.tipoDeCacao = ETiposDeCacao.Negro;
         }
         public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            this.relleno = ERellenos.SinRelleno; 
-            this.tipoDeCacao = ETiposDeCacao.Negro;
-            //como no los completa, lo pongo por defecto, creo que esta bien
+            //this.relleno = ERellenos.SinRelleno; 
+            //this.tipoDeCacao = ETiposDeCacao.Negro;
         }
         public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno): this(codigo, peso, precio, cantidad)
         {
@@ -54,7 +54,7 @@ namespace Entidades
         #endregion
 
         #region Metodos ToString, Equals, GetHashCode Sobrescritos
-        public override string ToString()//podria tener un mostrar y poner this.Mostrar() adentro de este
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -69,34 +69,44 @@ namespace Entidades
         public override bool Equals(object? obj)
         {
             bool mismoChocolate = false;
-            //por ej, verifico si el obj es del mismo tipo osea si es Golosina
+            
             if (obj is Chocolate)
             {
-                if (((Chocolate)obj) == this) // voy al == de Golosina y Golosina
+                if (((Chocolate)obj) == this) // voy al == de chocolate y chocolate
                 {
                     mismoChocolate = true;
                 }
             }
             return mismoChocolate;
         }
-        /*public override int GetHashCode()
+
+        public override int GetHashCode()
         {
-            return base.GetHashCode();
-        }*/
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Metodos sobrescritos
+
+        /// <summary>
+        /// Muestra la informacion del chocolate en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena que contiene la informacion del chocolate.</returns>
         public override string MostrarEnVisor()
         {
             string mensaje = $"CHOCOLATE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
-            //fijarme si poner todo o no, para no repetir
             return mensaje;
         }
+
+        /// <summary>
+        /// Calcula el precio final del chocolate, si se compra mas de 3 chocolates aplico 30% de descuento.
+        /// </summary>
+        /// <returns>El precio final del chocolate.</returns>
         public override double CalcularPrecioFinal()
         {
             double precioFinal = base.CalcularPrecioFinal();
-            //si compro mas de 3 chocolates aplico 30% de descuento
-            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
+
+            if (this.Cantidad > 3)
             {
                 precioFinal *= 0.7;
             }
@@ -105,22 +115,31 @@ namespace Entidades
         #endregion
 
         #region Sobrecarga de operadores de igualdad
+
+        /// <summary>
+        /// Determina si dos instancias de Chocolate son iguales.
+        /// </summary>
+        /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
-            bool mismoChocolate = false;
-            //invocar al == de la clase base
-            if (chocolate1.Codigo == chocolate2.Codigo && chocolate1.Peso == chocolate2.Peso)
-            {
-                mismoChocolate = true;
-            }
+            //bool mismoChocolate = false;
+            ////invocar al == de la clase base
+            //if (chocolate1.Codigo == chocolate2.Codigo && chocolate1.Peso == chocolate2.Peso)
+            //{
+            //    mismoChocolate = true;
+            //}
 
-            return mismoChocolate;
+            //return mismoChocolate;
+            return (Golosina)chocolate1 == (Golosina)chocolate2;
         }
+
+        /// <summary>
+        /// Determina si dos instancias de Chocolate son diferentes.
+        /// </summary>
         public static bool operator !=(Chocolate chocolate1, Chocolate chocolate2)
         {
-            return !(chocolate1 == chocolate2); // aca llamo al == de g1 y g2
+            return !(chocolate1 == chocolate2);
         }
-
         #endregion
     }
 }

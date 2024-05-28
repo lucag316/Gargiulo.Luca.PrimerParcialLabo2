@@ -45,7 +45,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Constructor
+        #region Constructores
         public Golosina()   //constructor sin parametros para poder usar JSON
         {
             this.codigo = 0;
