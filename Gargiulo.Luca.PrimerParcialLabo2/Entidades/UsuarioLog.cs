@@ -7,36 +7,46 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class UsuarioLog //logger // maneja el registro de accesos de usuarios
+    public class UsuarioLog //maneja el registro de accesos de usuarios en un archivo de registro //logger
     {
         private string logFilPath; //ruta del archivo de registro (usuarios.log)
 
         public UsuarioLog(string logFilePath)
         {
             this.logFilPath = logFilePath;
-            VerificarLogFileExists(); //para asegurarse de que el archivo de registro exista.Si no existe, lo crea.
+            VerificarLogFileExists();
         }
 
+        /// <summary>
+        /// Verifica si el archivo de registro existe. Si no existe, lo crea.
+        /// </summary>
         private void VerificarLogFileExists()
         {
             if (!File.Exists(this.logFilPath))
             {
-                using (File.Create(this.logFilPath)) { } //lo creo si no existe
+                using (File.Create(this.logFilPath)) { } 
             }
         }
 
+        /// <summary>
+        /// Registra un acceso de usuario en el archivo de registro.
+        /// </summary>
+        //// <param name="usuario">Usuario que ha accedido.</param>
         public void RegistrarAcceso(Usuario usuario)
         {
             string fechaAcceso = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            string logEntry = $"Usuario: {usuario.nombre} {usuario.apellido} - Fecha de Acceso: {fechaAcceso} - Legajo: {usuario.legajo} - Perfil: {usuario.perfil} - Correo: {usuario.correo} - Clave: {usuario.clave}";
+            string logEntry = $"Usuario: {usuario.nombre} {usuario.apellido} - Fecha de Acceso: {fechaAcceso} - Legajo: {usuario.legajo} - Perfil: {usuario.perfil} - Correo: {usuario.correo}";
 
-            using (StreamWriter sw = new StreamWriter(this.logFilPath, true)) //el segundo es que se agrega nueva entrada al final del archivo, creo que es append
+            using (StreamWriter sw = new StreamWriter(this.logFilPath, true)) //el segundo parametro es tipo append
             {
                 sw.WriteLine(logEntry);
             }
         }
 
-        public string LeerLog() //lee todo el contenido del archivo y lo devuelve en una cadena
+        /// <summary>
+        /// Lee todo el contenido del archivo de registro y lo devuelve en una cadena.
+        /// </summary>
+        public string LeerLog()
         {
             using (StreamReader sr = new StreamReader(this.logFilPath))
             {
