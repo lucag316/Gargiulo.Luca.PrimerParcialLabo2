@@ -1,14 +1,13 @@
 using Entidades;
 
-
 namespace Interfaz
 {
     public partial class FrmLogin : Form
     {
         private List<Usuario> usuarios;
 
-        private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
-
+        //private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
+        private string pathJsonUsuarios = "../../../../usuarios.json";
         public FrmLogin()
         {
             InitializeComponent();
