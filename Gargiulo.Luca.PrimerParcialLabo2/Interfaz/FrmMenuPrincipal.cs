@@ -92,7 +92,7 @@ namespace Interfaz
 
             if (frmChupetin.DialogResult == DialogResult.OK)
             {
-                this.kiosco += frmChupetin.MiChupetin; 
+                this.kiosco += frmChupetin.MiChupetin;
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -306,23 +306,53 @@ namespace Interfaz
             }
         }
 
+        public void AbrirJSON()
+        {
+
+        }
+
+        /// <summary>
+        /// Guarda los datos de las golosinas del kiosco en un archivo JSON.
+        /// </summary>
+        public void GuardarJSON()
+        {
+            using (SaveFileDialog sfdGuardarJson = new SaveFileDialog())
+            {
+                sfdGuardarJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+                sfdGuardarJson.Title = "Guardar archivo JSON";
+                sfdGuardarJson.FileName = "Golosinas.json";
+
+                if (sfdGuardarJson.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = sfdGuardarJson.FileName;
+
+                    try
+                    {
+                        Serializadora serializadoraJson = new Serializadora(pathArchivo);
+
+                        serializadoraJson.SerializarGolosinasJSON(this.kiosco.Golosinas);
+                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
 
         #region Archivos
         private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //guardo en json
-            Serializadora serializadoraJson = new Serializadora("Golosinas");
-
-            serializadoraJson.SerializarGolosinasJSON(kiosco.Golosinas);
-            MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
+            this.GuardarJSON();
         }
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            GuardarXML();
-            //Serializadora serializadoraXml = new Serializadora("Golosinas");
-
-            //serializadoraXml.SerializarGolosinasXML(kiosco.Golosinas);
-            //MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
+            this.GuardarXML();
         }
         private void jSONToolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -343,24 +373,12 @@ namespace Interfaz
         private void xMLToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             this.AbrirXML();
-            //try
-            //{
-            //    Serializadora deserializadoraXml = new Serializadora("Golosinas", kiosco.Golosinas);
-            //    List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
-            //    this.kiosco.Golosinas.Clear();
-            //    this.kiosco += golosinasDeserializadas; //para no usar AddRange
-            //    this.ActualizarVisorGolosinas();
-            //    MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-            //}
         }
         #endregion
 
-
-
+        /// <summary>
+        /// Muestra un mensaje de confirmacion antes de cerrar el formulario.
+        /// </summary>
         private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -374,21 +392,24 @@ namespace Interfaz
             }
         }
 
+        /// <summary>
+        /// Abre un formulario para visualizar el registro de usuarios.
+        /// </summary>
         private void uSUARIOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
             frmVisualizadorUsuariosLog.ShowDialog();
         }
 
+        /// <summary>
+        /// Cierra el formulario actual y muestra el formulario del login.
+        /// </summary>
         private void vOLVERToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Cierra el formulario actual 
-            this.Close();
+            this.Close(); // Cierra el formulario actual 
 
-            // Muestro el formulario del login
             FrmLogin frmLogin = new FrmLogin();
-            frmLogin.Show();
-
+            frmLogin.Show(); // Muestro el formulario del login
         }
 
         private void dETALLEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -399,7 +420,7 @@ namespace Interfaz
 
             frmDetalleKiosco.ShowDialog();
 
-             
+
         }
     }
 }

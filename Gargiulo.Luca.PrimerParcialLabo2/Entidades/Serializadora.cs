@@ -74,7 +74,7 @@ namespace Entidades
             JsonSerializerOptions opciones = new JsonSerializerOptions();
             opciones.WriteIndented = true;  //le doy true para que se vea mejor
 
-            using (StreamWriter streamWriter = new StreamWriter( this.Path + ".json")) //instancio un SW que me va a escribir el archivo
+            using (StreamWriter streamWriter = new StreamWriter( this.Path)) //instancio un SW que me va a escribir el archivo
             {
                 string objJon = JsonSerializer.Serialize((object[])golosinas.ToArray(), opciones); //lo que voy a serializar y el identado opcional
 
@@ -95,7 +95,7 @@ namespace Entidades
         {
             this.listaGolosinas = new List<Golosina>();  //creo una lista vacia auxiliar donde guardo a las golosinas que se deserialicen
 
-            using (StreamReader streamReader = new StreamReader(this.path + ".json"))
+            using (StreamReader streamReader = new StreamReader(this.path))
             {
                 string jsonGolosinas = streamReader.ReadToEnd(); //leo todo completo hasta el final
 

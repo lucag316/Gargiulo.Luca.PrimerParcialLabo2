@@ -67,6 +67,7 @@
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             ofdAbrirXml = new OpenFileDialog();
             sfdGuardarXml = new SaveFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -390,5 +391,6 @@
         private ToolStripMenuItem iNFORMACIONToolStripMenuItem;
         private ToolStripMenuItem uSUARIOSToolStripMenuItem;
         private ToolStripMenuItem vOLVERToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
     }
 }
