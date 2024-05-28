@@ -26,7 +26,11 @@ namespace Interfaz
         {
             this.lstVisorDetalleKiosco.Items.Clear();
 
-            this.lstVisorDetalleKiosco.Items.Add(detalleVisor);
+            string[] lineas = detalleVisor.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            foreach (string linea in lineas)
+            {
+                this.lstVisorDetalleKiosco.Items.Add(linea);
+            }
         }
     }
 }

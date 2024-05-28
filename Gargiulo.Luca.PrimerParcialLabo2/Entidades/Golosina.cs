@@ -12,18 +12,17 @@ namespace Entidades
     [XmlInclude(typeof(Chocolate))]
     [XmlInclude(typeof(Chicle))]
     [XmlInclude(typeof(Chupetin))]
-    [DataContract]//para json
+    [DataContract] //para JSON
     public abstract class Golosina
     {
         #region Atributos
-        private int codigo;
+        private int codigo; //seria como si fuera el codigo de barra
         private float peso;
         private double precio;
         protected int cantidad;
         #endregion
 
         #region Propiedades
-       
         public int Codigo
         {
             get { return this.codigo; }
@@ -47,20 +46,21 @@ namespace Entidades
         #endregion
 
         #region Constructor
-        //constructor sin parametros para poder usar JSON
-        public Golosina() //esta la pongo a eleccion, CAMBIARLA SI QUIERO
+        public Golosina()   //constructor sin parametros para poder usar JSON
         {
             this.codigo = 0;
             this.peso = 0;
             this.precio = 0;
             this.cantidad = 0;
         }
-        public Golosina(int codigo, float peso) : this()
+        public Golosina(int codigo) : this()
         {
             this.codigo = codigo;
+        }
+        public Golosina(int codigo, float peso) : this(codigo)
+        {
             this.peso = peso;
         }
-
         public Golosina(int codigo, float peso, double precio) : this(codigo, peso)
         {
             this.precio = precio;
@@ -72,7 +72,10 @@ namespace Entidades
         #endregion
 
         #region Metodos ToString, Equals, GetHashCode
-        //puedo hacer protegido el Mostrar y pasarselo a ToString con this.Mostrar(), en To string no hago nada
+
+        /// <summary>
+        /// Devuelve una cadena que representa la golosina.
+        /// </summary>
         public override string ToString()// si no sobreescribo el ToString, devuelve namespace.clase
         {
             StringBuilder sb = new StringBuilder();
@@ -84,10 +87,15 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Determina si el objeto especificado es igual a la golosina actual.
+        /// </summary>
+        /// <returns>True si el objeto especificado es igual a la golosina actual, sino false
         public override bool Equals(object? obj) //Equals determinna si dos objetos son iguales
         {
             bool mismaGolosina = false;
-            //por ej, verifico si el obj es del mismo tipo osea si es Golosina
+
             if (obj is Golosina)
             {
                 if(((Golosina)obj) == this) // voy al == de Golosina y Golosina
@@ -97,24 +105,19 @@ namespace Entidades
             }
             return mismaGolosina;
         }
-        /*public override int GetHashCode()
+
+        public override int GetHashCode() //lo pongo para que no me tire advertiencia
         {
-            return base.GetHashCode();
-        }*/
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Metodos virtuales y abstractos
-        public virtual string Mostrar() // esta al pedo porque hace lo mismo que el ToString
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Codigo de barra: {this.codigo}");
-            sb.AppendLine($"Peso: {this.peso} kg");
-            sb.AppendLine($"Precio: ${this.precio}");
-
-            return sb.ToString();
-        }
+        /// <summary>
+        /// Lo utilizan sus clases derivadas, devuelve una cadena con los detalles de las golosinas, en el visor
+        /// </summary>
         public abstract string MostrarEnVisor();
+
         public virtual double CalcularPrecioFinal()
         {
             return this.Precio * this.Cantidad;
@@ -122,7 +125,12 @@ namespace Entidades
         #endregion
 
         #region Sobrecarga de operadores de igualdad
-        public static bool operator ==(Golosina golosina1, Golosina golosina2) //DICE RELACIONARLO CON equals, y si pongo == en equals y listo?
+
+        /// <summary>
+        /// Determina si dos golosinas son iguales comparando sus codigos y pesos.
+        /// </summary>
+        /// <returns>True si las golosinas son iguales, sino false
+        public static bool operator ==(Golosina golosina1, Golosina golosina2)
         {
             bool mismaGolosina = false;
 
@@ -133,10 +141,17 @@ namespace Entidades
 
             return mismaGolosina;
         }
+
+        /// <summary>
+        /// Determina si dos golosinas son diferentes.
+        /// </summary>
+        /// <returns>True si las golosinas son diferentes, sino false
         public static bool operator !=(Golosina golosina1, Golosina golosina2)
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
+
+        
         #endregion
     }
 }

@@ -75,6 +75,8 @@ namespace Entidades
 
             List<Golosina> listaLocalGolosinas = this.Golosinas;
 
+            sb.AppendLine("=============== LISTA DE GOLOSINAS ===============");
+
             foreach (Golosina golosina in listaLocalGolosinas)
             {
                 if (golosina is Chocolate)// si golosina es un Chocolate
@@ -89,12 +91,15 @@ namespace Entidades
                 {
                     sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
                 }
-                double precioTotal = CalcularPrecioTotal();
-
-                sb.AppendLine("\n=============== PRECIOS TOTAL ===============");
-                sb.AppendLine($"         ${precioTotal.ToString()}");
-                sb.AppendLine("===============================================\n");
             }
+            double precioTotal = CalcularPrecioTotal();
+            sb.AppendLine("==================================================");
+            sb.AppendLine("");
+            sb.AppendLine("");
+            sb.AppendLine("================== PRECIO TOTAL ==================");
+            sb.AppendLine($"                   ${precioTotal.ToString()}");
+            sb.AppendLine("==================================================");
+            sb.AppendLine("");
             return sb.ToString();
 
         }
