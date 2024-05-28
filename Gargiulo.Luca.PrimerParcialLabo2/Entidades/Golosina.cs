@@ -134,7 +134,7 @@ namespace Entidades
         {
             bool mismaGolosina = false;
 
-            if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso)
+            if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso && golosina1.precio == golosina2.precio)
             {
                 mismaGolosina = true;
             }

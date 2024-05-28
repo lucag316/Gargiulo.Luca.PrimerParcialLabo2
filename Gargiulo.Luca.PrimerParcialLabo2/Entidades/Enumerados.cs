@@ -1,4 +1,6 @@
-﻿public enum ERellenos
+﻿using Entidades;
+
+public enum ERellenos
 {
     SinRelleno,
     Nuez,

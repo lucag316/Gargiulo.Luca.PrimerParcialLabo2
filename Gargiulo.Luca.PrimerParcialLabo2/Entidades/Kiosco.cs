@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Entidades
 {
@@ -15,7 +9,7 @@ namespace Entidades
     {
         #region Atributos
         private List<Golosina> golosinas;       // lista de golosinas disponibles en el kiosco
-        private double capacidadGolosinasDistintas;   //Capacidad maxima de tipos diferentes de golosinas que el kiosco puede almacenar.
+        private int capacidadGolosinasDistintas;   //Capacidad maxima de tipos diferentes de golosinas que el kiosco puede almacenar.
         private string detalle = "";    //inicializo asi no me tira advertencia
         #endregion
 
@@ -25,6 +19,11 @@ namespace Entidades
             get { return this.golosinas; }
         }
 
+        public int CapacidadGolosinasDistintas
+        {
+            get { return this.capacidadGolosinasDistintas; }
+            set { this.capacidadGolosinasDistintas = value; }
+        }
         public string Detalle
         {
             get
@@ -66,9 +65,9 @@ namespace Entidades
         public Kiosco()
         {
             this.golosinas = new List<Golosina>();
-            this.capacidadGolosinasDistintas = 10;
+            this.capacidadGolosinasDistintas = 3;
         }
-        public Kiosco(double capacidadGolosinasDistintas) : this()
+        public Kiosco(int capacidadGolosinasDistintas) : this()
         {
             this.capacidadGolosinasDistintas = capacidadGolosinasDistintas;
         }
@@ -94,7 +93,6 @@ namespace Entidades
             double totalPrecioChocolates = 0;
             double totalPrecioChicles = 0;
             double totalPrecioChupetines = 0;
-            double totalPrecioGolosinas = 0;
 
             sb.AppendLine("============== LISTA DE GOLOSINAS ==============");
 
@@ -216,6 +214,7 @@ namespace Entidades
 
         #region Operadores suma y resta
 
+
         /// <summary>
         /// Agrega una golosina al kiosco si no excede la capacidad maxima.
         /// </summary>
@@ -225,9 +224,9 @@ namespace Entidades
         public static Kiosco operator +(Kiosco kiosco, Golosina golosina)
         {
             if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas)
-            { 
+            {
                 if (kiosco != golosina) //si la golosina no esta en el kiosco, la agrego
-                { 
+                {
                     kiosco.Golosinas.Add(golosina);
                 }
                 else
@@ -250,7 +249,7 @@ namespace Entidades
         /// <returns>El kiosco con la golosina eliminada.</returns>
         public static Kiosco operator -(Kiosco kiosco, Golosina golosina)
         {
-            if(kiosco.Golosinas.Count > 0)
+            if (kiosco.Golosinas.Count > 0)
             {
                 if (kiosco == golosina)//si la golosina esta en el kiosco, la saco
                 {
@@ -278,8 +277,8 @@ namespace Entidades
         {
             if (kiosco.Golosinas.Count + listaGolosina.Count <= kiosco.capacidadGolosinasDistintas)
             {
-                if (listaGolosina != null) 
-                { 
+                if (listaGolosina != null)
+                {
                     kiosco.Golosinas.AddRange(listaGolosina);
                 }
                 else
