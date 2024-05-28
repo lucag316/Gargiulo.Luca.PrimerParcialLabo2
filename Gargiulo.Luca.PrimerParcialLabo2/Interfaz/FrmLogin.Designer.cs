@@ -105,7 +105,8 @@
             Controls.Add(lblCorreo);
             Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Name = "FrmLogin";
-            Text = "Form1";
+            Text = "Login";
+            FormClosing += FrmLogin_FormClosing;
             Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();

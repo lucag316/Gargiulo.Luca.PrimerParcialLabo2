@@ -70,5 +70,24 @@ namespace Interfaz
                 txtClave.Clear();
             }
         }
+
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult dialogResult = MessageBox.Show("Esta seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = true; // lo cancelo al cierre
+                }
+                else
+                {
+                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas, se cierran todos los forms correctamente
+                }
+            }
+            
+        }
     }
 }

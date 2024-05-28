@@ -391,7 +391,7 @@ namespace Interfaz
                 }
                 else
                 {
-                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas
+                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas, se cierran todos los forms correctamente
                 }
             }
         }
@@ -410,7 +410,7 @@ namespace Interfaz
         /// </summary>
         private void vOLVERToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close(); // Cierra el formulario actual 
+            this.Hide(); // Cierra el formulario actual 
 
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.Show(); // Muestro el formulario del login
