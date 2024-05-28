@@ -11,12 +11,15 @@ La aplicacion KioscoApp esta diseñada para administrar un kiosco de golosinas. 
 
 ### Caracteristicas Principales
 
-## Log In
+### Log In
 Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un archivo JSON que contiene los usuarios autorizados
 
-## Menu Principal
+### Menu Principal
+- Al iniciar la aplicacion, se muestra el formulario principal donde se puede ver el nombre del operador y la fecha actual.
+- se pueden agregar golosinas de diferentes tipos: chocolate, chicle o chupetin. Se abrira un formulario correspondiente a cada tipo de golosina para ingresar los detalles.
+- Una vez agregadas las golosinas, se mostraran en una lista en el formulario principal.
+- Se pueden modificar y eliminar golosinas seleccionandolas de la lista y utilizando las opciones correspondientes en el menu.
+- Tambien se puede ordenar la lista de golosinas por codigo o peso, de forma ascendente o descendente, desde las opciones del menu.
+- La aplicacion permite cargar y guardar datos de golosinas en archivos XML o JSON desde el menu correspondiente.
 
-
-
-
-## Diagrama de Clases
+### Diagrama de Clases
