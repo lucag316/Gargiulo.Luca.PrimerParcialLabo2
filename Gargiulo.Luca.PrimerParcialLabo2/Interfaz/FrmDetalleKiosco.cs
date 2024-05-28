@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario para mostrar el detalle del kiosco.
+    /// </summary>
     public partial class FrmDetalleKiosco : Form
     {
         public FrmDetalleKiosco()
@@ -22,14 +25,17 @@ namespace Interfaz
 
         }
 
+        /// <summary>
+        /// Muestra el detalle del kiosco en el visor.
+        /// </summary>
         public void MostrarDetalleEnVisor(string detalleVisor)
         {
             this.lstVisorDetalleKiosco.Items.Clear();
 
-            string[] lineas = detalleVisor.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            string[] lineas = detalleVisor.Split(new[] { Environment.NewLine }, StringSplitOptions.None); //lo divido por lineas(split...)
             foreach (string linea in lineas)
             {
-                this.lstVisorDetalleKiosco.Items.Add(linea);
+                this.lstVisorDetalleKiosco.Items.Add(linea); //agrego cada linea
             }
         }
     }
