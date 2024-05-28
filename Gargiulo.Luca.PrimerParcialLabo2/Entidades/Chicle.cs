@@ -11,7 +11,7 @@ namespace Entidades
     public class Chicle : Golosina
     {
         #region Atributos
-        protected ENivelesDeElasticidad elasticidad; //mucha, poca, normal, etc
+        protected ENivelesDeElasticidad elasticidad;
         protected ENivelesDuracionDeSabor duracionSabor;
         #endregion
 
@@ -31,15 +31,16 @@ namespace Entidades
         }
         #endregion
 
-        #region Constructor
+        #region Constructores
         public Chicle() : base()//constructor sin parametros para poder usar JSON
-        {
-
-        }
-        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.elasticidad = ENivelesDeElasticidad.Media;
             this.duracionSabor = ENivelesDuracionDeSabor.Media;
+        }
+        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
+        {
+            //this.elasticidad = ENivelesDeElasticidad.Media;
+            //this.duracionSabor = ENivelesDuracionDeSabor.Media;
         }
         public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad) : this(codigo, peso, precio, cantidad)
         {
@@ -77,46 +78,66 @@ namespace Entidades
             }
             return mismoChicle;
         }
-        /*public override int GetHashCode()
+
+        public override int GetHashCode()
         {
-            return base.GetHashCode();
-        }*/
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Metodos sobrescritos
+
+        /// <summary>
+        /// Muestra la informacion del chicle en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena que contiene la informacion del chicle.</returns>
+        public override string MostrarEnVisor()
+        {
+            string mensaje = $"CHICLE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
+            return mensaje;
+        }
+
+        /// <summary>
+        /// Calcula el precio final del chicle, si se compra mas de 5 chicles, aplico 15% de descuento.
+        /// </summary>
+        /// <returns>El precio final del chicle.</returns>
         public override double CalcularPrecioFinal()
         {
             double precioFinal = base.CalcularPrecioFinal();
-            //si compro mas de 5 chicles aplico 15% de descuento
-            if (Cantidad > 5) //aca no se si tendria que poner this.Cantidad
+
+            if (this.Cantidad > 5)
             {
                 precioFinal *= 0.85;
             }
             return precioFinal;
         }
-        public override string MostrarEnVisor()
-        {
-            string mensaje = $"CHICLE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
-            //fijarme si poner todo o no, para no repetir codigo
-            return mensaje;
-        }
         #endregion
 
         #region Sobrecargas de operadores de igualdad
+
+        /// <summary>
+        /// Determina si dos instancias de Chicle son iguales.
+        /// </summary>
+        /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chicle chicle1, Chicle chicle2)
         {
-            bool mismoChicle = false;
+            //bool mismoChicle = false;
 
-            if (chicle1.Codigo == chicle2.Codigo && chicle1.Peso == chicle2.Peso)
-            {
-                mismoChicle = true;
-            }
+            //if (chicle1.Codigo == chicle2.Codigo && chicle1.Peso == chicle2.Peso)
+            //{
+            //    mismoChicle = true;
+            //}
 
-            return mismoChicle;
+            //return mismoChicle;
+            return (Golosina)chicle1 == (Golosina)chicle2;
         }
+
+        /// <summary>
+        /// Determina si dos instancias de chicle son diferentes.
+        /// </summary>
         public static bool operator !=(Chicle chicle1, Chicle chicle2)
         {
-            return !(chicle1 == chicle2); // aca llamo al == de g1 y g2
+            return !(chicle1 == chicle2);
         }
         #endregion
     }

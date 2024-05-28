@@ -79,7 +79,6 @@ namespace Entidades
             }
             return mismoChocolate;
         }
-
         public override int GetHashCode()
         {
             throw new NotImplementedException();
@@ -99,7 +98,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Calcula el precio final del chocolate, si se compra mas de 3 chocolates aplico 30% de descuento.
+        /// Calcula el precio final del chocolate, si se compra mas de 3 chocolates, aplico 30% de descuento.
         /// </summary>
         /// <returns>El precio final del chocolate.</returns>
         public override double CalcularPrecioFinal()
@@ -130,7 +129,7 @@ namespace Entidades
             //}
 
             //return mismoChocolate;
-            return (Golosina)chocolate1 == (Golosina)chocolate2;
+            return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base
         }
 
         /// <summary>

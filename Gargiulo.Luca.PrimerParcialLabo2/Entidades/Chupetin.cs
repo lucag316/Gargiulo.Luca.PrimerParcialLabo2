@@ -77,10 +77,10 @@ namespace Entidades
             }
             return mismoChupetin;
         }
-        /*public override int GetHashCode()
+        public override int GetHashCode()
         {
-            return base.GetHashCode();
-        }*/
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Metodos sobrescritos
@@ -118,6 +118,8 @@ namespace Entidades
         {
             return !(chupetin1 == chupetin2);
         }
+
+        
         #endregion
     }
 }
