@@ -20,6 +20,7 @@ namespace Interfaz
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //this.Close(); //FIJARME SI VA
             }
         }
 

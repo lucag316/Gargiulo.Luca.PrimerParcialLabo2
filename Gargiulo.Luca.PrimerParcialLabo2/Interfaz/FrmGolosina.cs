@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario base para ingresar informacion de una golosina.
+    /// </summary>
     public partial class FrmGolosina : Form
     {
         public FrmGolosina()
@@ -22,14 +25,14 @@ namespace Interfaz
 
         }
 
-        protected virtual void btnAceptar_Click(object sender, EventArgs e)//lo hago virtual para heredarlo, protected porque no puede ser privadi
+        protected virtual void btnAceptar_Click(object sender, EventArgs e) //lo hago virtual para heredarlo, protected porque no puede ser privado
         {
             int codigo;
             float precio;
             float peso;
             int cantidad;
 
-            if (string.IsNullOrWhiteSpace(this.txtCodigo.Text))
+            if (string.IsNullOrWhiteSpace(this.txtCodigo.Text)) //aca valido si los campos estan vacion y le pongo valor predeterminado
             {
                 this.txtCodigo.Text = "0";
             }
@@ -67,9 +70,7 @@ namespace Interfaz
                 return;
             }
 
-
-
-            if (codigo < 0 || precio < 0 || peso < 0 || cantidad < 0)
+            if (codigo < 0 || precio < 0 || peso < 0 || cantidad < 0) //verifico si los valores son positivos
             {
                 MessageBox.Show("Por favor, ingrese valores positivos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -87,7 +88,6 @@ namespace Interfaz
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
-            //this.Close()//FIJARME SI VAN LOS CANCEL ACA
         }
     }
 }
