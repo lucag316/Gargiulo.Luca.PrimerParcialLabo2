@@ -23,5 +23,8 @@ Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un ar
 ### FrmVisualizadorUsuariosLog
 En el menu se puede clickear una opcion del menuStrip para visualizar el registro de usuarios en un Listbox.  Carga el contenido del archivo de registros de usuarios y lo muestra en una lista.
 
+### Clase Kiosco
+Es la clase responsable de gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines)
+
 ### Diagrama de Clases
-![Diagrama de Clases](\Gargiulo.Luca.PrimerParcialLabo2\ClassDiagram1.png)
+![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
