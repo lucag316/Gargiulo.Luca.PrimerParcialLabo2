@@ -16,7 +16,7 @@ namespace Entidades
         #region Atributos
         private List<Golosina> golosinas;       // lista de golosinas disponibles en el kiosco
         private double capacidadGolosinasDistintas;   //Capacidad maxima de tipos diferentes de golosinas que el kiosco puede almacenar.
-        private string detalle;
+        private string detalle = "";    //inicializo asi no me tira advertencia
         #endregion
 
         #region Propiedades
@@ -310,10 +310,11 @@ namespace Entidades
         /// Convierte un kiosco en una cadena explicitamente.
         /// </summary>
         //// <param name="kiosco">El kiosco a convertir.</param>
-        public static explicit operator string (Kiosco kiosco)
+        public static explicit operator string(Kiosco kiosco)
         {
             return kiosco.ToString();
         }
+        #endregion
 
         public override bool Equals(object obj)
         {
@@ -329,6 +330,10 @@ namespace Entidades
 
             throw new NotImplementedException();
         }
-        #endregion
+
+        public override int GetHashCode() //lo agregue para que no me tire advertencia
+        {
+            throw new NotImplementedException();
+        }
     }
 }
