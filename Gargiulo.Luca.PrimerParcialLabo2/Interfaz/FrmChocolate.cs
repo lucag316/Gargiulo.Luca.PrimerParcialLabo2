@@ -11,19 +11,25 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario para ingresar informacion específica de un chocolate.
+    /// </summary>
     public partial class FrmChocolate : FrmGolosina
     {
         protected Chocolate miChocolate;
 
-        public Chocolate MiChocolate { get { return this.miChocolate; } }//propiedad public que devuelve la golosia modificada
+        public Chocolate MiChocolate 
+        { 
+            get { return this.miChocolate; } //propiedad publica que devuelve el modificado
+        }
 
-        public FrmChocolate() // :base()//ACA VA?O NO?
+        public FrmChocolate() // CREO QUE NO VA EL :base()//ACA VA?O NO?
         {
             InitializeComponent();
 
             foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
             {
-                this.cboRelleno.Items.Add(relleno);
+                this.cboRelleno.Items.Add(relleno); //agrego los elementos de Enum a los cbo
             }
             this.cboRelleno.SelectedItem = ERellenos.SinRelleno; //valor predeterminado
 
@@ -31,7 +37,7 @@ namespace Interfaz
             {
                 this.cboTipoDeCacao.Items.Add(tipoDeCacao);
             }
-            this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro; //valor predeterminado
+            this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
         }
 
         public FrmChocolate(Chocolate chocolate) : this()
@@ -45,11 +51,10 @@ namespace Interfaz
 
         }
 
-        //antes tenia solo dos referencias, me fije que le faltaba viendo ejercicios, y se lo agregue y funciono
-        protected override void btnAceptar_Click(object sender, EventArgs e) //heredo del btnAceptar de Golosina
+        protected override void btnAceptar_Click(object sender, EventArgs e) 
         {
 
-            base.btnAceptar_Click(sender, e);
+            base.btnAceptar_Click(sender, e); //llamo al metodo de Golosina
 
             //lo puse en un if porque sino me controlaba la excepcion en FrmGolosina pero cuando pasaba por aca, la volvia a tirar
             if (this.DialogResult == DialogResult.OK)
@@ -62,7 +67,7 @@ namespace Interfaz
                                                 float.Parse(txtPrecio.Text),
                                                 int.Parse(txtCantidad.Text),
                                                 relleno,
-                                                tipoDeCacao);
+                                                tipoDeCacao); //cree el choco con los datos ingresados
             }
         }
     }
