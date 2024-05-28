@@ -23,3 +23,4 @@ Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un ar
 - La aplicacion permite cargar y guardar datos de golosinas en archivos XML o JSON desde el menu correspondiente.
 
 ### Diagrama de Clases
+![Diagrama de Clases](C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\Entidades\ClassDiagram1.cd)

@@ -1,39 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Entidades.Golosina" Collapsed="true">
-    <Position X="10.25" Y="5" Width="2" />
+  <Class Name="Entidades.Golosina">
+    <Position X="10" Y="4" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AQABAEEAAQRACAAEgAAAAAAQAAAAEIAACAAAAAAAAiA=</HashCode>
+      <HashCode>AQABAEEAAQBACAAEgAAAAAAQAAAAEAAACAAAAAAAAiA=</HashCode>
       <FileName>Golosina.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chupetin">
     <Position X="13.75" Y="9.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAEgAQAAAAEAAAAAICACAAAgAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAEgAQAAAAEAAAAAACACAAAgAAAAiA=</HashCode>
       <FileName>Chupetin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chicle">
     <Position X="10.25" Y="9.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAACIAEggAAAAIAAAAAAIAACAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAgAAACIAEggAAAAIAAAAAAAAACAAAAAAAAiA=</HashCode>
       <FileName>Chicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chocolate">
     <Position X="6.75" Y="9.5" Width="2" />
+    <InheritanceLine Type="Entidades.Golosina" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="8.314" />
+        <Point X="11.25" Y="9.125" />
+        <Point X="7.812" Y="9.125" />
+        <Point X="7.812" Y="9.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAEwCAAAAAgAAAAAIAASAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAEwCAAAAAgAAAAAAAASAAAAAAAAiA=</HashCode>
       <FileName>Chocolate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Kiosco">
-    <Position X="1.5" Y="5.5" Width="2.75" />
+    <Position X="14.5" Y="3.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAKBAAAgAQAUAAAAAAAAgACAAIAAAAAAEAiA=</HashCode>
+      <HashCode>ABAAoAAAAKBAAAgAwAUAAAAAAAAgACAAIAAAAAAEAyA=</HashCode>
       <FileName>Kiosco.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Entidades.Usuario">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQBAASAAAAAAAAAIAQIAACAAAAQAAIAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.UsuarioLog">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAE=</HashCode>
+      <FileName>UsuarioLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ERellenos">
+    <Position X="17.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAIAAAACCCAIgAAAAAAA=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ETiposDeCacao">
+    <Position X="19.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAQACAAAAA=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EFormasDeChupetin">
+    <Position X="16" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeDureza">
+    <Position X="17.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAgAAAABAQAAAABAQAAAAAAQ=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeElasticidad">
+    <Position X="19.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABQUAAAAAAQ=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDuracionDeSabor">
+    <Position X="16" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABAUAAAAAAQ=</HashCode>
+      <FileName>Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
