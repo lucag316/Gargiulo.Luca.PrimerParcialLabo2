@@ -93,8 +93,12 @@ namespace Entidades
         /// <returns>Una cadena que contiene la informacion del chocolate.</returns>
         public override string MostrarEnVisor()
         {
-            string mensaje = $"CHOCOLATE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}";
-            return mensaje;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CHOCOLATE:");
+            sb.Append(base.MostrarEnVisor());
+            sb.Append($"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao}");
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -103,9 +107,9 @@ namespace Entidades
         /// <returns>El precio final del chocolate.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.CalcularPrecioFinal();
+            double precioFinal = base.Precio * base.Cantidad;
 
-            if (this.Cantidad > 3)
+            if (base.Cantidad > 3)
             {
                 precioFinal *= 0.7;
             }

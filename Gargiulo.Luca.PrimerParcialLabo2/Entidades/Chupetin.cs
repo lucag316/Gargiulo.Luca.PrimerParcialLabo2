@@ -92,8 +92,12 @@ namespace Entidades
         /// <returns>Una cadena que contiene la informacion del chupetin.</returns>
         public override string MostrarEnVisor()
         {
-            string mensaje = $"CHUPETIN: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
-            return mensaje;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CHUPETIN:");
+            sb.Append(base.MostrarEnVisor());
+            sb.Append($"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}");
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -102,9 +106,9 @@ namespace Entidades
         /// <returns>El precio final del chupetin.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.CalcularPrecioFinal();
+            double precioFinal = base.Precio * base.Cantidad;
 
-            if (this.Cantidad > 2)
+            if (base.Cantidad > 2)
             {
                 precioFinal *= 0.80;
             }

@@ -93,8 +93,12 @@ namespace Entidades
         /// <returns>Una cadena que contiene la informacion del chicle.</returns>
         public override string MostrarEnVisor()
         {
-            string mensaje = $"CHICLE: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}";
-            return mensaje;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CHICLE:");
+            sb.Append(base.MostrarEnVisor());
+            sb.Append($"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}");
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -103,9 +107,9 @@ namespace Entidades
         /// <returns>El precio final del chicle.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.CalcularPrecioFinal();
+            double precioFinal = base.Precio * base.Cantidad;
 
-            if (this.Cantidad > 5)
+            if (base.Cantidad > 5)
             {
                 precioFinal *= 0.85;
             }

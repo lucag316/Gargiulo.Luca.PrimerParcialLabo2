@@ -116,12 +116,17 @@ namespace Entidades
         /// <summary>
         /// Lo utilizan sus clases derivadas, devuelve una cadena con los detalles de las golosinas, en el visor
         /// </summary>
-        public abstract string MostrarEnVisor();
-
-        public virtual double CalcularPrecioFinal()
+        public virtual string MostrarEnVisor()
         {
-            return this.Precio * this.Cantidad;
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Codigo de barra: {this.Codigo} - Precio: ${this.Precio} - Peso: {this.Peso}g - Cantidad: {this.Cantidad} unidades - ");
+
+            return sb.ToString();
         }
+
+        public abstract double CalcularPrecioFinal();
+  
         #endregion
 
         #region Sobrecarga de operadores de igualdad
