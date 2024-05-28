@@ -93,14 +93,28 @@ namespace Entidades
 
         public List<Golosina> DeserializarGolosinasJSON()
         {
-            this.listaGolosinas = new List<Golosina>();  //creo una lista vacia auxiliar donde guardo a las golosinas que se deserialicen
+            //this.listaGolosinas = new List<Golosina>();  //creo una lista vacia auxiliar donde guardo a las golosinas que se deserialicen
+
+            //using (StreamReader streamReader = new StreamReader(this.path))
+            //{
+            //    string jsonGolosinas = streamReader.ReadToEnd(); //leo todo completo hasta el final
+
+            //    this.listaGolosinas = JsonSerializer.Deserialize<List<Golosina>>(jsonGolosinas);  //recien aca deserializo
+            //}
+            //return this.listaGolosinas;
+            this.listaGolosinas = new List<Golosina>();
 
             using (StreamReader streamReader = new StreamReader(this.path))
             {
-                string jsonGolosinas = streamReader.ReadToEnd(); //leo todo completo hasta el final
+                string jsonGolosinas = streamReader.ReadToEnd();
 
-                this.listaGolosinas = JsonSerializer.Deserialize<List<Golosina>>(jsonGolosinas);  //recien aca deserializo
+                // Aquí es donde se realiza la deserialización a un array de objetos Golosina
+                Golosina[] golosinasArray = JsonSerializer.Deserialize<Golosina[]>(jsonGolosinas);
+
+                // Convierte el array a una lista de Golosina
+                this.listaGolosinas = golosinasArray.ToList();
             }
+
             return this.listaGolosinas;
         }
 

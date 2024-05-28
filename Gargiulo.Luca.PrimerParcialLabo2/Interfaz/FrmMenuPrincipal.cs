@@ -389,6 +389,10 @@ namespace Interfaz
                 {
                     e.Cancel = true; // lo cancelo al cierre
                 }
+                else
+                {
+                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas
+                }
             }
         }
 
