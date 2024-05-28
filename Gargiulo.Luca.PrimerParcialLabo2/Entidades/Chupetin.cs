@@ -31,15 +31,16 @@ namespace Entidades
         }
         #endregion
 
-        #region Constructor
+        #region Constructores
         public Chupetin() : base() //constructor sin parametros para poder usar JSON
-        {
-
-        }
-        public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = EFormasDeChupetin.Redondo;
             this.dureza = ENivelesDeDureza.Media;
+        }
+        public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
+        {
+            //this.formaChupetin = EFormasDeChupetin.Redondo;
+            //this.dureza = ENivelesDeDureza.Media;
         }
         public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin) : this(codigo, peso, precio, cantidad)
         {
@@ -84,17 +85,26 @@ namespace Entidades
         #endregion
 
         #region Metodos sobrescritos
+
+        /// <summary>
+        /// Muestra la informacion del chupetin en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena que contiene la informacion del chupetin.</returns>
         public override string MostrarEnVisor()
         {
             string mensaje = $"CHUPETIN: Codigo de barra: {base.Codigo} - Precio: ${base.Precio} - Peso: {base.Peso}g - Cantidad: {base.Cantidad} unidades - Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}";
-            //fijarme si poner todo o no, para no repetir codigo
             return mensaje;
         }
+
+        /// <summary>
+        /// Calcula el precio final del chupetin, si se compra mas de 2 chupetines, aplico 20% de descuento.
+        /// </summary>
+        /// <returns>El precio final del chupetin.</returns>
         public override double CalcularPrecioFinal()
         {
             double precioFinal = base.CalcularPrecioFinal();
-            //si compro mas de 2 chupetines aplico 20% de descuento
-            if (Cantidad > 3) //aca no se si tendria que poner this.Cantidad
+
+            if (this.Cantidad > 2)
             {
                 precioFinal *= 0.80;
             }
@@ -103,23 +113,31 @@ namespace Entidades
         #endregion
 
         #region Sobrecargas de operadores de igualdad
+
+        /// <summary>
+        /// Determina si dos instancias de Chupetin son iguales.
+        /// </summary>
+        /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
-            bool mismoChupetin = false;
+            //bool mismoChupetin = false;
 
-            if (chupetin1.Codigo == chupetin2.Codigo && chupetin1.Peso == chupetin2.Peso)
-            {
-                mismoChupetin = true;
-            }
+            //if (chupetin1.Codigo == chupetin2.Codigo && chupetin1.Peso == chupetin2.Peso)
+            //{
+            //    mismoChupetin = true;
+            //}
 
-            return mismoChupetin;
+            //return mismoChupetin;
+            return (Golosina)chupetin1 == (Golosina)chupetin2; //llamo al == de la clase base
         }
+
+        /// <summary>
+        /// Determina si dos instancias de Chupetin son diferentes.
+        /// </summary>
         public static bool operator !=(Chupetin chupetin1, Chupetin chupetin2)
         {
             return !(chupetin1 == chupetin2);
         }
-
-        
         #endregion
     }
 }
