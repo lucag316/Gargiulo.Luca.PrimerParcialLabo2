@@ -15,7 +15,7 @@ namespace Interfaz
     {
         private UsuarioLog usuarioLog;
 
-        public FrmVisualizadorUsuariosLog(string logFilePath)
+        public FrmVisualizadorUsuariosLog(string logFilePath) //paso la ruta del archivo de registro de usuarios
         {
             InitializeComponent();
             this.usuarioLog = new UsuarioLog(logFilePath);
@@ -27,22 +27,21 @@ namespace Interfaz
 
         }
 
+        /// <summary>
+        /// Muestra el contenido del archivo de registro de usuarios en el ListBox.
+        /// </summary>
         private void MostrarLog()
         {
-            string logInfo = this.usuarioLog.LeerLog();
-            // Dividir el contenido del registro por líneas
-            string[] lines = logInfo.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            string logInfo = this.usuarioLog.LeerLog(); //leo el contenido del archivo
+            
+            string[] lines = logInfo.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries); // divido el contenido por líneas, por el split
 
-            // Limpiar la lista antes de agregar nuevos elementos
-            lstVisualizadorUsuariosLog.Items.Clear();
+            this.lstVisualizadorUsuariosLog.Items.Clear();
 
-            // Agregar cada línea a la lista
             foreach (string line in lines)
             {
-                lstVisualizadorUsuariosLog.Items.Add(line);
+                this.lstVisualizadorUsuariosLog.Items.Add(line); // Agrego cada linea a la lista
             }
-
         }
-
     }
 }
