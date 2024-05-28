@@ -25,17 +25,14 @@ namespace Entidades
         {
             if (System.IO.Path.IsPathRooted(pathArchivo))
             {
-                // Si la ruta es absoluta, la usamos directamente
-                this.path = pathArchivo;
+                
+                this.path = pathArchivo; // Si la ruta es absoluta, la uso directamente
             }
             else
             {
-                // Si la ruta es relativa, la concatenamos con el directorio predeterminado
+                // Si la ruta es relativa, la concateno con el directorio predeterminado
                 this.path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GolosinasSerializadas", pathArchivo);
             }
-
-            //this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//me develve el path de la carpeta
-            //this.path += "/GolosinasSerializadas";
 
             string directory = System.IO.Path.GetDirectoryName(this.path);
 
@@ -43,13 +40,6 @@ namespace Entidades
             {
                 Directory.CreateDirectory(directory);
             }
-
-            //if (!Directory.Exists(this.path))
-            //{
-            //    Directory.CreateDirectory(this.path);
-            //}
-
-            //this.path += "/" + path;
         }
         public Serializadora(string path, List<Golosina> listaGolosinas) : this(path)
         {
@@ -120,10 +110,9 @@ namespace Entidades
 
         public List<Golosina> DeserialiazarGolosinasXML()
         {
-            //List<Golosina> auxGolosinas = new List<Golosina>();  //instancio una lista de golosinas vacia
             this.listaGolosinas = new List<Golosina>();
 
-            using (XmlTextReader xmlReader = new XmlTextReader(this.path))// + .xml
+            using (XmlTextReader xmlReader = new XmlTextReader(this.path))
             {
                 XmlSerializer serXml = new XmlSerializer (typeof(List<Golosina>)); //instancio el serializer
 
