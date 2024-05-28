@@ -16,7 +16,6 @@ namespace Interfaz
             try
             {
                 this.usuarios = Serializadora.DeserializarUsuariosJSON(pathJsonUsuarios);
-
             }
             catch (Exception ex)
             {
