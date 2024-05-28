@@ -145,6 +145,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 391);
+            ControlBox = false;
             Controls.Add(txtCantidad);
             Controls.Add(txtPeso);
             Controls.Add(txtCodigo);
@@ -155,8 +156,10 @@
             Controls.Add(txtPrecio);
             Controls.Add(lblPrecio);
             Controls.Add(btnAceptar);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmGolosina";
-            Text = "FrmGolosina";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Golosina";
             Load += FrmGolosina_Load;
             ResumeLayout(false);
             PerformLayout();

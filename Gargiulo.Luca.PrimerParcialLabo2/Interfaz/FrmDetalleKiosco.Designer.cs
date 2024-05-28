@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleKiosco));
             lstVisorDetalleKiosco = new ListBox();
             SuspendLayout();
             // 
@@ -45,10 +46,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 420);
             Controls.Add(lstVisorDetalleKiosco);
             Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmDetalleKiosco";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalle";
             Load += FrmDetalleKiosco_Load;
             ResumeLayout(false);

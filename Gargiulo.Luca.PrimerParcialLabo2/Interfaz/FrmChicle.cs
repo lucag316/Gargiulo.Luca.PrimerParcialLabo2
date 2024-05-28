@@ -20,6 +20,7 @@ namespace Interfaz
         public FrmChicle()
         {
             InitializeComponent();
+
             foreach (ENivelesDeElasticidad elasticidad in Enum.GetValues(typeof(ENivelesDeElasticidad)))
             {
                 this.cboElasticidad.Items.Add(elasticidad);
