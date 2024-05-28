@@ -412,6 +412,9 @@ namespace Interfaz
             frmLogin.Show(); // Muestro el formulario del login
         }
 
+        /// <summary>
+        /// Abre un formulario para mostrar el detalle del kiosco.
+        /// </summary>
         private void dETALLEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDetalleKiosco frmDetalleKiosco = new FrmDetalleKiosco();
@@ -419,8 +422,6 @@ namespace Interfaz
             frmDetalleKiosco.MostrarDetalleEnVisor(this.kiosco.MostrarDetalleEnVisor());
 
             frmDetalleKiosco.ShowDialog();
-
-
         }
     }
 }
