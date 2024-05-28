@@ -106,10 +106,10 @@ namespace Entidades
             return mismaGolosina;
         }
 
-        public override int GetHashCode() //lo pongo para que no me tire advertiencia
-        {
-            throw new NotImplementedException();
-        }
+        //public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia
+        //{
+        //    throw new NotImplementedException();
+        //}
         #endregion
 
         #region Metodos virtuales y abstractos

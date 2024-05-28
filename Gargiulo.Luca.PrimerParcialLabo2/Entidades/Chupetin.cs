@@ -78,10 +78,10 @@ namespace Entidades
             }
             return mismoChupetin;
         }
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
+        //public override int GetHashCode()
+        //{
+        //    throw new NotImplementedException();
+        //}
         #endregion
 
         #region Metodos sobrescritos

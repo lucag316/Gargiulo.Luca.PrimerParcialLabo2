@@ -329,9 +329,9 @@ namespace Entidades
             throw new NotImplementedException();
         }
 
-        public override int GetHashCode() //lo agregue para que no me tire advertencia
-        {
-            throw new NotImplementedException();
-        }
+        //public override int GetHashCode() //lo agregue para que no me tire advertencia
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
