@@ -8,16 +8,28 @@ namespace Entidades
 {
     public class Usuario
     {
-        private string _nombre;
         private string _apellido;
-        private string _legajo;
+        private string _nombre;
+        private int _legajo;
         private string _correo;
         private string _clave;
         private string _perfil;
 
-        public string apellido { get; set; }
-        public string nombre { get; set; }
-        public int legajo { get; set; }
+        public string apellido
+        {
+            get { return this._apellido; }
+            set { this._apellido = value; }
+        }
+        public string nombre
+        {
+            get { return this._nombre; }
+            set { this._nombre = value; }
+        }
+        public int legajo
+        {
+            get { return this._legajo; }
+            set { this._legajo = value; }
+        }
         public string correo
         {
             get { return this._correo; }
@@ -29,7 +41,11 @@ namespace Entidades
             get { return this._clave; }
             set { this._clave = value;}
         }
-        public string perfil { get; set; }
+        public string perfil
+        {
+            get { return this._perfil; }
+            set { this._perfil = value; }
+        }
 
     }
 }

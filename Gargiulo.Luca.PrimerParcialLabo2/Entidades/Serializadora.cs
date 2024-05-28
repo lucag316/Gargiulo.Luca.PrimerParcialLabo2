@@ -11,6 +11,9 @@ using System.Runtime.CompilerServices;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase para serializar y deserializar objetos.
+    /// </summary>
     public class Serializadora
     {
         private string path;

@@ -322,12 +322,10 @@ namespace Entidades
             {
                 return true;
             }
-
             if (ReferenceEquals(obj, null))
             {
                 return false;
             }
-
             throw new NotImplementedException();
         }
 
