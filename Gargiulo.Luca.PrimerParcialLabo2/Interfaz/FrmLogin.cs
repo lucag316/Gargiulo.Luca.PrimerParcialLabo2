@@ -37,10 +37,14 @@ namespace Interfaz
         /// <returns>El objeto Usuario correspondiente o null si no se encuentra.</returns>
         private Usuario ObtenerUsuario(string correo, string clave)
         {
+            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(clave))
+            {
+                throw new ArgumentException();
+            }
 
             foreach (Usuario usuario in this.usuarios)
             {
-                if (usuario.correo == correo && usuario.clave == clave)
+                if (usuario.correo.ToLower() == correo.ToLower() && usuario.clave == clave)
                 {
                     return usuario;
                 }
