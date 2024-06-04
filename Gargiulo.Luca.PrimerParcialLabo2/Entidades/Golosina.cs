@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -139,11 +140,21 @@ namespace Entidades
         {
             bool mismaGolosina = false;
 
-            if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso && golosina1.precio == golosina2.precio)
+            if (((object)golosina1) == null && ((object)golosina2) == null)
             {
                 mismaGolosina = true;
             }
-
+            else
+            {
+                if(((object)golosina1) != null && ((object)golosina2) != null)
+                {
+                    if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso && golosina1.precio == golosina2.precio)
+                    {
+                        mismaGolosina = true;
+                    }
+                }
+                //si alguno de los parámetros es != null y el otro no, retorno false
+            }
             return mismaGolosina;
         }
 

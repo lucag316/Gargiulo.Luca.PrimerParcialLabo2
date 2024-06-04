@@ -39,7 +39,7 @@ namespace Interfaz
         {
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(clave))
             {
-                throw new ArgumentException();
+                throw new ArgumentNullException();
             }
 
             foreach (Usuario usuario in this.usuarios)
