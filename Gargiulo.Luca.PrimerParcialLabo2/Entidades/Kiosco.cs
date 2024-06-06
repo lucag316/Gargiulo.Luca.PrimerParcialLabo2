@@ -235,10 +235,12 @@ namespace Entidades
                 else
                 {
                     Console.WriteLine("La golosina ya esta en el kiosco");
+                    //throw new InvalidOperationException("La golosina ya esta en el kiosco.");
                 }
             }
             else
             {
+                
                 Console.WriteLine("No se puede agregar mas, se alanzo la capacidad maxima del kiosco");
             }
             return kiosco;
@@ -342,26 +344,36 @@ namespace Entidades
         //// <param name="kiosco">El kiosco a convertir.</param>
         public static explicit operator string(Kiosco kiosco)
         {
-            return kiosco.ToString();
+            return kiosco.ToString();  // ME TIRA ADVERTENCIA
         }
         #endregion
 
-        public override bool Equals(object obj)
+        #region Metodos de object sobrescritos
+        public override bool Equals(object? obj)
         {
-            if (ReferenceEquals(this, obj))
+            bool estaEnKiosco = false;
+
+
+            if (obj is Golosina)
             {
-                return true;
+                Golosina golosina = (Golosina)obj;
+
+                foreach (Golosina item in this.Golosinas)
+                {
+                    if (item == golosina)
+                    {
+                        estaEnKiosco = true;
+                    }
+                }
             }
-            if (ReferenceEquals(obj, null))
-            {
-                return false;
-            }
+            return estaEnKiosco;
+        }
+
+        public override int GetHashCode() //lo agregue para que no me tire advertencia
+        {
             throw new NotImplementedException();
         }
 
-        //public override int GetHashCode() //lo agregue para que no me tire advertencia
-        //{
-        //    throw new NotImplementedException();
-        //}
+        #endregion
     }
 }

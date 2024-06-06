@@ -24,7 +24,7 @@ Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un ar
 En el menu se puede clickear una opcion del menuStrip para visualizar el registro de usuarios en un Listbox.  Carga el contenido del archivo de registros de usuarios y lo muestra en una lista.
 
 ### Clase Kiosco
-Es la clase responsable de gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines)
+Es la clase responsable de almacenar y gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines). Sus atributos incluyen la lista de golosinas disponibles y la capacidad maxima de distintos tipos de golosinas. Proporciona metodos para mostrar y calcular detalles de las golosinas, asi como para ordenarlas de distintas maneras. Ademas ofrece operadores para agregar y elimar golosinas, verificar su presencia en el kiosco y conversiones implicitas y explicitas.
 
 ### clase Golosina
 Es una clase abstracta que representa una golosina generica. Contiene atributos como codigo, precio, peso y cantidad, tambien tiene propiedades para acceder y modifiar sus valores.
