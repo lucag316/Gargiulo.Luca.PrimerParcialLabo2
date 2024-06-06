@@ -31,5 +31,14 @@ Es una clase abstracta que representa una golosina generica. Contiene atributos 
 Tiene distintos constructores para inicializar sus atributos y metodos para sobreacrgar operadores, calcular el precio final y mostrar los detalles de la golosina.
 Esta clase es serializable en formatos XML y JSON.
 
+### clase Chocolate
+Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chocolates
+
+### clase Chicle
+Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chicles
+
+### clase Chupetin
+Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chupetines
+
 ### Diagrama de Clases
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)

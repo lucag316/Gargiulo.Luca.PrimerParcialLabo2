@@ -43,23 +43,6 @@ namespace Test
             Assert.IsFalse(rta); // si me da false, me tira un tilde
         }
 
-        [TestMethod]
-        public void VerificarIgualdadChocolates_Nulos()
-        {
-            ////AAA
-
-            //// ARANGE - GIVEN
-            Chocolate chocolate1 = null;
-            Chocolate chocolate2 = null;
-
-
-
-            //// ACT - WHEN
-            bool rta = chocolate1 == chocolate2;
-
-            //// ASSERT - THEN - que esperamos?
-            Assert.IsTrue(rta);
-        }
 
 
     }

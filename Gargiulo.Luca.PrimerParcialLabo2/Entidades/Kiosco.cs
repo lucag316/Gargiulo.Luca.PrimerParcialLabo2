@@ -73,10 +73,38 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos
+        #region Metodos Mostrar y calcular
 
         /// <summary>
-        /// Muestra los detalles de todas las golosinas en un formato adecuado para un visor.
+        /// Muestra una lista de golosinas en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Una cadena con la lista de golosinas.</returns>
+        public string MostrarListaEnVisor()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<Golosina> listaLocalGolosinas = this.Golosinas;
+
+            foreach (Golosina golosina in listaLocalGolosinas)
+            {
+                if (golosina is Chocolate)// si golosina es un Chocolate
+                {
+                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor()); //lo casteo para tener ese metodo
+                }
+                else if (golosina is Chicle)
+                {
+                    sb.AppendLine(((Chicle)golosina).MostrarEnVisor());
+                }
+                else if (golosina is Chupetin)
+                {
+                    sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
+                }
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Muestra los detalles de todas las golosinas en un formato adecuado para un visor y mas prolijo.
         /// </summary>
         /// <returns>Una cadena con los detalles de todas las golosinas.</returns>
         public string MostrarDetalleEnVisor()
@@ -142,34 +170,6 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Muestra una lista de golosinas en un formato adecuado para un visor.
-        /// </summary>
-        /// <returns>Una cadena con la lista de golosinas.</returns>
-        public string MostrarListaEnVisor()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            List<Golosina> listaLocalGolosinas = this.Golosinas;
-
-            foreach (Golosina golosina in listaLocalGolosinas)
-            {
-                if (golosina is Chocolate)// si golosina es un Chocolate
-                {
-                    sb.AppendLine(((Chocolate)golosina).MostrarEnVisor()); //lo casteo para tener ese metodo
-                }
-                else if (golosina is Chicle)
-                {
-                    sb.AppendLine(((Chicle)golosina).MostrarEnVisor());
-                }
-                else if (golosina is Chupetin)
-                {
-                    sb.AppendLine(((Chupetin)golosina).MostrarEnVisor());
-                }
-            }
-            return sb.ToString();
-        }
-
-        /// <summary>
         /// Calcula el precio total de todas las golosinas en el kiosco.
         /// </summary>
         /// <returns>El precio total de todas las golosinas.</returns>
@@ -184,6 +184,9 @@ namespace Entidades
             return precioTotal;
         }
 
+        #endregion
+
+        #region Metodos de Ordenamiento
         /// <summary>
         /// Ordena las golosinas por codigo de barra.
         /// </summary>
@@ -210,10 +213,10 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Peso.CompareTo(golosina1.Peso));
             }
         }
+
         #endregion
 
         #region Operadores suma y resta
-
 
         /// <summary>
         /// Agrega una golosina al kiosco si no excede la capacidad maxima.
@@ -236,7 +239,7 @@ namespace Entidades
             }
             else
             {
-                Console.WriteLine("No se puede agregar mas, es la capacidad maxima del kiosco");
+                Console.WriteLine("No se puede agregar mas, se alanzo la capacidad maxima del kiosco");
             }
             return kiosco;
         }
