@@ -26,5 +26,10 @@ En el menu se puede clickear una opcion del menuStrip para visualizar el registr
 ### Clase Kiosco
 Es la clase responsable de gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines)
 
+### clase Golosina
+Es una clase abstracta que representa una golosina generica. Contiene atributos como codigo, precio, peso y cantidad, tambien tiene propiedades para acceder y modifiar sus valores.
+Tiene distintos constructores para inicializar sus atributos y metodos para sobreacrgar operadores, calcular el precio final y mostrar los detalles de la golosina.
+Esta clase es serializable en formatos XML y JSON.
+
 ### Diagrama de Clases
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
