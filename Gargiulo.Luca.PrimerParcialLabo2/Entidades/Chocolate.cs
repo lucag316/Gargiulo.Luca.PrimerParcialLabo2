@@ -53,7 +53,8 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos ToString, Equals, GetHashCode Sobrescritos
+        #region Metodos de Object sobrescritos
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -79,10 +80,10 @@ namespace Entidades
             }
             return mismoChocolate;
         }
-        //public override int GetHashCode()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.relleno, this.tipoDeCacao);
+        }
         #endregion
 
         #region Metodos sobrescritos
@@ -117,7 +118,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Sobrecarga de operadores de igualdad
+        #region Sobrecargas de operadores de igualdad
 
         /// <summary>
         /// Determina si dos instancias de Chocolate son iguales.
@@ -125,14 +126,6 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
-            //bool mismoChocolate = false;
-            ////invocar al == de la clase base
-            //if (chocolate1.Codigo == chocolate2.Codigo && chocolate1.Peso == chocolate2.Peso)
-            //{
-            //    mismoChocolate = true;
-            //}
-
-            //return mismoChocolate;
             return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base
         }
 

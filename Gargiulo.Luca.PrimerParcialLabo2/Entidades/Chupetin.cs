@@ -52,7 +52,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos ToString, Equals, GetHashCode Sobrescritos
+        #region Metodos de Object sobrescritos
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -65,6 +65,7 @@ namespace Entidades
 
             return sb.ToString();
         }
+
         public override bool Equals(object? obj)
         {
             bool mismoChupetin = false;
@@ -78,10 +79,10 @@ namespace Entidades
             }
             return mismoChupetin;
         }
-        //public override int GetHashCode()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.formaChupetin, this.dureza);
+        }
         #endregion
 
         #region Metodos sobrescritos
@@ -124,14 +125,6 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
-            //bool mismoChupetin = false;
-
-            //if (chupetin1.Codigo == chupetin2.Codigo && chupetin1.Peso == chupetin2.Peso)
-            //{
-            //    mismoChupetin = true;
-            //}
-
-            //return mismoChupetin;
             return (Golosina)chupetin1 == (Golosina)chupetin2; //llamo al == de la clase base
         }
 
