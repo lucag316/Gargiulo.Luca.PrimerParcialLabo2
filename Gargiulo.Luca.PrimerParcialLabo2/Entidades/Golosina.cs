@@ -17,9 +17,9 @@ namespace Entidades
     public abstract class Golosina
     {
         #region Atributos
-        private int codigo; //seria como si fuera el codigo de barra
-        private float peso;
-        private double precio;
+        protected int codigo; //seria como si fuera el codigo de barra
+        protected double precio;
+        protected float peso;
         protected int cantidad;
         #endregion
 
@@ -29,15 +29,15 @@ namespace Entidades
             get { return this.codigo; }
             set { this.codigo = value; }
         }
-        public float Peso
-        {
-            get { return this.peso; }
-            set { this.peso = value; }
-        }
         public double Precio
         {
             get { return this.precio; }
             set { this.precio = value; }
+        }
+        public float Peso
+        {
+            get { return this.peso; }
+            set { this.peso = value; }
         }
         public int Cantidad
         {
@@ -50,8 +50,8 @@ namespace Entidades
         public Golosina()   //constructor sin parametros para poder usar JSON
         {
             this.codigo = 0;
-            this.peso = 0;
             this.precio = 0;
+            this.peso = 0;
             this.cantidad = 0;
         }
         public Golosina(int codigo) : this()
@@ -72,7 +72,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos ToString, Equals, GetHashCode
+        #region Metodos de Object sobrecargados 
 
         /// <summary>
         /// Devuelve una cadena que representa la golosina.
@@ -81,10 +81,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Codigo: {this.codigo.ToString()}");
-            sb.AppendLine($"Peso: {this.peso.ToString()} g");
-            sb.AppendLine($"Precio: ${this.precio.ToString()}");
-            sb.AppendLine($"Cantidad: {this.cantidad.ToString()} unidades");
+            sb.AppendLine($"Codigo: {this.codigo}");    // no hace falta castearlo a string
+            sb.AppendLine($"Precio: ${this.precio}");
+            sb.AppendLine($"Peso: {this.peso} g");
+            sb.AppendLine($"Cantidad: {this.cantidad} unidades");
 
             return sb.ToString();
         }
@@ -107,13 +107,14 @@ namespace Entidades
             return mismaGolosina;
         }
 
-        //public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia
+        //public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR XML, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia, que hago?
         //{
         //    throw new NotImplementedException();
         //}
         #endregion
 
         #region Metodos virtuales y abstractos
+
         /// <summary>
         /// Lo utilizan sus clases derivadas, devuelve una cadena con los detalles de las golosinas, en el visor
         /// </summary>
@@ -130,7 +131,7 @@ namespace Entidades
   
         #endregion
 
-        #region Sobrecarga de operadores de igualdad
+        #region Sobrecargas de operadores de igualdad
 
         /// <summary>
         /// Determina si dos golosinas son iguales comparando sus codigos y pesos.
@@ -140,20 +141,23 @@ namespace Entidades
         {
             bool mismaGolosina = false;
 
-            if (((object)golosina1) == null && ((object)golosina2) == null)
+            if (ReferenceEquals(golosina1, golosina2))
             {
                 mismaGolosina = true;
             }
-            else
+
+            if (golosina1 is null || golosina2 is null) // le pongo is en vez de == para que no me advierta lo de valores null
             {
-                if(((object)golosina1) != null && ((object)golosina2) != null)
+                mismaGolosina = false;
+            }
+            else if (!(golosina1 is null && golosina2 is null))
+            {
+                if (golosina1.Codigo == golosina2.Codigo && 
+                    golosina1.precio == golosina2.precio && 
+                    golosina1.Peso == golosina2.Peso)
                 {
-                    if (golosina1.Codigo == golosina2.Codigo && golosina1.Peso == golosina2.Peso && golosina1.precio == golosina2.precio)
-                    {
-                        mismaGolosina = true;
-                    }
+                    mismaGolosina = true;
                 }
-                //si alguno de los parámetros es != null y el otro no, retorno false
             }
             return mismaGolosina;
         }
@@ -166,8 +170,6 @@ namespace Entidades
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
-
-        
         #endregion
     }
 }
