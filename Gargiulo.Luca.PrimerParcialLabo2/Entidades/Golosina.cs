@@ -107,10 +107,14 @@ namespace Entidades
             return mismaGolosina;
         }
 
-        //public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR XML, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia, que hago?
-        //{
-        //    throw new NotImplementedException();
-        //}
+        /// <summary>
+        /// Devuelve un código hash para el objeto actual.
+        /// </summary>
+        public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR XML, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia, que hago?
+        {
+            //throw new NotImplementedException();
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad); // si le pongo esto, se arregla
+        }
         #endregion
 
         #region Metodos virtuales y abstractos
@@ -152,7 +156,7 @@ namespace Entidades
             }
             else if (!(golosina1 is null && golosina2 is null))
             {
-                if (golosina1.Codigo == golosina2.Codigo && 
+                if (golosina1.Codigo == golosina2.Codigo &&
                     golosina1.precio == golosina2.precio && 
                     golosina1.Peso == golosina2.Peso)
                 {
@@ -170,6 +174,20 @@ namespace Entidades
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
         }
+        #endregion
+
+        #region Metodos Auxiliares
+
+        private static int ValidarNoNegativo(int valor, string nombrePropiedad)
+        {
+            // si hago esto, tengo que asignar los parametros de los constructores, a sus propiedades, no a atributos, sino, no validaria
+            if (valor < 0)
+            {
+                throw new ArgumentOutOfRangeException(nombrePropiedad, $"{nombrePropiedad} no puede ser negativo");
+            }
+            return valor;
+        }
+
         #endregion
     }
 }
