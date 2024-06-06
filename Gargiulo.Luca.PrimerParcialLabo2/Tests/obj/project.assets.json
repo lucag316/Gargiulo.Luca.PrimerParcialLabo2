@@ -599,24 +599,14 @@
           }
         }
       },
-      "Interfaz/1.0.0": {
+      "Entidades/1.0.0": {
         "type": "project",
-        "framework": "Unsupported,Version=v0.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Interfaz.dll": {}
+          "bin/placeholder/Entidades.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Interfaz.dll": {}
-        }
-      },
-      "WinFormsApp1/1.0.0": {
-        "type": "project",
-        "framework": "Unsupported,Version=v0.0",
-        "compile": {
-          "bin/placeholder/WinFormsApp1.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/WinFormsApp1.dll": {}
+          "bin/placeholder/Entidades.dll": {}
         }
       }
     }
@@ -2313,24 +2303,18 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "Interfaz/1.0.0": {
+    "Entidades/1.0.0": {
       "type": "project",
-      "path": "../Interfaz/Interfaz.csproj",
-      "msbuildProject": "../Interfaz/Interfaz.csproj"
-    },
-    "WinFormsApp1/1.0.0": {
-      "type": "project",
-      "path": "../WinFormsApp1/WinFormsApp1.csproj",
-      "msbuildProject": "../WinFormsApp1/WinFormsApp1.csproj"
+      "path": "../Entidades/Entidades.csproj",
+      "msbuildProject": "../Entidades/Entidades.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Interfaz >= 1.0.0",
+      "Entidades >= 1.0.0",
       "MSTest.TestAdapter >= 2.2.10",
       "MSTest.TestFramework >= 2.2.10",
       "Microsoft.NET.Test.Sdk >= 17.5.0",
-      "WinFormsApp1 >= 1.0.0",
       "coverlet.collector >= 3.2.0"
     ]
   },
@@ -2355,17 +2339,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\Interfaz.csproj": {
-              "projectPath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\Interfaz.csproj"
-            },
-            "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\WinFormsApp1\\WinFormsApp1.csproj": {
-              "projectPath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\WinFormsApp1\\WinFormsApp1.csproj"
+            "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Entidades.csproj"
             }
           }
         }
@@ -2374,6 +2356,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2413,28 +2400,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto Interfaz no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto Interfaz admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "Interfaz",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto WinFormsApp1 no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto WinFormsApp1 admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "WinFormsApp1",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

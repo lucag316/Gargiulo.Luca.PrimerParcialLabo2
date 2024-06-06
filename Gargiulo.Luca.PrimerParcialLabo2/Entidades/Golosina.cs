@@ -72,7 +72,7 @@ namespace Entidades
         }
         #endregion
 
-        #region Metodos de Object sobrecargados 
+        #region Metodos de Object sobrescritos
 
         /// <summary>
         /// Devuelve una cadena que representa la golosina.

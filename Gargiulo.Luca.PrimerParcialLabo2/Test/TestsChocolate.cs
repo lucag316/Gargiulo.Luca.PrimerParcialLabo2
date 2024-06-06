@@ -32,7 +32,7 @@ namespace Test
             ////AAA
 
             //// ARANGE - GIVEN
-            Chocolate chocolate1 = new Chocolate(1, 5, 10, 1);
+            Chocolate chocolate1 = new Chocote(1, 5, 10, 1);
             Chocolate chocolate2 = new Chocolate(2, 5, 10, 1);
             //seguir con las demas opciones
 

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "J+rdBRq+pWUp4Zk4fA5nM5EhVoFUjQEbjbRONVkmZ7sVljWynInBLVbMx7vEAQMSXoK6EM8CUfAkrDgGcQFAmg==",
-  "success": false,
+  "dgSpecHash": "aP5856JcFuo=",
+  "success": true,
   "projectFilePath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luca_\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
@@ -32,24 +32,5 @@
     "C:\\Users\\luca_\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\luca_\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto Interfaz no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto Interfaz admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "Interfaz",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto WinFormsApp1 no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto WinFormsApp1 admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "WinFormsApp1",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }
