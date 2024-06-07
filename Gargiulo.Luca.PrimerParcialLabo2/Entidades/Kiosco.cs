@@ -2,6 +2,7 @@
 
 namespace Entidades
 {
+
     /// <summary>
     /// Representa un kiosco que almacena golosinas.
     /// </summary>
