@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     [Serializable]
-    public class Chocolate : Golosina
+    public class Chocolate : Golosina, ICalculos
     {
         #region Atributos
         protected ERellenos relleno;
@@ -86,6 +86,12 @@ namespace Entidades
         }
         #endregion
 
+
+        double ICalculos.CalcularDescuento(double precio)
+        {
+            return precio * 0.7;
+        }
+
         #region Metodos sobrescritos
 
         /// <summary>
@@ -110,9 +116,13 @@ namespace Entidades
         {
             double precioFinal = base.Precio * base.Cantidad;
 
+
+
             if (base.Cantidad > 3)
             {
-                precioFinal *= 0.7;
+                precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal); // ver bien porque lo tengo que castear asi
+
+                //precioFinal *= 0.7;
             }
             return precioFinal;
         }

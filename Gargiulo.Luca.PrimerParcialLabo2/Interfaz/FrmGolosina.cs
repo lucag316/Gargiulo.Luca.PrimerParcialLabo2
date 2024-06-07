@@ -25,6 +25,7 @@ namespace Interfaz
 
         }
 
+        #region Aceptar y Cancelar
         protected virtual void btnAceptar_Click(object sender, EventArgs e) //lo hago virtual para heredarlo, protected porque no puede ser privado
         {
             int codigo;
@@ -89,5 +90,7 @@ namespace Interfaz
                 this.Close();
             }
         }
+
+        #endregion
     }
 }
