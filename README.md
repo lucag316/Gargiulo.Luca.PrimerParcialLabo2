@@ -1,5 +1,6 @@
 # Gargiulo.Luca.PrimerParcialLabo2
-Primer parcial laboratorio 2
+
+# Laboratorio 2  Segundo Parcial
 
 # KioscoApp - Gestion de Golosinas
 
