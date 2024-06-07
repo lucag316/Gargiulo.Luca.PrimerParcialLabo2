@@ -23,6 +23,8 @@ Ingreso de usuarios, pide el correo y su clave, los verifica con el uso de un ar
 ### FrmVisualizadorUsuariosLog
 En el menu se puede clickear una opcion del menuStrip para visualizar el registro de usuarios en un Listbox.  Carga el contenido del archivo de registros de usuarios y lo muestra en una lista.
 
+## Entidades:
+
 ### Clase Kiosco
 Es la clase responsable de almacenar y gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines). Sus atributos incluyen la lista de golosinas disponibles y la capacidad maxima de distintos tipos de golosinas. Proporciona metodos para mostrar y calcular detalles de las golosinas, asi como para ordenarlas de distintas maneras. Ademas ofrece operadores para agregar y elimar golosinas, verificar su presencia en el kiosco y conversiones implicitas y explicitas.
 
@@ -39,6 +41,17 @@ Esta clase representa un tipo especifico de golosina. Hereda de la clase base Go
 
 ### clase Chupetin
 Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chupetines
+
+## Formularios:
+
+### FrmGolosina
+Es un formulario que proporciona una base solida para formularios de golosinas mas especificas, para el ingreso de datos, facilitando la validacion y permitiendo la personalizacion mediante herencia. Esta clase, es Padre de FrmChocolate, FrmChicle y FrmChupetin.
+
+### FrmChocolate
+
+### FrmChicle
+
+### FrmChupetin
 
 ### Diagrama de Clases
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
