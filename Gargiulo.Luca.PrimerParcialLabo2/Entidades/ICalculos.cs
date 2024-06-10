@@ -9,5 +9,6 @@ namespace Entidades
     public interface ICalculos
     {
         double CalcularDescuento(double precio);
+
     }
 }
