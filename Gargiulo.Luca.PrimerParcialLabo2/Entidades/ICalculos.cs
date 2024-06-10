@@ -10,6 +10,5 @@ namespace Entidades
     {
         double CalcularDescuento(double precio);
 
-
     }
 }

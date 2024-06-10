@@ -1,106 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Entidades.Golosina">
-    <Position X="10" Y="4" Width="2.5" />
+    <Position X="11.25" Y="1.75" Width="4" />
     <TypeIdentifier>
-      <HashCode>AQABAEEAAQBACAAEgAAAAAAQAAAAEAAACAAAAAAAAiA=</HashCode>
+      <HashCode>AQABAEEAAQBCCAAEgAAAAAAQAAAAEIAACAAAAAAAAiA=</HashCode>
       <FileName>Golosina.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chupetin">
-    <Position X="13.75" Y="9.5" Width="2" />
+    <Position X="18.25" Y="10.5" Width="7.75" />
+    <InheritanceLine Type="Entidades.Golosina" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="7.218" />
+        <Point X="13.25" Y="8.871" />
+        <Point X="22.242" Y="8.871" />
+        <Point X="22.242" Y="10.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAEgAQAAAAEAAAAAACACAAAgAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAEgAQAAAAEAAAAAICACAAAgAAAAiA=</HashCode>
       <FileName>Chupetin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chicle">
-    <Position X="10.25" Y="9.5" Width="2" />
+    <Position X="9.25" Y="10.5" Width="8.25" />
+    <InheritanceLine Type="Entidades.Golosina" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="7.218" />
+        <Point X="13.25" Y="9.914" />
+        <Point X="13.25" Y="9.914" />
+        <Point X="13.25" Y="10.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAACIAEggAAAAIAAAAAAAAACAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAgAAACIAEggAAAAIAAAAAAIAACAAAAAAAAiA=</HashCode>
       <FileName>Chicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Chocolate">
-    <Position X="6.75" Y="9.5" Width="2" />
-    <InheritanceLine Type="Entidades.Golosina" FixedToPoint="true">
+    <Position X="1.5" Y="10.5" Width="6.75" />
+    <InheritanceLine Type="Entidades.Golosina" ManuallyRouted="true">
       <Path>
-        <Point X="11.25" Y="8.314" />
-        <Point X="11.25" Y="9.125" />
-        <Point X="7.812" Y="9.125" />
-        <Point X="7.812" Y="9.5" />
+        <Point X="13.25" Y="7.218" />
+        <Point X="13.25" Y="8.842" />
+        <Point X="4.875" Y="8.842" />
+        <Point X="4.875" Y="10.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAEwCAAAAAgAAAAAAAASAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAACEAEwCAAAAAgAAAAAIAASAAAAAAAAiA=</HashCode>
       <FileName>Chocolate.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.Kiosco">
-    <Position X="14.5" Y="3.5" Width="2.75" />
+    <Position X="1.5" Y="1.75" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>ABAAoAAAAKBAAAgAwAUAAAAAAAAgACAAIAAAAAAEAyA=</HashCode>
+      <HashCode>ABAAoAAAAKBAAAgAwAUAAAAAAAAgAKAAIAAAAAAEAyA=</HashCode>
       <FileName>Kiosco.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Usuario">
-    <Position X="7" Y="3" Width="1.5" />
+    <Position X="16.75" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAQBAASAAAAAAAAAIAQIAACAAAAQAAIAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.UsuarioLog">
-    <Position X="7" Y="6.75" Width="1.5" />
+    <Position X="16.75" Y="5.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAE=</HashCode>
       <FileName>UsuarioLog.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Serializadora">
-    <Position X="18.25" Y="3.5" Width="2.5" />
+    <Position X="6.5" Y="1.75" Width="4" />
     <TypeIdentifier>
       <HashCode>AAAAgABAAAQAAgIAAAACAAAAAAAAAAAAgAAEAAAAAAA=</HashCode>
       <FileName>Serializadora.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="ERellenos">
-    <Position X="17.75" Y="11.25" Width="1.5" />
+    <Position X="22.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAIAAAACCCAIgAAAAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="ETiposDeCacao">
-    <Position X="19.5" Y="11.25" Width="1.5" />
+    <Position X="25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAQACAAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="EFormasDeChupetin">
-    <Position X="16" Y="9" Width="1.5" />
+    <Position X="20" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAEAAEAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="ENivelesDeDureza">
-    <Position X="17.75" Y="9" Width="1.5" />
+    <Position X="22.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAAAAgAAAABAQAAAABAQAAAAAAQ=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="ENivelesDeElasticidad">
-    <Position X="19.5" Y="9" Width="1.5" />
+    <Position X="25" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABQUAAAAAAQ=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="ENivelesDuracionDeSabor">
-    <Position X="16" Y="11.25" Width="1.5" />
+    <Position X="20" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABAUAAAAAAQ=</HashCode>
       <FileName>Enumerados.cs</FileName>
