@@ -156,9 +156,7 @@ namespace Entidades
             }
             else if (!(golosina1 is null && golosina2 is null))
             {
-                if (golosina1.Codigo == golosina2.Codigo &&
-                    golosina1.precio == golosina2.precio && 
-                    golosina1.Peso == golosina2.Peso)
+                if (golosina1.Codigo == golosina2.Codigo && golosina1.precio == golosina2.precio)
                 {
                     mismaGolosina = true;
                 }

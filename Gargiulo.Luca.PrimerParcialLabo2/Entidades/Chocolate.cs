@@ -136,7 +136,15 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
+            // ESTO COMENTADO SE ME OCURRIO, VER SI ESTA BIEN
+            //bool mismoGolosina = (Golosina)chocolate1 == (Golosina)chocolate2;
+
+            //bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno;
+
+            //return mismoChocolate;
             return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base
+        
+        
         }
 
         /// <summary>

@@ -23,10 +23,12 @@ namespace Interfaz
             get { return this.miChocolate; } //propiedad publica que devuelve el modificado
         }
 
-        public FrmChocolate() // CREO QUE NO VA EL :base()//ACA VA?O NO?
+        public FrmChocolate() : base()//:base()//ACA VA?O NO?
         {
             InitializeComponent();
 
+
+            //podria hacer esto en un metodo que diga configurarComboBoxes---------
             foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
             {
                 this.cboRelleno.Items.Add(relleno); //agrego los elementos de Enum a los cbo
@@ -38,10 +40,15 @@ namespace Interfaz
                 this.cboTipoDeCacao.Items.Add(tipoDeCacao);
             }
             this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
+            //------------------------------------------------------------------
         }
 
         public FrmChocolate(Chocolate chocolate) : this()
         {
+            this.txtCodigo.Text = chocolate.Codigo.ToString();
+            this.txtPeso.Text = chocolate.Peso.ToString();
+            this.txtPrecio.Text = chocolate.Precio.ToString();
+            this.txtCantidad.Text = chocolate.Cantidad.ToString();
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
         }
