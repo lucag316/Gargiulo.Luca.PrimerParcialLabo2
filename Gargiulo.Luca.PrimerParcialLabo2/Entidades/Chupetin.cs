@@ -68,11 +68,13 @@ namespace Entidades
 
         public override bool Equals(object? obj)
         {
+            bool mismaGolosina = base.Equals(obj);
+
             bool mismoChupetin = false;
 
             if (obj is Chupetin)
             {
-                if (((Chupetin)obj) == this)
+                if (((Chupetin)obj) == this && mismaGolosina == true)
                 {
                     mismoChupetin = true;
                 }
@@ -125,7 +127,11 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
-            return (Golosina)chupetin1 == (Golosina)chupetin2; //llamo al == de la clase base
+            bool mismoGolosina = (Golosina)chupetin1 == (Golosina)chupetin2;
+
+            bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin && chupetin1.Dureza == chupetin2.Dureza;
+
+            return mismoChupetin;
         }
 
         /// <summary>

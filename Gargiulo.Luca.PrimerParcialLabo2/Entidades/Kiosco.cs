@@ -203,6 +203,17 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Codigo.CompareTo(golosina1.Codigo));
             }
         }
+        public void OrdenarGolosinasPorPrecio(bool ascendente)
+        {
+            if (ascendente)
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina1.Precio.CompareTo(golosina2.Precio));
+            }
+            else
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina2.Precio.CompareTo(golosina1.Precio));
+            }
+        }
         public void OrdenarGolosinasPorPeso(bool ascendente)
         {
             if (ascendente)
@@ -212,6 +223,17 @@ namespace Entidades
             else
             {
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Peso.CompareTo(golosina1.Peso));
+            }
+        }
+        public void OrdenarGolosinasPorCantidad(bool ascendente)
+        {
+            if (ascendente)
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina1.Cantidad.CompareTo(golosina2.Cantidad));
+            }
+            else
+            {
+                this.Golosinas.Sort((golosina1, golosina2) => golosina2.Cantidad.CompareTo(golosina1.Cantidad));
             }
         }
 

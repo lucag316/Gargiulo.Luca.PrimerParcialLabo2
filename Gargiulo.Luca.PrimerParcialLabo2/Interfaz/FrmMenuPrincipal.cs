@@ -23,9 +23,10 @@ namespace Interfaz
         public FrmMenuPrincipal(string nombreOperador)
         {
             InitializeComponent();
-            this.kiosco = new Kiosco();
+            this.kiosco = new Kiosco(5);
             this.operador = nombreOperador;
             this.usuarioLogueado = new UsuarioLog("usuarios.log");
+            ConfigurarComboBoxes();
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -35,6 +36,82 @@ namespace Interfaz
             ActualizarBarraDeInformacion();
             ActualizarVisorGolosinas();
         }
+
+        public void ConfigurarComboBoxes()
+        {
+            this.cboOrden.SelectedIndexChanged -= cboOrden_SelectedIndexChanged; //descubro los eventos antes de inicializar sino me tira excepcion
+            this.cboOrdenManera.SelectedIndexChanged -= cboOrdenManera_SelectedIndexChanged;
+
+            foreach (EOrdenes orden in Enum.GetValues(typeof(EOrdenes)))
+            {
+                this.cboOrden.Items.Add(orden);
+            }
+            this.cboOrden.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboOrden.SelectedItem = EOrdenes.PorCodigo;
+
+
+            foreach (EOrdenManera ordenManera in Enum.GetValues(typeof(EOrdenManera)))
+            {
+                this.cboOrdenManera.Items.Add(ordenManera);
+            }
+            this.cboOrdenManera.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboOrdenManera.SelectedItem = EOrdenManera.Ascendente;
+
+            this.cboOrden.SelectedIndexChanged += cboOrden_SelectedIndexChanged;
+            this.cboOrdenManera.SelectedIndexChanged += cboOrdenManera_SelectedIndexChanged;
+
+            OrdenarGolosinas(false);
+        }
+
+        #region Ordenamiento
+        private void cboOrden_SelectedIndexChanged(object? sender, EventArgs e) //el signo es para que no me tire advertencia de null
+        {
+            OrdenarGolosinas();
+        }
+
+        private void cboOrdenManera_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            OrdenarGolosinas();
+        }
+
+        private void OrdenarGolosinas(bool mostrarMensaje = true)
+        {
+            EOrdenes ordenSeleccionado = (EOrdenes)this.cboOrden.SelectedItem;
+            EOrdenManera ordenManeraSeleccionada = (EOrdenManera)this.cboOrdenManera.SelectedItem;
+
+            bool ascendente = ordenManeraSeleccionada == EOrdenManera.Ascendente;
+            //ascendente puede ser true o false
+
+            try
+            {
+                switch (ordenSeleccionado)
+                {
+                    case EOrdenes.PorCodigo:
+                        this.kiosco.OrdenarGolosinasPorCodigo(ascendente);
+                        break;
+                    case EOrdenes.PorPrecio:
+                        this.kiosco.OrdenarGolosinasPorPrecio(ascendente);
+                        break;
+                    case EOrdenes.PorPeso:
+                        this.kiosco.OrdenarGolosinasPorPeso(ascendente);
+                        break;
+                    case EOrdenes.PorCantidad:
+                        this.kiosco.OrdenarGolosinasPorCantidad(ascendente);
+                        break;
+                }
+                this.ActualizarVisorGolosinas(); //creo que solo va aca
+                if (mostrarMensaje)
+                {
+                    MessageBox.Show($"La lista de golosinas fue ordenada {ordenSeleccionado} de manera {ordenManeraSeleccionada} correctamente"); //tratar de que aparezca descendente o descendente
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas {ordenSeleccionado} de manera: {ordenManeraSeleccionada}: {ex.Message}");
+            }
+
+        }
+        #endregion
 
         #region Metodos
 
@@ -144,6 +221,7 @@ namespace Interfaz
                 if (this.kiosco != golosina)
                 {
                     this.kiosco += golosina;
+                    OrdenarGolosinas(false); //para que se ordene por defecto
                     this.ActualizarVisorGolosinas();
                 }
                 else
@@ -267,76 +345,13 @@ namespace Interfaz
         }
         #endregion
 
-        #region Ordenar por Codigo
-
-        /// <summary>
-        /// Maneja el evento de hacer clic en el elemento de menu para ordenar las golosinas por codigo en orden ascendente.
-        /// </summary>
-        private void aSCENDENTEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.kiosco.OrdenarGolosinasPorCodigo(true);
-                this.ActualizarVisorGolosinas();
-                MessageBox.Show("Lista de golosinas fue ordenada por codigo, forma ascendente, correctamente");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ordenar golosinas por codigo ascendente: {ex.Message}");
-            }
-
-        }
-        private void dESCENDENTEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.kiosco.OrdenarGolosinasPorCodigo(false);
-                this.ActualizarVisorGolosinas();
-                MessageBox.Show("Lista de golosinas fue ordenada por codigo, forma descendente, correctamente");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ordenar golosinas por codigo descendente: {ex.Message}");
-            }
-        }
-        #endregion
-
-        #region Ordenar por Peso
-        private void aSCENDENTEToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.kiosco.OrdenarGolosinasPorPeso(true);
-                this.ActualizarVisorGolosinas();
-                MessageBox.Show("Lista de golosinas fue ordenada por peso, forma ascendente, correctamente");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ordenar golosinas por peso ascendente: {ex.Message}");
-            }
-        }
-        private void dESCENDENTEToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.kiosco.OrdenarGolosinasPorPeso(false);
-                this.ActualizarVisorGolosinas();
-                MessageBox.Show("Lista de golosinas fue ordenada por peso, forma descendente, correctamente");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ordenar golosinas por peso descendente: {ex.Message}");
-            }
-        }
-        #endregion
-
         #region Archivos
-        
+
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             this.GuardarXML();
         }
-        
+
         private void xMLToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             this.AbrirXML();
@@ -420,5 +435,7 @@ namespace Interfaz
             FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
             frmVisualizadorUsuariosLog.ShowDialog();
         }
+
+        
     }
 }

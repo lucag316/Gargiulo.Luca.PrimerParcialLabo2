@@ -58,3 +58,16 @@ public enum ENivelesDuracionDeSabor
     MuyAlta,
 }
 
+public enum EOrdenes
+{
+    PorCodigo,
+    PorPrecio,
+    PorPeso,
+    PorCantidad
+}
+
+public enum EOrdenManera
+{
+    Ascendente,
+    Descendente
+}

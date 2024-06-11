@@ -43,13 +43,6 @@
             xMLToolStripMenuItem2 = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem3 = new ToolStripMenuItem();
-            oRDENARToolStripMenuItem = new ToolStripMenuItem();
-            pORCODIGOToolStripMenuItem = new ToolStripMenuItem();
-            aSCENDENTEToolStripMenuItem = new ToolStripMenuItem();
-            dESCENDENTEToolStripMenuItem = new ToolStripMenuItem();
-            pORPESOToolStripMenuItem = new ToolStripMenuItem();
-            aSCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
-            dESCENDENTEToolStripMenuItem1 = new ToolStripMenuItem();
             uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
@@ -66,6 +59,9 @@
             ofdAbrirXml = new OpenFileDialog();
             sfdGuardarXml = new SaveFileDialog();
             saveFileDialog1 = new SaveFileDialog();
+            cboOrden = new ComboBox();
+            cboOrdenManera = new ComboBox();
+            lblOrden = new Label();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -74,14 +70,14 @@
             // 
             lstVisorGolosinas.FormattingEnabled = true;
             lstVisorGolosinas.ItemHeight = 14;
-            lstVisorGolosinas.Location = new Point(14, 68);
+            lstVisorGolosinas.Location = new Point(14, 86);
             lstVisorGolosinas.Name = "lstVisorGolosinas";
-            lstVisorGolosinas.Size = new Size(886, 270);
+            lstVisorGolosinas.Size = new Size(886, 284);
             lstVisorGolosinas.TabIndex = 7;
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, oRDENARToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -151,13 +147,13 @@
             // 
             sERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2 });
             sERIALIZARToolStripMenuItem2.Name = "sERIALIZARToolStripMenuItem2";
-            sERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
+            sERIALIZARToolStripMenuItem2.Size = new Size(154, 22);
             sERIALIZARToolStripMenuItem2.Text = "SERIALIZAR";
             // 
             // xMLToolStripMenuItem2
             // 
             xMLToolStripMenuItem2.Name = "xMLToolStripMenuItem2";
-            xMLToolStripMenuItem2.Size = new Size(180, 22);
+            xMLToolStripMenuItem2.Size = new Size(99, 22);
             xMLToolStripMenuItem2.Text = "XML";
             xMLToolStripMenuItem2.Click += xMLToolStripMenuItem2_Click;
             // 
@@ -165,65 +161,15 @@
             // 
             dESERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3 });
             dESERIALIZARToolStripMenuItem2.Name = "dESERIALIZARToolStripMenuItem2";
-            dESERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
+            dESERIALIZARToolStripMenuItem2.Size = new Size(154, 22);
             dESERIALIZARToolStripMenuItem2.Text = "DESERIALIZAR";
             // 
             // xMLToolStripMenuItem3
             // 
             xMLToolStripMenuItem3.Name = "xMLToolStripMenuItem3";
-            xMLToolStripMenuItem3.Size = new Size(180, 22);
+            xMLToolStripMenuItem3.Size = new Size(99, 22);
             xMLToolStripMenuItem3.Text = "XML";
             xMLToolStripMenuItem3.Click += xMLToolStripMenuItem3_Click;
-            // 
-            // oRDENARToolStripMenuItem
-            // 
-            oRDENARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pORCODIGOToolStripMenuItem, pORPESOToolStripMenuItem });
-            oRDENARToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            oRDENARToolStripMenuItem.Name = "oRDENARToolStripMenuItem";
-            oRDENARToolStripMenuItem.Size = new Size(77, 20);
-            oRDENARToolStripMenuItem.Text = "ORDENAR";
-            // 
-            // pORCODIGOToolStripMenuItem
-            // 
-            pORCODIGOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem, dESCENDENTEToolStripMenuItem });
-            pORCODIGOToolStripMenuItem.Name = "pORCODIGOToolStripMenuItem";
-            pORCODIGOToolStripMenuItem.Size = new Size(152, 22);
-            pORCODIGOToolStripMenuItem.Text = "POR CODIGO";
-            // 
-            // aSCENDENTEToolStripMenuItem
-            // 
-            aSCENDENTEToolStripMenuItem.Name = "aSCENDENTEToolStripMenuItem";
-            aSCENDENTEToolStripMenuItem.Size = new Size(164, 22);
-            aSCENDENTEToolStripMenuItem.Text = "ASCENDENTE";
-            aSCENDENTEToolStripMenuItem.Click += aSCENDENTEToolStripMenuItem_Click;
-            // 
-            // dESCENDENTEToolStripMenuItem
-            // 
-            dESCENDENTEToolStripMenuItem.Name = "dESCENDENTEToolStripMenuItem";
-            dESCENDENTEToolStripMenuItem.Size = new Size(164, 22);
-            dESCENDENTEToolStripMenuItem.Text = "DESCENDENTE";
-            dESCENDENTEToolStripMenuItem.Click += dESCENDENTEToolStripMenuItem_Click;
-            // 
-            // pORPESOToolStripMenuItem
-            // 
-            pORPESOToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aSCENDENTEToolStripMenuItem1, dESCENDENTEToolStripMenuItem1 });
-            pORPESOToolStripMenuItem.Name = "pORPESOToolStripMenuItem";
-            pORPESOToolStripMenuItem.Size = new Size(152, 22);
-            pORPESOToolStripMenuItem.Text = "POR PESO";
-            // 
-            // aSCENDENTEToolStripMenuItem1
-            // 
-            aSCENDENTEToolStripMenuItem1.Name = "aSCENDENTEToolStripMenuItem1";
-            aSCENDENTEToolStripMenuItem1.Size = new Size(164, 22);
-            aSCENDENTEToolStripMenuItem1.Text = "ASCENDENTE";
-            aSCENDENTEToolStripMenuItem1.Click += aSCENDENTEToolStripMenuItem1_Click;
-            // 
-            // dESCENDENTEToolStripMenuItem1
-            // 
-            dESCENDENTEToolStripMenuItem1.Name = "dESCENDENTEToolStripMenuItem1";
-            dESCENDENTEToolStripMenuItem1.Size = new Size(164, 22);
-            dESCENDENTEToolStripMenuItem1.Text = "DESCENDENTE";
-            dESCENDENTEToolStripMenuItem1.Click += dESCENDENTEToolStripMenuItem1_Click;
             // 
             // uSUARIOSToolStripMenuItem
             // 
@@ -314,12 +260,43 @@
             // 
             ofdAbrirXml.FileName = "ofdAbrirXml";
             // 
+            // cboOrden
+            // 
+            cboOrden.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cboOrden.FormattingEnabled = true;
+            cboOrden.Location = new Point(12, 58);
+            cboOrden.Name = "cboOrden";
+            cboOrden.Size = new Size(121, 22);
+            cboOrden.TabIndex = 13;
+            cboOrden.SelectedIndexChanged += cboOrden_SelectedIndexChanged;
+            // 
+            // cboOrdenManera
+            // 
+            cboOrdenManera.FormattingEnabled = true;
+            cboOrdenManera.Location = new Point(152, 58);
+            cboOrdenManera.Name = "cboOrdenManera";
+            cboOrdenManera.Size = new Size(121, 22);
+            cboOrdenManera.TabIndex = 14;
+            cboOrdenManera.SelectedIndexChanged += cboOrdenManera_SelectedIndexChanged;
+            // 
+            // lblOrden
+            // 
+            lblOrden.AutoSize = true;
+            lblOrden.Location = new Point(14, 41);
+            lblOrden.Name = "lblOrden";
+            lblOrden.Size = new Size(101, 14);
+            lblOrden.TabIndex = 15;
+            lblOrden.Text = "Ordenamiento: ";
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 420);
+            Controls.Add(lblOrden);
+            Controls.Add(cboOrdenManera);
+            Controls.Add(cboOrden);
             Controls.Add(statusStrip1);
             Controls.Add(lstVisorGolosinas);
             Controls.Add(menuStrip1);
@@ -357,13 +334,6 @@
         private ToolStripMenuItem cHUPETINToolStripMenuItem;
         private ToolStripMenuItem mODIFICARToolStripMenuItem;
         private ToolStripMenuItem eLIMINARToolStripMenuItem;
-        private ToolStripMenuItem oRDENARToolStripMenuItem;
-        private ToolStripMenuItem pORCODIGOToolStripMenuItem;
-        private ToolStripMenuItem aSCENDENTEToolStripMenuItem;
-        private ToolStripMenuItem dESCENDENTEToolStripMenuItem;
-        private ToolStripMenuItem pORPESOToolStripMenuItem;
-        private ToolStripMenuItem aSCENDENTEToolStripMenuItem1;
-        private ToolStripMenuItem dESCENDENTEToolStripMenuItem1;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel toolStripStatusLabel2;
@@ -375,5 +345,8 @@
         private ToolStripMenuItem uSUARIOSToolStripMenuItem;
         private ToolStripMenuItem vOLVERToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
+        private ComboBox cboOrden;
+        private ComboBox cboOrdenManera;
+        private Label lblOrden;
     }
 }
