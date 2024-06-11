@@ -28,6 +28,7 @@ namespace Interfaz
             InitializeComponent();
 
 
+
             //podria hacer esto en un metodo que diga configurarComboBoxes---------
             foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
             {
@@ -45,10 +46,10 @@ namespace Interfaz
 
         public FrmChocolate(Chocolate chocolate) : this()
         {
-            this.txtCodigo.Text = chocolate.Codigo.ToString();
-            this.txtPeso.Text = chocolate.Peso.ToString();
-            this.txtPrecio.Text = chocolate.Precio.ToString();
-            this.txtCantidad.Text = chocolate.Cantidad.ToString();
+            txtCodigo.Text = chocolate.Codigo.ToString();
+            txtPeso.Text = chocolate.Peso.ToString();
+            txtPrecio.Text = chocolate.Precio.ToString();
+            txtCantidad.Text = chocolate.Cantidad.ToString();
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
         }

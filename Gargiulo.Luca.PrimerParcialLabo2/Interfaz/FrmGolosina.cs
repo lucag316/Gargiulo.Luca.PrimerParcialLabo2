@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,15 +16,27 @@ namespace Interfaz
     /// </summary>
     public partial class FrmGolosina : Form
     {
+        //protected Golosina golosina;
+
         public FrmGolosina()
         {
             InitializeComponent();
+            //this.golosina = golosina;
+            //InicializarControlesGenerales();
         }
 
         private void FrmGolosina_Load(object sender, EventArgs e)
         {
 
         }
+
+        //protected virtual void InicializarControlesGenerales()
+        //{
+        //    txtCodigo.Text = golosina.Codigo.ToString();
+        //    txtPeso.Text = golosina.Peso.ToString();
+        //    txtPrecio.Text = golosina.Precio.ToString();
+        //    txtCantidad.Text = golosina.Cantidad.ToString();
+        //}
 
         #region Aceptar y Cancelar
         protected virtual void btnAceptar_Click(object sender, EventArgs e) //lo hago virtual para heredarlo, protected porque no puede ser privado
