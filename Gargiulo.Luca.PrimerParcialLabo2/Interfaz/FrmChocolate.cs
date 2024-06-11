@@ -26,25 +26,20 @@ namespace Interfaz
         public FrmChocolate() : base()//:base()//ACA VA?O NO?
         {
             InitializeComponent();
-
-
-
-            //podria hacer esto en un metodo que diga configurarComboBoxes---------
-            foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
-            {
-                this.cboRelleno.Items.Add(relleno); //agrego los elementos de Enum a los cbo
-            }
-            this.cboRelleno.SelectedItem = ERellenos.SinRelleno; //valor predeterminado
-
-            foreach (ETiposDeCacao tipoDeCacao in Enum.GetValues(typeof(ETiposDeCacao)))
-            {
-                this.cboTipoDeCacao.Items.Add(tipoDeCacao);
-            }
-            this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
-            //------------------------------------------------------------------
+            ConfigurarComboBoxes();
         }
 
         public FrmChocolate(Chocolate chocolate) : this()
+        {
+            InicializarControlesGenerales(chocolate);
+        }
+
+        private void FrmChocolate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void InicializarControlesGenerales(Chocolate chocolate) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
         {
             txtCodigo.Text = chocolate.Codigo.ToString();
             txtPeso.Text = chocolate.Peso.ToString();
@@ -53,10 +48,21 @@ namespace Interfaz
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
         }
-
-        private void FrmChocolate_Load(object sender, EventArgs e)
+        public void ConfigurarComboBoxes()
         {
+            foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
+            {
+                this.cboRelleno.Items.Add(relleno); //agrego los elementos de Enum a los cbo
+            }
+            this.cboRelleno.DropDownStyle = ComboBoxStyle.DropDownList; // asi no se podria editar
+            this.cboRelleno.SelectedItem = ERellenos.SinRelleno; //valor predeterminado
 
+            foreach (ETiposDeCacao tipoDeCacao in Enum.GetValues(typeof(ETiposDeCacao)))
+            {
+                this.cboTipoDeCacao.Items.Add(tipoDeCacao);
+            }
+            this.cboTipoDeCacao.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
         }
 
         protected override void btnAceptar_Click(object sender, EventArgs e) 

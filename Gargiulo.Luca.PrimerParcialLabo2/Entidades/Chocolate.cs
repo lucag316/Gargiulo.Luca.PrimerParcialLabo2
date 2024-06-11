@@ -69,11 +69,14 @@ namespace Entidades
         }
         public override bool Equals(object? obj)
         {
+            bool mismaGolosina = base.Equals(obj); //creo que estas modificaciones estan bien
+
             bool mismoChocolate = false;
-            
+
+
             if (obj is Chocolate)
             {
-                if (((Chocolate)obj) == this) // voy al == de chocolate y chocolate
+                if (((Chocolate)obj) == this && mismaGolosina == true) // voy al == de chocolate y chocolate
                 {
                     mismoChocolate = true;
                 }
