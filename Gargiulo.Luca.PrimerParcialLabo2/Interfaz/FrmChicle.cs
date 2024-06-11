@@ -17,31 +17,47 @@ namespace Interfaz
 
         public Chicle MiChicle { get { return this.miChicle; } }
 
-        public FrmChicle()
+        public FrmChicle() : base()
         {
             InitializeComponent();
+            ConfigurarComboBoxes();
+            
+        }
+        public FrmChicle(Chicle chicle) : this()
+        {
+            InicializarControlesGenerales(chicle);
+        }
 
+        private void FrmChicle_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void InicializarControlesGenerales(Chicle chicle) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
+        {
+            txtCodigo.Text = chicle.Codigo.ToString();
+            txtPeso.Text = chicle.Peso.ToString();
+            txtPrecio.Text = chicle.Precio.ToString();
+            txtCantidad.Text = chicle.Cantidad.ToString();
+            this.cboElasticidad.SelectedItem = chicle.Elasticidad;
+            this.cboDuracionSabor.SelectedItem = chicle.DuracionSabor;
+        }
+
+        public void ConfigurarComboBoxes()
+        {
             foreach (ENivelesDeElasticidad elasticidad in Enum.GetValues(typeof(ENivelesDeElasticidad)))
             {
                 this.cboElasticidad.Items.Add(elasticidad);
             }
+            this.cboElasticidad.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboElasticidad.SelectedItem = ENivelesDeElasticidad.Media; //valor predeterminado
 
             foreach (ENivelesDuracionDeSabor duracionSabor in Enum.GetValues(typeof(ENivelesDuracionDeSabor)))
             {
                 this.cboDuracionSabor.Items.Add(duracionSabor);
             }
+            this.cboDuracionSabor.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboDuracionSabor.SelectedItem = ENivelesDuracionDeSabor.Media; //valor predeterminado
-        }
-        public FrmChicle(Chicle chicle) : this()
-        {
-            this.cboElasticidad.SelectedItem = chicle.Elasticidad;
-            this.cboDuracionSabor.SelectedItem = chicle.DuracionSabor;
-        }
-
-        private void FrmChicle_Load(object sender, EventArgs e)
-        {
-
         }
 
         protected override void btnAceptar_Click(object sender, EventArgs e)
