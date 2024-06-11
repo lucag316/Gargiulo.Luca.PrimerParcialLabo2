@@ -12,74 +12,63 @@ namespace TestsUnitarios
     public class TestChupetin
     {
         [TestMethod]
-        public void VerificarIgualdadChocolates_ok()
+        public void VerificarIgualdadChupetines_ok()
         {
             ////AAA
 
             //// ARANGE - GIVEN
-            Chocolate chocolate1 = new Chocolate(1, 5, 10, 1, ERellenos.Nuez, ETiposDeCacao.Negro);
-            Chocolate chocolate2 = new Chocolate(1, 5, 10, 1, ERellenos.Nuez, ETiposDeCacao.Negro);
+            Chupetin chupetin1 = new Chupetin(1, 5, 10, 1, EFormasDeChupetin.Redondo, ENivelesDeDureza.Media);
+            Chupetin chupetin2 = new Chupetin(1, 5, 10, 1, EFormasDeChupetin.Redondo, ENivelesDeDureza.Media);
 
             //// ACT - WHEN
-            bool rta = chocolate1 == chocolate2;
+            bool rta = chupetin1 == chupetin2;
 
             //// ASSERT - THEN - que esperamos?, espero que la rta sea true
             Assert.IsTrue(rta); // si no da true, el test tira la cruz
         }
 
         [TestMethod]
-        public void VerificarIgualdadChocolates_Falla()
+        public void VerificarIgualdadChupetines_Falla()
         {
             ////AAA
 
             //// ARANGE - GIVEN
-            Chocolate chocolate1 = new Chocolate(1, 5, 10, 1);
-            Chocolate chocolate2 = new Chocolate(2, 5, 10, 1);
+            Chupetin chupetin1 = new Chupetin(1, 5, 10, 1, EFormasDeChupetin.Redondo, ENivelesDeDureza.Media);
+            Chupetin chupetin2 = new Chupetin(2, 5, 10, 1, EFormasDeChupetin.Corazon, ENivelesDeDureza.Alta);
+
             //seguir con las demas opciones
 
             //// ACT - WHEN
-            bool rta = chocolate1 == chocolate2;
+            bool rta = chupetin1 == chupetin2;
 
             //// ASSERT - THEN - que esperamos?, que me de false
             Assert.IsFalse(rta); // si me da false, me tira un tilde
         }
 
-        //[TestMethod]
-        //public void VerificarChocolates_Nulos()
-        //{
-        //    Chocolate chocolate1 = null;
-        //    Chocolate chocolate2 = null;
-
-        //    bool rta = chocolate1 == chocolate2;
-
-        //    Assert.IsTrue(rta); //espero que 2 nulos sean iguales
-
-        //}
-
         [TestMethod]
-        public void VerificarCalculoPrecioFinalChocolates_SinDescuento()
+        public void VerificarCalculoPrecioFinalChupetines_SinDescuento()
         {
             // ARRANGE
-            Chocolate chocolate = new Chocolate(1, 5, 10, 3); // Cantidad <= 3
+            Chupetin chupetin = new Chupetin(1, 5, 10, 2); // Cantidad <= 2
 
             // ACT
-            double precioFinal = chocolate.CalcularPrecioFinal();
+            double precioFinal = chupetin.CalcularPrecioFinal();
 
             // ASSERT
-            Assert.AreEqual(30, precioFinal); // 10 * 3
+            Assert.AreEqual(20, precioFinal); // 10 * 2
         }
 
         [TestMethod]
-        public void VerificarCalculoPrecioFinalChocolates_ConDescuento()
+        public void VerificarCalculoPrecioFinalChupetines_ConDescuento()
         {
-            //// ARRANGE
-            Chocolate chocolate = new Chocolate(1, 5, 10, 4); // Cantidad > 3
+            // ARRANGE
+            Chupetin chupetin = new Chupetin(1, 5, 10, 3); // Cantidad > 2
 
-            //// ACT
-            double precioFinal = chocolate.CalcularPrecioFinal();
+            // ACT
+            double precioFinal = chupetin.CalcularPrecioFinal();
 
-            //// ASSERT
-            Assert.AreEqual(28, precioFinal); // (10 * 4) * 0.7
+            // ASSERT
+            Assert.AreEqual(24, precioFinal); // (10 * 3) * 0.80
         }
     }
 }

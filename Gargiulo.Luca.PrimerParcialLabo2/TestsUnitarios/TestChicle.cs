@@ -33,53 +33,41 @@ namespace TestsUnitarios
             ////AAA
 
             //// ARANGE - GIVEN
-            Chocolate chocolate1 = new Chocolate(1, 5, 10, 1);
-            Chocolate chocolate2 = new Chocolate(2, 5, 10, 1);
+            Chicle chicle1 = new Chicle(1, 5, 10, 1, ENivelesDeElasticidad.SuperElastico, ENivelesDuracionDeSabor.Alta);
+            Chicle chicle2 = new Chicle(2, 5, 10, 1, ENivelesDeElasticidad.SuperElastico, ENivelesDuracionDeSabor.Alta);
             //seguir con las demas opciones
 
             //// ACT - WHEN
-            bool rta = chocolate1 == chocolate2;
+            bool rta = chicle1 == chicle2;
 
             //// ASSERT - THEN - que esperamos?, que me de false
             Assert.IsFalse(rta); // si me da false, me tira un tilde
         }
 
-        //[TestMethod]
-        //public void VerificarChocolates_Nulos()
-        //{
-        //    Chocolate chocolate1 = null;
-        //    Chocolate chocolate2 = null;
-
-        //    bool rta = chocolate1 == chocolate2;
-
-        //    Assert.IsTrue(rta); //espero que 2 nulos sean iguales
-
-        //}
-
         [TestMethod]
-        public void VerificarCalculoPrecioFinalChocolates_SinDescuento()
+        public void VerificarCalculoPrecioFinalChicles_SinDescuento()
         {
             // ARRANGE
-            Chocolate chocolate = new Chocolate(1, 5, 10, 3); // Cantidad <= 3
+            Chicle chicle = new Chicle(1, 5, 10, 5); // Cantidad <= 5
 
             // ACT
-            double precioFinal = chocolate.CalcularPrecioFinal();
+            double precioFinal = chicle.CalcularPrecioFinal();
 
             // ASSERT
-            Assert.AreEqual(30, precioFinal); // 10 * 3
+            Assert.AreEqual(50, precioFinal); // 10 * 5
         }
 
         [TestMethod]
-        public void VerificarCalculoPrecioFinalChocolates_ConDescuento()
+        public void VerificarCalculoPrecioFinalChicles_ConDescuento()
         {
             //// ARRANGE
-            Chocolate chocolate = new Chocolate(1, 5, 10, 4); // Cantidad > 3
+            Chicle chicle = new Chicle(1, 5, 10, 6); // Cantidad > 5
 
             //// ACT
-            double precioFinal = chocolate.CalcularPrecioFinal();
+            double precioFinal = chicle.CalcularPrecioFinal();
 
             //// ASSERT
-            Assert.AreEqual(28, precioFinal); // (10 * 4) * 0.7
+            Assert.AreEqual(51, precioFinal); // (10 * 6) * 0.85
         }
     }
 }
