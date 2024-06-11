@@ -140,12 +140,12 @@ namespace Entidades
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
             // ESTO COMENTADO SE ME OCURRIO, VER SI ESTA BIEN
-            //bool mismoGolosina = (Golosina)chocolate1 == (Golosina)chocolate2;
+            bool mismoGolosina = (Golosina)chocolate1 == (Golosina)chocolate2;
 
-            //bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno;
+            bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno && chocolate1.TipoDeCacao == chocolate2.TipoDeCacao;
 
-            //return mismoChocolate;
-            return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base
+            return mismoChocolate;
+            //return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base, NO SIRVE SOLO CON DECIR QUE LAS GOLOSINAS SON IGUALES
         
         
         }
