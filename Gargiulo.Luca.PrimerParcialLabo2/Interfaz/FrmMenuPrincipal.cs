@@ -134,75 +134,6 @@ namespace Interfaz
                 }
             }
         }
-
-        public void AbrirJSON() //VER BIEN COMO HACERLO
-        {
-            using (OpenFileDialog ofdAbrirJson = new OpenFileDialog())
-            {
-                ofdAbrirJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
-                ofdAbrirJson.Title = "Abrir archivo JSON";
-
-                if (ofdAbrirJson.ShowDialog() == DialogResult.OK)
-                {
-                    string pathArchivo = ofdAbrirJson.FileName;
-
-                    if (!File.Exists(pathArchivo))
-                    {
-                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
-                        return;
-                    }
-
-                    try
-                    {
-                        Serializadora deserializadoraJson = new Serializadora(pathArchivo);
-                        List<Golosina> golosinasDeserializadas = deserializadoraJson.DeserializarGolosinasJSON();
-                        this.kiosco.Golosinas.Clear();
-                        this.kiosco += golosinasDeserializadas;
-                        this.ActualizarVisorGolosinas();
-                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo JSON.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Guarda los datos de las golosinas del kiosco en un archivo JSON.
-        /// </summary>
-        public void GuardarJSON()
-        {
-            using (SaveFileDialog sfdGuardarJson = new SaveFileDialog())
-            {
-                sfdGuardarJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
-                sfdGuardarJson.Title = "Guardar archivo JSON";
-                sfdGuardarJson.FileName = "Golosinas.json";
-
-                if (sfdGuardarJson.ShowDialog() == DialogResult.OK)
-                {
-                    string pathArchivo = sfdGuardarJson.FileName;
-
-                    try
-                    {
-                        Serializadora serializadoraJson = new Serializadora(pathArchivo);
-
-                        serializadoraJson.SerializarGolosinasJSON(this.kiosco.Golosinas);
-                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
-
         #endregion
 
         #region Agregar Golosinas
@@ -400,31 +331,12 @@ namespace Interfaz
         #endregion
 
         #region Archivos
-        private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            this.GuardarJSON();
-        }
+        
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             this.GuardarXML();
         }
-        private void jSONToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            this.AbrirJSON();
-            //try
-            //{
-            //    Serializadora deserializadoraJson = new Serializadora("Golosinas", kiosco.Golosinas);
-            //    List<Golosina> golosinasDeserializadas = deserializadoraJson.DeserializarGolosinasJSON();
-            //    this.kiosco.Golosinas.Clear();
-            //    this.kiosco += golosinasDeserializadas; //para no usar AddRange
-            //    this.ActualizarVisorGolosinas();
-            //    MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo JSON.");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-            //}
-        }
+        
         private void xMLToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             this.AbrirXML();

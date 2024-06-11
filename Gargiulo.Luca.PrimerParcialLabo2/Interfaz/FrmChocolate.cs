@@ -47,6 +47,8 @@ namespace Interfaz
             txtCantidad.Text = chocolate.Cantidad.ToString();
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
+
+            this.txtCodigo.Enabled = false; // para no poder modificar
         }
         public void ConfigurarComboBoxes()
         {

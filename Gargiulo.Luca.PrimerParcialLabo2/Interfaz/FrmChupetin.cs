@@ -42,6 +42,8 @@ namespace Interfaz
             txtCantidad.Text = chupetin.Cantidad.ToString();
             this.cboFormaChupetin.SelectedItem = chupetin.FormaChupetin;
             this.cboDureza.SelectedItem = chupetin.Dureza;
+
+            this.txtCodigo.Enabled = false; 
         }
 
         public void ConfigurarComboBoxes()

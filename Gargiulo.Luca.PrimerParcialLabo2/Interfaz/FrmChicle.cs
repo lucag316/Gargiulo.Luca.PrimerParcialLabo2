@@ -41,6 +41,8 @@ namespace Interfaz
             txtCantidad.Text = chicle.Cantidad.ToString();
             this.cboElasticidad.SelectedItem = chicle.Elasticidad;
             this.cboDuracionSabor.SelectedItem = chicle.DuracionSabor;
+
+            this.txtCodigo.Enabled = false;
         }
 
         public void ConfigurarComboBoxes()
