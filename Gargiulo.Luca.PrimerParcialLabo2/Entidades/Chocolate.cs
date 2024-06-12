@@ -127,6 +127,10 @@ namespace Entidades
 
                 //precioFinal *= 0.7;
             }
+            if(base.cantidad < 0)
+            {
+                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
+            }
             return precioFinal;
         }
         #endregion

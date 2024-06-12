@@ -182,6 +182,7 @@ namespace Entidades
             if (valor < 0)
             {
                 throw new ArgumentOutOfRangeException(nombrePropiedad, $"{nombrePropiedad} no puede ser negativo");
+                //throw new MiExcepcion($"{nombrePropiedad} no puede ser negativo");//esta es con mi funcion 
             }
             return valor;
         }

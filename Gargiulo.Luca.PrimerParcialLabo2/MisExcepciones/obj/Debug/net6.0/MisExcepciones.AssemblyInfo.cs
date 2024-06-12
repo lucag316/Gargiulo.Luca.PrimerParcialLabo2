@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("TestsUnitarios")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MisExcepciones")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc7addcb430a15f7534261e9ff6a72ad0d11f6b5")]
-[assembly: System.Reflection.AssemblyProductAttribute("TestsUnitarios")]
-[assembly: System.Reflection.AssemblyTitleAttribute("TestsUnitarios")]
+[assembly: System.Reflection.AssemblyProductAttribute("MisExcepciones")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MisExcepciones")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
