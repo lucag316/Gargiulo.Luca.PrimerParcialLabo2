@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Entidades.Interfaces;
+using Entidades.Excepciones;
 
 namespace Entidades
 {
@@ -14,6 +15,8 @@ namespace Entidades
         #region Atributos
         protected ENivelesDeElasticidad elasticidad;
         protected ENivelesDuracionDeSabor duracionSabor;
+        protected bool blanqueadorDental;
+        //protected ESaboresChicle saborChicle;
         #endregion
 
         #region Propiedades

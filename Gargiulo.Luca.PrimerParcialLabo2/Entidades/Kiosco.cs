@@ -238,6 +238,11 @@ namespace Entidades
             }
         }
 
+        //public void OrdenarGolosinasPorCodigo()
+        //{
+            
+        //}
+
         #endregion
 
         #region Operadores suma y resta

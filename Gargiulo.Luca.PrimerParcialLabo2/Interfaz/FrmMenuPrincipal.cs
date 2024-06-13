@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Entidades.Interfaces;
 using Entidades.Serializadoras;
 namespace Interfaz
 {
@@ -87,16 +88,16 @@ namespace Interfaz
                 switch (ordenSeleccionado)
                 {
                     case EOrdenes.PorCodigo:
-                        this.kiosco.OrdenarGolosinasPorCodigo(ascendente);
+                        ((IOrdenable)this.kiosco).OrdenarPorCodigo(ascendente); // lo pongo asi por la interfaz
                         break;
                     case EOrdenes.PorPrecio:
-                        this.kiosco.OrdenarGolosinasPorPrecio(ascendente);
+                        ((IOrdenable)this.kiosco).OrdenarPorPrecio(ascendente);
                         break;
                     case EOrdenes.PorPeso:
-                        this.kiosco.OrdenarGolosinasPorPeso(ascendente);
+                        ((IOrdenable)this.kiosco).OrdenarPorPeso(ascendente);
                         break;
                     case EOrdenes.PorCantidad:
-                        this.kiosco.OrdenarGolosinasPorCantidad(ascendente);
+                        ((IOrdenable)this.kiosco).OrdenarPorCantidad(ascendente);
                         break;
                 }
                 this.ActualizarVisorGolosinas(); //creo que solo va aca

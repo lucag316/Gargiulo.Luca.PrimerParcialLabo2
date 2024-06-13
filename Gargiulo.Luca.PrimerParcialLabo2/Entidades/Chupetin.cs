@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Entidades.Interfaces;
+using Entidades.Excepciones;
 
 namespace Entidades
 {
@@ -14,6 +15,7 @@ namespace Entidades
         #region Atributos
         protected EFormasDeChupetin formaChupetin;
         protected ENivelesDeDureza dureza;
+        protected bool envolturaTransparente;
         #endregion
 
         #region Propiedades

@@ -45,8 +45,11 @@ namespace Interfaz
             txtPeso.Text = chocolate.Peso.ToString();
             txtPrecio.Text = chocolate.Precio.ToString();
             txtCantidad.Text = chocolate.Cantidad.ToString();
+
             this.cboRelleno.SelectedItem = chocolate.Relleno;
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
+            txtPorcentajeDeCacao.Text = chocolate.PorcentajeDeCacao.ToString();
+            this.chkEsVegano.Checked = chocolate.EsVegano;
 
             this.txtCodigo.Enabled = false; // para no poder modificar
         }
@@ -72,18 +75,39 @@ namespace Interfaz
 
             base.btnAceptar_Click(sender, e); //llamo al metodo de Golosina
 
-            //lo puse en un if porque sino me controlaba la excepcion en FrmGolosina pero cuando pasaba por aca, la volvia a tirar
+            int porcentajeDeCacao;
+
+            if (string.IsNullOrWhiteSpace(this.txtPorcentajeDeCacao.Text))
+            {
+                this.txtPorcentajeDeCacao.Text = "0";
+            }
+            if (!int.TryParse(this.txtPorcentajeDeCacao.Text, out porcentajeDeCacao))
+            {
+                MessageBox.Show("Por favor, ingrese un porcentaje de cacao valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (porcentajeDeCacao < 0) //verifico si los valores son positivos
+            {
+                MessageBox.Show("Por favor, ingrese un porcentaje positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             if (this.DialogResult == DialogResult.OK)
             {
                 ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
                 ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
+                porcentajeDeCacao = int.Parse(txtPorcentajeDeCacao.Text); // tengo que manejar excepcion si el texto no es un numero valido
+                bool esVegano = this.chkEsVegano.Checked;
 
                 this.miChocolate = new Chocolate(int.Parse(txtCodigo.Text),
                                                 float.Parse(txtPeso.Text),
                                                 float.Parse(txtPrecio.Text),
                                                 int.Parse(txtCantidad.Text),
                                                 relleno,
-                                                tipoDeCacao); //cree el choco con los datos ingresados
+                                                tipoDeCacao,
+                                                porcentajeDeCacao,
+                                                esVegano); //cree el choco con los datos ingresados
             }
         }
     }

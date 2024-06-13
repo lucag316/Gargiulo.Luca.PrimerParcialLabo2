@@ -33,13 +33,16 @@
             lblTipoDeCacao = new Label();
             cboRelleno = new ComboBox();
             cboTipoDeCacao = new ComboBox();
+            lblPorcentajeDeCacao = new Label();
+            txtPorcentajeDeCacao = new TextBox();
+            chkEsVegano = new CheckBox();
             SuspendLayout();
             // 
             // lblRelleno
             // 
             lblRelleno.AutoSize = true;
             lblRelleno.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblRelleno.Location = new Point(303, 91);
+            lblRelleno.Location = new Point(303, 42);
             lblRelleno.Name = "lblRelleno";
             lblRelleno.Size = new Size(57, 14);
             lblRelleno.TabIndex = 26;
@@ -49,7 +52,7 @@
             // 
             lblTipoDeCacao.AutoSize = true;
             lblTipoDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTipoDeCacao.Location = new Point(303, 148);
+            lblTipoDeCacao.Location = new Point(303, 101);
             lblTipoDeCacao.Name = "lblTipoDeCacao";
             lblTipoDeCacao.Size = new Size(94, 14);
             lblTipoDeCacao.TabIndex = 27;
@@ -59,7 +62,7 @@
             // 
             cboRelleno.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboRelleno.FormattingEnabled = true;
-            cboRelleno.Location = new Point(303, 108);
+            cboRelleno.Location = new Point(303, 59);
             cboRelleno.Name = "cboRelleno";
             cboRelleno.Size = new Size(121, 22);
             cboRelleno.TabIndex = 45;
@@ -68,10 +71,40 @@
             // 
             cboTipoDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboTipoDeCacao.FormattingEnabled = true;
-            cboTipoDeCacao.Location = new Point(303, 165);
+            cboTipoDeCacao.Location = new Point(303, 118);
             cboTipoDeCacao.Name = "cboTipoDeCacao";
             cboTipoDeCacao.Size = new Size(121, 22);
             cboTipoDeCacao.TabIndex = 46;
+            // 
+            // lblPorcentajeDeCacao
+            // 
+            lblPorcentajeDeCacao.AutoSize = true;
+            lblPorcentajeDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPorcentajeDeCacao.Location = new Point(303, 158);
+            lblPorcentajeDeCacao.Name = "lblPorcentajeDeCacao";
+            lblPorcentajeDeCacao.Size = new Size(131, 14);
+            lblPorcentajeDeCacao.TabIndex = 47;
+            lblPorcentajeDeCacao.Text = "Porcentaje de cacao:";
+            // 
+            // txtPorcentajeDeCacao
+            // 
+            txtPorcentajeDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPorcentajeDeCacao.Location = new Point(303, 175);
+            txtPorcentajeDeCacao.Name = "txtPorcentajeDeCacao";
+            txtPorcentajeDeCacao.PlaceholderText = "Ingrese Porcentaje de cacao";
+            txtPorcentajeDeCacao.Size = new Size(178, 22);
+            txtPorcentajeDeCacao.TabIndex = 48;
+            // 
+            // chkEsVegano
+            // 
+            chkEsVegano.AutoSize = true;
+            chkEsVegano.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chkEsVegano.Location = new Point(303, 218);
+            chkEsVegano.Name = "chkEsVegano";
+            chkEsVegano.Size = new Size(88, 18);
+            chkEsVegano.TabIndex = 49;
+            chkEsVegano.Text = "Es Vegano";
+            chkEsVegano.UseVisualStyleBackColor = true;
             // 
             // FrmChocolate
             // 
@@ -80,12 +113,14 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(561, 343);
+            Controls.Add(chkEsVegano);
+            Controls.Add(txtPorcentajeDeCacao);
+            Controls.Add(lblPorcentajeDeCacao);
             Controls.Add(cboTipoDeCacao);
             Controls.Add(cboRelleno);
             Controls.Add(lblTipoDeCacao);
             Controls.Add(lblRelleno);
             Name = "FrmChocolate";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Chocolate";
             Load += FrmChocolate_Load;
             Controls.SetChildIndex(txtPrecio, 0);
@@ -96,6 +131,9 @@
             Controls.SetChildIndex(lblTipoDeCacao, 0);
             Controls.SetChildIndex(cboRelleno, 0);
             Controls.SetChildIndex(cboTipoDeCacao, 0);
+            Controls.SetChildIndex(lblPorcentajeDeCacao, 0);
+            Controls.SetChildIndex(txtPorcentajeDeCacao, 0);
+            Controls.SetChildIndex(chkEsVegano, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,5 +143,8 @@
         private Label lblTipoDeCacao;
         private ComboBox cboRelleno;
         private ComboBox cboTipoDeCacao;
+        private Label lblPorcentajeDeCacao;
+        protected TextBox txtPorcentajeDeCacao;
+        private CheckBox chkEsVegano;
     }
 }

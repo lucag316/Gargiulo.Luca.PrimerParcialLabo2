@@ -14,7 +14,7 @@ namespace Entidades
     [XmlInclude(typeof(Chocolate))]
     [XmlInclude(typeof(Chicle))]
     [XmlInclude(typeof(Chupetin))]
-    [DataContract] //para JSON
+    //[DataContract] //para JSON
     public abstract class Golosina
     {
         #region Atributos
@@ -187,7 +187,16 @@ namespace Entidades
             }
             return valor;
         }
-
+        /*
+         private static T ValidarNoNegativo<T>(T valor, string nombrePropiedad) where T : IComparable<T>
+        {
+            if (valor.CompareTo(default) < 0)
+            {
+                throw new ArgumentOutOfRangeException(nombrePropiedad, $"{nombrePropiedad} no puede ser negativo");
+            }
+            return valor;
+        }
+         */
         #endregion
     }
 }
