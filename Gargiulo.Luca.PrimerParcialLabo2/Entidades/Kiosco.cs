@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Entidades.Interfaces;
+using System.Text;
 
 namespace Entidades
 {
@@ -6,7 +7,7 @@ namespace Entidades
     /// <summary>
     /// Representa un kiosco que almacena golosinas.
     /// </summary>
-    public class Kiosco
+    public class Kiosco : IOrdenable, ICalculable
     {
         #region Atributos
         private List<Golosina> golosinas;       // lista de golosinas disponibles en el kiosco
@@ -178,7 +179,7 @@ namespace Entidades
         {
             double precioTotal = 0;
 
-            foreach (Golosina golosina in Golosinas)
+            foreach (Golosina golosina in this.Golosinas)
             {
                 precioTotal += golosina.CalcularPrecioFinal();
             }
@@ -192,7 +193,7 @@ namespace Entidades
         /// Ordena las golosinas por codigo de barra.
         /// </summary>
         //// <param name="ascendente">Si es true, ordena de forma ascendente; de lo contrario, de forma descendente.</param>
-        public void OrdenarGolosinasPorCodigo(bool ascendente)
+        void IOrdenable.OrdenarPorCodigo(bool ascendente)
         {
             if (ascendente)
             {
@@ -203,7 +204,7 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Codigo.CompareTo(golosina1.Codigo));
             }
         }
-        public void OrdenarGolosinasPorPrecio(bool ascendente)
+        void IOrdenable.OrdenarPorPrecio(bool ascendente)
         {
             if (ascendente)
             {
@@ -214,7 +215,7 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Precio.CompareTo(golosina1.Precio));
             }
         }
-        public void OrdenarGolosinasPorPeso(bool ascendente)
+        void IOrdenable.OrdenarPorPeso(bool ascendente)
         {
             if (ascendente)
             {
@@ -225,7 +226,7 @@ namespace Entidades
                 this.Golosinas.Sort((golosina1, golosina2) => golosina2.Peso.CompareTo(golosina1.Peso));
             }
         }
-        public void OrdenarGolosinasPorCantidad(bool ascendente)
+        void IOrdenable.OrdenarPorCantidad(bool ascendente)
         {
             if (ascendente)
             {

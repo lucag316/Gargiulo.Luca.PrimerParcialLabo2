@@ -211,74 +211,6 @@ namespace Interfaz
                 }
             }
         }
-
-        /// <summary>
-        /// Guarda los datos de las golosinas del kiosco en un archivo JSON.
-        /// </summary>
-        public void GuardarJSON()
-        {
-            using (SaveFileDialog sfdGuardarJson = new SaveFileDialog())
-            {
-                sfdGuardarJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
-                sfdGuardarJson.Title = "Guardar archivo JSON";
-                sfdGuardarJson.FileName = "Golosinas.json";
-
-                if (sfdGuardarJson.ShowDialog() == DialogResult.OK)
-                {
-                    string pathArchivo = sfdGuardarJson.FileName;
-
-                    try
-                    {
-                        SerializadorJSON<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
-
-                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
-
-
-        public void AbrirJSON() //VER BIEN COMO HACERLO
-        {
-            using (OpenFileDialog ofdAbrirJson = new OpenFileDialog())
-            {
-                ofdAbrirJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
-                ofdAbrirJson.Title = "Abrir archivo JSON";
-
-                if (ofdAbrirJson.ShowDialog() == DialogResult.OK)
-                {
-                    string pathArchivo = ofdAbrirJson.FileName;
-
-                    if (!File.Exists(pathArchivo))
-                    {
-                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
-                        return;
-                    }
-
-                    try
-                    {
-                        //List<Golosina> golosinasDeserializadas = SerializadorJSON<Golosina>.Deserializar(pathArchivo);
-                        List<Golosina> golosinasDeserializadas = SerializadorJSON<Golosina>.Deserializar(pathArchivo);
-                        this.kiosco.Golosinas.Clear();
-                        this.kiosco += golosinasDeserializadas;
-                        this.ActualizarVisorGolosinas();
-                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo JSON.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Agregar Golosinas
@@ -504,16 +436,6 @@ namespace Interfaz
         {
             FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
             frmVisualizadorUsuariosLog.ShowDialog();
-        }
-
-        private void jSONToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            AbrirJSON();
-        }
-
-        private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            GuardarJSON();
         }
     }
 }
