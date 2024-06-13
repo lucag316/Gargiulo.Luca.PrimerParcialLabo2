@@ -33,8 +33,6 @@
             lblTipoDeCacao = new Label();
             cboRelleno = new ComboBox();
             cboTipoDeCacao = new ComboBox();
-            lblPorcentajeDeCacao = new Label();
-            txtPorcentajeDeCacao = new TextBox();
             chkEsVegano = new CheckBox();
             SuspendLayout();
             // 
@@ -76,30 +74,11 @@
             cboTipoDeCacao.Size = new Size(121, 22);
             cboTipoDeCacao.TabIndex = 46;
             // 
-            // lblPorcentajeDeCacao
-            // 
-            lblPorcentajeDeCacao.AutoSize = true;
-            lblPorcentajeDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPorcentajeDeCacao.Location = new Point(303, 158);
-            lblPorcentajeDeCacao.Name = "lblPorcentajeDeCacao";
-            lblPorcentajeDeCacao.Size = new Size(131, 14);
-            lblPorcentajeDeCacao.TabIndex = 47;
-            lblPorcentajeDeCacao.Text = "Porcentaje de cacao:";
-            // 
-            // txtPorcentajeDeCacao
-            // 
-            txtPorcentajeDeCacao.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPorcentajeDeCacao.Location = new Point(303, 175);
-            txtPorcentajeDeCacao.Name = "txtPorcentajeDeCacao";
-            txtPorcentajeDeCacao.PlaceholderText = "Ingrese Porcentaje de cacao";
-            txtPorcentajeDeCacao.Size = new Size(178, 22);
-            txtPorcentajeDeCacao.TabIndex = 48;
-            // 
             // chkEsVegano
             // 
             chkEsVegano.AutoSize = true;
             chkEsVegano.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            chkEsVegano.Location = new Point(303, 218);
+            chkEsVegano.Location = new Point(309, 179);
             chkEsVegano.Name = "chkEsVegano";
             chkEsVegano.Size = new Size(88, 18);
             chkEsVegano.TabIndex = 49;
@@ -114,8 +93,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(561, 343);
             Controls.Add(chkEsVegano);
-            Controls.Add(txtPorcentajeDeCacao);
-            Controls.Add(lblPorcentajeDeCacao);
             Controls.Add(cboTipoDeCacao);
             Controls.Add(cboRelleno);
             Controls.Add(lblTipoDeCacao);
@@ -131,8 +108,6 @@
             Controls.SetChildIndex(lblTipoDeCacao, 0);
             Controls.SetChildIndex(cboRelleno, 0);
             Controls.SetChildIndex(cboTipoDeCacao, 0);
-            Controls.SetChildIndex(lblPorcentajeDeCacao, 0);
-            Controls.SetChildIndex(txtPorcentajeDeCacao, 0);
             Controls.SetChildIndex(chkEsVegano, 0);
             ResumeLayout(false);
             PerformLayout();
@@ -143,8 +118,6 @@
         private Label lblTipoDeCacao;
         private ComboBox cboRelleno;
         private ComboBox cboTipoDeCacao;
-        private Label lblPorcentajeDeCacao;
-        protected TextBox txtPorcentajeDeCacao;
         private CheckBox chkEsVegano;
     }
 }

@@ -223,7 +223,7 @@ namespace Interfaz
                 {
                     this.kiosco += golosina;
                     OrdenarGolosinas(false); //para que se ordene por defecto
-                    this.ActualizarVisorGolosinas();
+                    this.ActualizarVisorGolosinas(); // ver que diferencia hay si lo pongo arriba de ordenar
                 }
                 else
                 {

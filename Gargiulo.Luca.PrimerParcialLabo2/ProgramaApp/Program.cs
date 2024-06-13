@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Interfaces;
 internal class Program
 {
     private static void Main(string[] args)
@@ -20,7 +21,8 @@ internal class Program
         //kiosco += chupetin4;
 
         //kiosco -= chupetin1; 
-        kiosco.OrdenarGolosinasPorCodigo(true);
+
+        ((IOrdenable)kiosco).OrdenarPorCodigo(true);
         //kiosco.OrdenarGolosinasPorPeso(true);
         //Console.WriteLine(kiosco.OrdenarGolosinasPorCodigo());
         Console.WriteLine(kiosco.Detalle);

@@ -16,7 +16,7 @@ namespace Entidades
         #region Atributos
         protected ERellenos relleno;
         protected ETiposDeCacao tipoDeCacao;
-        protected int porcentajeDeCacao;
+        //protected int porcentajeDeCacao;
         protected bool esVegano;
         #endregion
 
@@ -35,12 +35,6 @@ namespace Entidades
             set { this.tipoDeCacao = value; }
         }
 
-        public int PorcentajeDeCacao
-        {
-            get { return this.porcentajeDeCacao; }
-            set { this.porcentajeDeCacao = value; }
-        }
-
         public bool EsVegano
         {
             get { return this.esVegano; }
@@ -53,7 +47,6 @@ namespace Entidades
         {
             this.relleno = ERellenos.SinRelleno;
             this.tipoDeCacao = ETiposDeCacao.Negro;
-            this.porcentajeDeCacao = 0;
             this.esVegano = false;
         }
         public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
@@ -72,12 +65,7 @@ namespace Entidades
             this.tipoDeCacao = tipoDeCacao;
 
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao, int porcentajeDeCacao) : this(codigo, peso, precio, cantidad, relleno, tipoDeCacao)
-        {
-            this.porcentajeDeCacao = porcentajeDeCacao;
-
-        }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao, int porcentajeDeCacao, bool esVegano) : this(codigo, peso, precio, cantidad, relleno, tipoDeCacao, porcentajeDeCacao)
+        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao, bool esVegano) : this(codigo, peso, precio, cantidad, relleno, tipoDeCacao)
         {
             this.esVegano = esVegano;
 
@@ -94,7 +82,6 @@ namespace Entidades
             sb.Append(base.ToString());
             sb.AppendLine($"Relleno: {this.relleno}");
             sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
-            sb.AppendLine($"Porcentaje de cacao: {this.porcentajeDeCacao}%");
             sb.AppendLine($"Es vegano: {this.esVegano}");
             sb.AppendLine("=========================================\n");
 
@@ -118,7 +105,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.relleno, this.tipoDeCacao, this.porcentajeDeCacao, this.esVegano);
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.relleno, this.tipoDeCacao, this.esVegano);
         }
         #endregion
 
@@ -164,7 +151,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHOCOLATE:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao} - Porcentaje de cacao {this.porcentajeDeCacao} - Es vegano: {this.esVegano}");
+            sb.Append($"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao} - Es vegano: {this.esVegano}");
 
             return sb.ToString();
         }
@@ -204,7 +191,6 @@ namespace Entidades
 
             bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno && 
                                                    chocolate1.TipoDeCacao == chocolate2.TipoDeCacao &&
-                                                   chocolate1.porcentajeDeCacao == chocolate2.porcentajeDeCacao &&
                                                    chocolate1.esVegano == chocolate2.esVegano;
 
             return mismoChocolate;

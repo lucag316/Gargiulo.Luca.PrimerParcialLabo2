@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +76,7 @@ namespace TestsUnitarios
             kiosco += new Chupetin(3, 3, 1.5, 4);
 
             // Act
-            kiosco.OrdenarGolosinasPorCodigo(true);
+            ((IOrdenable)kiosco).OrdenarPorCodigo(true);
 
             // Assert
             Assert.AreEqual(1, kiosco.Golosinas[0].Codigo);
