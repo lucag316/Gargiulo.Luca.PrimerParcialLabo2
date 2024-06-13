@@ -16,13 +16,18 @@ namespace Interfaz
     /// </summary>
     public partial class FrmChocolate : FrmGolosina
     {
+        #region Atributos
         protected Chocolate miChocolate;
+        #endregion
 
+        #region Propiedades
         public Chocolate MiChocolate 
         { 
             get { return this.miChocolate; } //propiedad publica que devuelve el modificado
         }
+        #endregion
 
+        #region Constructores
         public FrmChocolate() : base()//:base()//ACA VA?O NO?
         {
             InitializeComponent();
@@ -34,12 +39,41 @@ namespace Interfaz
         {
             InicializarControlesGenerales(chocolate);
         }
+        #endregion
 
+        #region Manejadores de eventos
         private void FrmChocolate_Load(object sender, EventArgs e)
         {
 
         }
 
+        protected override void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+            base.btnAceptar_Click(sender, e); //llamo al metodo de Golosina
+
+
+            if (this.DialogResult == DialogResult.OK)
+            {
+
+                ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
+                ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
+                bool esVegano = this.chkEsVegano.Checked;
+
+                this.miChocolate = new Chocolate(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                relleno,
+                                                tipoDeCacao,
+                                                esVegano); //cree el choco con los datos ingresados
+
+            }
+        }
+
+        #endregion
+
+        #region Metodos de inicializacion y configuracion
         public void InicializarControlesGenerales(Chocolate chocolate) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
         {
             txtCodigo.Text = chocolate.Codigo.ToString();
@@ -69,29 +103,7 @@ namespace Interfaz
             this.cboTipoDeCacao.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
         }
+        #endregion
 
-        protected override void btnAceptar_Click(object sender, EventArgs e) 
-        {
-
-            base.btnAceptar_Click(sender, e); //llamo al metodo de Golosina
-
-            
-            if (this.DialogResult == DialogResult.OK)
-            {
-                
-                ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
-                ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
-                bool esVegano = this.chkEsVegano.Checked;
-
-                this.miChocolate = new Chocolate(int.Parse(txtCodigo.Text),
-                                                float.Parse(txtPeso.Text),
-                                                float.Parse(txtPrecio.Text),
-                                                int.Parse(txtCantidad.Text),
-                                                relleno,
-                                                tipoDeCacao,
-                                                esVegano); //cree el choco con los datos ingresados
-
-            }
-        }
     }
 }

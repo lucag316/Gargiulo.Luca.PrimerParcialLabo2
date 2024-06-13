@@ -14,10 +14,18 @@ namespace Interfaz
 {
     public partial class FrmChupetin : FrmGolosina
     {
+        #region Atributos
         protected Chupetin miChupetin;
+        #endregion
 
-        public Chupetin MiChupetin { get { return this.miChupetin; } }
+        #region Propiedades
+        public Chupetin MiChupetin 
+        { 
+            get { return this.miChupetin; } 
+        }
+        #endregion
 
+        #region Constructores
         public FrmChupetin() : base()
         {
             InitializeComponent();
@@ -28,11 +36,35 @@ namespace Interfaz
         {
             InicializarControlesGenerales(chupetin);
         }
+        #endregion
 
+        #region Manejadores de eventos
         private void FrmChupetin_Load(object sender, EventArgs e)
         {
 
         }
+
+        protected override void btnAceptar_Click(object sender, EventArgs e)
+        {
+            base.btnAceptar_Click(sender, e);
+
+            if (this.DialogResult == DialogResult.OK)
+            {
+                EFormasDeChupetin formaChupetin = (EFormasDeChupetin)this.cboFormaChupetin.SelectedItem;
+                ENivelesDeDureza dureza = (ENivelesDeDureza)this.cboDureza.SelectedItem;
+
+                this.miChupetin = new Chupetin(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                formaChupetin,
+                                                dureza);
+            }
+        }
+
+        #endregion
+
+        #region Metodos de inicializacion y configuracion
 
         public void InicializarControlesGenerales(Chupetin chupetin) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
         {
@@ -63,22 +95,7 @@ namespace Interfaz
             this.cboDureza.SelectedItem = ENivelesDeDureza.Media;
         }
 
-        protected override void btnAceptar_Click(object sender, EventArgs e)
-        {
-            base.btnAceptar_Click(sender, e);
-            
-            if (this.DialogResult == DialogResult.OK)
-            {
-                EFormasDeChupetin formaChupetin = (EFormasDeChupetin)this.cboFormaChupetin.SelectedItem;
-                ENivelesDeDureza dureza = (ENivelesDeDureza)this.cboDureza.SelectedItem;
+        #endregion
 
-                this.miChupetin = new Chupetin(int.Parse(txtCodigo.Text),
-                                                float.Parse(txtPeso.Text),
-                                                float.Parse(txtPrecio.Text),
-                                                int.Parse(txtCantidad.Text),
-                                                formaChupetin,
-                                                dureza);
-            }
-        }
     }
 }

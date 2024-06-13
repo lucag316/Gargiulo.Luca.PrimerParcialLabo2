@@ -13,10 +13,18 @@ namespace Interfaz
 {
     public partial class FrmChicle : FrmGolosina
     {
+        #region Atributos
         protected Chicle miChicle;
+        #endregion
 
-        public Chicle MiChicle { get { return this.miChicle; } }
+        #region Propiedades
+        public Chicle MiChicle 
+        { 
+            get { return this.miChicle; } 
+        }
+        #endregion
 
+        #region Constructores
         public FrmChicle() : base()
         {
             InitializeComponent();
@@ -27,12 +35,35 @@ namespace Interfaz
         {
             InicializarControlesGenerales(chicle);
         }
+        #endregion
 
+        #region Manejadores de eventos
         private void FrmChicle_Load(object sender, EventArgs e)
         {
 
         }
 
+        protected override void btnAceptar_Click(object sender, EventArgs e)
+        {
+            base.btnAceptar_Click(sender, e);
+
+
+            if (this.DialogResult == DialogResult.OK)
+            {
+                ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
+                ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
+
+                this.miChicle = new Chicle(int.Parse(txtCodigo.Text),
+                                                float.Parse(txtPeso.Text),
+                                                float.Parse(txtPrecio.Text),
+                                                int.Parse(txtCantidad.Text),
+                                                elasticidad,
+                                                duracionSabor);
+            }
+        }
+        #endregion
+
+        #region Metodos de inicializacion y configuracion
         public void InicializarControlesGenerales(Chicle chicle) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
         {
             txtCodigo.Text = chicle.Codigo.ToString();
@@ -61,24 +92,7 @@ namespace Interfaz
             this.cboDuracionSabor.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboDuracionSabor.SelectedItem = ENivelesDuracionDeSabor.Media; //valor predeterminado
         }
+        #endregion
 
-        protected override void btnAceptar_Click(object sender, EventArgs e)
-        {
-            base.btnAceptar_Click(sender, e);
-
-            
-            if (this.DialogResult == DialogResult.OK)
-            {
-                ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
-                ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
-
-                this.miChicle = new Chicle(int.Parse(txtCodigo.Text),
-                                                float.Parse(txtPeso.Text),
-                                                float.Parse(txtPrecio.Text),
-                                                int.Parse(txtCantidad.Text),
-                                                elasticidad,
-                                                duracionSabor);
-            }
-        }
     }
 }

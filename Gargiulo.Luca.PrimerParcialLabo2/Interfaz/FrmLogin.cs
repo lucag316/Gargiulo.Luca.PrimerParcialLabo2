@@ -4,9 +4,14 @@ namespace Interfaz
 {
     public partial class FrmLogin : Form
     {
+
+        #region Atributos
         private List<Usuario> usuarios;
         private string pathJsonUsuarios = "../../../../usuarios.json";
         //private string pathJsonUsuarios = "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json";
+        #endregion
+
+        #region Constructor
 
         public FrmLogin()
         {
@@ -23,33 +28,12 @@ namespace Interfaz
                 //this.Close(); //FIJARME SI VA
             }
         }
+        #endregion
 
+        #region Manejadores de eventos
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// Busca un usuario en la lista segun el correo electronico y la clave proporcionados.
-        /// </summary>
-        //// <param name="correo">Correo electronico del usuario.</param>
-        //// <param name="clave">Clave del usuario.</param>
-        /// <returns>El objeto Usuario correspondiente o null si no se encuentra.</returns>
-        private Usuario ObtenerUsuario(string correo, string clave)
-        {
-            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(clave))
-            {
-                throw new ArgumentNullException();
-            }
-
-            foreach (Usuario usuario in this.usuarios)
-            {
-                if (usuario.correo.ToLower() == correo.ToLower() && usuario.clave == clave)
-                {
-                    return usuario;
-                }
-            }
-            return null;
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -77,7 +61,7 @@ namespace Interfaz
 
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 DialogResult dialogResult = MessageBox.Show("Esta seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -91,7 +75,35 @@ namespace Interfaz
                     Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas, se cierran todos los forms correctamente
                 }
             }
-            
+
         }
+
+        #endregion
+
+        #region Mis Metodos
+        /// <summary>
+        /// Busca un usuario en la lista segun el correo electronico y la clave proporcionados.
+        /// </summary>
+        //// <param name="correo">Correo electronico del usuario.</param>
+        //// <param name="clave">Clave del usuario.</param>
+        /// <returns>El objeto Usuario correspondiente o null si no se encuentra.</returns>
+        private Usuario ObtenerUsuario(string correo, string clave)
+        {
+            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(clave))
+            {
+                throw new ArgumentNullException();
+            }
+
+            foreach (Usuario usuario in this.usuarios)
+            {
+                if (usuario.correo.ToLower() == correo.ToLower() && usuario.clave == clave)
+                {
+                    return usuario;
+                }
+            }
+            return null;
+        }
+        #endregion
+
     }
 }

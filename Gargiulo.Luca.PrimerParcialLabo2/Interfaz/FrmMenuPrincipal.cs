@@ -17,10 +17,13 @@ namespace Interfaz
     /// </summary>
     public partial class FrmMenuPrincipal : Form
     {
+        #region Atributos
         private Kiosco kiosco;
         private string operador;
         private UsuarioLog usuarioLogueado;
+        #endregion
 
+        #region Constructor
         public FrmMenuPrincipal(string nombreOperador)
         {
             InitializeComponent();
@@ -29,7 +32,12 @@ namespace Interfaz
             this.usuarioLogueado = new UsuarioLog("usuarios.log");
             ConfigurarComboBoxes();
         }
+        #endregion
 
+
+        #region Manejadores de eventos 
+
+        #region Load y Closing
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
@@ -38,206 +46,28 @@ namespace Interfaz
             ActualizarVisorGolosinas();
         }
 
-        public void ConfigurarComboBoxes()
-        {
-            this.cboOrden.SelectedIndexChanged -= cboOrden_SelectedIndexChanged; //descubro los eventos antes de inicializar sino me tira excepcion
-            this.cboOrdenManera.SelectedIndexChanged -= cboOrdenManera_SelectedIndexChanged;
-
-            foreach (EOrdenes orden in Enum.GetValues(typeof(EOrdenes)))
-            {
-                this.cboOrden.Items.Add(orden);
-            }
-            this.cboOrden.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboOrden.SelectedItem = EOrdenes.PorCodigo;
-
-
-            foreach (EOrdenManera ordenManera in Enum.GetValues(typeof(EOrdenManera)))
-            {
-                this.cboOrdenManera.Items.Add(ordenManera);
-            }
-            this.cboOrdenManera.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboOrdenManera.SelectedItem = EOrdenManera.Ascendente;
-
-            this.cboOrden.SelectedIndexChanged += cboOrden_SelectedIndexChanged;
-            this.cboOrdenManera.SelectedIndexChanged += cboOrdenManera_SelectedIndexChanged;
-
-            OrdenarGolosinas(false);
-        }
-
-        #region Ordenamiento
-        private void cboOrden_SelectedIndexChanged(object? sender, EventArgs e) //el signo es para que no me tire advertencia de null
-        {
-            OrdenarGolosinas();
-        }
-
-        private void cboOrdenManera_SelectedIndexChanged(object? sender, EventArgs e)
-        {
-            OrdenarGolosinas();
-        }
-
-        private void OrdenarGolosinas(bool mostrarMensaje = true)
-        {
-            EOrdenes ordenSeleccionado = (EOrdenes)this.cboOrden.SelectedItem;
-            EOrdenManera ordenManeraSeleccionada = (EOrdenManera)this.cboOrdenManera.SelectedItem;
-
-            bool ascendente = ordenManeraSeleccionada == EOrdenManera.Ascendente;
-            //ascendente puede ser true o false
-
-            try
-            {
-                switch (ordenSeleccionado)
-                {
-                    case EOrdenes.PorCodigo:
-                        ((IOrdenable)this.kiosco).OrdenarPorCodigo(ascendente); // lo pongo asi por la interfaz
-                        break;
-                    case EOrdenes.PorPrecio:
-                        ((IOrdenable)this.kiosco).OrdenarPorPrecio(ascendente);
-                        break;
-                    case EOrdenes.PorPeso:
-                        ((IOrdenable)this.kiosco).OrdenarPorPeso(ascendente);
-                        break;
-                    case EOrdenes.PorCantidad:
-                        ((IOrdenable)this.kiosco).OrdenarPorCantidad(ascendente);
-                        break;
-                }
-                this.ActualizarVisorGolosinas(); //creo que solo va aca
-                if (mostrarMensaje)
-                {
-                    MessageBox.Show($"La lista de golosinas fue ordenada {ordenSeleccionado} de manera {ordenManeraSeleccionada} correctamente"); //tratar de que aparezca descendente o descendente
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ordenar golosinas {ordenSeleccionado} de manera: {ordenManeraSeleccionada}: {ex.Message}");
-            }
-
-        }
-        #endregion
-
-        #region Metodos
-
         /// <summary>
-        /// Actualiza la barra de informacion con el nombre del operador y la fecha actual.
+        /// Muestra un mensaje de confirmacion antes de cerrar el formulario.
         /// </summary>
-        private void ActualizarBarraDeInformacion()
+        private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.toolStripStatusLabel2.Text = $"Operador: {this.operador}";
-            this.toolStripStatusLabel3.Text = $"Fecha: {DateTime.Now.ToString("dd/MM/yyyy")}";
-        }
-
-        /// <summary>
-        /// Actualiza el visor de golosinas con la lista actual de golosinas del kiosco.
-        /// </summary>
-        private void ActualizarVisorGolosinas()
-        {
-            this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
-
-            foreach (Golosina golosina in kiosco.Golosinas)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());
-            }
-        }
+                DialogResult dialogResult = MessageBox.Show("Esta seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        /// <summary>
-        /// Abre un archivo XML que contiene datos de golosinas y los carga en el kiosco.
-        /// </summary>
-        public void AbrirXML()
-        {
-            using (OpenFileDialog odfAbrirXml = new OpenFileDialog())
-            {
-                ofdAbrirXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
-                ofdAbrirXml.Title = "Abrir archivo XML";
-
-                if (ofdAbrirXml.ShowDialog() == DialogResult.OK)
+                if (dialogResult == DialogResult.No)
                 {
-                    string pathArchivo = ofdAbrirXml.FileName;
-
-                    if (!File.Exists(pathArchivo))
-                    {
-                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
-                        return;
-                    }
-                    MessageBox.Show($"Ruta del archivo: {pathArchivo}");
-                    try
-                    {
-                        List<Golosina> golosinasDeserializadas = SerializadorXML<Golosina>.Deserializar(pathArchivo);// Llamo al metodo estatico Deserializar de SerializadorXML<Golosina>
-                        //Serializadora deserializadoraXml = new Serializadora(pathArchivo);
-                        //List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
-                        this.kiosco.Golosinas.Clear();
-                        this.kiosco += golosinasDeserializadas;
-                        this.ActualizarVisorGolosinas();
-                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Guarda los datos de las golosinas del kiosco en un archivo XML.
-        /// </summary>
-        public void GuardarXML()
-        {
-            using (SaveFileDialog sfdGuardarXml = new SaveFileDialog())
-            {
-                sfdGuardarXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
-                sfdGuardarXml.Title = "Guardar archivo XML";
-                sfdGuardarXml.FileName = "Golosinas.xml";
-
-                if (sfdGuardarXml.ShowDialog() == DialogResult.OK)
-                {
-                    string pathArchivo = sfdGuardarXml.FileName;
-
-                    try
-                    {
-                        SerializadorXML<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
-
-                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
-                    }
-                }
-            }
-        }
-        #endregion
-
-        #region Agregar Golosinas
-        private void AgregarGolosina(Golosina golosina)
-        {
-            if (this.kiosco.Golosinas.Count < this.kiosco.CapacidadGolosinasDistintas)
-            {
-                if (this.kiosco != golosina)
-                {
-                    this.kiosco += golosina;
-                    OrdenarGolosinas(false); //para que se ordene por defecto
-                    this.ActualizarVisorGolosinas(); // ver que diferencia hay si lo pongo arriba de ordenar
+                    e.Cancel = true; // lo cancelo al cierre
                 }
                 else
                 {
-                    MessageBox.Show("La golosina ya esta en el kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas, se cierran todos los forms correctamente
                 }
             }
-            else
-            {
-                MessageBox.Show("No se puede agregar mas, se ha alcanzado la capacidad maxima del kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
         }
+        #endregion
 
+        #region Agregar
         //Eventos click para agregar los diferentes tipos de golosina al kiosco
         private void cHOCOLATEToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -346,6 +176,18 @@ namespace Interfaz
         }
         #endregion
 
+        #region Ordenar
+        private void cboOrden_SelectedIndexChanged(object? sender, EventArgs e) //el signo es para que no me tire advertencia de null
+        {
+            OrdenarGolosinas();
+        }
+
+        private void cboOrdenManera_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            OrdenarGolosinas();
+        }
+        #endregion
+
         #region Archivos
 
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -357,8 +199,6 @@ namespace Interfaz
         {
             this.AbrirXML();
         }
-
-
         #endregion
 
         #region Volver, Detalle e Informacion
@@ -410,25 +250,7 @@ namespace Interfaz
         }
         #endregion
 
-        /// <summary>
-        /// Muestra un mensaje de confirmacion antes de cerrar el formulario.
-        /// </summary>
-        private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult dialogResult = MessageBox.Show("Esta seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (dialogResult == DialogResult.No)
-                {
-                    e.Cancel = true; // lo cancelo al cierre
-                }
-                else
-                {
-                    Application.Exit(); //si no lo hago me queda abierto en el administrador de tareas, se cierran todos los forms correctamente
-                }
-            }
-        }
+        #region Visualizador usuarios logeados
 
         /// <summary>
         /// Abre un formulario para visualizar el registro de usuarios.
@@ -438,5 +260,212 @@ namespace Interfaz
             FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
             frmVisualizadorUsuariosLog.ShowDialog();
         }
+
+        #endregion
+
+        #endregion
+
+
+        #region Metodos de configuracion
+        public void ConfigurarComboBoxes()
+        {
+            this.cboOrden.SelectedIndexChanged -= cboOrden_SelectedIndexChanged; //descubro los eventos antes de inicializar sino me tira excepcion
+            this.cboOrdenManera.SelectedIndexChanged -= cboOrdenManera_SelectedIndexChanged;
+
+            foreach (EOrdenes orden in Enum.GetValues(typeof(EOrdenes)))
+            {
+                this.cboOrden.Items.Add(orden);
+            }
+            this.cboOrden.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboOrden.SelectedItem = EOrdenes.PorCodigo;
+
+
+            foreach (EOrdenManera ordenManera in Enum.GetValues(typeof(EOrdenManera)))
+            {
+                this.cboOrdenManera.Items.Add(ordenManera);
+            }
+            this.cboOrdenManera.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboOrdenManera.SelectedItem = EOrdenManera.Ascendente;
+
+            this.cboOrden.SelectedIndexChanged += cboOrden_SelectedIndexChanged;
+            this.cboOrdenManera.SelectedIndexChanged += cboOrdenManera_SelectedIndexChanged;
+
+            OrdenarGolosinas(false);
+        }
+        #endregion
+
+        #region Metodos de ordenamiento
+        
+        private void OrdenarGolosinas(bool mostrarMensaje = true)
+        {
+            EOrdenes ordenSeleccionado = (EOrdenes)this.cboOrden.SelectedItem;
+            EOrdenManera ordenManeraSeleccionada = (EOrdenManera)this.cboOrdenManera.SelectedItem;
+
+            bool ascendente = ordenManeraSeleccionada == EOrdenManera.Ascendente;
+            //ascendente puede ser true o false
+
+            try
+            {
+                switch (ordenSeleccionado)
+                {
+                    case EOrdenes.PorCodigo:
+                        ((IOrdenable)this.kiosco).OrdenarPorCodigo(ascendente); // lo pongo asi por la interfaz
+                        break;
+                    case EOrdenes.PorPrecio:
+                        ((IOrdenable)this.kiosco).OrdenarPorPrecio(ascendente);
+                        break;
+                    case EOrdenes.PorPeso:
+                        ((IOrdenable)this.kiosco).OrdenarPorPeso(ascendente);
+                        break;
+                    case EOrdenes.PorCantidad:
+                        ((IOrdenable)this.kiosco).OrdenarPorCantidad(ascendente);
+                        break;
+                }
+                this.ActualizarVisorGolosinas(); //creo que solo va aca
+                if (mostrarMensaje)
+                {
+                    MessageBox.Show($"La lista de golosinas fue ordenada {ordenSeleccionado} de manera {ordenManeraSeleccionada} correctamente"); //tratar de que aparezca descendente o descendente
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ordenar golosinas {ordenSeleccionado} de manera: {ordenManeraSeleccionada}: {ex.Message}");
+            }
+
+        }
+        #endregion
+
+        #region Metodos de actualizacion
+
+        /// <summary>
+        /// Actualiza la barra de informacion con el nombre del operador y la fecha actual.
+        /// </summary>
+        private void ActualizarBarraDeInformacion()
+        {
+            this.toolStripStatusLabel2.Text = $"Operador: {this.operador}";
+            this.toolStripStatusLabel3.Text = $"Fecha: {DateTime.Now.ToString("dd/MM/yyyy")}";
+        }
+
+        /// <summary>
+        /// Actualiza el visor de golosinas con la lista actual de golosinas del kiosco.
+        /// </summary>
+        private void ActualizarVisorGolosinas()
+        {
+            this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
+
+            foreach (Golosina golosina in kiosco.Golosinas)
+            {
+                this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());
+            }
+        }
+
+
+        #endregion
+
+        #region Metodos de archivos
+
+        /// <summary>
+        /// Abre un archivo XML que contiene datos de golosinas y los carga en el kiosco.
+        /// </summary>
+        public void AbrirXML()
+        {
+            using (OpenFileDialog odfAbrirXml = new OpenFileDialog())
+            {
+                ofdAbrirXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+                ofdAbrirXml.Title = "Abrir archivo XML";
+
+                if (ofdAbrirXml.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = ofdAbrirXml.FileName;
+
+                    if (!File.Exists(pathArchivo))
+                    {
+                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
+                        return;
+                    }
+                    MessageBox.Show($"Ruta del archivo: {pathArchivo}");
+                    try
+                    {
+                        List<Golosina> golosinasDeserializadas = SerializadorXML<Golosina>.Deserializar(pathArchivo);// Llamo al metodo estatico Deserializar de SerializadorXML<Golosina>
+                        //Serializadora deserializadoraXml = new Serializadora(pathArchivo);
+                        //List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
+                        this.kiosco.Golosinas.Clear();
+                        this.kiosco += golosinasDeserializadas;
+                        this.ActualizarVisorGolosinas();
+                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guarda los datos de las golosinas del kiosco en un archivo XML.
+        /// </summary>
+        public void GuardarXML()
+        {
+            using (SaveFileDialog sfdGuardarXml = new SaveFileDialog())
+            {
+                sfdGuardarXml.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+                sfdGuardarXml.Title = "Guardar archivo XML";
+                sfdGuardarXml.FileName = "Golosinas.xml";
+
+                if (sfdGuardarXml.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = sfdGuardarXml.FileName;
+
+                    try
+                    {
+                        SerializadorXML<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
+
+                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Metodo Agregar
+        private void AgregarGolosina(Golosina golosina)
+        {
+            if (this.kiosco.Golosinas.Count < this.kiosco.CapacidadGolosinasDistintas)
+            {
+                if (this.kiosco != golosina)
+                {
+                    this.kiosco += golosina;
+                    OrdenarGolosinas(false); //para que se ordene por defecto
+                    this.ActualizarVisorGolosinas(); // ver que diferencia hay si lo pongo arriba de ordenar
+                }
+                else
+                {
+                    MessageBox.Show("La golosina ya esta en el kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se puede agregar mas, se ha alcanzado la capacidad maxima del kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        
+        #endregion
+
     }
 }
