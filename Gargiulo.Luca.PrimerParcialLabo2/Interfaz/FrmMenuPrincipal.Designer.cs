@@ -41,8 +41,10 @@
             aRCHIVOSToolStripMenuItem = new ToolStripMenuItem();
             sERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem2 = new ToolStripMenuItem();
+            jSONToolStripMenuItem2 = new ToolStripMenuItem();
             dESERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem3 = new ToolStripMenuItem();
+            jSONToolStripMenuItem3 = new ToolStripMenuItem();
             uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
@@ -145,7 +147,7 @@
             // 
             // sERIALIZARToolStripMenuItem2
             // 
-            sERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2 });
+            sERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2, jSONToolStripMenuItem2 });
             sERIALIZARToolStripMenuItem2.Name = "sERIALIZARToolStripMenuItem2";
             sERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
             sERIALIZARToolStripMenuItem2.Text = "SERIALIZAR";
@@ -157,9 +159,16 @@
             xMLToolStripMenuItem2.Text = "XML";
             xMLToolStripMenuItem2.Click += xMLToolStripMenuItem2_Click;
             // 
+            // jSONToolStripMenuItem2
+            // 
+            jSONToolStripMenuItem2.Name = "jSONToolStripMenuItem2";
+            jSONToolStripMenuItem2.Size = new Size(180, 22);
+            jSONToolStripMenuItem2.Text = "JSON";
+            jSONToolStripMenuItem2.Click += jSONToolStripMenuItem2_Click;
+            // 
             // dESERIALIZARToolStripMenuItem2
             // 
-            dESERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3 });
+            dESERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3, jSONToolStripMenuItem3 });
             dESERIALIZARToolStripMenuItem2.Name = "dESERIALIZARToolStripMenuItem2";
             dESERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
             dESERIALIZARToolStripMenuItem2.Text = "DESERIALIZAR";
@@ -170,6 +179,13 @@
             xMLToolStripMenuItem3.Size = new Size(180, 22);
             xMLToolStripMenuItem3.Text = "XML";
             xMLToolStripMenuItem3.Click += xMLToolStripMenuItem3_Click;
+            // 
+            // jSONToolStripMenuItem3
+            // 
+            jSONToolStripMenuItem3.Name = "jSONToolStripMenuItem3";
+            jSONToolStripMenuItem3.Size = new Size(180, 22);
+            jSONToolStripMenuItem3.Text = "JSON";
+            jSONToolStripMenuItem3.Click += jSONToolStripMenuItem3_Click;
             // 
             // uSUARIOSToolStripMenuItem
             // 
@@ -348,5 +364,7 @@
         private ComboBox cboOrden;
         private ComboBox cboOrdenManera;
         private Label lblOrden;
+        private ToolStripMenuItem jSONToolStripMenuItem2;
+        private ToolStripMenuItem jSONToolStripMenuItem3;
     }
 }

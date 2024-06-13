@@ -265,8 +265,8 @@ namespace Interfaz
 
                     try
                     {
+                        //List<Golosina> golosinasDeserializadas = SerializadorJSON<Golosina>.Deserializar(pathArchivo);
                         List<Golosina> golosinasDeserializadas = SerializadorJSON<Golosina>.Deserializar(pathArchivo);
-
                         this.kiosco.Golosinas.Clear();
                         this.kiosco += golosinasDeserializadas;
                         this.ActualizarVisorGolosinas();
@@ -506,6 +506,14 @@ namespace Interfaz
             frmVisualizadorUsuariosLog.ShowDialog();
         }
 
-        
+        private void jSONToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            AbrirJSON();
+        }
+
+        private void jSONToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            GuardarJSON();
+        }
     }
 }

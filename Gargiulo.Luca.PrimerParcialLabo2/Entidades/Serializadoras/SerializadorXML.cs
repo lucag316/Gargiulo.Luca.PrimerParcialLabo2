@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Entidades.Serializadoras
 {
-    public class SerializadorXML<T> : Serializador//, ISerializable<T> where T : Golosina, new()
+    public class SerializadorXML<T> : Serializador//,ISerializable<T> where T : Golosina, new()
     {                                               // con la interfaz no puedo hacerlos staticos a los metodos, ver como hacer que funcione con interfaz
         #region Atributos
 
@@ -67,6 +67,7 @@ namespace Entidades.Serializadoras
             }
             return true;
         }
+
 
 
         #endregion

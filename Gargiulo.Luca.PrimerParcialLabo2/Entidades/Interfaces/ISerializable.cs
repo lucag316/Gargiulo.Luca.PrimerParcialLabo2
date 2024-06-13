@@ -12,6 +12,6 @@ namespace Entidades.Interfaces
         //puedo poner ISerializable<List<T>> a donde lo llamo, en vez de aca. seria mas generico
         bool SerializarI(List<T> datos);
 
-         List<T> DeserializarI();
+        List<T> DeserializarI();
     }
 }

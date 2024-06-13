@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.IO;
 
 namespace Entidades.Serializadoras
 {
@@ -34,6 +35,33 @@ namespace Entidades.Serializadoras
 
         public static List<T> Deserializar(string path)
         {
+            /*var lista = new List<T>();
+
+            try
+            {
+                string jsonString;
+
+                using (var streamReader = new StreamReader(path))
+                {
+                    jsonString = streamReader.ReadToEnd();
+                }
+
+                if (!string.IsNullOrEmpty(jsonString))
+                {
+                    lista = JsonSerializer.Deserialize<List<T>>(jsonString, new JsonSerializerOptions
+                    {
+                        Converters = { new GolosinaConverter() },
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al deserializar desde JSON: {ex.Message}");
+            }
+
+            return lista;*/
+            
             var lista = new List<T>();
 
             using (var streamReader = new StreamReader(path))
@@ -51,7 +79,7 @@ namespace Entidades.Serializadoras
                 }
             }
             return lista;
-
+            
         }
 
         public static bool Serializar(List<T> datos, string path)
