@@ -20,26 +20,33 @@ namespace Entidades
         #endregion
 
         #region Propiedades
-        [JsonPropertyName("elasticidad")]
+        //[JsonPropertyName("elasticidad")]
         public ENivelesDeElasticidad Elasticidad
         {
             get { return this.elasticidad; }
             set { this.elasticidad = value; }
         }
 
-        [JsonPropertyName("duracionSabor")]
+        //[JsonPropertyName("duracionSabor")]
         public ENivelesDuracionDeSabor DuracionSabor
         {
             get { return this.duracionSabor; }
             set { this.duracionSabor = value; }
         }
+
+        public bool BlanqueadorDental
+        {
+            get { return this.blanqueadorDental; }
+            set { this.blanqueadorDental = value; }
+        }
         #endregion
 
         #region Constructores
-        public Chicle() : base()//constructor sin parametros para poder usar JSON
+        public Chicle() : base()
         {
             this.elasticidad = ENivelesDeElasticidad.Media;
             this.duracionSabor = ENivelesDuracionDeSabor.Media;
+            this.blanqueadorDental = false;
         }
         public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
@@ -54,6 +61,10 @@ namespace Entidades
         {
             this.duracionSabor = duracionSabor;
         }
+        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor, bool blanqueadorDental) : this(codigo, peso, precio, cantidad, elasticidad, duracionSabor)
+        {
+            this.blanqueadorDental = blanqueadorDental;
+        }
         #endregion
 
         #region Metodos de Object sobrescritos
@@ -66,6 +77,7 @@ namespace Entidades
             sb.Append(base.ToString());
             sb.AppendLine($"Elasticidad: {this.elasticidad}");
             sb.AppendLine($"Duracion del sabor: {this.duracionSabor}");
+            sb.AppendLine($"Blanqueador dental: {this.blanqueadorDental}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -89,7 +101,7 @@ namespace Entidades
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.elasticidad, this.duracionSabor);
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.elasticidad, this.duracionSabor, this.blanqueadorDental);
         }
         #endregion
 
@@ -113,7 +125,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHICLE:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor}");
+            sb.Append($"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor} - Blanqueador dental: {this.blanqueadorDental}");
 
             return sb.ToString();
         }
@@ -148,7 +160,9 @@ namespace Entidades
         {
             bool mismoGolosina = (Golosina)chicle1 == (Golosina)chicle2;
 
-            bool mismoChicle = mismoGolosina && chicle1.Elasticidad == chicle2.Elasticidad && chicle1.DuracionSabor == chicle2.DuracionSabor;
+            bool mismoChicle = mismoGolosina && chicle1.Elasticidad == chicle2.Elasticidad && 
+                                                chicle1.DuracionSabor == chicle2.DuracionSabor &&
+                                                chicle1.blanqueadorDental == chicle2.blanqueadorDental;
 
             return mismoChicle;
         }

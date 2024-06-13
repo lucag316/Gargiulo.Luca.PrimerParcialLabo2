@@ -33,13 +33,14 @@
             cboFormaChupetin = new ComboBox();
             lblDureza = new Label();
             lblFormaChupetin = new Label();
+            chkEnvolturaTransparente = new CheckBox();
             SuspendLayout();
             // 
             // cboDureza
             // 
             cboDureza.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboDureza.FormattingEnabled = true;
-            cboDureza.Location = new Point(312, 175);
+            cboDureza.Location = new Point(312, 118);
             cboDureza.Name = "cboDureza";
             cboDureza.Size = new Size(121, 22);
             cboDureza.TabIndex = 50;
@@ -48,7 +49,7 @@
             // 
             cboFormaChupetin.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboFormaChupetin.FormattingEnabled = true;
-            cboFormaChupetin.Location = new Point(312, 118);
+            cboFormaChupetin.Location = new Point(312, 59);
             cboFormaChupetin.Name = "cboFormaChupetin";
             cboFormaChupetin.Size = new Size(121, 22);
             cboFormaChupetin.TabIndex = 49;
@@ -57,7 +58,7 @@
             // 
             lblDureza.AutoSize = true;
             lblDureza.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDureza.Location = new Point(312, 158);
+            lblDureza.Location = new Point(312, 101);
             lblDureza.Name = "lblDureza";
             lblDureza.Size = new Size(105, 14);
             lblDureza.TabIndex = 48;
@@ -67,11 +68,22 @@
             // 
             lblFormaChupetin.AutoSize = true;
             lblFormaChupetin.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFormaChupetin.Location = new Point(312, 101);
+            lblFormaChupetin.Location = new Point(312, 42);
             lblFormaChupetin.Name = "lblFormaChupetin";
             lblFormaChupetin.Size = new Size(129, 14);
             lblFormaChupetin.TabIndex = 47;
             lblFormaChupetin.Text = "Forma del chupetin:";
+            // 
+            // chkEnvolturaTransparente
+            // 
+            chkEnvolturaTransparente.AutoSize = true;
+            chkEnvolturaTransparente.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chkEnvolturaTransparente.Location = new Point(312, 177);
+            chkEnvolturaTransparente.Name = "chkEnvolturaTransparente";
+            chkEnvolturaTransparente.Size = new Size(199, 18);
+            chkEnvolturaTransparente.TabIndex = 51;
+            chkEnvolturaTransparente.Text = "Tiene envoltura transparente";
+            chkEnvolturaTransparente.UseVisualStyleBackColor = true;
             // 
             // FrmChupetin
             // 
@@ -79,13 +91,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(648, 432);
+            Controls.Add(chkEnvolturaTransparente);
             Controls.Add(cboDureza);
             Controls.Add(cboFormaChupetin);
             Controls.Add(lblDureza);
             Controls.Add(lblFormaChupetin);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmChupetin";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Chupetin";
             Load += FrmChupetin_Load;
             Controls.SetChildIndex(txtPrecio, 0);
@@ -96,6 +107,7 @@
             Controls.SetChildIndex(lblDureza, 0);
             Controls.SetChildIndex(cboFormaChupetin, 0);
             Controls.SetChildIndex(cboDureza, 0);
+            Controls.SetChildIndex(chkEnvolturaTransparente, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,5 +118,6 @@
         private ComboBox cboFormaChupetin;
         private Label lblDureza;
         private Label lblFormaChupetin;
+        private CheckBox chkEnvolturaTransparente;
     }
 }

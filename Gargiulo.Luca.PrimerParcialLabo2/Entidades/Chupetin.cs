@@ -19,18 +19,23 @@ namespace Entidades
         #endregion
 
         #region Propiedades
-        [JsonPropertyName("formaChupetin")]
+        //[JsonPropertyName("formaChupetin")]
         public EFormasDeChupetin FormaChupetin
         {
             get { return this.formaChupetin;}
             set { this.formaChupetin = value;}
         }
 
-        [JsonPropertyName("dureza")]
+        //[JsonPropertyName("dureza")]
         public ENivelesDeDureza Dureza
         {
             get { return this.dureza; }
             set { this.dureza = value; }
+        }
+        public bool EnvolturaTransparente
+        {
+            get { return this.envolturaTransparente; }
+            set { this.envolturaTransparente = value; }
         }
         #endregion
 
@@ -39,6 +44,7 @@ namespace Entidades
         {
             this.formaChupetin = EFormasDeChupetin.Redondo;
             this.dureza = ENivelesDeDureza.Media;
+            this.envolturaTransparente = false;
         }
         public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
@@ -53,6 +59,10 @@ namespace Entidades
         {
             this.dureza = dureza;
         }
+        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza, bool envolturaTransparente) : this(codigo, peso, precio, cantidad, formaChupetin, dureza)
+        {
+            this.envolturaTransparente = envolturaTransparente;
+        }
         #endregion
 
         #region Metodos de Object sobrescritos
@@ -64,6 +74,7 @@ namespace Entidades
             sb.Append(base.ToString());
             sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
             sb.AppendLine($"Dureza: {this.dureza}");
+            sb.AppendLine($"Envoltura transparente: {this.envolturaTransparente}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -86,7 +97,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.formaChupetin, this.dureza);
+            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.formaChupetin, this.dureza, this.envolturaTransparente);
         }
         #endregion
 
@@ -99,8 +110,6 @@ namespace Entidades
 
         #endregion
 
-
-
         #region Metodos sobrescritos
 
         /// <summary>
@@ -112,7 +121,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHUPETIN:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza}");
+            sb.Append($"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza} - Envoltura transparente: {this.envolturaTransparente}");
 
             return sb.ToString();
         }
@@ -134,7 +143,6 @@ namespace Entidades
                 throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
             }
             return precioFinal;
-            return precioFinal;
         }
         #endregion
 
@@ -148,7 +156,9 @@ namespace Entidades
         {
             bool mismoGolosina = (Golosina)chupetin1 == (Golosina)chupetin2;
 
-            bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin && chupetin1.Dureza == chupetin2.Dureza;
+            bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin && 
+                                                  chupetin1.Dureza == chupetin2.Dureza &&
+                                                  chupetin1.envolturaTransparente == chupetin2.envolturaTransparente;
 
             return mismoChupetin;
         }

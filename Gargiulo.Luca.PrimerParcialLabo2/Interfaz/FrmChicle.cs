@@ -29,6 +29,7 @@ namespace Interfaz
         {
             InitializeComponent();
             ConfigurarComboBoxes();
+            this.miChicle = new Chicle(); //fijarme en chocolate
             
         }
         public FrmChicle(Chicle chicle) : this()
@@ -52,13 +53,15 @@ namespace Interfaz
             {
                 ENivelesDeElasticidad elasticidad = (ENivelesDeElasticidad)this.cboElasticidad.SelectedItem;
                 ENivelesDuracionDeSabor duracionSabor = (ENivelesDuracionDeSabor)this.cboDuracionSabor.SelectedItem;
+                bool blanqueadordental = this.chkBlanqueadorDental.Checked;
 
                 this.miChicle = new Chicle(int.Parse(txtCodigo.Text),
                                                 float.Parse(txtPeso.Text),
                                                 float.Parse(txtPrecio.Text),
                                                 int.Parse(txtCantidad.Text),
                                                 elasticidad,
-                                                duracionSabor);
+                                                duracionSabor,
+                                                blanqueadordental);
             }
         }
         #endregion
@@ -70,8 +73,10 @@ namespace Interfaz
             txtPeso.Text = chicle.Peso.ToString();
             txtPrecio.Text = chicle.Precio.ToString();
             txtCantidad.Text = chicle.Cantidad.ToString();
+
             this.cboElasticidad.SelectedItem = chicle.Elasticidad;
             this.cboDuracionSabor.SelectedItem = chicle.DuracionSabor;
+            this.chkBlanqueadorDental.Checked = chicle.BlanqueadorDental;
 
             this.txtCodigo.Enabled = false;
         }

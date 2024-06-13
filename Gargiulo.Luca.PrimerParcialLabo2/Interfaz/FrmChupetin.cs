@@ -30,6 +30,7 @@ namespace Interfaz
         {
             InitializeComponent();
             ConfigurarComboBoxes();
+            this.miChupetin = new Chupetin(); //fijarme en chocolate
         }
 
         public FrmChupetin(Chupetin chupetin) : this()
@@ -52,13 +53,15 @@ namespace Interfaz
             {
                 EFormasDeChupetin formaChupetin = (EFormasDeChupetin)this.cboFormaChupetin.SelectedItem;
                 ENivelesDeDureza dureza = (ENivelesDeDureza)this.cboDureza.SelectedItem;
+                bool envolturaTransparente = this.chkEnvolturaTransparente.Checked;
 
                 this.miChupetin = new Chupetin(int.Parse(txtCodigo.Text),
                                                 float.Parse(txtPeso.Text),
                                                 float.Parse(txtPrecio.Text),
                                                 int.Parse(txtCantidad.Text),
                                                 formaChupetin,
-                                                dureza);
+                                                dureza, 
+                                                envolturaTransparente);
             }
         }
 
@@ -72,8 +75,10 @@ namespace Interfaz
             txtPeso.Text = chupetin.Peso.ToString();
             txtPrecio.Text = chupetin.Precio.ToString();
             txtCantidad.Text = chupetin.Cantidad.ToString();
+
             this.cboFormaChupetin.SelectedItem = chupetin.FormaChupetin;
             this.cboDureza.SelectedItem = chupetin.Dureza;
+            this.chkEnvolturaTransparente.Checked = chupetin.EnvolturaTransparente;
 
             this.txtCodigo.Enabled = false; 
         }

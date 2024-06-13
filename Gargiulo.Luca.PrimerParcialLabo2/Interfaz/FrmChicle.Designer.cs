@@ -33,13 +33,14 @@
             cboElasticidad = new ComboBox();
             lblDuracionDelSabor = new Label();
             lblElasticidad = new Label();
+            chkBlanqueadorDental = new CheckBox();
             SuspendLayout();
             // 
             // cboDuracionSabor
             // 
             cboDuracionSabor.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboDuracionSabor.FormattingEnabled = true;
-            cboDuracionSabor.Location = new Point(315, 175);
+            cboDuracionSabor.Location = new Point(315, 118);
             cboDuracionSabor.Name = "cboDuracionSabor";
             cboDuracionSabor.Size = new Size(121, 22);
             cboDuracionSabor.TabIndex = 50;
@@ -48,7 +49,7 @@
             // 
             cboElasticidad.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cboElasticidad.FormattingEnabled = true;
-            cboElasticidad.Location = new Point(315, 118);
+            cboElasticidad.Location = new Point(315, 59);
             cboElasticidad.Name = "cboElasticidad";
             cboElasticidad.Size = new Size(121, 22);
             cboElasticidad.TabIndex = 49;
@@ -57,7 +58,7 @@
             // 
             lblDuracionDelSabor.AutoSize = true;
             lblDuracionDelSabor.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDuracionDelSabor.Location = new Point(315, 158);
+            lblDuracionDelSabor.Location = new Point(311, 101);
             lblDuracionDelSabor.Name = "lblDuracionDelSabor";
             lblDuracionDelSabor.Size = new Size(125, 14);
             lblDuracionDelSabor.TabIndex = 48;
@@ -67,11 +68,22 @@
             // 
             lblElasticidad.AutoSize = true;
             lblElasticidad.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblElasticidad.Location = new Point(315, 101);
+            lblElasticidad.Location = new Point(315, 42);
             lblElasticidad.Name = "lblElasticidad";
             lblElasticidad.Size = new Size(78, 14);
             lblElasticidad.TabIndex = 47;
             lblElasticidad.Text = "Elasticidad:";
+            // 
+            // chkBlanqueadorDental
+            // 
+            chkBlanqueadorDental.AutoSize = true;
+            chkBlanqueadorDental.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chkBlanqueadorDental.Location = new Point(315, 179);
+            chkBlanqueadorDental.Name = "chkBlanqueadorDental";
+            chkBlanqueadorDental.Size = new Size(144, 18);
+            chkBlanqueadorDental.TabIndex = 51;
+            chkBlanqueadorDental.Text = "Blanqueador dental";
+            chkBlanqueadorDental.UseVisualStyleBackColor = true;
             // 
             // FrmChicle
             // 
@@ -80,13 +92,12 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(636, 403);
+            Controls.Add(chkBlanqueadorDental);
             Controls.Add(cboDuracionSabor);
             Controls.Add(cboElasticidad);
             Controls.Add(lblDuracionDelSabor);
             Controls.Add(lblElasticidad);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmChicle";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Chicle";
             Load += FrmChicle_Load;
             Controls.SetChildIndex(txtPrecio, 0);
@@ -97,6 +108,7 @@
             Controls.SetChildIndex(lblDuracionDelSabor, 0);
             Controls.SetChildIndex(cboElasticidad, 0);
             Controls.SetChildIndex(cboDuracionSabor, 0);
+            Controls.SetChildIndex(chkBlanqueadorDental, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,5 +119,6 @@
         private ComboBox cboElasticidad;
         private Label lblDuracionDelSabor;
         private Label lblElasticidad;
+        private CheckBox chkBlanqueadorDental;
     }
 }
