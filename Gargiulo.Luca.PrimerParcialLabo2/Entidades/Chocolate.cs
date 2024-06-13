@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Entidades.Interfaces;
 
 namespace Entidades
 {
     [Serializable]
-    public class Chocolate : Golosina, ICalculos
+    public class Chocolate : Golosina, ICalculos, IValidable
     {
         #region Atributos
         protected ERellenos relleno;
@@ -89,11 +91,36 @@ namespace Entidades
         }
         #endregion
 
+        #region Metodos Interfaces
+
+        void IValidable.ValidarRangoPrecio()
+        {
+            if (this.Precio < 0 || this.Precio > 2000)
+            {
+                throw new ArgumentException("El precio del chocolate esta fuera del rango permitido($0 - $2000)");
+            }
+        }
+
+        void IValidable.ValidarRangoPeso()
+        {
+            if (this.Peso < 0 || this.Peso > 1000)
+            {
+                throw new ArgumentException("El peso del chocolate esta fuera del rango permitido(0 g - 1000 g)");
+            }
+        }
+        void IValidable.ValidarRangoCantidad()
+        {
+            if (this.Cantidad < 0 || this.Cantidad > 50)
+            {
+                throw new ArgumentException("La cantidad del chocolate esta fuera del rango permitido(0 - 50)");
+            }
+        }
 
         double ICalculos.CalcularDescuento(double precio)
         {
             return precio * 0.7;
         }
+        #endregion
 
         #region Metodos sobrescritos
 
@@ -118,8 +145,6 @@ namespace Entidades
         public override double CalcularPrecioFinal()
         {
             double precioFinal = base.Precio * base.Cantidad;
-
-
 
             if (base.Cantidad > 3)
             {

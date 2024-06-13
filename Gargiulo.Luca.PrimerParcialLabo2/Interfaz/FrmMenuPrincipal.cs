@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
-
+using Entidades.Serializadoras;
 namespace Interfaz
 {
     /// <summary>
@@ -159,8 +159,9 @@ namespace Interfaz
                     MessageBox.Show($"Ruta del archivo: {pathArchivo}");
                     try
                     {
-                        Serializadora deserializadoraXml = new Serializadora(pathArchivo);
-                        List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
+                        List<Golosina> golosinasDeserializadas = SerializadorXML<Golosina>.Deserializar(pathArchivo);// Llamo al metodo estatico Deserializar de SerializadorXML<Golosina>
+                        //Serializadora deserializadoraXml = new Serializadora(pathArchivo);
+                        //List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
                         this.kiosco.Golosinas.Clear();
                         this.kiosco += golosinasDeserializadas;
                         this.ActualizarVisorGolosinas();
@@ -195,9 +196,8 @@ namespace Interfaz
 
                     try
                     {
-                        Serializadora serializadoraXml = new Serializadora(pathArchivo);
+                        SerializadorXML<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
 
-                        serializadoraXml.SerializarGolosinasXML(this.kiosco.Golosinas);
                         MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
                     }
                     catch (InvalidOperationException ex)
@@ -207,6 +207,74 @@ namespace Interfaz
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guarda los datos de las golosinas del kiosco en un archivo JSON.
+        /// </summary>
+        public void GuardarJSON()
+        {
+            using (SaveFileDialog sfdGuardarJson = new SaveFileDialog())
+            {
+                sfdGuardarJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+                sfdGuardarJson.Title = "Guardar archivo JSON";
+                sfdGuardarJson.FileName = "Golosinas.json";
+
+                if (sfdGuardarJson.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = sfdGuardarJson.FileName;
+
+                    try
+                    {
+                        SerializadorJSON<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
+
+                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo JSON.");
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+
+        public void AbrirJSON() //VER BIEN COMO HACERLO
+        {
+            using (OpenFileDialog ofdAbrirJson = new OpenFileDialog())
+            {
+                ofdAbrirJson.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+                ofdAbrirJson.Title = "Abrir archivo JSON";
+
+                if (ofdAbrirJson.ShowDialog() == DialogResult.OK)
+                {
+                    string pathArchivo = ofdAbrirJson.FileName;
+
+                    if (!File.Exists(pathArchivo))
+                    {
+                        MessageBox.Show($"El archivo no existe: {pathArchivo}");
+                        return;
+                    }
+
+                    try
+                    {
+                        List<Golosina> golosinasDeserializadas = SerializadorJSON<Golosina>.Deserializar(pathArchivo);
+
+                        this.kiosco.Golosinas.Clear();
+                        this.kiosco += golosinasDeserializadas;
+                        this.ActualizarVisorGolosinas();
+                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo JSON.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
                     }
                 }
             }
@@ -356,6 +424,8 @@ namespace Interfaz
         {
             this.AbrirXML();
         }
+
+
         #endregion
 
         #region Volver, Detalle e Informacion

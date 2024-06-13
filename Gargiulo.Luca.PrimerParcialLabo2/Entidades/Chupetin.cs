@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Entidades.Interfaces;
 
 namespace Entidades
 {
     [Serializable]
-    public class Chupetin: Golosina
+    public class Chupetin: Golosina, ICalculos
     {
         #region Atributos
         protected EFormasDeChupetin formaChupetin;
@@ -87,6 +88,17 @@ namespace Entidades
         }
         #endregion
 
+        #region Metodos Interfaces
+
+        double ICalculos.CalcularDescuento(double precio)
+        {
+            return precio * 0.80;
+        }
+
+        #endregion
+
+
+
         #region Metodos sobrescritos
 
         /// <summary>
@@ -113,8 +125,13 @@ namespace Entidades
 
             if (base.Cantidad > 2)
             {
-                precioFinal *= 0.80;
+                precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal);
             }
+            if (base.cantidad < 0)
+            {
+                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
+            }
+            return precioFinal;
             return precioFinal;
         }
         #endregion

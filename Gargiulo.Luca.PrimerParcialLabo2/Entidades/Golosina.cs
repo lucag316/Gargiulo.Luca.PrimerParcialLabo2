@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Text.Json;
 
 namespace Entidades
 {
@@ -47,7 +48,7 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        public Golosina()   //constructor sin parametros para poder usar JSON
+        public Golosina()
         {
             this.codigo = 0;
             this.precio = 0;

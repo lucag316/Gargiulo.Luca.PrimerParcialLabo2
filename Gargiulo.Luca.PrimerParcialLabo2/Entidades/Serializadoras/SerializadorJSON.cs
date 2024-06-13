@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Entidades.Serializadoras
 {
-    public class SerializadorJSON<T> : Serializador, ISerializable<T> where T : new()
+    public class SerializadorJSON<T> : Serializador//, ISerializable<T> where T : new()
     {
         #region Atributos
 
@@ -32,11 +32,11 @@ namespace Entidades.Serializadoras
 
         #region Metodos
 
-        public List<T> Deserializar()
+        public static List<T> Deserializar(string path)
         {
             var lista = new List<T>();
 
-            using (var streamReader = new StreamReader(Path))
+            using (var streamReader = new StreamReader(path))
             {
                 if (streamReader != null)
                 {
@@ -54,9 +54,9 @@ namespace Entidades.Serializadoras
 
         }
 
-        public bool Serializar(List<T> datos)
+        public static bool Serializar(List<T> datos, string path)
         {
-            using (var streamWriter = new StreamWriter(Path)) // seria mejor base.Path
+            using (var streamWriter = new StreamWriter(path)) // seria mejor base.Path
             {
 
                 if (streamWriter != null)
@@ -66,7 +66,7 @@ namespace Entidades.Serializadoras
 
                     var jsonString = JsonSerializer.Serialize(datos, opciones);
 
-                    streamWriter.Write(jsonString);
+                    streamWriter.WriteLine(jsonString); //no se si write o writeLine
                 }
             }
             return true;
