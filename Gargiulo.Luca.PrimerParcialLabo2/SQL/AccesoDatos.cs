@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.ComponentModel;
+using System.Data; // esta no se si hay que poner, lo puse para no estar escribiendolo
 
 namespace SQL
 {
@@ -17,7 +18,7 @@ namespace SQL
 
         #region Constructores
 
-        static AccesoDatos()
+        static AccesoDatos() //recupera una cadena de conexion
         {
             AccesoDatos.cadenaConexion = Properties.Resources.miConexion; //para los recursos,  voy a propiedades ->recursos
                                         // "Data Source=DESKTOP-SDI3B0J\\SQLEXPRESS;Initial Catalog=DataKiosco;Integrated Security=True;Encrypt=False";
@@ -34,6 +35,37 @@ namespace SQL
 
 
         #region Metodos
+
+        public bool ProbarConexion()
+        {
+            bool rta = true;
+
+            try
+            {
+                this.conexion.Open();   // lo itento enlazar con el motor de la base de datos
+            }
+            catch (Exception ex)
+            {
+                rta = false;
+            }
+            finally
+            {
+                //siempre y cuando este abierta, cierro la conexion
+                //si me la intenta cerrar y nunca se abrio, me lanza excepcion, por eso pongo el if
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return rta;
+        }
+
+        public List<DatoGolosina> ObtenerListadatoGolosina()
+        {
+
+        }
+
 
         #endregion
     }
