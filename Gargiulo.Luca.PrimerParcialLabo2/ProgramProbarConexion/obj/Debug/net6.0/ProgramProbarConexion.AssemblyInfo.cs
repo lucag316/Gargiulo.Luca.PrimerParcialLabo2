@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProgramProbarConexion")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e77fe894b313503ebb71002f52cafde8d569446d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5eea675bfafdf7f2340741187524982e15e7577e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProgramProbarConexion")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProgramProbarConexion")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

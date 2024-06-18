@@ -1,0 +1,6 @@
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.csproj.AssemblyReference.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.AssemblyInfoInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.AssemblyInfo.cs
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.csproj.CoreCompileInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\ProgramProbarConexion\obj\Debug\net6.0\ProgramProbarConexion.sourcelink.json

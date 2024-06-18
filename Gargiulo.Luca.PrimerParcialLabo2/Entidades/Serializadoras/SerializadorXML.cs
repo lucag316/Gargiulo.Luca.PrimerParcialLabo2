@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Entidades.Serializadoras
 {
-    public class SerializadorXML<T> : Serializador//,ISerializable<T> where T : Golosina, new()
+    public class SerializadorXML<T> : Serializador//, ISerializable<T> where T : Golosina, new()
     {                                               // con la interfaz no puedo hacerlos staticos a los metodos, ver como hacer que funcione con interfaz
         #region Atributos
 
@@ -31,8 +31,14 @@ namespace Entidades.Serializadoras
 
         #endregion
 
+
+
+
         #region Metodos
 
+
+
+        
         public static List<T> Deserializar(string path) 
         {
             var lista = new List<T>();
@@ -53,7 +59,7 @@ namespace Entidades.Serializadoras
             }
             return lista;
         }
-
+        
         public static bool Serializar(List<T> datos, string path)
         {
             using (var streamWriter = new StreamWriter(path))
@@ -68,7 +74,7 @@ namespace Entidades.Serializadoras
             return true;
         }
 
-
+        
 
         #endregion
 

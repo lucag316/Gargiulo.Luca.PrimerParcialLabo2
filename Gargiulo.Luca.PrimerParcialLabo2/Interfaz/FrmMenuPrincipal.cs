@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -364,9 +365,9 @@ namespace Interfaz
 
         #region Metodos de archivos
 
-        /// <summary>
-        /// Abre un archivo XML que contiene datos de golosinas y los carga en el kiosco.
-        /// </summary>
+        // /<summary>
+        // Abre un archivo XML que contiene datos de golosinas y los carga en el kiosco.
+        // </summary>
         public void AbrirXML()
         {
             using (OpenFileDialog odfAbrirXml = new OpenFileDialog())
@@ -386,6 +387,7 @@ namespace Interfaz
                     MessageBox.Show($"Ruta del archivo: {pathArchivo}");
                     try
                     {
+                        //el profe dijo que seria una por una, separado, no entedi como, video clase 10:30 18/6
                         List<Golosina> golosinasDeserializadas = SerializadorXML<Golosina>.Deserializar(pathArchivo);// Llamo al metodo estatico Deserializar de SerializadorXML<Golosina>
                         //Serializadora deserializadoraXml = new Serializadora(pathArchivo);
                         //List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
@@ -406,6 +408,7 @@ namespace Interfaz
             }
         }
 
+
         /// <summary>
         /// Guarda los datos de las golosinas del kiosco en un archivo XML.
         /// </summary>
@@ -423,6 +426,7 @@ namespace Interfaz
 
                     try
                     {
+
                         SerializadorXML<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
 
                         MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
@@ -438,6 +442,8 @@ namespace Interfaz
                 }
             }
         }
+
+
         #endregion
 
         #region Metodo Agregar

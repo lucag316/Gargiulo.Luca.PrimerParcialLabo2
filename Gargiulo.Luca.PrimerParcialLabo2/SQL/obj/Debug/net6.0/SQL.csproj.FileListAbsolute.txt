@@ -1,0 +1,8 @@
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.csproj.AssemblyReference.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.Properties.Resources.resources
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.csproj.GenerateResource.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.AssemblyInfoInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.AssemblyInfo.cs
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.csproj.CoreCompileInputs.cache
+C:\Users\luca_\Desktop\Labo2 primerParcial\Gargiulo.Luca.PrimerParcialLabo2\Gargiulo.Luca.PrimerParcialLabo2\SQL\obj\Debug\net6.0\SQL.sourcelink.json
