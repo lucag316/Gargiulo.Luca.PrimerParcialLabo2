@@ -14,16 +14,16 @@ internal class Program
             Console.WriteLine("No se pudo conectar");
         }
 
-        List<DatoGolosina> lista = ado.ObtenerListaDato();
+        //List<DatoGolosina> lista = ado.ObtenerListaDato();
 
-        foreach(DatoGolosina item in lista)
-        {
-            Console.WriteLine(item.ToString());
-        }
+        //foreach(DatoGolosina item in lista)
+        //{
+        //    Console.WriteLine(item.ToString());
+        //}
 
-        DatoGolosina obj = new DatoGolosina();
-        obj.cadena = "nuevo";
-        obj.entero = 100;
+        //DatoGolosina obj = new DatoGolosina();
+        //obj.cadena = "nuevo";
+        //obj.entero = 100;
 
 
 

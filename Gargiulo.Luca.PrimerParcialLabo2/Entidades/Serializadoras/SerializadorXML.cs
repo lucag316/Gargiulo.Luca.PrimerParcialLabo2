@@ -16,11 +16,9 @@ namespace Entidades.Serializadoras
 
         #endregion
 
-
         #region Propiedades
 
         #endregion
-
 
         #region Constructores
 
@@ -31,14 +29,21 @@ namespace Entidades.Serializadoras
 
         #endregion
 
-
-
-
         #region Metodos
+        public static bool Serializar(List<T> datos, string path)
+        {
+            using (var streamWriter = new StreamWriter(path))
+            {
+                if (streamWriter != null)
+                {                                                       //indicando de manera específica qué tipos están permitidos en la lista genérica que estás serializando. Esto asegura que solo los tipos indicados serán considerados durante la serialización y deserialización.
+                    var xmlSer = new XmlSerializer(typeof(List<T>), new[] { typeof(Chocolate), typeof(Chicle), typeof(Chupetin) }); // esto me va a servir para serializar cualquier cosa
+                                                                                                                                    //en este caso cualquier lista
+                    xmlSer.Serialize(streamWriter, datos);
+                }
+            }
+            return true;
+        }
 
-
-
-        
         public static List<T> Deserializar(string path) 
         {
             var lista = new List<T>();
@@ -60,24 +65,7 @@ namespace Entidades.Serializadoras
             return lista;
         }
         
-        public static bool Serializar(List<T> datos, string path)
-        {
-            using (var streamWriter = new StreamWriter(path))
-            {
-                if (streamWriter != null)
-                {                                                       //indicando de manera específica qué tipos están permitidos en la lista genérica que estás serializando. Esto asegura que solo los tipos indicados serán considerados durante la serialización y deserialización.
-                    var xmlSer = new XmlSerializer(typeof(List<T>), new[] { typeof(Chocolate), typeof(Chicle), typeof(Chupetin) }); // esto me va a servir para serializar cualquier cosa
-                                                                     //en este caso cualquier lista
-                    xmlSer.Serialize(streamWriter, datos);
-                }
-            }
-            return true;
-        }
-
-        
-
         #endregion
-
 
     }
 }

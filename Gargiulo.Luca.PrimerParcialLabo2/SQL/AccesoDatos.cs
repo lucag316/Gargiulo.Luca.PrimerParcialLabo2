@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data; // esta no se si hay que poner, lo puse para no estar escribiendolo
 
@@ -10,8 +11,8 @@ namespace SQL
 
         private static string cadenaConexion;
         private SqlConnection conexion;
-        private SqlCommand comando;
-        private SqlDataReader lector;
+        private SqlCommand? comando; // me permite ejecutar insertc, select, etc
+        private SqlDataReader? lector; // se guarda internamente...
 
         #endregion
 
@@ -61,9 +62,9 @@ namespace SQL
             return rta;
         }
 
-        public List<DatoGolosina> ObtenerListadatoGolosina()
+        public List<DatoGolosina> ObtenerListaDatoGolosina()
         {
-
+            
         }
 
 
