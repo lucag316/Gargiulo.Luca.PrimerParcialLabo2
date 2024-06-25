@@ -71,7 +71,7 @@ internal class Program
 
         }
 
-        bool elimino = ado.EliminarGolosina(4);
+        bool elimino = ado.EliminarGolosina(1);
 
         if (elimino)
         {
