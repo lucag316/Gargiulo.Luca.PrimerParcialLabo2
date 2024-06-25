@@ -61,7 +61,7 @@ namespace SQL.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=DESKTOP-SDI3B0J\SQLEXPRESS;Initial Catalog=DataKiosco;Integrated Security=True;Encrypt=False.
+        ///   Busca una cadena traducida similar a Data Source=DESKTOP-SDI3B0J\SQLEXPRESS;Initial Catalog=Kiosco;Integrated Security=True;Trust Server Certificate=True.
         /// </summary>
         internal static string miConexion {
             get {

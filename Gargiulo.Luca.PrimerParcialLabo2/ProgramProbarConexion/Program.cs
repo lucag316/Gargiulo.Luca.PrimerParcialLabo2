@@ -47,7 +47,7 @@ internal class Program
         }
 
         // esta instancia para modificar un obj, puede ser un metodo estatico ponele
-        obj.Codigo = 4;
+        obj.Codigo = 1;
         obj.Precio = 200;
         obj.Peso = 250;
         obj.Cantidad = 2;

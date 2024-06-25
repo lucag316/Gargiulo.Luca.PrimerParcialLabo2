@@ -23,8 +23,8 @@ namespace SQL
         static AccesoDatos() //recupera una cadena de conexion
         {
             AccesoDatos.cadenaConexion = Properties.Resources.miConexion; //para los recursos,  voy a propiedades ->recursos
-                                        // "Data Source=DESKTOP-SDI3B0J\\SQLEXPRESS;Initial Catalog=DataKiosco;Integrated Security=True;Encrypt=False";
-                                        // ES LO MISMO HACER CUALQUIERA DE LAS DOS
+                                                                          // Data Source=DESKTOP-SDI3B0J\SQLEXPRESS;Initial Catalog=Kiosco;Integrated Security=True;Trust Server Certificate=True
+                                                                          // ES LO MISMO HACER CUALQUIERA DE LAS DOS
         }
 
         public AccesoDatos()
@@ -72,25 +72,30 @@ namespace SQL
                 this.comando = new SqlCommand();
                 //siempre configurar estas tres propiedades
                 this.comando.CommandType = CommandType.Text; //me indica como se tiene que interpretar el commanText
-                this.comando.CommandText = "SELECT CodigoDeBarra, Precio, Peso, Cantidad FROM DatosGolosina";   //para ejecutar una consulta
+                this.comando.CommandText = "SELECT codigo, precio, peso, cantidad FROM DatosGolosinas";   //para ejecutar una consulta
                 this.comando.Connection = this.conexion; // le paso el objeto conection que se va a utilizar 
 
                 this.conexion.Open(); // abro la conexion
 
                 this.lector = comando.ExecuteReader(); // tiene distintos metodos de ejecucion, segun la cosulta (fijarme en la ppt)
 
+                if (!lector.HasRows)
+                {
+                    Console.WriteLine("No se encontraron filas.");
+                }
+
                 while (lector.Read()) // lee por fila
                 {
                     Golosina item = new Chocolate();
 
                     // ACCEDO POR NOMBRE, POR INDICE O POR GETTER (SEGUN TIPO DE DATO)
-                    item.Codigo = (int)lector["CodigoDeBarra"]; // recupero por nombre de columna
-                    item.Precio = (double)lector["Precio"];
-                    item.Peso = (float)lector["Peso"];
+                    item.Codigo = (int)lector["codigo"]; // recupero por nombre de columna
+                    item.Precio = Convert.ToSingle(this.lector.GetDouble(1));
+                    item.Peso = Convert.ToSingle(this.lector.GetDouble(2));
                     //item.Cantidad = lector.GetInt32(3); 
                     //item.Cantidad = lector[3].ToString(); //recupero por posicion de columna
                     //item.Cantidad = int.Parse(lector[3].ToString());
-                    item.Cantidad = (int)lector["Cantidad"];
+                    item.Cantidad = (int)lector["cantidad"];
 
                     lista.Add(item);
                 }
@@ -120,8 +125,8 @@ namespace SQL
             try
             {
                 // primero preparo la consulta
-                string sql = "INSERT INT DatosGolosina (CodigodeBarra, Precio, Peso, Cantidad) VALUES("; // le paso la consulta que es un insert
-                sql = sql + "'" + param.Codigo.ToString() + "'," + param.Precio.ToString() + "," + param.Peso.ToString() + "," + param.Cantidad.ToString() + ")";
+                string sql = "INSERT INTO DatosGolosinas (codigo, precio, peso, cantidad) VALUES("; // le paso la consulta que es un insert
+                sql = sql + "" + param.Codigo.ToString() + "," + param.Precio.ToString() + "," + param.Peso.ToString() + "," + param.Cantidad.ToString() + ")";
 
                 this.comando = new SqlCommand();
 
@@ -165,14 +170,14 @@ namespace SQL
             {
                 this.comando = new SqlCommand();
                 // le agrego parametros //el @es para identificar el campo
-                this.comando.Parameters.AddWithValue("@CodigoDeBarra", param.Codigo);
-                this.comando.Parameters.AddWithValue("@Precio", param.Precio);
-                this.comando.Parameters.AddWithValue("@Peso", param.Peso);
-                this.comando.Parameters.AddWithValue("@Cantidad", param.Cantidad);
+                this.comando.Parameters.AddWithValue("@codigo", param.Codigo);
+                this.comando.Parameters.AddWithValue("@precio", param.Precio);
+                this.comando.Parameters.AddWithValue("@peso", param.Peso);
+                this.comando.Parameters.AddWithValue("@cantidad", param.Cantidad);
 
-                string sql = "UPDATE DatosGolosina";
-                sql += "SET Precio = @Precio, Peso = @Peso, Cantidad = @Cantidad ";
-                sql += "WHERE CodigoDeBarra = @Codigo"; // no se si estan al reves
+                string sql = "UPDATE DatosGolosinas ";
+                sql += "SET precio = @precio, peso = @peso, cantidad = @cantidad ";
+                sql += "WHERE codigo = @codigo"; // no se si estan al reves
 
                 this.comando.CommandType = CommandType.Text;
                 this.comando.CommandText = sql;
@@ -216,10 +221,10 @@ namespace SQL
             {
                 this.comando = new SqlCommand();
 
-                this.comando.Parameters.AddWithValue("CodigoDeBarra", codigo);
+                this.comando.Parameters.AddWithValue("@codigo", codigo);
 
-                string sql = "DELETE FROM DatosGolosina";// el delete no necesita de campos, porque se borra todo completo, por eso si o si mando where
-                sql += "WHERE CodigoDeBarra = @codigo"; // no se si estan al reves
+                string sql = "DELETE FROM DatosGolosinas ";// el delete no necesita de campos, porque se borra todo completo, por eso si o si mando where
+                sql += "WHERE codigo = @codigo"; // no se si estan al reves
 
                 this.comando.CommandType = CommandType.Text;
                 this.comando.CommandText = sql;

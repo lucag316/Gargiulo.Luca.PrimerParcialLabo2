@@ -49,23 +49,23 @@ namespace Entidades
             this.tipoDeCacao = ETiposDeCacao.Negro;
             this.esVegano = false;
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
+        public Chocolate(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             //this.relleno = ERellenos.SinRelleno; 
             //this.tipoDeCacao = ETiposDeCacao.Negro;
             //this.porcentajeDeCacao = 0;
             //this.esVegano = false;
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno): this(codigo, peso, precio, cantidad)
+        public Chocolate(int codigo, float peso, float precio, int cantidad, ERellenos relleno): this(codigo, peso, precio, cantidad)
         {
             this.relleno = relleno;
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao) : this(codigo, peso, precio, cantidad, relleno)
+        public Chocolate(int codigo, float peso, float precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao) : this(codigo, peso, precio, cantidad, relleno)
         {
             this.tipoDeCacao = tipoDeCacao;
 
         }
-        public Chocolate(int codigo, float peso, double precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao, bool esVegano) : this(codigo, peso, precio, cantidad, relleno, tipoDeCacao)
+        public Chocolate(int codigo, float peso, float precio, int cantidad, ERellenos relleno, ETiposDeCacao tipoDeCacao, bool esVegano) : this(codigo, peso, precio, cantidad, relleno, tipoDeCacao)
         {
             this.esVegano = esVegano;
 

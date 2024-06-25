@@ -19,7 +19,7 @@ namespace Entidades
     {
         #region Atributos
         protected int codigo; //seria como si fuera el codigo de barra
-        protected double precio;
+        protected float precio;
         protected float peso;
         protected int cantidad;
         #endregion
@@ -30,7 +30,7 @@ namespace Entidades
             get { return this.codigo; }
             set { this.codigo = value; }
         }
-        public double Precio
+        public float Precio
         {
             get { return this.precio; }
             set { this.precio = value; }
@@ -63,11 +63,11 @@ namespace Entidades
         {
             this.peso = peso;
         }
-        public Golosina(int codigo, float peso, double precio) : this(codigo, peso)
+        public Golosina(int codigo, float peso, float precio) : this(codigo, peso)
         {
             this.precio = precio;
         }
-        public Golosina(int codigo, float peso, double precio, int cantidad) : this(codigo, peso, precio)
+        public Golosina(int codigo, float peso, float precio, int cantidad) : this(codigo, peso, precio)
         {
             this.cantidad = cantidad;
         }

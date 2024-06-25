@@ -46,20 +46,20 @@ namespace Entidades
             this.dureza = ENivelesDeDureza.Media;
             this.envolturaTransparente = false;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
+        public Chupetin(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             //this.formaChupetin = EFormasDeChupetin.Redondo;
             //this.dureza = ENivelesDeDureza.Media;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin) : this(codigo, peso, precio, cantidad)
+        public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin) : this(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = formaChupetin;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
+        public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
         {
             this.dureza = dureza;
         }
-        public Chupetin(int codigo, float peso, double precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza, bool envolturaTransparente) : this(codigo, peso, precio, cantidad, formaChupetin, dureza)
+        public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza, bool envolturaTransparente) : this(codigo, peso, precio, cantidad, formaChupetin, dureza)
         {
             this.envolturaTransparente = envolturaTransparente;
         }

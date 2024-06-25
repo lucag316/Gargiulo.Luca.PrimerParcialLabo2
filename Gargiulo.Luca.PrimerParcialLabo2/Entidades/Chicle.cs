@@ -48,20 +48,20 @@ namespace Entidades
             this.duracionSabor = ENivelesDuracionDeSabor.Media;
             this.blanqueadorDental = false;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad) : base(codigo, peso, precio, cantidad)
+        public Chicle(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
             //this.elasticidad = ENivelesDeElasticidad.Media;
             //this.duracionSabor = ENivelesDuracionDeSabor.Media;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad) : this(codigo, peso, precio, cantidad)
+        public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad) : this(codigo, peso, precio, cantidad)
         {
             this.elasticidad = elasticidad;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
+        public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
         {
             this.duracionSabor = duracionSabor;
         }
-        public Chicle(int codigo, float peso, double precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor, bool blanqueadorDental) : this(codigo, peso, precio, cantidad, elasticidad, duracionSabor)
+        public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor, bool blanqueadorDental) : this(codigo, peso, precio, cantidad, elasticidad, duracionSabor)
         {
             this.blanqueadorDental = blanqueadorDental;
         }
