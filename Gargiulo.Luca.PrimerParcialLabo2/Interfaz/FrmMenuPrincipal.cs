@@ -200,6 +200,17 @@ namespace Interfaz
         {
             this.AbrirXML();
         }
+
+        private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region Volver, Detalle e Informacion
@@ -296,7 +307,7 @@ namespace Interfaz
         #endregion
 
         #region Metodos de ordenamiento
-        
+
         private void OrdenarGolosinas(bool mostrarMensaje = true)
         {
             EOrdenes ordenSeleccionado = (EOrdenes)this.cboOrden.SelectedItem;
@@ -470,8 +481,10 @@ namespace Interfaz
             }
         }
 
-        
+
         #endregion
 
+
+        
     }
 }

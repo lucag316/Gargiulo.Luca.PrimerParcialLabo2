@@ -39,10 +39,12 @@
             mODIFICARToolStripMenuItem = new ToolStripMenuItem();
             eLIMINARToolStripMenuItem = new ToolStripMenuItem();
             aRCHIVOSToolStripMenuItem = new ToolStripMenuItem();
-            sERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
+            GuardarToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem2 = new ToolStripMenuItem();
-            dESERIALIZARToolStripMenuItem2 = new ToolStripMenuItem();
+            bASEDEDATOSToolStripMenuItem = new ToolStripMenuItem();
+            AbrirToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem3 = new ToolStripMenuItem();
+            bASEDEDATOSToolStripMenuItem1 = new ToolStripMenuItem();
             uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
@@ -62,11 +64,6 @@
             cboOrden = new ComboBox();
             cboOrdenManera = new ComboBox();
             lblOrden = new Label();
-            sERIALIZARToolStripMenuItem = new ToolStripMenuItem();
-            dESERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
-            xMLToolStripMenuItem4 = new ToolStripMenuItem();
-            xMLToolStripMenuItem5 = new ToolStripMenuItem();
-            bASEDEDATOSToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -77,16 +74,16 @@
             lstVisorGolosinas.ItemHeight = 14;
             lstVisorGolosinas.Location = new Point(14, 86);
             lstVisorGolosinas.Name = "lstVisorGolosinas";
-            lstVisorGolosinas.Size = new Size(886, 284);
+            lstVisorGolosinas.Size = new Size(1023, 284);
             lstVisorGolosinas.TabIndex = 7;
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, sERIALIZARToolStripMenuItem, dESERIALIZARToolStripMenuItem1, bASEDEDATOSToolStripMenuItem, aRCHIVOSToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
-            menuStrip1.Size = new Size(914, 24);
+            menuStrip1.Size = new Size(1049, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -142,39 +139,53 @@
             // 
             // aRCHIVOSToolStripMenuItem
             // 
-            aRCHIVOSToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sERIALIZARToolStripMenuItem2, dESERIALIZARToolStripMenuItem2 });
+            aRCHIVOSToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { GuardarToolStripMenuItem2, AbrirToolStripMenuItem2 });
             aRCHIVOSToolStripMenuItem.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
             aRCHIVOSToolStripMenuItem.Name = "aRCHIVOSToolStripMenuItem";
             aRCHIVOSToolStripMenuItem.Size = new Size(80, 20);
             aRCHIVOSToolStripMenuItem.Text = "ARCHIVOS";
             // 
-            // sERIALIZARToolStripMenuItem2
+            // GuardarToolStripMenuItem2
             // 
-            sERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2 });
-            sERIALIZARToolStripMenuItem2.Name = "sERIALIZARToolStripMenuItem2";
-            sERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
-            sERIALIZARToolStripMenuItem2.Text = "SERIALIZAR";
+            GuardarToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2, bASEDEDATOSToolStripMenuItem });
+            GuardarToolStripMenuItem2.Name = "GuardarToolStripMenuItem2";
+            GuardarToolStripMenuItem2.Size = new Size(131, 22);
+            GuardarToolStripMenuItem2.Text = "GUARDAR";
             // 
             // xMLToolStripMenuItem2
             // 
             xMLToolStripMenuItem2.Name = "xMLToolStripMenuItem2";
-            xMLToolStripMenuItem2.Size = new Size(180, 22);
+            xMLToolStripMenuItem2.Size = new Size(166, 22);
             xMLToolStripMenuItem2.Text = "XML";
             xMLToolStripMenuItem2.Click += xMLToolStripMenuItem2_Click;
             // 
-            // dESERIALIZARToolStripMenuItem2
+            // bASEDEDATOSToolStripMenuItem
             // 
-            dESERIALIZARToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3 });
-            dESERIALIZARToolStripMenuItem2.Name = "dESERIALIZARToolStripMenuItem2";
-            dESERIALIZARToolStripMenuItem2.Size = new Size(180, 22);
-            dESERIALIZARToolStripMenuItem2.Text = "DESERIALIZAR";
+            bASEDEDATOSToolStripMenuItem.Name = "bASEDEDATOSToolStripMenuItem";
+            bASEDEDATOSToolStripMenuItem.Size = new Size(166, 22);
+            bASEDEDATOSToolStripMenuItem.Text = "BASE DE DATOS";
+            bASEDEDATOSToolStripMenuItem.Click += bASEDEDATOSToolStripMenuItem_Click;
+            // 
+            // AbrirToolStripMenuItem2
+            // 
+            AbrirToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3, bASEDEDATOSToolStripMenuItem1 });
+            AbrirToolStripMenuItem2.Name = "AbrirToolStripMenuItem2";
+            AbrirToolStripMenuItem2.Size = new Size(131, 22);
+            AbrirToolStripMenuItem2.Text = "ABRIR";
             // 
             // xMLToolStripMenuItem3
             // 
             xMLToolStripMenuItem3.Name = "xMLToolStripMenuItem3";
-            xMLToolStripMenuItem3.Size = new Size(180, 22);
+            xMLToolStripMenuItem3.Size = new Size(166, 22);
             xMLToolStripMenuItem3.Text = "XML";
             xMLToolStripMenuItem3.Click += xMLToolStripMenuItem3_Click;
+            // 
+            // bASEDEDATOSToolStripMenuItem1
+            // 
+            bASEDEDATOSToolStripMenuItem1.Name = "bASEDEDATOSToolStripMenuItem1";
+            bASEDEDATOSToolStripMenuItem1.Size = new Size(166, 22);
+            bASEDEDATOSToolStripMenuItem1.Text = "BASE DE DATOS";
+            bASEDEDATOSToolStripMenuItem1.Click += bASEDEDATOSToolStripMenuItem1_Click;
             // 
             // uSUARIOSToolStripMenuItem
             // 
@@ -238,7 +249,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
             statusStrip1.Location = new Point(0, 398);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(914, 22);
+            statusStrip1.Size = new Size(1049, 22);
             statusStrip1.TabIndex = 12;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -293,44 +304,12 @@
             lblOrden.TabIndex = 15;
             lblOrden.Text = "Ordenamiento: ";
             // 
-            // sERIALIZARToolStripMenuItem
-            // 
-            sERIALIZARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem4 });
-            sERIALIZARToolStripMenuItem.Name = "sERIALIZARToolStripMenuItem";
-            sERIALIZARToolStripMenuItem.Size = new Size(80, 20);
-            sERIALIZARToolStripMenuItem.Text = "SERIALIZAR";
-            // 
-            // dESERIALIZARToolStripMenuItem1
-            // 
-            dESERIALIZARToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem5 });
-            dESERIALIZARToolStripMenuItem1.Name = "dESERIALIZARToolStripMenuItem1";
-            dESERIALIZARToolStripMenuItem1.Size = new Size(94, 20);
-            dESERIALIZARToolStripMenuItem1.Text = "DESERIALIZAR";
-            // 
-            // xMLToolStripMenuItem4
-            // 
-            xMLToolStripMenuItem4.Name = "xMLToolStripMenuItem4";
-            xMLToolStripMenuItem4.Size = new Size(180, 22);
-            xMLToolStripMenuItem4.Text = "XML";
-            // 
-            // xMLToolStripMenuItem5
-            // 
-            xMLToolStripMenuItem5.Name = "xMLToolStripMenuItem5";
-            xMLToolStripMenuItem5.Size = new Size(180, 22);
-            xMLToolStripMenuItem5.Text = "XML";
-            // 
-            // bASEDEDATOSToolStripMenuItem
-            // 
-            bASEDEDATOSToolStripMenuItem.Name = "bASEDEDATOSToolStripMenuItem";
-            bASEDEDATOSToolStripMenuItem.Size = new Size(101, 20);
-            bASEDEDATOSToolStripMenuItem.Text = "BASE DE DATOS";
-            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(914, 420);
+            ClientSize = new Size(1049, 420);
             Controls.Add(lblOrden);
             Controls.Add(cboOrdenManera);
             Controls.Add(cboOrden);
@@ -360,9 +339,9 @@
         private ToolStripMenuItem jSONToolStripMenuItem1;
         private ToolStripMenuItem xMLToolStripMenuItem1;
         private ToolStripMenuItem aRCHIVOSToolStripMenuItem;
-        private ToolStripMenuItem sERIALIZARToolStripMenuItem2;
+        private ToolStripMenuItem GuardarToolStripMenuItem2;
         private ToolStripMenuItem xMLToolStripMenuItem2;
-        private ToolStripMenuItem dESERIALIZARToolStripMenuItem2;
+        private ToolStripMenuItem AbrirToolStripMenuItem2;
         private ToolStripMenuItem xMLToolStripMenuItem3;
         private ToolStripMenuItem gOLOSINASToolStripMenuItem;
         private ToolStripMenuItem aGREGARToolStripMenuItem1;
@@ -385,10 +364,7 @@
         private ComboBox cboOrden;
         private ComboBox cboOrdenManera;
         private Label lblOrden;
-        private ToolStripMenuItem sERIALIZARToolStripMenuItem;
-        private ToolStripMenuItem xMLToolStripMenuItem4;
-        private ToolStripMenuItem dESERIALIZARToolStripMenuItem1;
-        private ToolStripMenuItem xMLToolStripMenuItem5;
         private ToolStripMenuItem bASEDEDATOSToolStripMenuItem;
+        private ToolStripMenuItem bASEDEDATOSToolStripMenuItem1;
     }
 }
