@@ -62,6 +62,11 @@
             cboOrden = new ComboBox();
             cboOrdenManera = new ComboBox();
             lblOrden = new Label();
+            sERIALIZARToolStripMenuItem = new ToolStripMenuItem();
+            dESERIALIZARToolStripMenuItem1 = new ToolStripMenuItem();
+            xMLToolStripMenuItem4 = new ToolStripMenuItem();
+            xMLToolStripMenuItem5 = new ToolStripMenuItem();
+            bASEDEDATOSToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -77,7 +82,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, aRCHIVOSToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gOLOSINASToolStripMenuItem, sERIALIZARToolStripMenuItem, dESERIALIZARToolStripMenuItem1, bASEDEDATOSToolStripMenuItem, aRCHIVOSToolStripMenuItem, uSUARIOSToolStripMenuItem, dETALLEToolStripMenuItem, iNFORMACIONToolStripMenuItem, vOLVERToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -288,6 +293,38 @@
             lblOrden.TabIndex = 15;
             lblOrden.Text = "Ordenamiento: ";
             // 
+            // sERIALIZARToolStripMenuItem
+            // 
+            sERIALIZARToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem4 });
+            sERIALIZARToolStripMenuItem.Name = "sERIALIZARToolStripMenuItem";
+            sERIALIZARToolStripMenuItem.Size = new Size(80, 20);
+            sERIALIZARToolStripMenuItem.Text = "SERIALIZAR";
+            // 
+            // dESERIALIZARToolStripMenuItem1
+            // 
+            dESERIALIZARToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem5 });
+            dESERIALIZARToolStripMenuItem1.Name = "dESERIALIZARToolStripMenuItem1";
+            dESERIALIZARToolStripMenuItem1.Size = new Size(94, 20);
+            dESERIALIZARToolStripMenuItem1.Text = "DESERIALIZAR";
+            // 
+            // xMLToolStripMenuItem4
+            // 
+            xMLToolStripMenuItem4.Name = "xMLToolStripMenuItem4";
+            xMLToolStripMenuItem4.Size = new Size(180, 22);
+            xMLToolStripMenuItem4.Text = "XML";
+            // 
+            // xMLToolStripMenuItem5
+            // 
+            xMLToolStripMenuItem5.Name = "xMLToolStripMenuItem5";
+            xMLToolStripMenuItem5.Size = new Size(180, 22);
+            xMLToolStripMenuItem5.Text = "XML";
+            // 
+            // bASEDEDATOSToolStripMenuItem
+            // 
+            bASEDEDATOSToolStripMenuItem.Name = "bASEDEDATOSToolStripMenuItem";
+            bASEDEDATOSToolStripMenuItem.Size = new Size(101, 20);
+            bASEDEDATOSToolStripMenuItem.Text = "BASE DE DATOS";
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
@@ -348,5 +385,10 @@
         private ComboBox cboOrden;
         private ComboBox cboOrdenManera;
         private Label lblOrden;
+        private ToolStripMenuItem sERIALIZARToolStripMenuItem;
+        private ToolStripMenuItem xMLToolStripMenuItem4;
+        private ToolStripMenuItem dESERIALIZARToolStripMenuItem1;
+        private ToolStripMenuItem xMLToolStripMenuItem5;
+        private ToolStripMenuItem bASEDEDATOSToolStripMenuItem;
     }
 }

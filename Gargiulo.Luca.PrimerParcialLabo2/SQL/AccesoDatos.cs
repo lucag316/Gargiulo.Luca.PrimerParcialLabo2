@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data; // esta no se si hay que poner, lo puse para no estar escribiendolo
+using Entidades;
 
 namespace SQL
 {
@@ -62,10 +63,195 @@ namespace SQL
             return rta;
         }
 
-        public List<DatoGolosina> ObtenerListaDatoGolosina()
+        public List<Golosina> ObtenerListaDato() //para obtener el listado que tengo en la base de datos
         {
+            List<Golosina> lista = new List<Golosina>();
+
+            try //todo lo que sea base de datos, si o si tiene que tener un bloque try catch
+            {
+                this.comando = new SqlCommand();
+                //siempre configurar estas tres propiedades
+                this.comando.CommandType = CommandType.Text; //me indica como se tiene que interpretar el commanText
+                this.comando.CommandText = "SELECT CodigoDeBarra, Precio, Peso, Cantidad FROM DatosGolosina";   //para ejecutar una consulta
+                this.comando.Connection = this.conexion; // le paso el objeto conection que se va a utilizar 
+
+                this.conexion.Open(); // abro la conexion
+
+                this.lector = comando.ExecuteReader(); // tiene distintos metodos de ejecucion, segun la cosulta (fijarme en la ppt)
+
+                while (lector.Read()) // lee por fila
+                {
+                    Golosina item = new Chocolate();
+
+                    // ACCEDO POR NOMBRE, POR INDICE O POR GETTER (SEGUN TIPO DE DATO)
+                    item.Codigo = (int)lector["CodigoDeBarra"]; // recupero por nombre de columna
+                    item.Precio = (double)lector["Precio"];
+                    item.Peso = (float)lector["Peso"];
+                    //item.Cantidad = lector.GetInt32(3); 
+                    //item.Cantidad = lector[3].ToString(); //recupero por posicion de columna
+                    //item.Cantidad = int.Parse(lector[3].ToString());
+                    item.Cantidad = (int)lector["Cantidad"];
+
+                    lista.Add(item);
+                }
+                lector.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open) // si la conexion esta abierta, la cierra
+                {
+                    this.conexion.Close();
+                }
+            }
+            return lista;
             
         }
+
+        #region Insert
+
+        public bool AgregarGolosina(Golosina param)
+        {
+            bool rta = true;
+
+            try
+            {
+                // primero preparo la consulta
+                string sql = "INSERT INT DatosGolosina (CodigodeBarra, Precio, Peso, Cantidad) VALUES("; // le paso la consulta que es un insert
+                sql = sql + "'" + param.Codigo.ToString() + "'," + param.Precio.ToString() + "," + param.Peso.ToString() + "," + param.Cantidad.ToString() + ")";
+
+                this.comando = new SqlCommand();
+
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = sql; 
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
+
+                if (filasAfectadas == 0)
+                {
+                    rta = false;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                rta = false;
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return rta;
+        }
+
+        #endregion
+
+        #region Update
+
+        public bool ModificarGolosina(Golosina param)
+        {
+            bool rta = true;
+
+            try
+            {
+                this.comando = new SqlCommand();
+                // le agrego parametros //el @es para identificar el campo
+                this.comando.Parameters.AddWithValue("@CodigoDeBarra", param.Codigo);
+                this.comando.Parameters.AddWithValue("@Precio", param.Precio);
+                this.comando.Parameters.AddWithValue("@Peso", param.Peso);
+                this.comando.Parameters.AddWithValue("@Cantidad", param.Cantidad);
+
+                string sql = "UPDATE DatosGolosina";
+                sql += "SET Precio = @Precio, Peso = @Peso, Cantidad = @Cantidad ";
+                sql += "WHERE CodigoDeBarra = @Codigo"; // no se si estan al reves
+
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = sql;
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
+
+                if (filasAfectadas == 0)
+                {
+                    rta = false;
+                }
+
+            }
+            catch (Exception)
+            {
+                rta = false;
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+           
+            return rta;
+        }
+
+        #endregion
+
+
+        #region Delete
+
+        public bool EliminarGolosina(int codigo)
+        {
+            bool rta = true;
+
+            try
+            {
+                this.comando = new SqlCommand();
+
+                this.comando.Parameters.AddWithValue("CodigoDeBarra", codigo);
+
+                string sql = "DELETE FROM DatosGolosina";// el delete no necesita de campos, porque se borra todo completo, por eso si o si mando where
+                sql += "WHERE CodigoDeBarra = @codigo"; // no se si estan al reves
+
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = sql;
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
+
+                if (filasAfectadas == 0)
+                {
+                    rta = false;
+                }
+
+            }
+            catch (Exception)
+            {
+                rta = false;
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return rta;
+        }
+
+
+        #endregion
 
 
         #endregion
