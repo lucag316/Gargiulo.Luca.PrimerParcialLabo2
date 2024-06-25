@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Entidades;
 using Entidades.Interfaces;
 using Entidades.Serializadoras;
+using SQL;
+
 namespace Interfaz
 {
     /// <summary>
@@ -203,12 +205,31 @@ namespace Interfaz
 
         private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool exito = GuardarGolosinasEnBaseDeDatos();
 
+            if (exito)
+            {
+                MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            bool exito = CargarGolosinasDesdeBaseDeDatos();
 
+            if (exito)
+            {
+                MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
+            }
+            else
+            {
+                MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
@@ -455,6 +476,56 @@ namespace Interfaz
         }
 
 
+        #endregion
+
+        #region Metodos de Base De Datos
+
+        private bool GuardarGolosinasEnBaseDeDatos()
+        {
+            bool retorno = true;
+            try
+            {
+                AccesoDatos accesoDatos = new AccesoDatos();
+
+                foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
+                {
+                    bool exito = accesoDatos.AgregarGolosina(golosina);
+                    if (!exito)
+                    {
+                        retorno = false;
+                    }
+                }
+                //retorno = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al guardar golosinas en la base de datos: " + ex.Message);
+                retorno = false;
+            }
+            return retorno;
+        }
+
+        private bool CargarGolosinasDesdeBaseDeDatos()
+        {
+            bool retorno = true;
+            try
+            {
+                AccesoDatos accesoDatos = new AccesoDatos();
+
+                // cargar golosinas desde la base de datos
+                List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
+
+                kiosco.Golosinas.Clear(); // limpio la lista actual
+                kiosco += golosinasBD; // cargo la de la abse de datos
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar golosinas desde la base de datos: " + ex.Message);
+                retorno = false;
+            }
+            return retorno;
+        }
         #endregion
 
         #region Metodo Agregar

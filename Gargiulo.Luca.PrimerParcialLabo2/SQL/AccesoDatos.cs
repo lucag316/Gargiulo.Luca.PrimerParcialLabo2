@@ -65,7 +65,7 @@ namespace SQL
                 this.comando = new SqlCommand();
                 //siempre configurar estas tres propiedades
                 this.comando.CommandType = CommandType.Text; //me indica como se tiene que interpretar el commanText
-                this.comando.CommandText = "SELECT codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano, elasticidad, duracionSabor, blanqueadorDental, formaChupetin, dureza envolturaTransparente FROM DatosGolosinas";   //para ejecutar una consulta
+                this.comando.CommandText = "SELECT codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano, elasticidad, duracionSabor, blanqueadorDental, formaChupetin, dureza, envolturaTransparente FROM DatosGolosinas";   //para ejecutar una consulta
                 this.comando.Connection = this.conexion; // le paso el objeto conection que se va a utilizar 
 
                 this.conexion.Open(); // abro la conexion
@@ -166,7 +166,7 @@ namespace SQL
             try
             {
                 // primero preparo la consulta
-                string sql = "INSERT INTO DatosGolosinas (codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano, elasticidad, duracionSabor, blanqueadorDental, formaChupetin, dureza envolturaTransparente) " +
+                string sql = "INSERT INTO DatosGolosinas (codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano, elasticidad, duracionSabor, blanqueadorDental, formaChupetin, dureza, envolturaTransparente) " +
                             "VALUES (@codigo, @precio, @peso, @cantidad, @tipoDeCacao, @relleno, @esVegano, @elasticidad, @duracionSabor, @blanqueadorDental, @formaChupetin, @dureza, @envolturaTransparente)"; // le paso la consulta que es un insert
                 
                 this.comando = new SqlCommand();
@@ -185,8 +185,8 @@ namespace SQL
                 if (golosina is Chocolate)
                 {
                     Chocolate chocolate = (Chocolate)golosina;
-                    this.comando.Parameters.AddWithValue("@tipoDeCacao", chocolate.TipoDeCacao);
-                    this.comando.Parameters.AddWithValue("@relleno", chocolate.Relleno);
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", chocolate.TipoDeCacao.ToString());
+                    this.comando.Parameters.AddWithValue("@relleno", chocolate.Relleno.ToString());
                     this.comando.Parameters.AddWithValue("@esVegano", chocolate.EsVegano);
                     this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
@@ -201,8 +201,8 @@ namespace SQL
                     this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@relleno", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@esVegano", DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@elasticidad", chicle.Elasticidad);
-                    this.comando.Parameters.AddWithValue("@duracionSabor", chicle.DuracionSabor);
+                    this.comando.Parameters.AddWithValue("@elasticidad", chicle.Elasticidad.ToString());
+                    this.comando.Parameters.AddWithValue("@duracionSabor", chicle.DuracionSabor.ToString());
                     this.comando.Parameters.AddWithValue("@blanqueadorDental", chicle.BlanqueadorDental);
                     this.comando.Parameters.AddWithValue("@formaChupetin", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@dureza", DBNull.Value);
@@ -217,8 +217,8 @@ namespace SQL
                     this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
                     this.comando.Parameters.AddWithValue("@blanqueadorDental", DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@formaChupetin", chupetin.FormaChupetin);
-                    this.comando.Parameters.AddWithValue("@dureza", chupetin.Dureza);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", chupetin.FormaChupetin.ToString());
+                    this.comando.Parameters.AddWithValue("@dureza", chupetin.Dureza.ToString());
                     this.comando.Parameters.AddWithValue("@envolturaTransparente", chupetin.EnvolturaTransparente);
                 }
 

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj" />
+    <ProjectReference Include="..\SQL\SQL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
