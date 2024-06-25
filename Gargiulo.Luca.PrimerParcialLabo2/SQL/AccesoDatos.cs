@@ -159,17 +159,16 @@ namespace SQL
         }
 
         #region Insert
-
-        public bool AgregarGolosina(Golosina param)
+        public bool AgregarGolosina(Golosina golosina)
         {
             bool rta = true;
 
             try
             {
                 // primero preparo la consulta
-                string sql = "INSERT INTO DatosGolosinas (codigo, precio, peso, cantidad) VALUES("; // le paso la consulta que es un insert
-                sql = sql + "" + param.Codigo.ToString() + "," + param.Precio.ToString() + "," + param.Peso.ToString() + "," + param.Cantidad.ToString() + ")";
-
+                string sql = "INSERT INTO DatosGolosinas (codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano, elasticidad, duracionSabor, blanqueadorDental, formaChupetin, dureza envolturaTransparente) " +
+                            "VALUES (@codigo, @precio, @peso, @cantidad, @tipoDeCacao, @relleno, @esVegano, @elasticidad, @duracionSabor, @blanqueadorDental, @formaChupetin, @dureza, @envolturaTransparente)"; // le paso la consulta que es un insert
+                
                 this.comando = new SqlCommand();
 
                 this.comando.CommandType = CommandType.Text;
@@ -177,6 +176,52 @@ namespace SQL
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
+
+                this.comando.Parameters.AddWithValue("@codigo", golosina.Codigo);
+                this.comando.Parameters.AddWithValue("@precio", golosina.Precio);
+                this.comando.Parameters.AddWithValue("@peso", golosina.Peso);
+                this.comando.Parameters.AddWithValue("@cantidad", golosina.Cantidad);
+
+                if (golosina is Chocolate)
+                {
+                    Chocolate chocolate = (Chocolate)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", chocolate.TipoDeCacao);
+                    this.comando.Parameters.AddWithValue("@relleno", chocolate.Relleno);
+                    this.comando.Parameters.AddWithValue("@esVegano", chocolate.EsVegano);
+                    this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@dureza", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
+                }
+                else if (golosina is Chicle)
+                {
+                    Chicle chicle = (Chicle)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@relleno", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@esVegano", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@elasticidad", chicle.Elasticidad);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", chicle.DuracionSabor);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", chicle.BlanqueadorDental);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@dureza", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
+                }
+                else if (golosina is Chupetin)
+                {
+                    Chupetin chupetin = (Chupetin)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@relleno", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@esVegano", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", chupetin.FormaChupetin);
+                    this.comando.Parameters.AddWithValue("@dureza", chupetin.Dureza);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", chupetin.EnvolturaTransparente);
+                }
+
 
                 int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
 
@@ -204,28 +249,72 @@ namespace SQL
 
         #region Update
 
-        public bool ModificarGolosina(Golosina param)
+        public bool ModificarGolosina(Golosina golosina)
         {
             bool rta = true;
 
             try
             {
                 this.comando = new SqlCommand();
-                // le agrego parametros //el @es para identificar el campo
-                this.comando.Parameters.AddWithValue("@codigo", param.Codigo);
-                this.comando.Parameters.AddWithValue("@precio", param.Precio);
-                this.comando.Parameters.AddWithValue("@peso", param.Peso);
-                this.comando.Parameters.AddWithValue("@cantidad", param.Cantidad);
 
                 string sql = "UPDATE DatosGolosinas ";
                 sql += "SET precio = @precio, peso = @peso, cantidad = @cantidad ";
+                sql += "tipoDeCacao = @tipoDeCacao, relleno = @relleno, esVegano = @esVegano, ";
+                sql += "elasticidad = @elasticidad, duracionSabor = @duracionSabor, blanqueadorDental = @blanqueadorDental, ";
+                sql += "formaChupetin = @formaChupetin, dureza = @dureza, envolturaTransparente = @envolturaTransparente ";
                 sql += "WHERE codigo = @codigo"; // no se si estan al reves
+
+                // le agrego parametros //el @es para identificar el campo
+                this.comando.Parameters.AddWithValue("@codigo", golosina.Codigo);
+                this.comando.Parameters.AddWithValue("@precio", golosina.Precio);
+                this.comando.Parameters.AddWithValue("@peso", golosina.Peso);
+                this.comando.Parameters.AddWithValue("@cantidad", golosina.Cantidad);
 
                 this.comando.CommandType = CommandType.Text;
                 this.comando.CommandText = sql;
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
+
+                if (golosina is Chocolate)
+                {
+                    Chocolate chocolate = (Chocolate)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", chocolate.TipoDeCacao);
+                    this.comando.Parameters.AddWithValue("@relleno", chocolate.Relleno);
+                    this.comando.Parameters.AddWithValue("@esVegano", chocolate.EsVegano);
+                    this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@dureza", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
+                }
+                else if (golosina is Chicle)
+                {
+                    Chicle chicle = (Chicle)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@relleno", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@esVegano", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@elasticidad", chicle.Elasticidad);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", chicle.DuracionSabor);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", chicle.BlanqueadorDental);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@dureza", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
+                }
+                else if (golosina is Chupetin)
+                {
+                    Chupetin chupetin = (Chupetin)golosina;
+                    this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@relleno", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@esVegano", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@elasticidad", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@duracionSabor", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@blanqueadorDental", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@formaChupetin", chupetin.FormaChupetin);
+                    this.comando.Parameters.AddWithValue("@dureza", chupetin.Dureza);
+                    this.comando.Parameters.AddWithValue("@envolturaTransparente", chupetin.EnvolturaTransparente);
+                }
 
                 int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
 
@@ -272,6 +361,8 @@ namespace SQL
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
+
+                this.comando.Parameters.AddWithValue("@codigo", codigo);
 
                 int filasAfectadas = this.comando.ExecuteNonQuery(); // lo ejecuto con ese metodo porque no me retorna registro, solo las filas afectadas
 
