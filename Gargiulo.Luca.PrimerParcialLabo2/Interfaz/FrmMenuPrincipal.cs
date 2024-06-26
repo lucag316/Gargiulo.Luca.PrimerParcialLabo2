@@ -487,6 +487,8 @@ namespace Interfaz
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
 
+                accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
+
                 foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
                 {
                     bool exito = accesoDatos.AgregarGolosina(golosina);
@@ -511,8 +513,7 @@ namespace Interfaz
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
-                //NO ME FUNCIONA TODAVIA accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
-
+               
                 // cargar golosinas desde la base de datos
                 List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
 
