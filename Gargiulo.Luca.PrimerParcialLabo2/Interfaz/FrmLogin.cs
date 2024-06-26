@@ -47,7 +47,7 @@ namespace Interfaz
                 UsuarioLog usuarioLog = new UsuarioLog("usuarios.log");
                 usuarioLog.RegistrarAcceso(usuarioLogueado);
 
-                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(usuarioLogueado.nombre);
+                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(usuarioLogueado);
                 frmMenuPrincipal.Show();
                 this.Hide();
             }

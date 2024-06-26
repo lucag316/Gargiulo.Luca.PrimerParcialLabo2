@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,21 +24,23 @@ namespace Interfaz
         #region Atributos
         private Kiosco kiosco;
         private string operador;
-        private UsuarioLog usuarioLogueado;
+        private Usuario usuarioLogueado;
         #endregion
 
         #region Constructor
-        public FrmMenuPrincipal(string nombreOperador)
+        public FrmMenuPrincipal(Usuario usuarioLogueado)
         {
             InitializeComponent();
             this.kiosco = new Kiosco(5);
-            this.operador = nombreOperador;
-            this.usuarioLogueado = new UsuarioLog("usuarios.log");
+            this.operador = usuarioLogueado.nombre;
+            this.usuarioLogueado = usuarioLogueado;
+            //this.usuarioLogueado = new UsuarioLog("usuarios.log");
             ConfigurarComboBoxes();
+            ConfigurarPermisos();
         }
         #endregion
-
-
+        
+        
         #region Manejadores de eventos 
 
         #region Load y Closing
@@ -325,6 +328,43 @@ namespace Interfaz
 
             OrdenarGolosinas(false);
         }
+
+        private void ConfigurarPermisos()
+        {
+            switch (usuarioLogueado.perfil)
+            {
+                case "administrador":
+                    break;
+                case "supervisor":
+                    //no puede eliminar
+                    eLIMINARToolStripMenuItem.Enabled = false;
+                    eLIMINARToolStripMenuItem.Visible = false;
+                    break;
+                case "vendedor":
+                    //no puede agregar golosinas
+                    //no puede modificar  
+                    //no puede eliminar
+                    // NO SE SI CON SOLO SACAR VISIBILIDAD ESTARIA BIEN
+                    eLIMINARToolStripMenuItem.Enabled = false;
+                    eLIMINARToolStripMenuItem.Visible = false;
+
+                    mODIFICARToolStripMenuItem.Enabled = false;
+                    mODIFICARToolStripMenuItem.Visible = false;
+
+                    aGREGARToolStripMenuItem1.Enabled = false;
+                    aGREGARToolStripMenuItem1.Visible = false;
+
+                    xMLToolStripMenuItem2.Enabled = false;
+                    xMLToolStripMenuItem2.Visible = false;
+
+                    bASEDEDATOSToolStripMenuItem.Enabled = false;
+                    bASEDEDATOSToolStripMenuItem.Visible = false;
+
+                    GuardarToolStripMenuItem2.Enabled = false;
+                    GuardarToolStripMenuItem2.Visible = false;
+                    break;
+            }
+        }
         #endregion
 
         #region Metodos de ordenamiento
@@ -563,7 +603,6 @@ namespace Interfaz
 
 
         #endregion
-
 
         
     }
