@@ -18,7 +18,7 @@ namespace TestsUnitarios
             ////AAA
 
             //// ARANGE - GIVEN
-            Kiosco kiosco = new Kiosco();
+            Kiosco<Golosina> kiosco = new Kiosco<Golosina>();//puse Golosina, creo que esta bien
             Golosina golosina = new Chicle(1, 10, 5, 1);
 
             //// ACT - WHEN - ejecuto lo que se este probando
