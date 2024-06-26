@@ -43,8 +43,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-19T14:29:34.399Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -54,7 +53,7 @@
               "RelativeDocumentMoniker": "SQL\\AccesoDatos.cs",
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\SQL\\AccesoDatos.cs",
               "RelativeToolTip": "SQL\\AccesoDatos.cs",
-              "ViewState": "AQIAAHcAAAAAAAAAAAAIwIgAAAAVAAAA",
+              "ViewState": "AQIAAIoBAAAAAAAAAAArwJgBAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-19T14:28:37.513Z",
               "IsPinned": true,
@@ -80,7 +79,7 @@
               "RelativeDocumentMoniker": "Interfaz\\FrmMenuPrincipal.cs",
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmMenuPrincipal.cs",
               "RelativeToolTip": "Interfaz\\FrmMenuPrincipal.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAASAAAA",
+              "ViewState": "AQIAAPkBAAAAAAAAAAAjwPsBAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T21:18:23.659Z",
               "EditorCaption": ""
@@ -94,8 +93,7 @@
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmMenuPrincipal.cs [Dise\u00F1o]",
               "RelativeToolTip": "Interfaz\\FrmMenuPrincipal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T13:40:37.446Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2024-06-25T13:40:37.446Z"
             },
             {
               "$type": "Document",
@@ -105,7 +103,7 @@
               "RelativeDocumentMoniker": "usuarios.json",
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json",
               "RelativeToolTip": "usuarios.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABCAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-06-25T12:26:45.518Z",
               "EditorCaption": ""

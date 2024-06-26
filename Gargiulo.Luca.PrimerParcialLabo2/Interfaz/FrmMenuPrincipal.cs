@@ -511,12 +511,18 @@ namespace Interfaz
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
+                //NO ME FUNCIONA TODAVIA accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
 
                 // cargar golosinas desde la base de datos
                 List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
 
                 kiosco.Golosinas.Clear(); // limpio la lista actual
-                kiosco += golosinasBD; // cargo la de la abse de datos
+                //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
+                foreach (Golosina golosina in golosinasBD)
+                {
+                    kiosco.Golosinas.Add(golosina);
+                }
+                ActualizarVisorGolosinas(); // actualizo despues de cargar
 
             }
             catch (Exception ex)
@@ -526,6 +532,8 @@ namespace Interfaz
             }
             return retorno;
         }
+
+        
         #endregion
 
         #region Metodo Agregar

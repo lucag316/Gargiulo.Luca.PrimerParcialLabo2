@@ -95,8 +95,8 @@ namespace SQL
                         Chocolate chocolate = new Chocolate();
 
                         chocolate.Codigo = this.lector.GetInt32(0); // Código
-                        chocolate.Precio = this.lector.GetFloat(1); // Precio
-                        chocolate.Peso = this.lector.GetFloat(2); // Peso
+                        chocolate.Precio = (float)this.lector.GetDouble(1); // Precio
+                        chocolate.Peso = (float)this.lector.GetDouble(2); // Peso
                         chocolate.Cantidad = this.lector.GetInt32(3); // Cantidad
                         //--------
                         chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(4)); // TipoDeCacao (enum)
@@ -110,8 +110,8 @@ namespace SQL
                         Chicle chicle = new Chicle();
 
                         chicle.Codigo = this.lector.GetInt32(0); // Código
-                        chicle.Precio = this.lector.GetFloat(1); // Precio
-                        chicle.Peso = this.lector.GetFloat(2); // Peso
+                        chicle.Precio = (float)this.lector.GetDouble(1); // Precio
+                        chicle.Peso = (float)this.lector.GetDouble(2); ; // Peso
                         chicle.Cantidad = this.lector.GetInt32(3); // Cantidad
                         //---------
                         chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(7)); // Elasticidad
@@ -125,8 +125,8 @@ namespace SQL
                         Chupetin chupetin = new Chupetin();
 
                         chupetin.Codigo = this.lector.GetInt32(0); // Código
-                        chupetin.Precio = this.lector.GetFloat(1); // Precio
-                        chupetin.Peso = this.lector.GetFloat(2); // Peso
+                        chupetin.Precio = (float)this.lector.GetDouble(1); // Precio
+                        chupetin.Peso = (float)this.lector.GetDouble(2); // Peso
                         chupetin.Cantidad = this.lector.GetInt32(3); // Cantidad
                         //---------------
                         chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(10)); // FormaDeChupetin (enum)
@@ -389,6 +389,34 @@ namespace SQL
         #endregion
 
         #endregion
+
+        public bool BorrarTodasLasGolosinas()
+        {
+            bool exito = false;
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = "DELETE FROM DatosGolosinas"; // Query para eliminar todas las golosinas
+
+                this.conexion.Open();
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+                exito = filasAfectadas > 0; // Si se eliminaron filas, éxito es verdadero
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error al borrar golosinas de la base de datos: " + ex.Message);
+                exito = false;
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return exito;
+        }
     }
 }
 
