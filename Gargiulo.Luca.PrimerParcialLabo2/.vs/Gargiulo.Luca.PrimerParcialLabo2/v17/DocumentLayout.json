@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:usuarios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\entidades\\kiosco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|solutionrelative:entidades\\kiosco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\interfaz\\frmdetallekiosco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|solutionrelative:interfaz\\frmdetallekiosco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\interfaz\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|solutionrelative:interfaz\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\interfaz\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|solutionrelative:interfaz\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:usuarios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|solutionrelative:entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\interfaz\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A778794D-55C6-46E2-8282-6B14DEEC060B}|Interfaz\\Interfaz.csproj|solutionrelative:interfaz\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|c:\\users\\luca_\\desktop\\labo2 primerparcial\\gargiulo.luca.primerparciallabo2\\gargiulo.luca.primerparciallabo2\\entidades\\usuariolog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{100FA678-98BF-4A8D-A2B8-D24992A8C612}|Entidades\\Entidades.csproj|solutionrelative:entidades\\usuariolog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "usuarios.json",
               "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json",
               "RelativeDocumentMoniker": "usuarios.json",
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\usuarios.json",
               "RelativeToolTip": "usuarios.json",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABsAAAAWAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACUAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-06-25T12:26:45.518Z",
               "IsPinned": true,
@@ -52,7 +48,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "FrmMenuPrincipal.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Interfaz\\FrmMenuPrincipal.cs",
@@ -65,13 +61,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "FrmMenuPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Interfaz\\FrmMenuPrincipal.cs",
               "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmMenuPrincipal.cs",
               "RelativeToolTip": "Interfaz\\FrmMenuPrincipal.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAowBwAAAAAAAAA",
+              "ViewState": "AQIAAPoAAAAAAAAAAAAowAQBAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T21:18:23.659Z",
               "IsPinned": true,
@@ -79,42 +75,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FrmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "Interfaz\\FrmLogin.cs",
-              "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmLogin.cs",
-              "RelativeToolTip": "Interfaz\\FrmLogin.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAA5wC4AAABHAAAA",
+              "DocumentIndex": 2,
+              "Title": "FrmDetalleKiosco.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmDetalleKiosco.cs",
+              "RelativeDocumentMoniker": "Interfaz\\FrmDetalleKiosco.cs",
+              "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Interfaz\\FrmDetalleKiosco.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Interfaz\\FrmDetalleKiosco.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T17:21:22.642Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Usuario.cs",
-              "RelativeDocumentMoniker": "Entidades\\Usuario.cs",
-              "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Usuario.cs",
-              "RelativeToolTip": "Entidades\\Usuario.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwDMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T17:32:37.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UsuarioLog.cs",
-              "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\UsuarioLog.cs",
-              "RelativeDocumentMoniker": "Entidades\\UsuarioLog.cs",
-              "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\UsuarioLog.cs",
-              "RelativeToolTip": "Entidades\\UsuarioLog.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T17:29:06.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-26T20:39:10.446Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Bookmark",
@@ -127,6 +96,40 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "a76921d5-e892-4d10-bfc8-8273ff780442",
+        "Display": 1,
+        "X": 343,
+        "Y": 100,
+        "Width": 1222,
+        "Height": 678,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Kiosco.cs",
+              "DocumentMoniker": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Kiosco.cs",
+              "RelativeDocumentMoniker": "Entidades\\Kiosco.cs",
+              "ToolTip": "C:\\Users\\luca_\\Desktop\\Labo2 primerParcial\\Gargiulo.Luca.PrimerParcialLabo2\\Gargiulo.Luca.PrimerParcialLabo2\\Entidades\\Kiosco.cs",
+              "RelativeToolTip": "Entidades\\Kiosco.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAcwEkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T18:24:06.361Z",
+              "EditorCaption": ""
             }
           ]
         }

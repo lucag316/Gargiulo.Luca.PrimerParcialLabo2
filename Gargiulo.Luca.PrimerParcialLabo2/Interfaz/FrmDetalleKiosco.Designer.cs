@@ -37,9 +37,9 @@
             lstVisorDetalleKiosco.Font = new Font("Rockwell", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lstVisorDetalleKiosco.FormattingEnabled = true;
             lstVisorDetalleKiosco.ItemHeight = 14;
-            lstVisorDetalleKiosco.Location = new Point(12, 12);
+            lstVisorDetalleKiosco.Location = new Point(59, 12);
             lstVisorDetalleKiosco.Name = "lstVisorDetalleKiosco";
-            lstVisorDetalleKiosco.Size = new Size(776, 396);
+            lstVisorDetalleKiosco.Size = new Size(981, 396);
             lstVisorDetalleKiosco.TabIndex = 0;
             // 
             // FrmDetalleKiosco
@@ -47,7 +47,7 @@
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 420);
+            ClientSize = new Size(1102, 420);
             Controls.Add(lstVisorDetalleKiosco);
             Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmDetalleKiosco";

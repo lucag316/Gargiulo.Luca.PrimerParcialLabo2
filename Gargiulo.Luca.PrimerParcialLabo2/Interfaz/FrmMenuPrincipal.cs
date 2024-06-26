@@ -22,7 +22,7 @@ namespace Interfaz
     public partial class FrmMenuPrincipal : Form
     {
         #region Atributos
-        private Kiosco kiosco;
+        private Kiosco<Golosina> kiosco;
         private string operador;
         private Usuario usuarioLogueado;
         #endregion
@@ -31,7 +31,8 @@ namespace Interfaz
         public FrmMenuPrincipal(Usuario usuarioLogueado)
         {
             InitializeComponent();
-            this.kiosco = new Kiosco(5);
+            //this.kiosco = new Kiosco(5);
+            this.kiosco = new Kiosco<Golosina>(10);
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
             //this.usuarioLogueado = new UsuarioLog("usuarios.log");
@@ -262,7 +263,7 @@ namespace Interfaz
         {
             FrmDetalleKiosco frmDetalleKiosco = new FrmDetalleKiosco();
 
-            frmDetalleKiosco.MostrarDetalleEnVisor(this.kiosco.MostrarDetalleEnVisor());
+            frmDetalleKiosco.MostrarDetalleEnVisor(this.kiosco.MostrarListaEnVisorDetalle());
 
             frmDetalleKiosco.ShowDialog();
         }
@@ -382,16 +383,16 @@ namespace Interfaz
                 switch (ordenSeleccionado)
                 {
                     case EOrdenes.PorCodigo:
-                        ((IOrdenable)this.kiosco).OrdenarPorCodigo(ascendente); // lo pongo asi por la interfaz
+                        this.kiosco.Ordenar(g => g.Codigo, g => g.Codigo, ascendente); // lo pongo asi por la interfaz
                         break;
                     case EOrdenes.PorPrecio:
-                        ((IOrdenable)this.kiosco).OrdenarPorPrecio(ascendente);
+                        this.kiosco.Ordenar(g => g.Precio, g => g.Precio, ascendente);
                         break;
                     case EOrdenes.PorPeso:
-                        ((IOrdenable)this.kiosco).OrdenarPorPeso(ascendente);
+                        this.kiosco.Ordenar(g => g.Peso, g => g.Peso, ascendente);
                         break;
                     case EOrdenes.PorCantidad:
-                        ((IOrdenable)this.kiosco).OrdenarPorCantidad(ascendente);
+                        this.kiosco.Ordenar(g => g.Cantidad, g => g.Cantidad, ascendente);
                         break;
                 }
                 this.ActualizarVisorGolosinas(); //creo que solo va aca
