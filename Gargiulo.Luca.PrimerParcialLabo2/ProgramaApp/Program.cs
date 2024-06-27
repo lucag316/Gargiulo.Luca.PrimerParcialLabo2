@@ -6,7 +6,7 @@ internal class Program
     {
         Kiosco<Golosina> kiosco = new Kiosco<Golosina>(10);
 
-        Chocolate chocolate1 = new Chocolate(2, 15, 10, 5);
+        Chocolate chocolate1 = new Chocolate(-1, 15, 10, 5);
         Chicle chicle1 = new Chicle(1, 20, 10, 5);
         Chupetin chupetin1 = new Chupetin(4, 10, 10, 5);
         Chupetin chupetin2 = new Chupetin(3, 5, 10, 2);

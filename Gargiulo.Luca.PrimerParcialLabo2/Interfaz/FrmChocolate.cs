@@ -1,4 +1,5 @@
 ﻿using Entidades.JerarquiaYContenedora;
+using Interfaz.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,11 @@ namespace Interfaz
             InitializeComponent();
             ConfigurarComboBoxes();
             this.miChocolate = new Chocolate(); // Inicializacion aca para evitar error ed que puede ser nulo, el codigo me funciona, lo tenga o no, solo para sacar la advertencia
+
+            this.miChocolate.CodigoNegativo += MostrarMensajeCodigoNegativoMsgBox;
+            this.miChocolate.CodigoMuyAlto += MostrarMensajeCodigoMuyAltoMsgBox;
+            this.miChocolate.CodigoNoNumerico += MostrarMensajeCodigoNoNumericoMsgBox;
+
         }
 
         public FrmChocolate(Chocolate chocolate) : this()
@@ -102,8 +108,23 @@ namespace Interfaz
             }
             this.cboTipoDeCacao.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboTipoDeCacao.SelectedItem = ETiposDeCacao.Negro;
+
         }
         #endregion
 
+        private void MostrarMensajeCodigoNegativoMsgBox(int numero)
+        {
+            MessageBox.Show($"Error: El código no puede ser negativo. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void MostrarMensajeCodigoMuyAltoMsgBox(int numero)
+        {
+            MessageBox.Show($"Error: El código no puede ser mayor que 100. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void MostrarMensajeCodigoNoNumericoMsgBox(int numero)
+        {
+            MessageBox.Show($"Error: El código debe ser numérico. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

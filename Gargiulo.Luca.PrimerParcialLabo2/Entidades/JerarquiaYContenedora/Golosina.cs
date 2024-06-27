@@ -24,11 +24,46 @@ namespace Entidades.JerarquiaYContenedora
         protected int cantidad;
         #endregion
 
+        #region Eventos
+        //public event Action CodigoInvalido; //puede ser que codigo este entre 0 y 100 y que si no esta se lance este que es codigo invalido y algun otro
+        //public event Action CodigoNulo;
+        //public event Action CodigoNegativo; //declaro el evento
+        //public event Action CodigoMuyAlto;
+        //public event Action CodigoNoNumerico;
+
+        //public event MiDelegado CodigoNulo;
+        public event MiDelegado CodigoNegativo; //declaro el evento
+        public event MiDelegado CodigoMuyAlto;
+        public event MiDelegado CodigoNoNumerico;
+
+        #endregion
+        //FALTA EL THIS A TODAS LAS  PROPIEDADES NO SE PORQUE
         #region Propiedades
         public int Codigo
         {
             get { return codigo; }
-            set { codigo = value; }
+            //set { codigo = value; }
+            set
+            {
+                int valorParseado;
+                if (value < 0)
+                {
+                    //this.CodigoNegativo(value);
+                    this.CodigoNegativo.Invoke(this.codigo);// esta es otr forma
+                }
+                else if (value > 100)
+                {
+                    this.CodigoMuyAlto(value);
+                }
+                else if (!int.TryParse(value.ToString(), out valorParseado))
+                {
+                    this.CodigoNoNumerico(value);
+                }
+                else
+                {
+                    this.codigo = value;
+                }
+            }
         }
         public float Precio
         {
@@ -54,6 +89,15 @@ namespace Entidades.JerarquiaYContenedora
             precio = 0;
             peso = 0;
             cantidad = 0;
+
+            this.CodigoNegativo += MostrarMensajeCodigoInvalido;
+            this.CodigoMuyAlto += MostrarMensajeCodigoInvalido;
+            this.CodigoNoNumerico += MostrarMensajeCodigoInvalido;
+
+            this.CodigoNegativo += MostrarMensajeCodigoNegativo;
+            this.CodigoMuyAlto += MostrarMensajeCodigoMuyAlto;
+            this.CodigoNoNumerico += MostrarMensajeCodigoNoNumerico;
+
         }
         public Golosina(int codigo) : this()
         {
@@ -172,6 +216,25 @@ namespace Entidades.JerarquiaYContenedora
         public static bool operator !=(Golosina golosina1, Golosina golosina2)
         {
             return !(golosina1 == golosina2); // aca llamo al == de g1 y g2
+        }
+        #endregion
+
+        #region Manejadores de eventos
+        public void MostrarMensajeCodigoNegativo(int numero)
+        {
+            Console.WriteLine($"Error: El codigo no puede ser negativo. Codigo ingresado: {numero}");
+        }
+        public void MostrarMensajeCodigoMuyAlto(int numero)
+        {
+            Console.WriteLine($"Error: El codigo no puede ser mayor que 100. Codigo ingresado: {numero}");
+        }
+        public void MostrarMensajeCodigoNoNumerico(int numero)
+        {
+            Console.WriteLine($"Error: El codigo debe ser numerico. Codigo ingresado: {numero}");
+        }
+        public void MostrarMensajeCodigoInvalido(int numero)
+        {
+            Console.WriteLine($"Codigo invalido. Codigo ingresado: {numero}");
         }
         #endregion
 
