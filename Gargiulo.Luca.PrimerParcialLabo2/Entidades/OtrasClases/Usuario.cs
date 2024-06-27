@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.OtrasClases
 {
     public class Usuario
     {
@@ -17,34 +17,34 @@ namespace Entidades
 
         public string apellido
         {
-            get { return this._apellido; }
-            set { this._apellido = value; }
+            get { return _apellido; }
+            set { _apellido = value; }
         }
         public string nombre
         {
-            get { return this._nombre; }
-            set { this._nombre = value; }
+            get { return _nombre; }
+            set { _nombre = value; }
         }
         public int legajo
         {
-            get { return this._legajo; }
-            set { this._legajo = value; }
+            get { return _legajo; }
+            set { _legajo = value; }
         }
         public string correo
         {
-            get { return this._correo; }
-            set { this._correo = value; }
+            get { return _correo; }
+            set { _correo = value; }
         }
-        
+
         public string clave
         {
-            get { return this._clave; }
-            set { this._clave = value;}
+            get { return _clave; }
+            set { _clave = value; }
         }
         public string perfil
         {
-            get { return this._perfil; }
-            set { this._perfil = value; }
+            get { return _perfil; }
+            set { _perfil = value; }
         }
 
     }

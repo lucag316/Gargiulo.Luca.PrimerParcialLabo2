@@ -1,4 +1,5 @@
 ﻿using Entidades.Interfaces;
+using Entidades.JerarquiaYContenedora;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

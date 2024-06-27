@@ -1,31 +1,30 @@
-﻿
-using Entidades.Interfaces;
+﻿using Entidades.Interfaces;
 using System.Text;
 
-namespace Entidades
+namespace Entidades.JerarquiaYContenedora
 {
 
     /// <summary>
     /// Representa un kiosco que almacena golosinas.
     /// </summary>
-    public class Kiosco <T>: IOrdenable<T> where T : Golosina
+    public class Kiosco<T> : IOrdenable<T> where T : Golosina
     {
         #region Atributos
         private List<T> golosinas;
-        private int capacidadGolosinasDistintas;   
+        private int capacidadGolosinasDistintas;
         //private string detalle = "";    //inicializo asi no me tira advertencia
         #endregion
 
         #region Propiedades
         public List<T> Golosinas
         {
-            get { return this.golosinas; }
+            get { return golosinas; }
         }
 
         public int CapacidadGolosinasDistintas
         {
-            get { return this.capacidadGolosinasDistintas; }
-            set { this.capacidadGolosinasDistintas = value; }
+            get { return capacidadGolosinasDistintas; }
+            set { capacidadGolosinasDistintas = value; }
         }
         #endregion
 
@@ -36,8 +35,8 @@ namespace Entidades
         /// </summary>
         public Kiosco()
         {
-            this.golosinas = new List<T>();
-            this.capacidadGolosinasDistintas = 4;
+            golosinas = new List<T>();
+            capacidadGolosinasDistintas = 4;
         }
         public Kiosco(int capacidadGolosinasDistintas) : this()
         {
@@ -55,7 +54,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (T golosina in this.Golosinas)
+            foreach (T golosina in Golosinas)
             {
                 sb.AppendLine(golosina.MostrarEnVisor());
             }
@@ -66,7 +65,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("============================================= LISTA DE GOLOSINAS ==========================================");
-            foreach (T golosina in this.Golosinas)
+            foreach (T golosina in Golosinas)
             {
                 sb.AppendLine(golosina.MostrarEnVisor());
             }
@@ -136,7 +135,7 @@ namespace Entidades
             }
             throw new ArgumentException("Los tipos de propiedad no son comparables.");
         }
-        
+
 
         #endregion
 
@@ -266,26 +265,51 @@ namespace Entidades
         #endregion
 
         #region Metodos de object sobrescritos
-        // Sobrescritura de Equals para determinar si un objeto es igual a un Kiosco<T>
-        public override bool Equals(object obj)
+        //VER SI ESTA BIEN, DEJE COMENTADO EL VIEJO PARA VER SI CAMBIARLO O NO
+        public override bool Equals(object? obj)
         {
-            if (obj is Kiosco<T> other)
+            if (obj is T golosina)
             {
-                // Comparación por igualdad de listas de golosinas
-                return this.Golosinas.SequenceEqual(other.Golosinas);
+                return this == golosina;
+            }
+            else if (obj is Kiosco<T> otherKiosco)
+            {
+                return this.Golosinas.SequenceEqual(otherKiosco.Golosinas);
             }
             return false;
         }
+        //        public override bool Equals(object? obj)
+        //        {
+        //            bool estaEnKiosco = false;
 
-        // Sobrescritura de GetHashCode para evitar advertencias
-        public override int GetHashCode()
+
+        //            if (obj is Golosina)
+        //            {
+        //                Golosina golosina = (Golosina)obj;
+
+        //                foreach (Golosina item in this.Golosinas)
+        //                {
+        //                    if (item == golosina)
+        //                    {
+        //                        estaEnKiosco = true;
+        //                    }
+        //                }
+        //            }
+        //            return estaEnKiosco;
+        //        }
+
+        public override int GetHashCode() //lo agregue para que no me tire advertencia
         {
-            return base.GetHashCode();
+            throw new NotImplementedException();
         }
 
         #endregion
     }
 }
+
+
+
+
 
 
 

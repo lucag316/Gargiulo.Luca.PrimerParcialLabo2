@@ -9,8 +9,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 using Entidades.Interfaces;
+using Entidades.JerarquiaYContenedora;
+using Entidades.OtrasClases;
 using Entidades.Serializadoras;
 using SQL;
 

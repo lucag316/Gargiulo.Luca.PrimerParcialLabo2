@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Entidades.Interfaces;
 using Entidades.Excepciones;
 
-namespace Entidades
+namespace Entidades.JerarquiaYContenedora
 {
     [Serializable]
-    public class Chupetin: Golosina, ICalculos
+    public class Chupetin : Golosina, ICalculos
     {
         #region Atributos
         protected EFormasDeChupetin formaChupetin;
@@ -22,29 +22,29 @@ namespace Entidades
         //[JsonPropertyName("formaChupetin")]
         public EFormasDeChupetin FormaChupetin
         {
-            get { return this.formaChupetin;}
-            set { this.formaChupetin = value;}
+            get { return formaChupetin; }
+            set { formaChupetin = value; }
         }
 
         //[JsonPropertyName("dureza")]
         public ENivelesDeDureza Dureza
         {
-            get { return this.dureza; }
-            set { this.dureza = value; }
+            get { return dureza; }
+            set { dureza = value; }
         }
         public bool EnvolturaTransparente
         {
-            get { return this.envolturaTransparente; }
-            set { this.envolturaTransparente = value; }
+            get { return envolturaTransparente; }
+            set { envolturaTransparente = value; }
         }
         #endregion
 
         #region Constructores
         public Chupetin() : base() //constructor sin parametros para poder usar JSON
         {
-            this.formaChupetin = EFormasDeChupetin.Redondo;
-            this.dureza = ENivelesDeDureza.Media;
-            this.envolturaTransparente = false;
+            formaChupetin = EFormasDeChupetin.Redondo;
+            dureza = ENivelesDeDureza.Media;
+            envolturaTransparente = false;
         }
         public Chupetin(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
@@ -72,9 +72,9 @@ namespace Entidades
 
             sb.AppendLine("=============== CHUPETIN ===============");
             sb.Append(base.ToString());
-            sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
-            sb.AppendLine($"Dureza: {this.dureza}");
-            sb.AppendLine($"Envoltura transparente: {this.envolturaTransparente}");
+            sb.AppendLine($"Forma de Chupetin: {formaChupetin}");
+            sb.AppendLine($"Dureza: {dureza}");
+            sb.AppendLine($"Envoltura transparente: {envolturaTransparente}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -88,7 +88,7 @@ namespace Entidades
 
             if (obj is Chupetin)
             {
-                if (((Chupetin)obj) == this && mismaGolosina == true)
+                if ((Chupetin)obj == this && mismaGolosina == true)
                 {
                     mismoChupetin = true;
                 }
@@ -97,7 +97,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.formaChupetin, this.dureza, this.envolturaTransparente);
+            return HashCode.Combine(codigo, precio, peso, cantidad, formaChupetin, dureza, envolturaTransparente);
         }
         #endregion
 
@@ -121,7 +121,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHUPETIN:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Forma de chupetin: {this.formaChupetin} - Dureza: {this.dureza} - Envoltura transparente: {this.envolturaTransparente}");
+            sb.Append($"Forma de chupetin: {formaChupetin} - Dureza: {dureza} - Envoltura transparente: {envolturaTransparente}");
 
             return sb.ToString();
         }
@@ -132,13 +132,13 @@ namespace Entidades
         /// <returns>El precio final del chupetin.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.Precio * base.Cantidad;
+            double precioFinal = Precio * Cantidad;
 
-            if (base.Cantidad > 2)
+            if (Cantidad > 2)
             {
                 precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal);
             }
-            if (base.cantidad < 0)
+            if (cantidad < 0)
             {
                 throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
             }
@@ -154,9 +154,9 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
-            bool mismoGolosina = (Golosina)chupetin1 == (Golosina)chupetin2;
+            bool mismoGolosina = chupetin1 == (Golosina)chupetin2;
 
-            bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin && 
+            bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin &&
                                                   chupetin1.Dureza == chupetin2.Dureza &&
                                                   chupetin1.envolturaTransparente == chupetin2.envolturaTransparente;
 

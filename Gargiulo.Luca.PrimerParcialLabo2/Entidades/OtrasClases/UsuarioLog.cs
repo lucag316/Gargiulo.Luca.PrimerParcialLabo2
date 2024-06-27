@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.OtrasClases
 {
     public class UsuarioLog //maneja el registro de accesos de usuarios en un archivo de registro //logger
     {
@@ -13,7 +13,7 @@ namespace Entidades
 
         public UsuarioLog(string logFilePath)
         {
-            this.logFilPath = logFilePath;
+            logFilPath = logFilePath;
             VerificarLogFileExists();
         }
 
@@ -22,9 +22,9 @@ namespace Entidades
         /// </summary>
         private void VerificarLogFileExists()
         {
-            if (!File.Exists(this.logFilPath))
+            if (!File.Exists(logFilPath))
             {
-                using (File.Create(this.logFilPath)) { } 
+                using (File.Create(logFilPath)) { }
             }
         }
 
@@ -37,7 +37,7 @@ namespace Entidades
             string fechaAcceso = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             string logEntry = $"Usuario: {usuario.nombre} {usuario.apellido} - Fecha de Acceso: {fechaAcceso} - Legajo: {usuario.legajo} - Perfil: {usuario.perfil} - Correo: {usuario.correo}";
 
-            using (StreamWriter sw = new StreamWriter(this.logFilPath, true)) //el segundo parametro es tipo append
+            using (StreamWriter sw = new StreamWriter(logFilPath, true)) //el segundo parametro es tipo append
             {
                 sw.WriteLine(logEntry);
             }
@@ -48,7 +48,7 @@ namespace Entidades
         /// </summary>
         public string LeerLog()
         {
-            using (StreamReader sr = new StreamReader(this.logFilPath))
+            using (StreamReader sr = new StreamReader(logFilPath))
             {
                 return sr.ReadToEnd();
             }

@@ -1,5 +1,5 @@
-﻿using Entidades;
-using Entidades.Interfaces;
+﻿using Entidades.Interfaces;
+using Entidades.JerarquiaYContenedora;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace TestsUnitarios
             ////AAA
 
             //// ARANGE - GIVEN
-            Kiosco kiosco = new Kiosco();
+            Kiosco<Golosina> kiosco = new Kiosco<Golosina>();
             Golosina golosina = new Chocolate(1, 10, 5, 1);
 
             //// ACT - WHEN - ejecuto lo que se este probando
@@ -51,12 +51,12 @@ namespace TestsUnitarios
             ////AAA
 
             //// ARANGE - GIVEN
-            Kiosco kiosco = new Kiosco();
+            Kiosco<Golosina> kiosco = new Kiosco<Golosina>();
             List<Golosina> listaGolosinas = new List<Golosina>()
             {
                 new Chocolate(1, 20, 10, 2, ERellenos.Mani),
                 new Chicle(2, 5, 2, 3),
-                new Chupetin(3, 3, 1.5, 4)
+                new Chupetin(3, 3, 1.5f, 4)
             };
 
             //// ACT - WHEN - ejecuto lo que se este probando
@@ -70,13 +70,13 @@ namespace TestsUnitarios
         public void VerificarOrdenarGolosinasPorCodigo()
         {
             // Arrange
-            Kiosco kiosco = new Kiosco();
+            Kiosco<Golosina> kiosco = new Kiosco<Golosina>();
             kiosco += new Chicle(2, 5, 2, 3);
             kiosco += new Chocolate(1, 20, 10, 2, ERellenos.Nuez);
-            kiosco += new Chupetin(3, 3, 1.5, 4);
+            kiosco += new Chupetin(3, 3, 1.5f, 4);
 
             // Act
-            ((IOrdenable)kiosco).OrdenarPorCodigo(true);
+            kiosco.Ordenar(g => g.Codigo, g => g.Codigo, true);
 
             // Assert
             Assert.AreEqual(1, kiosco.Golosinas[0].Codigo);
@@ -86,7 +86,7 @@ namespace TestsUnitarios
         public void VerificarCalcularPrecioTotalDelKiosco_ok()
         {
             // Arrange
-            Kiosco kiosco = new Kiosco();
+            Kiosco<Golosina> kiosco = new Kiosco<Golosina>();
             kiosco += new Chocolate(1, 20, 10, 4, ERellenos.Nuez);
             kiosco += new Chicle(2, 5, 5, 1);
             kiosco += new Chupetin(3, 3, 5, 1);

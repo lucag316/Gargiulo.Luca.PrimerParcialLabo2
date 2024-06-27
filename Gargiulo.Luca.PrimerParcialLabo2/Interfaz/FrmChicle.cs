@@ -1,4 +1,4 @@
-﻿using Entidades;
+﻿using Entidades.JerarquiaYContenedora;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

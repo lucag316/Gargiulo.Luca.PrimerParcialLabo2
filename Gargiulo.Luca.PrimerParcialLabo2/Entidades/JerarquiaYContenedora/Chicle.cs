@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Entidades.Interfaces;
 using Entidades.Excepciones;
 
-namespace Entidades
+namespace Entidades.JerarquiaYContenedora
 {
     [Serializable]
     public class Chicle : Golosina, ICalculos
@@ -23,30 +23,30 @@ namespace Entidades
         //[JsonPropertyName("elasticidad")]
         public ENivelesDeElasticidad Elasticidad
         {
-            get { return this.elasticidad; }
-            set { this.elasticidad = value; }
+            get { return elasticidad; }
+            set { elasticidad = value; }
         }
 
         //[JsonPropertyName("duracionSabor")]
         public ENivelesDuracionDeSabor DuracionSabor
         {
-            get { return this.duracionSabor; }
-            set { this.duracionSabor = value; }
+            get { return duracionSabor; }
+            set { duracionSabor = value; }
         }
 
         public bool BlanqueadorDental
         {
-            get { return this.blanqueadorDental; }
-            set { this.blanqueadorDental = value; }
+            get { return blanqueadorDental; }
+            set { blanqueadorDental = value; }
         }
         #endregion
 
         #region Constructores
         public Chicle() : base()
         {
-            this.elasticidad = ENivelesDeElasticidad.Media;
-            this.duracionSabor = ENivelesDuracionDeSabor.Media;
-            this.blanqueadorDental = false;
+            elasticidad = ENivelesDeElasticidad.Media;
+            duracionSabor = ENivelesDuracionDeSabor.Media;
+            blanqueadorDental = false;
         }
         public Chicle(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
@@ -75,9 +75,9 @@ namespace Entidades
 
             sb.AppendLine("=============== CHICLE =================");
             sb.Append(base.ToString());
-            sb.AppendLine($"Elasticidad: {this.elasticidad}");
-            sb.AppendLine($"Duracion del sabor: {this.duracionSabor}");
-            sb.AppendLine($"Blanqueador dental: {this.blanqueadorDental}");
+            sb.AppendLine($"Elasticidad: {elasticidad}");
+            sb.AppendLine($"Duracion del sabor: {duracionSabor}");
+            sb.AppendLine($"Blanqueador dental: {blanqueadorDental}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -91,7 +91,7 @@ namespace Entidades
 
             if (obj is Chicle)
             {
-                if (((Chicle)obj) == this && mismaGolosina == true)
+                if ((Chicle)obj == this && mismaGolosina == true)
                 {
                     mismoChicle = true;
                 }
@@ -101,7 +101,7 @@ namespace Entidades
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.elasticidad, this.duracionSabor, this.blanqueadorDental);
+            return HashCode.Combine(codigo, precio, peso, cantidad, elasticidad, duracionSabor, blanqueadorDental);
         }
         #endregion
 
@@ -125,7 +125,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHICLE:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Elasticidad: {this.elasticidad} - Duracion del sabor: {this.duracionSabor} - Blanqueador dental: {this.blanqueadorDental}");
+            sb.Append($"Elasticidad: {elasticidad} - Duracion del sabor: {duracionSabor} - Blanqueador dental: {blanqueadorDental}");
 
             return sb.ToString();
         }
@@ -136,13 +136,13 @@ namespace Entidades
         /// <returns>El precio final del chicle.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.Precio * base.Cantidad;
+            double precioFinal = Precio * Cantidad;
 
-            if (base.Cantidad > 5)
+            if (Cantidad > 5)
             {
                 precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal);
             }
-            if (base.cantidad < 0)
+            if (cantidad < 0)
             {
                 throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
             }
@@ -158,9 +158,9 @@ namespace Entidades
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chicle chicle1, Chicle chicle2)
         {
-            bool mismoGolosina = (Golosina)chicle1 == (Golosina)chicle2;
+            bool mismoGolosina = chicle1 == (Golosina)chicle2;
 
-            bool mismoChicle = mismoGolosina && chicle1.Elasticidad == chicle2.Elasticidad && 
+            bool mismoChicle = mismoGolosina && chicle1.Elasticidad == chicle2.Elasticidad &&
                                                 chicle1.DuracionSabor == chicle2.DuracionSabor &&
                                                 chicle1.blanqueadorDental == chicle2.blanqueadorDental;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Text.Json;
 
-namespace Entidades
+namespace Entidades.JerarquiaYContenedora
 {
     [Serializable]
     [XmlInclude(typeof(Chocolate))]
@@ -27,33 +27,33 @@ namespace Entidades
         #region Propiedades
         public int Codigo
         {
-            get { return this.codigo; }
-            set { this.codigo = value; }
+            get { return codigo; }
+            set { codigo = value; }
         }
         public float Precio
         {
-            get { return this.precio; }
-            set { this.precio = value; }
+            get { return precio; }
+            set { precio = value; }
         }
         public float Peso
         {
-            get { return this.peso; }
-            set { this.peso = value; }
+            get { return peso; }
+            set { peso = value; }
         }
         public int Cantidad
         {
-            get { return this.cantidad; }
-            set { this.cantidad = value; }
+            get { return cantidad; }
+            set { cantidad = value; }
         }
         #endregion
 
         #region Constructores
         public Golosina()
         {
-            this.codigo = 0;
-            this.precio = 0;
-            this.peso = 0;
-            this.cantidad = 0;
+            codigo = 0;
+            precio = 0;
+            peso = 0;
+            cantidad = 0;
         }
         public Golosina(int codigo) : this()
         {
@@ -82,10 +82,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Codigo: {this.codigo}");    // no hace falta castearlo a string
-            sb.AppendLine($"Precio: ${this.precio}");
-            sb.AppendLine($"Peso: {this.peso} g");
-            sb.AppendLine($"Cantidad: {this.cantidad} unidades");
+            sb.AppendLine($"Codigo: {codigo}");    // no hace falta castearlo a string
+            sb.AppendLine($"Precio: ${precio}");
+            sb.AppendLine($"Peso: {peso} g");
+            sb.AppendLine($"Cantidad: {cantidad} unidades");
 
             return sb.ToString();
         }
@@ -100,7 +100,7 @@ namespace Entidades
 
             if (obj is Golosina)
             {
-                if(((Golosina)obj) == this) // voy al == de Golosina y Golosina
+                if ((Golosina)obj == this) // voy al == de Golosina y Golosina
                 {
                     mismaGolosina = true;
                 }
@@ -114,7 +114,7 @@ namespace Entidades
         public override int GetHashCode() //SI LO POMGO ME TIRA UN ERROR AL GUARDAR XML, porque no se utiliza el metodo//lo pongo para que no me tire advertiencia, que hago?
         {
             //throw new NotImplementedException();
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad); // si le pongo esto, se arregla
+            return HashCode.Combine(codigo, precio, peso, cantidad); // si le pongo esto, se arregla
         }
         #endregion
 
@@ -127,13 +127,13 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Codigo de barra: {this.Codigo} - Precio: ${this.Precio} - Peso: {this.Peso}g - Cantidad: {this.Cantidad} unidades - ");
+            sb.Append($"Codigo de barra: {Codigo} - Precio: ${Precio} - Peso: {Peso}g - Cantidad: {Cantidad} unidades - ");
 
             return sb.ToString();
         }
 
         public abstract double CalcularPrecioFinal();
-  
+
         #endregion
 
         #region Sobrecargas de operadores de igualdad

@@ -1,10 +1,10 @@
-﻿using Entidades;
-using Entidades.Interfaces;
+﻿using Entidades.Interfaces;
+using Entidades.JerarquiaYContenedora;
 internal class Program
 {
     private static void Main(string[] args)
     {
-        Kiosco kiosco = new Kiosco(10);
+        Kiosco<Golosina> kiosco = new Kiosco<Golosina>(10);
 
         Chocolate chocolate1 = new Chocolate(2, 15, 10, 5);
         Chicle chicle1 = new Chicle(1, 20, 10, 5);
@@ -22,15 +22,15 @@ internal class Program
 
         //kiosco -= chupetin1; 
 
-        ((IOrdenable)kiosco).OrdenarPorCodigo(true);
+        kiosco.Ordenar(g => g.Codigo, g => g.Codigo, true);
         //kiosco.OrdenarGolosinasPorPeso(true);
         //Console.WriteLine(kiosco.OrdenarGolosinasPorCodigo());
-        Console.WriteLine(kiosco.Detalle);
+        //Console.WriteLine(kiosco.Detalle);
 
         //Console.WriteLine($"Esta la siguiente golosina en el kiosco: \n{chupetin2} Respuesta:" + (kiosco == chupetin2));
 
         Console.WriteLine(chocolate1.Equals(chocolate1));
-        Console.WriteLine(chocolate1 == chocolate1);
+        //Console.WriteLine(chocolate1 == chocolate1);
         /*
         Console.WriteLine(chocolate1.ToString());
         Console.WriteLine(chicle1.ToString());

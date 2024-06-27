@@ -8,6 +8,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
+using Entidades.JerarquiaYContenedora;
+using Entidades.OtrasClases;
 
 namespace Entidades
 {

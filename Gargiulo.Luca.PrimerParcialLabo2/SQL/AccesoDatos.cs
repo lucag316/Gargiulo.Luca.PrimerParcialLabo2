@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data; // esta no se si hay que poner, lo puse para no estar escribiendolo
-using Entidades;
 using System.Reflection.PortableExecutable;
 using Entidades.Interfaces;
 using System.Text;
+using Entidades.JerarquiaYContenedora;
 
 namespace SQL
 {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Entidades.Interfaces;
 using Entidades.Excepciones;
 
-namespace Entidades
+namespace Entidades.JerarquiaYContenedora
 {
     [Serializable]
     public class Chocolate : Golosina, ICalculos, IValidable
@@ -24,30 +24,30 @@ namespace Entidades
         //[JsonPropertyName("relleno")]
         public ERellenos Relleno
         {
-            get { return this.relleno; }
-            set { this.relleno = value;}
+            get { return relleno; }
+            set { relleno = value; }
         }
 
         //[JsonPropertyName("tipoDeCacao")]
         public ETiposDeCacao TipoDeCacao
         {
-            get { return this.tipoDeCacao; }
-            set { this.tipoDeCacao = value; }
+            get { return tipoDeCacao; }
+            set { tipoDeCacao = value; }
         }
 
         public bool EsVegano
         {
-            get { return this.esVegano; }
-            set { this.esVegano = value; }
+            get { return esVegano; }
+            set { esVegano = value; }
         }
         #endregion
 
         #region Constructores
         public Chocolate() : base()//constructor sin parametros para poder usar JSON
         {
-            this.relleno = ERellenos.SinRelleno;
-            this.tipoDeCacao = ETiposDeCacao.Negro;
-            this.esVegano = false;
+            relleno = ERellenos.SinRelleno;
+            tipoDeCacao = ETiposDeCacao.Negro;
+            esVegano = false;
         }
         public Chocolate(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
@@ -56,7 +56,7 @@ namespace Entidades
             //this.porcentajeDeCacao = 0;
             //this.esVegano = false;
         }
-        public Chocolate(int codigo, float peso, float precio, int cantidad, ERellenos relleno): this(codigo, peso, precio, cantidad)
+        public Chocolate(int codigo, float peso, float precio, int cantidad, ERellenos relleno) : this(codigo, peso, precio, cantidad)
         {
             this.relleno = relleno;
         }
@@ -80,9 +80,9 @@ namespace Entidades
 
             sb.AppendLine("=============== CHOCOLATE ===============");
             sb.Append(base.ToString());
-            sb.AppendLine($"Relleno: {this.relleno}");
-            sb.AppendLine($"Tipo de cacao: {this.tipoDeCacao}");
-            sb.AppendLine($"Es vegano: {this.esVegano}");
+            sb.AppendLine($"Relleno: {relleno}");
+            sb.AppendLine($"Tipo de cacao: {tipoDeCacao}");
+            sb.AppendLine($"Es vegano: {esVegano}");
             sb.AppendLine("=========================================\n");
 
             return sb.ToString();
@@ -96,7 +96,7 @@ namespace Entidades
 
             if (obj is Chocolate)
             {
-                if (((Chocolate)obj) == this && mismaGolosina == true) // voy al == de chocolate y chocolate
+                if ((Chocolate)obj == this && mismaGolosina == true) // voy al == de chocolate y chocolate
                 {
                     mismoChocolate = true;
                 }
@@ -105,7 +105,7 @@ namespace Entidades
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.codigo, this.precio, this.peso, this.cantidad, this.relleno, this.tipoDeCacao, this.esVegano);
+            return HashCode.Combine(codigo, precio, peso, cantidad, relleno, tipoDeCacao, esVegano);
         }
         #endregion
 
@@ -113,7 +113,7 @@ namespace Entidades
 
         void IValidable.ValidarRangoPrecio()
         {
-            if (this.Precio < 0 || this.Precio > 2000)
+            if (Precio < 0 || Precio > 2000)
             {
                 throw new ArgumentException("El precio del chocolate esta fuera del rango permitido($0 - $2000)");
             }
@@ -121,14 +121,14 @@ namespace Entidades
 
         void IValidable.ValidarRangoPeso()
         {
-            if (this.Peso < 0 || this.Peso > 1000)
+            if (Peso < 0 || Peso > 1000)
             {
                 throw new ArgumentException("El peso del chocolate esta fuera del rango permitido(0 g - 1000 g)");
             }
         }
         void IValidable.ValidarRangoCantidad()
         {
-            if (this.Cantidad < 0 || this.Cantidad > 50)
+            if (Cantidad < 0 || Cantidad > 50)
             {
                 throw new ArgumentException("La cantidad del chocolate esta fuera del rango permitido(0 - 50)");
             }
@@ -151,7 +151,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.Append("CHOCOLATE:");
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Relleno: {this.relleno} - Tipo de cacao: {this.tipoDeCacao} - Es vegano: {this.esVegano}");
+            sb.Append($"Relleno: {relleno} - Tipo de cacao: {tipoDeCacao} - Es vegano: {esVegano}");
 
             return sb.ToString();
         }
@@ -162,15 +162,15 @@ namespace Entidades
         /// <returns>El precio final del chocolate.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = base.Precio * base.Cantidad;
+            double precioFinal = Precio * Cantidad;
 
-            if (base.Cantidad > 3)
+            if (Cantidad > 3)
             {
                 precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal); // ver bien porque lo tengo que castear asi
 
                 //precioFinal *= 0.7;
             }
-            if(base.cantidad < 0)
+            if (cantidad < 0)
             {
                 throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
             }
@@ -187,16 +187,16 @@ namespace Entidades
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
             // ESTO COMENTADO SE ME OCURRIO, VER SI ESTA BIEN
-            bool mismoGolosina = (Golosina)chocolate1 == (Golosina)chocolate2;
+            bool mismoGolosina = chocolate1 == (Golosina)chocolate2;
 
-            bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno && 
+            bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno &&
                                                    chocolate1.TipoDeCacao == chocolate2.TipoDeCacao &&
                                                    chocolate1.esVegano == chocolate2.esVegano;
 
             return mismoChocolate;
             //return (Golosina)chocolate1 == (Golosina)chocolate2; //llamo al == de la clase base, NO SIRVE SOLO CON DECIR QUE LAS GOLOSINAS SON IGUALES
-        
-        
+
+
         }
 
         /// <summary>

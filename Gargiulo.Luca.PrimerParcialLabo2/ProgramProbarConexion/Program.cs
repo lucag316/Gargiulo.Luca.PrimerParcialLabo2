@@ -1,5 +1,5 @@
 ﻿using SQL;
-using Entidades;
+using Entidades.JerarquiaYContenedora;
 internal class Program
 {
     private static void Main(string[] args)

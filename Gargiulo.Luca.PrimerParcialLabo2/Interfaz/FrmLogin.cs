@@ -1,4 +1,5 @@
 using Entidades;
+using Entidades.OtrasClases;
 
 namespace Interfaz
 {
