@@ -42,28 +42,48 @@ namespace Entidades.JerarquiaYContenedora
         public int Codigo
         {
             get { return codigo; }
-            //set { codigo = value; }
             set
             {
                 int valorParseado;
                 if (value < 0)
                 {
-                    //this.CodigoNegativo(value);
-                    this.CodigoNegativo.Invoke(this.codigo);// esta es otr forma
+                    CodigoNegativo?.Invoke(value);
                 }
                 else if (value > 100)
                 {
-                    this.CodigoMuyAlto(value);
+                    CodigoMuyAlto?.Invoke(value);
                 }
                 else if (!int.TryParse(value.ToString(), out valorParseado))
                 {
-                    this.CodigoNoNumerico(value);
+                    CodigoNoNumerico?.Invoke(value);
                 }
                 else
                 {
-                    this.codigo = value;
+                    codigo = value;
                 }
             }
+            //set { codigo = value; }
+            //set
+            //{
+            //    int valorParseado;
+            //    if (value < 0)
+            //    {
+            //        //this.CodigoNegativo(value);
+            //        this.CodigoNegativo.Invoke(value);// esta es otr forma
+            //    }
+            //    else if (value > 100)
+            //    {
+            //        this.CodigoMuyAlto(value);
+            //    }
+            //    else if (!int.TryParse(value.ToString(), out valorParseado))
+            //    {
+            //        this.CodigoNoNumerico(value);
+            //    }
+            //    else
+            //    {
+            //        this.codigo = value;
+            //    }
+            //}
         }
         public float Precio
         {
@@ -90,13 +110,13 @@ namespace Entidades.JerarquiaYContenedora
             peso = 0;
             cantidad = 0;
 
-            this.CodigoNegativo += MostrarMensajeCodigoInvalido;
-            this.CodigoMuyAlto += MostrarMensajeCodigoInvalido;
-            this.CodigoNoNumerico += MostrarMensajeCodigoInvalido;
+            CodigoNegativo += MostrarMensajeCodigoInvalido;
+            CodigoMuyAlto += MostrarMensajeCodigoInvalido;
+            CodigoNoNumerico += MostrarMensajeCodigoInvalido;
 
-            this.CodigoNegativo += MostrarMensajeCodigoNegativo;
-            this.CodigoMuyAlto += MostrarMensajeCodigoMuyAlto;
-            this.CodigoNoNumerico += MostrarMensajeCodigoNoNumerico;
+            CodigoNegativo += MostrarMensajeCodigoNegativo;
+            CodigoMuyAlto += MostrarMensajeCodigoMuyAlto;
+            CodigoNoNumerico += MostrarMensajeCodigoNoNumerico;
 
         }
         public Golosina(int codigo) : this()
@@ -222,15 +242,17 @@ namespace Entidades.JerarquiaYContenedora
         #region Manejadores de eventos
         public void MostrarMensajeCodigoNegativo(int numero)
         {
-            Console.WriteLine($"Error: El codigo no puede ser negativo. Codigo ingresado: {numero}");
+            Console.WriteLine($"Error: El código no puede ser negativo. Código ingresado: {numero}");
         }
+
         public void MostrarMensajeCodigoMuyAlto(int numero)
         {
-            Console.WriteLine($"Error: El codigo no puede ser mayor que 100. Codigo ingresado: {numero}");
+            Console.WriteLine($"Error: El código no puede ser mayor que 100. Código ingresado: {numero}");
         }
+
         public void MostrarMensajeCodigoNoNumerico(int numero)
         {
-            Console.WriteLine($"Error: El codigo debe ser numerico. Codigo ingresado: {numero}");
+            Console.WriteLine($"Error: El código debe ser numérico. Código ingresado: {numero}");
         }
         public void MostrarMensajeCodigoInvalido(int numero)
         {

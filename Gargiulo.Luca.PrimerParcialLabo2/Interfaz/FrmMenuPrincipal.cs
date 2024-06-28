@@ -34,6 +34,11 @@ namespace Interfaz
             InitializeComponent();
             //this.kiosco = new Kiosco(5);
             this.kiosco = new Kiosco<Golosina>(10);
+            Kiosco<Golosina>.CapacidadMaximaAlcanzada += MostrarMessageBoxCapacidadMaxima;
+            Kiosco<Golosina>.GolosinaYaEstaEnLista += MostrarMessageBoxGolosinaRepetida;
+            Kiosco<Golosina>.GolosinaAgregadaExitosamente += MostrarMessageBoxGolosinaAgregadaExitosamente;
+            Kiosco<Golosina>.GolosinaEliminadaExitosamente += MostrarMessageBoxGolosinaEliminadaExitosamente;
+            //Kiosco<Golosina>.GolosinaModificadaExitosamente += KioscoGolosinaModificada;
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
             //this.usuarioLogueado = new UsuarioLog("usuarios.log");
@@ -42,6 +47,25 @@ namespace Interfaz
         }
         #endregion
         
+        private void MostrarMessageBoxCapacidadMaxima(string mensaje)
+        {
+            MessageBox.Show($"Error: {mensaje}", "Capacidad Máxima Alcanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void MostrarMessageBoxGolosinaRepetida(string mensaje)
+        {
+            MessageBox.Show($"Advertencia: {mensaje}", "Golosina Repetida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void MostrarMessageBoxGolosinaAgregadaExitosamente(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Golosina Agregada Exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void MostrarMessageBoxGolosinaEliminadaExitosamente(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Golosina Eliminada Exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        
         
         #region Manejadores de eventos 
 
@@ -49,7 +73,7 @@ namespace Interfaz
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
-
+            //this.kiosco.GolosinaModificada += KioscoGolosinaModificada;
             ActualizarBarraDeInformacion();
             ActualizarVisorGolosinas();
         }
@@ -108,6 +132,8 @@ namespace Interfaz
             }
         }
         #endregion
+
+
 
         #region Modificar y Eliminar
         //Modifica la Golosina que seleccione
@@ -592,14 +618,12 @@ namespace Interfaz
                 }
                 else
                 {
-                    MessageBox.Show("La golosina ya esta en el kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MostrarMessageBoxGolosinaRepetida("La golosina ya esta en el kiosco");
                 }
             }
             else
             {
-                MessageBox.Show("No se puede agregar mas, se ha alcanzado la capacidad maxima del kiosco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MostrarMessageBoxCapacidadMaxima("Se alcanzo la capacidad maxima EVENTO");
             }
         }
 

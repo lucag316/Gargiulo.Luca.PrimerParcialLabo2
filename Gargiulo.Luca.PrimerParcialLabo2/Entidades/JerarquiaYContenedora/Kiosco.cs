@@ -1,4 +1,5 @@
 ﻿using Entidades.Interfaces;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Entidades.JerarquiaYContenedora
@@ -13,6 +14,15 @@ namespace Entidades.JerarquiaYContenedora
         private List<T> golosinas;
         private int capacidadGolosinasDistintas;
         //private string detalle = "";    //inicializo asi no me tira advertencia
+        #endregion
+
+        #region Eventos
+        public static event MensajeKioscoHandler CapacidadMaximaAlcanzada; //lo hice estatic asi los puedo poner en +
+        public static event MensajeKioscoHandler GolosinaYaEstaEnLista;
+        public static event MensajeKioscoHandler GolosinaAgregadaExitosamente;
+        public static event MensajeKioscoHandler GolosinaEliminadaExitosamente;
+        public static event MensajeKioscoHandler GolosinaModificadaExitosamente;
+
         #endregion
 
         #region Propiedades
@@ -154,17 +164,19 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco != golosina) //si la golosina no esta en el kiosco, la agrego
                 {
                     kiosco.Golosinas.Add(golosina);
+                    GolosinaAgregadaExitosamente.Invoke($"Se agrego la golosina con el codigo de barra: {golosina.Codigo} exitosamente");
                 }
                 else
                 {
-                    Console.WriteLine("La golosina ya esta en el kiosco");
+                    //Console.WriteLine("La golosina ya esta en el kiosco");
+                    GolosinaYaEstaEnLista.Invoke("La golosina ya esta en el kiosco");
                     //throw new InvalidOperationException("La golosina ya esta en el kiosco.");
                 }
             }
             else
             {
 
-                Console.WriteLine("No se puede agregar mas, se alanzo la capacidad maxima del kiosco");
+                CapacidadMaximaAlcanzada.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
             }
             return kiosco;
         }
@@ -182,15 +194,16 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco == golosina)//si la golosina esta en el kiosco, la saco
                 {
                     kiosco.Golosinas.Remove(golosina);
+                    GolosinaEliminadaExitosamente.Invoke($"Se elimino la golosina con codigo de barra: {golosina.Codigo} exitosamente.");
                 }
                 else
                 {
-                    Console.WriteLine("La golosina no esta en el kiosco");
+                    GolosinaYaEstaEnLista?.Invoke($"La golosina {golosina.Codigo} ya está en el kiosco.");
                 }
             }
             else
             {
-                Console.WriteLine("El kiosco no tiene golosinas");
+                CapacidadMaximaAlcanzada?.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
             }
             return kiosco;
         }
@@ -304,6 +317,7 @@ namespace Entidades.JerarquiaYContenedora
         }
 
         #endregion
+
     }
 }
 

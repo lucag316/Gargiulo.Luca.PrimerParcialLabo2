@@ -138,6 +138,7 @@ namespace Entidades.JerarquiaYContenedora
         {
             return precio * 0.7;
         }
+
         #endregion
 
         #region Metodos sobrescritos
