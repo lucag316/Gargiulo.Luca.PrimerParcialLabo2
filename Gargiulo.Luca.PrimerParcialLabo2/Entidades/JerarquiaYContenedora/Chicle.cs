@@ -123,10 +123,14 @@ namespace Entidades.JerarquiaYContenedora
         public override string MostrarEnVisor()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("CHICLE:");
+            //sb.Append("CHICLE:");
+            //sb.Append(base.MostrarEnVisor());
+            //sb.Append($"Elasticidad: {elasticidad} - Duracion del sabor: {duracionSabor} - Blanqueador dental: {blanqueadorDental}");
+            sb.AppendLine(string.Format("{0, -27}", "CHICLE"));
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Elasticidad: {elasticidad} - Duracion del sabor: {duracionSabor} - Blanqueador dental: {blanqueadorDental}");
-
+            sb.AppendLine($"{"Elasticidad:"} {elasticidad,-18}");
+            sb.AppendLine($"{"Duracion del sabor:"} {duracionSabor,-18}");
+            sb.AppendLine($"{"Blanqueador dental:"} {blanqueadorDental,-20}");
             return sb.ToString();
         }
 

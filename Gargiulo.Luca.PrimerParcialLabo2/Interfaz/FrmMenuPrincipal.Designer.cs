@@ -74,7 +74,7 @@
             lstVisorGolosinas.ItemHeight = 14;
             lstVisorGolosinas.Location = new Point(14, 86);
             lstVisorGolosinas.Name = "lstVisorGolosinas";
-            lstVisorGolosinas.Size = new Size(1023, 284);
+            lstVisorGolosinas.Size = new Size(1168, 284);
             lstVisorGolosinas.TabIndex = 7;
             // 
             // menuStrip1
@@ -83,7 +83,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
-            menuStrip1.Size = new Size(1049, 24);
+            menuStrip1.Size = new Size(1193, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -249,7 +249,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
             statusStrip1.Location = new Point(0, 398);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1049, 22);
+            statusStrip1.Size = new Size(1193, 22);
             statusStrip1.TabIndex = 12;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -309,7 +309,7 @@
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1049, 420);
+            ClientSize = new Size(1193, 420);
             Controls.Add(lblOrden);
             Controls.Add(cboOrdenManera);
             Controls.Add(cboOrden);

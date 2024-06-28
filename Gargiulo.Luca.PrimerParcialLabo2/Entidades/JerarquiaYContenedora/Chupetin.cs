@@ -119,10 +119,14 @@ namespace Entidades.JerarquiaYContenedora
         public override string MostrarEnVisor()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("CHUPETIN:");
-            sb.Append(base.MostrarEnVisor());
-            sb.Append($"Forma de chupetin: {formaChupetin} - Dureza: {dureza} - Envoltura transparente: {envolturaTransparente}");
-
+            //sb.Append("CHUPETIN:");
+            //sb.Append(base.MostrarEnVisor());
+            //sb.Append($"Forma de chupetin: {formaChupetin} - Dureza: {dureza} - Envoltura transparente: {envolturaTransparente}");
+            sb.AppendLine(string.Format("{0, -24}", "CHUPETIN"));
+            sb.AppendLine(base.MostrarEnVisor());
+            sb.AppendLine($"{"Forma:"} {formaChupetin,-22}");
+            sb.AppendLine($"{"Dureza:"} {dureza,-40}");
+            sb.AppendLine($"{"Envoltura transparente:"} {envolturaTransparente,-20}");
             return sb.ToString();
         }
 

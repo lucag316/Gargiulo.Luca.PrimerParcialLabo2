@@ -150,13 +150,16 @@ namespace Entidades.JerarquiaYContenedora
         public override string MostrarEnVisor()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("CHOCOLATE:");
+            //sb.Append("CHOCOLATE:");
+            sb.AppendLine(string.Format("{0, -20}", "CHOCOLATE"));
             sb.Append(base.MostrarEnVisor());
-            sb.Append($"Relleno: {relleno} - Tipo de cacao: {tipoDeCacao} - Es vegano: {esVegano}");
-
+            //sb.Append($"Relleno: {relleno} - Tipo de cacao: {tipoDeCacao} - Es vegano: {esVegano}");
+            sb.AppendLine($"Relleno: {relleno,-20}");
+            sb.AppendLine($"Tipo de cacao: {tipoDeCacao,-29}");
+            sb.AppendLine($"Es vegano: {esVegano,-20}");
             return sb.ToString();
         }
-
+        //CHOCOLATE    CodigodeBarra:0     Precio:$0     Peso:0g      Cantidad:0 unidades      Relleno:SinRelleno    Tipo de cacao:Negro     Es vegano:true
         /// <summary>
         /// Calcula el precio final del chocolate, si se compra mas de 3 chocolates, aplico 30% de descuento.
         /// </summary>

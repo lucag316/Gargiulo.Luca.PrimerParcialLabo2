@@ -34,11 +34,6 @@ namespace Interfaz
             InitializeComponent();
             ConfigurarComboBoxes();
             this.miChocolate = new Chocolate(); // Inicializacion aca para evitar error ed que puede ser nulo, el codigo me funciona, lo tenga o no, solo para sacar la advertencia
-
-            this.miChocolate.CodigoNegativo += MostrarMensajeCodigoNegativoMsgBox;
-            this.miChocolate.CodigoMuyAlto += MostrarMensajeCodigoMuyAltoMsgBox;
-            this.miChocolate.CodigoNoNumerico += MostrarMensajeCodigoNoNumericoMsgBox;
-
         }
 
         public FrmChocolate(Chocolate chocolate) : this()
