@@ -241,9 +241,9 @@ namespace Interfaz
             this.AbrirXML();
         }
 
-        private async void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
+        private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool exito = await GuardarGolosinasEnBaseDeDatos();
+            bool exito = GuardarGolosinasEnBaseDeDatos();
 
             if (exito)
             {
@@ -555,29 +555,33 @@ namespace Interfaz
 
         #region Metodos de Base De Datos
 
-        private async Task<bool> GuardarGolosinasEnBaseDeDatos()
+        private void bool GuardarGolosinasEnBaseDeDatos()
         {
+            if (this.InvokeRequired)
+            {
+                DelegadotaskHandler delegadotask = new DelegadotaskHandler(this.GuardarGolosinasEnBaseDeDatos);
+                this.bASEDEDATOSToolStripMenuItem.Invoke(delegadotask);
+            
+            }
+            else
+            {
+                bool exito = GuardarGolosinas();
+            }
+
             bool retorno = true;
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
+                accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
 
-                await Task.Run(() =>
+                foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
                 {
-
-                    accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
-
-                    foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
+                    bool exito = accesoDatos.AgregarGolosina(golosina);
+                    if (!exito)
                     {
-                        bool exito = accesoDatos.AgregarGolosina(golosina);
-                        if (!exito)
-                        {
-                            retorno = false;
-                        }
+                        retorno = false;
                     }
-                    //retorno = true;
-
-                });
+                }
 
                 
             }
