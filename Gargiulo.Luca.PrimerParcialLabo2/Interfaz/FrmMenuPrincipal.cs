@@ -26,6 +26,7 @@ namespace Interfaz
         private Kiosco<Golosina> kiosco;
         private string operador;
         private Usuario usuarioLogueado;
+        public Task? hilo;
         #endregion
 
         #region Constructor
@@ -42,11 +43,18 @@ namespace Interfaz
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
             //this.usuarioLogueado = new UsuarioLog("usuarios.log");
+            this.bASEDEDATOSToolStripMenuItem.Click += new System.EventHandler(this.ManejadorGuardarBase);
             ConfigurarComboBoxes();
             ConfigurarPermisos();
         }
         #endregion
-        
+
+        private void ManejadorGuardarBase(object? sender, EventArgs e)
+        {
+            this.hilo = Task.Run(() => this.GuardarGolosinasEnBaseDeDatos());
+        }
+
+        #region cambiar nombre
         private void MostrarMessageBoxCapacidadMaxima(string mensaje)
         {
             MessageBox.Show($"Error: {mensaje}", "Capacidad Máxima Alcanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -65,8 +73,9 @@ namespace Interfaz
             MessageBox.Show(mensaje, "Golosina Eliminada Exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
-        
+        #endregion
+
+
         #region Manejadores de eventos 
 
         #region Load y Closing
@@ -132,8 +141,6 @@ namespace Interfaz
             }
         }
         #endregion
-
-
 
         #region Modificar y Eliminar
         //Modifica la Golosina que seleccione
@@ -234,9 +241,9 @@ namespace Interfaz
             this.AbrirXML();
         }
 
-        private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool exito = GuardarGolosinasEnBaseDeDatos();
+            bool exito = await GuardarGolosinasEnBaseDeDatos();
 
             if (exito)
             {
@@ -248,9 +255,9 @@ namespace Interfaz
             }
         }
 
-        private void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            bool exito = CargarGolosinasDesdeBaseDeDatos();
+            bool exito = await CargarGolosinasDesdeBaseDeDatos();
 
             if (exito)
             {
@@ -548,24 +555,31 @@ namespace Interfaz
 
         #region Metodos de Base De Datos
 
-        private bool GuardarGolosinasEnBaseDeDatos()
+        private async Task<bool> GuardarGolosinasEnBaseDeDatos()
         {
             bool retorno = true;
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
 
-                accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
-
-                foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
+                await Task.Run(() =>
                 {
-                    bool exito = accesoDatos.AgregarGolosina(golosina);
-                    if (!exito)
+
+                    accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
+
+                    foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
                     {
-                        retorno = false;
+                        bool exito = accesoDatos.AgregarGolosina(golosina);
+                        if (!exito)
+                        {
+                            retorno = false;
+                        }
                     }
-                }
-                //retorno = true;
+                    //retorno = true;
+
+                });
+
+                
             }
             catch (Exception ex)
             {
@@ -575,23 +589,28 @@ namespace Interfaz
             return retorno;
         }
 
-        private bool CargarGolosinasDesdeBaseDeDatos()
+        private async Task<bool> CargarGolosinasDesdeBaseDeDatos()
         {
             bool retorno = true;
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
-               
-                // cargar golosinas desde la base de datos
-                List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
 
-                kiosco.Golosinas.Clear(); // limpio la lista actual
-                //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
-                foreach (Golosina golosina in golosinasBD)
+                await Task.Run(() =>
                 {
-                    kiosco.Golosinas.Add(golosina);
-                }
+                    // cargar golosinas desde la base de datos
+                    List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
+
+                    kiosco.Golosinas.Clear(); // limpio la lista actual
+                                              //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
+                    foreach (Golosina golosina in golosinasBD)
+                    {
+                        kiosco.Golosinas.Add(golosina);
+                    }
+                });
                 ActualizarVisorGolosinas(); // actualizo despues de cargar
+
+                
 
             }
             catch (Exception ex)
@@ -633,3 +652,89 @@ namespace Interfaz
         
     }
 }
+
+
+//private bool GuardarGolosinasEnBaseDeDatos()
+//{
+//    bool retorno = true;
+//    try
+//    {
+//        AccesoDatos accesoDatos = new AccesoDatos();
+
+//        accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
+
+//        foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
+//        {
+//            bool exito = accesoDatos.AgregarGolosina(golosina);
+//            if (!exito)
+//            {
+//                retorno = false;
+//            }
+//        }
+//        //retorno = true;
+//    }
+//    catch (Exception ex)
+//    {
+//        Console.WriteLine("Error al guardar golosinas en la base de datos: " + ex.Message);
+//        retorno = false;
+//    }
+//    return retorno;
+//}
+
+//private bool CargarGolosinasDesdeBaseDeDatos()
+//{
+//    bool retorno = true;
+//    try
+//    {
+//        AccesoDatos accesoDatos = new AccesoDatos();
+
+//        // cargar golosinas desde la base de datos
+//        List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
+
+//        kiosco.Golosinas.Clear(); // limpio la lista actual
+//                                  //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
+//        foreach (Golosina golosina in golosinasBD)
+//        {
+//            kiosco.Golosinas.Add(golosina);
+//        }
+//        ActualizarVisorGolosinas(); // actualizo despues de cargar
+
+//    }
+//    catch (Exception ex)
+//    {
+//        Console.WriteLine("Error al cargar golosinas desde la base de datos: " + ex.Message);
+//        retorno = false;
+//    }
+//    return retorno;
+//}
+
+
+
+//private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
+//{
+//    bool exito = GuardarGolosinasEnBaseDeDatos();
+
+//    if (exito)
+//    {
+//        MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//    }
+//    else
+//    {
+//        MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//    }
+//}
+
+//private void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
+//{
+//    bool exito = CargarGolosinasDesdeBaseDeDatos();
+
+//    if (exito)
+//    {
+//        MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//        ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
+//    }
+//    else
+//    {
+//        MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//    }
+//}
