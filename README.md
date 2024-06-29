@@ -27,15 +27,13 @@ En el menu se puede clickear una opcion del menuStrip para visualizar el registr
 ## Entidades:
 
 ### Clase Kiosco
-La clase Kiosco<T> representa un kiosco que almacena golosinas genericas (T), donde T debe ser un tipo derivado de la clase base Golosina. Permite gestionar y realizar operaciones como agregar, eliminar y mostrar golosinas, así como calcular el precio total de las golosinas almacenadas. Tambien incluye funcionalidades como ordenar golosinas basado en criterios especificos, gestionar eventos cuando se alcanza la capacidad maxima del kiosco o cuando se agregan o eliminan golosinas, y sobrecargas de operadores para facilitar la manipulación de golosinas en el kiosco.
+La clase Kiosco<T> representa un kiosco que almacena golosinas genericas (T), donde T debe ser un tipo derivado de la clase base Golosina. Permite gestionar y realizar operaciones como agregar, eliminar y mostrar golosinas, así como calcular el precio total de las golosinas almacenadas. Tambien incluye funcionalidades como ordenar golosinas basado en criterios especificos, gestionar eventos cuando se alcanza la capacidad maxima del kiosco o cuando se agregan o eliminan golosinas, y sobrecargas de operadores para facilitar la manipulación de golosinas en el kiosco. Utiliza interfaces.
 
 ### clase Golosina
-Es una clase abstracta que representa una golosina generica. Contiene atributos como codigo, precio, peso y cantidad, tambien tiene propiedades para acceder y modifiar sus valores.
-Tiene distintos constructores para inicializar sus atributos y metodos para sobreacrgar operadores, calcular el precio final y mostrar los detalles de la golosina.
-Esta clase es serializable en formatos XML y JSON.
+Representa una golosina generica con propiedades para codigo, precio, peso y cantidad. Permite la serialización XML y estáA diseñada para ser la base de clases concretas como Chocolate, Chicle y Chupetin. Incluye validaciones para el codigo (numérico, no negativo y no mayor a 1000) y metodos para mostrar detalles, calcular precios finales y comparar golosinas.
 
 ### clase Chocolate
-Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chocolates
+Representa un tipo de golosina con atributos especificos como el tipo de relleno, el tipo de cacao y si es vegano. Hereda de la clase base Golosina y añade funcionalidades adicionales
 
 ### clase Chicle
 Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chicles

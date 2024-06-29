@@ -9,6 +9,9 @@ using Entidades.Excepciones;
 
 namespace Entidades.JerarquiaYContenedora
 {
+    /// <summary>
+    /// Representa una golosina del tipo chupetin.
+    /// </summary>
     [Serializable]
     public class Chupetin : Golosina, ICalculos
     {
@@ -19,46 +22,83 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Propiedades
-        //[JsonPropertyName("formaChupetin")]
         public EFormasDeChupetin FormaChupetin
         {
-            get { return formaChupetin; }
-            set { formaChupetin = value; }
+            get { return this.formaChupetin; }
+            set { this.formaChupetin = value; }
         }
 
-        //[JsonPropertyName("dureza")]
         public ENivelesDeDureza Dureza
         {
-            get { return dureza; }
-            set { dureza = value; }
+            get { return this.dureza; }
+            set { this.dureza = value; }
         }
         public bool EnvolturaTransparente
         {
-            get { return envolturaTransparente; }
-            set { envolturaTransparente = value; }
+            get { return this.envolturaTransparente; }
+            set { this.envolturaTransparente = value; }
         }
         #endregion
 
         #region Constructores
-        public Chupetin() : base() //constructor sin parametros para poder usar JSON
+        /// <summary>
+        /// Constructor sin parametros para poder usar JSON
+        /// </summary>
+        public Chupetin() : base()
         {
             formaChupetin = EFormasDeChupetin.Redondo;
             dureza = ENivelesDeDureza.Media;
             envolturaTransparente = false;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chupetin.
+        /// </summary>
+        //// <param name="codigo">Codigo del chupetin.</param>
+        //// <param name="peso">Peso del chupetin.</param>
+        //// <param name="precio">Precio del chupetin.</param>
+        //// <param name="cantidad">Cantidad de chupetin.</param>
         public Chupetin(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            //this.formaChupetin = EFormasDeChupetin.Redondo;
-            //this.dureza = ENivelesDeDureza.Media;
+
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chupetin con forma del chupetin.
+        /// </summary>
+        //// <param name="codigo">Codigo del chupetin.</param>
+        //// <param name="peso">Peso del chupetin.</param>
+        //// <param name="precio">Precio del chupetin.</param>
+        //// <param name="cantidad">Cantidad de chupetin.</param>
+        //// <param name="formaChupetin">Forma del chupetin.</param>
         public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin) : this(codigo, peso, precio, cantidad)
         {
             this.formaChupetin = formaChupetin;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chupetin con forma del chupetin y dureza.
+        /// </summary>
+        //// <param name="codigo">Codigo del chupetin.</param>
+        //// <param name="peso">Peso del chupetin.</param>
+        //// <param name="precio">Precio del chupetin.</param>
+        //// <param name="cantidad">Cantidad de chupetin.</param>
+        //// <param name="formaChupetin">Forma del chupetin.</param>
+        //// <param name="dureza">Dureza del chupetin.</param>
         public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza) : this(codigo, peso, precio, cantidad, formaChupetin)
         {
             this.dureza = dureza;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chupetin con forma del chupetin, dureza y su envoltura.
+        /// </summary>
+        //// <param name="codigo">Codigo del chupetin.</param>
+        //// <param name="peso">Peso del chupetin.</param>
+        //// <param name="precio">Precio del chupetin.</param>
+        //// <param name="cantidad">Cantidad de chupetin.</param>
+        //// <param name="formaChupetin">Forma del chupetin.</param>
+        //// <param name="envolturaTransparente">Tiene Envoltura transparente o no.</param>
         public Chupetin(int codigo, float peso, float precio, int cantidad, EFormasDeChupetin formaChupetin, ENivelesDeDureza dureza, bool envolturaTransparente) : this(codigo, peso, precio, cantidad, formaChupetin, dureza)
         {
             this.envolturaTransparente = envolturaTransparente;
@@ -66,15 +106,19 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Metodos de Object sobrescritos
+        /// <summary>
+        /// Devuelve una cadena que representa el chupetin.
+        /// </summary>
+        /// <returns>Una cadena con los detalles del chupetin.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("=============== CHUPETIN ===============");
             sb.Append(base.ToString());
-            sb.AppendLine($"Forma de Chupetin: {formaChupetin}");
-            sb.AppendLine($"Dureza: {dureza}");
-            sb.AppendLine($"Envoltura transparente: {envolturaTransparente}");
+            sb.AppendLine($"Forma de Chupetin: {this.formaChupetin}");
+            sb.AppendLine($"Dureza: {this.dureza}");
+            sb.AppendLine($"Envoltura transparente: {this.envolturaTransparente}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -95,9 +139,14 @@ namespace Entidades.JerarquiaYContenedora
             }
             return mismoChupetin;
         }
+
+        /// <summary>
+        /// Devuelve un codigo hash para el objeto actual.
+        /// </summary>
+        /// <returns>Un codigo hash para el objeto actual.</returns>
         public override int GetHashCode()
         {
-            return HashCode.Combine(codigo, precio, peso, cantidad, formaChupetin, dureza, envolturaTransparente);
+            return HashCode.Combine(base.GetHashCode(), this.formaChupetin, this.dureza, this.envolturaTransparente);
         }
         #endregion
 
@@ -119,14 +168,13 @@ namespace Entidades.JerarquiaYContenedora
         public override string MostrarEnVisor()
         {
             StringBuilder sb = new StringBuilder();
-            //sb.Append("CHUPETIN:");
-            //sb.Append(base.MostrarEnVisor());
-            //sb.Append($"Forma de chupetin: {formaChupetin} - Dureza: {dureza} - Envoltura transparente: {envolturaTransparente}");
+
             sb.AppendLine(string.Format("{0, -24}", "CHUPETIN"));
             sb.AppendLine(base.MostrarEnVisor());
-            sb.AppendLine($"{"Forma:"} {formaChupetin,-22}");
-            sb.AppendLine($"{"Dureza:"} {dureza,-40}");
-            sb.AppendLine($"{"Envoltura transparente:"} {envolturaTransparente,-20}");
+            sb.AppendLine($"Forma: {this.formaChupetin,-22}");
+            sb.AppendLine($"Dureza: {this.dureza,-40}");
+            sb.AppendLine($"Envoltura transparente: {this.envolturaTransparente,-20}");
+
             return sb.ToString();
         }
 
@@ -144,7 +192,7 @@ namespace Entidades.JerarquiaYContenedora
             }
             if (cantidad < 0)
             {
-                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
+                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");
             }
             return precioFinal;
         }

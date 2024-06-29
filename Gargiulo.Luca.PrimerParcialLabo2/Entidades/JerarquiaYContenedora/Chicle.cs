@@ -9,6 +9,9 @@ using Entidades.Excepciones;
 
 namespace Entidades.JerarquiaYContenedora
 {
+    /// <summary>
+    /// Representa una golosina del tipo chicle.
+    /// </summary>
     [Serializable]
     public class Chicle : Golosina, ICalculos
     {
@@ -16,51 +19,87 @@ namespace Entidades.JerarquiaYContenedora
         protected ENivelesDeElasticidad elasticidad;
         protected ENivelesDuracionDeSabor duracionSabor;
         protected bool blanqueadorDental;
-        //protected ESaboresChicle saborChicle;
         #endregion
 
         #region Propiedades
-        //[JsonPropertyName("elasticidad")]
         public ENivelesDeElasticidad Elasticidad
         {
-            get { return elasticidad; }
-            set { elasticidad = value; }
+            get { return this.elasticidad; }
+            set { this.elasticidad = value; }
         }
 
-        //[JsonPropertyName("duracionSabor")]
         public ENivelesDuracionDeSabor DuracionSabor
         {
-            get { return duracionSabor; }
-            set { duracionSabor = value; }
+            get { return this.duracionSabor; }
+            set { this.duracionSabor = value; }
         }
 
         public bool BlanqueadorDental
         {
-            get { return blanqueadorDental; }
-            set { blanqueadorDental = value; }
+            get { return this.blanqueadorDental; }
+            set { this.blanqueadorDental = value; }
         }
         #endregion
 
         #region Constructores
+        /// <summary>
+        /// Constructor sin parametros para poder usar JSON
+        /// </summary>
         public Chicle() : base()
         {
             elasticidad = ENivelesDeElasticidad.Media;
             duracionSabor = ENivelesDuracionDeSabor.Media;
             blanqueadorDental = false;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chicle.
+        /// </summary>
+        //// <param name="codigo">Codigo del chicle.</param>
+        //// <param name="peso">Peso del chicle.</param>
+        //// <param name="precio">Precio del chicle.</param>
+        //// <param name="cantidad">Cantidad de chicle.</param>
         public Chicle(int codigo, float peso, float precio, int cantidad) : base(codigo, peso, precio, cantidad)
         {
-            //this.elasticidad = ENivelesDeElasticidad.Media;
-            //this.duracionSabor = ENivelesDuracionDeSabor.Media;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chicle con elasticidad.
+        /// </summary>
+        //// <param name="codigo">Codigo del chicle.</param>
+        //// <param name="peso">Peso del chicle.</param>
+        //// <param name="precio">Precio del chicle.</param>
+        //// <param name="cantidad">Cantidad de chicle.</param>
+        //// <param name="elasticidad">Elasticidad del chicle.</param>
         public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad) : this(codigo, peso, precio, cantidad)
         {
             this.elasticidad = elasticidad;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chicle con elasticidad y duracion del sabor.
+        /// </summary>
+        //// <param name="codigo">Codigo del chicle.</param>
+        //// <param name="peso">Peso del chicle.</param>
+        //// <param name="precio">Precio del chicle.</param>
+        //// <param name="cantidad">Cantidad de chicle.</param>
+        //// <param name="elasticidad">Elasticidad del chicle.</param>
+        //// <param name="duracionSabor">Duracion del sabor del chicle.</param>
         public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor) : this(codigo, peso, precio, cantidad, elasticidad)
         {
             this.duracionSabor = duracionSabor;
         }
+
+        /// <summary>
+        /// Constructor que inicializa los atributos del chicle con elasticidad, duracion del sabor y blanqueador dental.
+        /// </summary>
+        //// <param name="codigo">Codigo del chicle.</param>
+        //// <param name="peso">Peso del chicle.</param>
+        //// <param name="precio">Precio del chicle.</param>
+        //// <param name="cantidad">Cantidad de chicle.</param>
+        //// <param name="elasticidad">Elasticidad del chicle.</param>
+        //// <param name="duracionSabor">Duracion del sabor del chicle.</param>
+        //// <param name="blanqueadorDental">Blanqueador dental del chicle.</param>
         public Chicle(int codigo, float peso, float precio, int cantidad, ENivelesDeElasticidad elasticidad, ENivelesDuracionDeSabor duracionSabor, bool blanqueadorDental) : this(codigo, peso, precio, cantidad, elasticidad, duracionSabor)
         {
             this.blanqueadorDental = blanqueadorDental;
@@ -68,16 +107,19 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Metodos de Object sobrescritos
-
+        /// <summary>
+        /// Devuelve una cadena que representa el chicle.
+        /// </summary>
+        /// <returns>Una cadena con los detalles del chicle.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("=============== CHICLE =================");
             sb.Append(base.ToString());
-            sb.AppendLine($"Elasticidad: {elasticidad}");
-            sb.AppendLine($"Duracion del sabor: {duracionSabor}");
-            sb.AppendLine($"Blanqueador dental: {blanqueadorDental}");
+            sb.AppendLine($"Elasticidad: {this.elasticidad}");
+            sb.AppendLine($"Duracion del sabor: {this.duracionSabor}");
+            sb.AppendLine($"Blanqueador dental: {this.blanqueadorDental}");
             sb.AppendLine("========================================\n");
 
             return sb.ToString();
@@ -99,9 +141,13 @@ namespace Entidades.JerarquiaYContenedora
             return mismoChicle;
         }
 
+        /// <summary>
+        /// Devuelve un codigo hash para el objeto actual.
+        /// </summary>
+        /// <returns>Un codigo hash para el objeto actual.</returns>
         public override int GetHashCode()
         {
-            return HashCode.Combine(codigo, precio, peso, cantidad, elasticidad, duracionSabor, blanqueadorDental);
+            return HashCode.Combine(base.GetHashCode(), this.elasticidad, this.duracionSabor, this.blanqueadorDental);
         }
         #endregion
 
@@ -123,14 +169,13 @@ namespace Entidades.JerarquiaYContenedora
         public override string MostrarEnVisor()
         {
             StringBuilder sb = new StringBuilder();
-            //sb.Append("CHICLE:");
-            //sb.Append(base.MostrarEnVisor());
-            //sb.Append($"Elasticidad: {elasticidad} - Duracion del sabor: {duracionSabor} - Blanqueador dental: {blanqueadorDental}");
+            
             sb.AppendLine(string.Format("{0, -27}", "CHICLE"));
             sb.Append(base.MostrarEnVisor());
-            sb.AppendLine($"{"Elasticidad:"} {elasticidad,-18}");
-            sb.AppendLine($"{"Duracion del sabor:"} {duracionSabor,-18}");
-            sb.AppendLine($"{"Blanqueador dental:"} {blanqueadorDental,-20}");
+            sb.AppendLine($"Elasticidad: {this.elasticidad,-18}");
+            sb.AppendLine($"Duracion del sabor: {this.duracionSabor,-18}");
+            sb.AppendLine($"Blanqueador dental: {this.blanqueadorDental,-20}");
+
             return sb.ToString();
         }
 
@@ -148,7 +193,7 @@ namespace Entidades.JerarquiaYContenedora
             }
             if (cantidad < 0)
             {
-                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");// fijarme si lla verifique en otro lado
+                throw new ExcepcionNumeroNegativo("La cantidad de golosinas no puede ser negativa");
             }
             return precioFinal;
         }

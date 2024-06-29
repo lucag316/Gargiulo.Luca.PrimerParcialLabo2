@@ -11,7 +11,7 @@ using Entidades.Excepciones;
 
 namespace Entidades.JerarquiaYContenedora
 {
-    [Serializable]
+    [Serializable] // para que pueda ser serializada
     [XmlInclude(typeof(Chocolate))]
     [XmlInclude(typeof(Chicle))]
     [XmlInclude(typeof(Chupetin))]
@@ -31,7 +31,6 @@ namespace Entidades.JerarquiaYContenedora
         public int Codigo
         {
             get { return this.codigo; }
-            //set { this.codigo = value; }
             set
             {
                 int numero;
@@ -49,7 +48,6 @@ namespace Entidades.JerarquiaYContenedora
                 }
                 this.codigo = value;
             }
-            
         }
         public float Precio
         {
@@ -79,18 +77,43 @@ namespace Entidades.JerarquiaYContenedora
             this.peso = 0;
             this.cantidad = 0;
         }
+        /// <summary>
+        /// Constructor que inicializa el codigo de la golosina.
+        /// </summary>
+        /// <param name="codigo">Codigo de la golosina.</param>
         public Golosina(int codigo) : this()
         {
             this.codigo = codigo;
         }
+
+        /// <summary>
+        /// Constructor que inicializa el codigo y el peso de la golosina.
+        /// </summary>
+        //// <param name="codigo">Codigo de la golosina.</param>
+        //// <param name="peso">Peso de la golosina en gramos.</param>
         public Golosina(int codigo, float peso) : this(codigo)
         {
             this.peso = peso;
         }
+
+        /// <summary>
+        /// Constructor que inicializa el codigo, peso y precio de la golosina.
+        /// </summary>
+        //// <param name="codigo">Codigo de la golosina.</param>
+        //// <param name="peso">Peso de la golosina en gramos.</param>
+        //// <param name="precio">Precio de la golosina.</param>
         public Golosina(int codigo, float peso, float precio) : this(codigo, peso)
         {
             this.precio = precio;
         }
+
+        /// <summary>
+        /// Constructor que inicializa el codigo, peso, precio y cantidad de la golosina.
+        /// </summary>
+        //// <param name="codigo">Codigo de la golosina.</param>
+        //// <param name="peso">Peso de la golosina en gramos.</param>
+        //// <param name="precio">Precio de la golosina.</param>
+        //// <param name="cantidad">Cantidad disponible de la golosina.</param>
         public Golosina(int codigo, float peso, float precio, int cantidad) : this(codigo, peso, precio)
         {
             this.cantidad = cantidad;
@@ -156,14 +179,18 @@ namespace Entidades.JerarquiaYContenedora
 
             //sb.Append($"Codigo de barra: {this.Codigo} - Precio: ${this.Precio} - Peso: {this.Peso}g - Cantidad: {this.Cantidad} unidades - ");
             sb.AppendFormat("{0, -28} {1, -22} {2, -22} {3, -30}",
-            $"Codigo de barra: {this.Codigo}",
-            $"Precio: ${this.Precio}",
-            $"Peso: {this.Peso}g",
-            $"Cantidad: {this.Cantidad} unidades");
+                            $"Codigo de barra: {this.Codigo}",
+                            $"Precio: ${this.Precio}",
+                            $"Peso: {this.Peso}g",
+                            $"Cantidad: {this.Cantidad} unidades");
 
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Metodo abstracto para calcular el precio final de la golosina.
+        /// </summary>
+        /// <returns>El precio final de la golosina.</returns>
         public abstract double CalcularPrecioFinal();
 
         #endregion
@@ -228,29 +255,6 @@ namespace Entidades.JerarquiaYContenedora
         //}
         #endregion
 
-        #region Metodos Auxiliares
-
-        private static int ValidarNoNegativo(int valor, string nombrePropiedad)
-        {
-            // si hago esto, tengo que asignar los parametros de los constructores, a sus propiedades, no a atributos, sino, no validaria
-            if (valor < 0)
-            {
-                throw new ArgumentOutOfRangeException(nombrePropiedad, $"{nombrePropiedad} no puede ser negativo");
-                //throw new MiExcepcion($"{nombrePropiedad} no puede ser negativo");//esta es con mi funcion 
-            }
-            return valor;
-        }
-        /*
-         private static T ValidarNoNegativo<T>(T valor, string nombrePropiedad) where T : IComparable<T>
-        {
-            if (valor.CompareTo(default) < 0)
-            {
-                throw new ArgumentOutOfRangeException(nombrePropiedad, $"{nombrePropiedad} no puede ser negativo");
-            }
-            return valor;
-        }
-         */
-        #endregion
     }
 }
 
