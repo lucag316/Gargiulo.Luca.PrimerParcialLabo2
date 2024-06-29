@@ -41,10 +41,8 @@
             aRCHIVOSToolStripMenuItem = new ToolStripMenuItem();
             GuardarToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem2 = new ToolStripMenuItem();
-            bASEDEDATOSToolStripMenuItem = new ToolStripMenuItem();
             AbrirToolStripMenuItem2 = new ToolStripMenuItem();
             xMLToolStripMenuItem3 = new ToolStripMenuItem();
-            bASEDEDATOSToolStripMenuItem1 = new ToolStripMenuItem();
             uSUARIOSToolStripMenuItem = new ToolStripMenuItem();
             dETALLEToolStripMenuItem = new ToolStripMenuItem();
             iNFORMACIONToolStripMenuItem = new ToolStripMenuItem();
@@ -64,6 +62,9 @@
             cboOrden = new ComboBox();
             cboOrdenManera = new ComboBox();
             lblOrden = new Label();
+            btnGuardarEnBaseDeDatos = new Button();
+            btnCargarDesdeBaseDeDatos = new Button();
+            lblHora = new Label();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -147,7 +148,7 @@
             // 
             // GuardarToolStripMenuItem2
             // 
-            GuardarToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2, bASEDEDATOSToolStripMenuItem });
+            GuardarToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem2 });
             GuardarToolStripMenuItem2.Name = "GuardarToolStripMenuItem2";
             GuardarToolStripMenuItem2.Size = new Size(131, 22);
             GuardarToolStripMenuItem2.Text = "GUARDAR";
@@ -155,20 +156,13 @@
             // xMLToolStripMenuItem2
             // 
             xMLToolStripMenuItem2.Name = "xMLToolStripMenuItem2";
-            xMLToolStripMenuItem2.Size = new Size(166, 22);
+            xMLToolStripMenuItem2.Size = new Size(99, 22);
             xMLToolStripMenuItem2.Text = "XML";
             xMLToolStripMenuItem2.Click += xMLToolStripMenuItem2_Click;
             // 
-            // bASEDEDATOSToolStripMenuItem
-            // 
-            bASEDEDATOSToolStripMenuItem.Name = "bASEDEDATOSToolStripMenuItem";
-            bASEDEDATOSToolStripMenuItem.Size = new Size(166, 22);
-            bASEDEDATOSToolStripMenuItem.Text = "BASE DE DATOS";
-            bASEDEDATOSToolStripMenuItem.Click += bASEDEDATOSToolStripMenuItem_Click;
-            // 
             // AbrirToolStripMenuItem2
             // 
-            AbrirToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3, bASEDEDATOSToolStripMenuItem1 });
+            AbrirToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { xMLToolStripMenuItem3 });
             AbrirToolStripMenuItem2.Name = "AbrirToolStripMenuItem2";
             AbrirToolStripMenuItem2.Size = new Size(131, 22);
             AbrirToolStripMenuItem2.Text = "ABRIR";
@@ -176,16 +170,9 @@
             // xMLToolStripMenuItem3
             // 
             xMLToolStripMenuItem3.Name = "xMLToolStripMenuItem3";
-            xMLToolStripMenuItem3.Size = new Size(166, 22);
+            xMLToolStripMenuItem3.Size = new Size(99, 22);
             xMLToolStripMenuItem3.Text = "XML";
             xMLToolStripMenuItem3.Click += xMLToolStripMenuItem3_Click;
-            // 
-            // bASEDEDATOSToolStripMenuItem1
-            // 
-            bASEDEDATOSToolStripMenuItem1.Name = "bASEDEDATOSToolStripMenuItem1";
-            bASEDEDATOSToolStripMenuItem1.Size = new Size(166, 22);
-            bASEDEDATOSToolStripMenuItem1.Text = "BASE DE DATOS";
-            bASEDEDATOSToolStripMenuItem1.Click += bASEDEDATOSToolStripMenuItem1_Click;
             // 
             // uSUARIOSToolStripMenuItem
             // 
@@ -304,12 +291,43 @@
             lblOrden.TabIndex = 15;
             lblOrden.Text = "Ordenamiento: ";
             // 
+            // btnGuardarEnBaseDeDatos
+            // 
+            btnGuardarEnBaseDeDatos.Location = new Point(905, 27);
+            btnGuardarEnBaseDeDatos.Name = "btnGuardarEnBaseDeDatos";
+            btnGuardarEnBaseDeDatos.Size = new Size(197, 23);
+            btnGuardarEnBaseDeDatos.TabIndex = 16;
+            btnGuardarEnBaseDeDatos.Text = "Guardar en Base de datos";
+            btnGuardarEnBaseDeDatos.UseVisualStyleBackColor = true;
+            // 
+            // btnCargarDesdeBaseDeDatos
+            // 
+            btnCargarDesdeBaseDeDatos.Location = new Point(905, 56);
+            btnCargarDesdeBaseDeDatos.Name = "btnCargarDesdeBaseDeDatos";
+            btnCargarDesdeBaseDeDatos.Size = new Size(197, 23);
+            btnCargarDesdeBaseDeDatos.TabIndex = 17;
+            btnCargarDesdeBaseDeDatos.Text = "Cargar desde base de datos";
+            btnCargarDesdeBaseDeDatos.UseVisualStyleBackColor = true;
+            // 
+            // lblHora
+            // 
+            lblHora.AutoSize = true;
+            lblHora.BackColor = Color.Transparent;
+            lblHora.Location = new Point(1106, 373);
+            lblHora.Name = "lblHora";
+            lblHora.Size = new Size(75, 14);
+            lblHora.TabIndex = 18;
+            lblHora.Text = "Hora actual";
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1193, 420);
+            Controls.Add(lblHora);
+            Controls.Add(btnCargarDesdeBaseDeDatos);
+            Controls.Add(btnGuardarEnBaseDeDatos);
             Controls.Add(lblOrden);
             Controls.Add(cboOrdenManera);
             Controls.Add(cboOrden);
@@ -364,7 +382,8 @@
         private ComboBox cboOrden;
         private ComboBox cboOrdenManera;
         private Label lblOrden;
-        private ToolStripMenuItem bASEDEDATOSToolStripMenuItem;
-        private ToolStripMenuItem bASEDEDATOSToolStripMenuItem1;
+        private Button btnGuardarEnBaseDeDatos;
+        private Button btnCargarDesdeBaseDeDatos;
+        private Label lblHora;
     }
 }

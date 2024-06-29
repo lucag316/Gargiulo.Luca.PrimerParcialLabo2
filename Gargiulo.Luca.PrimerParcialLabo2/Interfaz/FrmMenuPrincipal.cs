@@ -43,16 +43,62 @@ namespace Interfaz
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
             //this.usuarioLogueado = new UsuarioLog("usuarios.log");
-            this.bASEDEDATOSToolStripMenuItem.Click += new System.EventHandler(this.ManejadorGuardarBase);
+            this.btnGuardarEnBaseDeDatos.Click += new EventHandler(this.ManejadorGuardarBase); //genero manejadores de eventos dinamicos
+            this.btnCargarDesdeBaseDeDatos.Click += new EventHandler(this.ManejadorAbrirBase);
             ConfigurarComboBoxes();
             ConfigurarPermisos();
+            //Task.Run(IniciarHiloHora);
+            AsignarHora();
         }
         #endregion
 
-        private void ManejadorGuardarBase(object? sender, EventArgs e)
+        /*private async Task IniciarHiloHora()
         {
+            while (true)
+            {
+                // Espera 1 segundo antes de actualizar la hora
+                await Task.Delay(1000);
+
+                // Actualiza la hora en el hilo principal
+                BeginInvoke(new Action(() => AsignarHora()));
+            }
+        }
+        private void AsignarHora()
+        {
+            // Muestra la fecha y hora actual en el formato deseado
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }*/
+        private void AsignarHora()
+        {
+            // Ejecuta continuamente en un hilo secundario
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    // Actualiza la UI desde el hilo secundario usando Invoke
+                    Invoke(new Action(() =>
+                    {
+                        lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+                    }));
+                    //MessageBox.Show("Hora actualizada desde hilo secundario: " + DateTime.Now.ToString("HH:mm:ss"));
+                    // Espera 1 segundo antes de volver a actualizar
+                    await Task.Delay(1000);
+                }
+            });
+        }
+
+        private void ManejadorGuardarBase(object? sender, EventArgs e)//por cada click que haga en este boton, instancio el Task invocando al metodo
+        {
+            Task.Delay(3000).Wait();
             this.hilo = Task.Run(() => this.GuardarGolosinasEnBaseDeDatos());
         }
+        private void ManejadorAbrirBase(object? sender, EventArgs e)
+        {
+            // Esperar 3 segundos en el hilo principal
+            Task.Delay(3000).Wait();
+            this.hilo = Task.Run(() => this.CargarGolosinasDesdeBaseDeDatos());
+        }
+
 
         #region cambiar nombre
         private void MostrarMessageBoxCapacidadMaxima(string mensaje)
@@ -241,35 +287,6 @@ namespace Interfaz
             this.AbrirXML();
         }
 
-        private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool exito = GuardarGolosinasEnBaseDeDatos();
-
-            if (exito)
-            {
-                MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private async void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            bool exito = await CargarGolosinasDesdeBaseDeDatos();
-
-            if (exito)
-            {
-                MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
-            }
-            else
-            {
-                MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         #endregion
 
         #region Volver, Detalle e Informacion
@@ -392,8 +409,8 @@ namespace Interfaz
                     xMLToolStripMenuItem2.Enabled = false;
                     xMLToolStripMenuItem2.Visible = false;
 
-                    bASEDEDATOSToolStripMenuItem.Enabled = false;
-                    bASEDEDATOSToolStripMenuItem.Visible = false;
+                    btnGuardarEnBaseDeDatos.Enabled = false;
+                    btnGuardarEnBaseDeDatos.Visible = false;
 
                     GuardarToolStripMenuItem2.Enabled = false;
                     GuardarToolStripMenuItem2.Visible = false;
@@ -448,7 +465,7 @@ namespace Interfaz
         /// <summary>
         /// Actualiza la barra de informacion con el nombre del operador y la fecha actual.
         /// </summary>
-        private void ActualizarBarraDeInformacion()
+        public void ActualizarBarraDeInformacion()
         {
             this.toolStripStatusLabel2.Text = $"Operador: {this.operador}";
             this.toolStripStatusLabel3.Text = $"Fecha: {DateTime.Now.ToString("dd/MM/yyyy")}";
@@ -555,19 +572,83 @@ namespace Interfaz
 
         #region Metodos de Base De Datos
 
-        private void bool GuardarGolosinasEnBaseDeDatos()
+        private void GuardarGolosinasEnBaseDeDatos()
         {
-            if (this.InvokeRequired)
-            {
-                DelegadotaskHandler delegadotask = new DelegadotaskHandler(this.GuardarGolosinasEnBaseDeDatos);
-                this.bASEDEDATOSToolStripMenuItem.Invoke(delegadotask);
             
+            //tengo que hacerlo desde el hilo principal
+            if (this.btnCargarDesdeBaseDeDatos.InvokeRequired)//si alguien invoco desde otro subprocesosi alguien solicito cambiar este elemento
+            {
+                DelegadotaskHandler delegadotask = new DelegadotaskHandler(this.GuardarGolosinasEnBaseDeDatos);//genero un delegado dentro del subproceso que invoque al mismo metodo
+                this.btnGuardarEnBaseDeDatos.Invoke(delegadotask);//desde el hilo principal invoco al subproceso
+
             }
             else
             {
                 bool exito = GuardarGolosinas();
+                if (exito)
+                {
+                    MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
+        }
+
+        private void CargarGolosinasDesdeBaseDeDatos()
+        {
+            
+            if (this.btnCargarDesdeBaseDeDatos.InvokeRequired)
+            {
+                DelegadotaskHandler delegadotask = new DelegadotaskHandler(this.CargarGolosinasDesdeBaseDeDatos);
+                this.btnCargarDesdeBaseDeDatos.Invoke(delegadotask);
+            }
+            else
+            {
+                bool exito = CargarGolosinas();
+                if (exito)
+                {
+                    MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private bool CargarGolosinas()
+        {
+            bool retorno = true;
+            try
+            {
+                AccesoDatos accesoDatos = new AccesoDatos();
+
+                // cargar golosinas desde la base de datos
+                List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
+
+                kiosco.Golosinas.Clear(); // limpio la lista actual
+                                          //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
+                foreach (Golosina golosina in golosinasBD)
+                {
+                    kiosco.Golosinas.Add(golosina);
+                }
+                ActualizarVisorGolosinas(); // actualizo despues de cargar
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar golosinas desde la base de datos: " + ex.Message);
+                retorno = false;
+            }
+            return retorno;
+        }
+
+        private bool GuardarGolosinas()
+        {
             bool retorno = true;
             try
             {
@@ -582,8 +663,6 @@ namespace Interfaz
                         retorno = false;
                     }
                 }
-
-                
             }
             catch (Exception ex)
             {
@@ -592,40 +671,6 @@ namespace Interfaz
             }
             return retorno;
         }
-
-        private async Task<bool> CargarGolosinasDesdeBaseDeDatos()
-        {
-            bool retorno = true;
-            try
-            {
-                AccesoDatos accesoDatos = new AccesoDatos();
-
-                await Task.Run(() =>
-                {
-                    // cargar golosinas desde la base de datos
-                    List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
-
-                    kiosco.Golosinas.Clear(); // limpio la lista actual
-                                              //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
-                    foreach (Golosina golosina in golosinasBD)
-                    {
-                        kiosco.Golosinas.Add(golosina);
-                    }
-                });
-                ActualizarVisorGolosinas(); // actualizo despues de cargar
-
-                
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al cargar golosinas desde la base de datos: " + ex.Message);
-                retorno = false;
-            }
-            return retorno;
-        }
-
-        
         #endregion
 
         #region Metodo Agregar
@@ -649,11 +694,7 @@ namespace Interfaz
                 MostrarMessageBoxCapacidadMaxima("Se alcanzo la capacidad maxima EVENTO");
             }
         }
-
-
         #endregion
-
-        
     }
 }
 

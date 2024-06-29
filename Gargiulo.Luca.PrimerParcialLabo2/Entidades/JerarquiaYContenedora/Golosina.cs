@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Text.Json;
+using Entidades.Excepciones;
 
 namespace Entidades.JerarquiaYContenedora
 {
@@ -30,7 +31,24 @@ namespace Entidades.JerarquiaYContenedora
         public int Codigo
         {
             get { return this.codigo; }
-            set { this.codigo = value; }
+            //set { this.codigo = value; }
+            set
+            {
+                int numero;
+                if(!int.TryParse(value.ToString(), out numero))
+                {
+                    throw new ExcepcionDatoNoNumerico("El codigo debe ser numerico");
+                }
+                if(value < 0)
+                {
+                    throw new ExcepcionNumeroNegativo("El codigo no puede ser negativo");
+                }
+                else if(value > 1000)
+                {
+                    throw new ExcepcionNumeroMuyAlto("El codigo debe ser menor o igual a 1000");
+                }
+                this.codigo = value;
+            }
             
         }
         public float Precio
