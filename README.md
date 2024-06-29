@@ -27,7 +27,7 @@ En el menu se puede clickear una opcion del menuStrip para visualizar el registr
 ## Entidades:
 
 ### Clase Kiosco
-Es la clase responsable de almacenar y gestionar la Lista de Golosinas(esa lista puede tener 3 tipos de Golosina, chocolates, chicles o chupetines). Sus atributos incluyen la lista de golosinas disponibles y la capacidad maxima de distintos tipos de golosinas. Proporciona metodos para mostrar y calcular detalles de las golosinas, asi como para ordenarlas de distintas maneras. Ademas ofrece operadores para agregar y elimar golosinas, verificar su presencia en el kiosco y conversiones implicitas y explicitas.
+La clase Kiosco<T> representa un kiosco que almacena golosinas genericas (T), donde T debe ser un tipo derivado de la clase base Golosina. Permite gestionar y realizar operaciones como agregar, eliminar y mostrar golosinas, así como calcular el precio total de las golosinas almacenadas. Tambien incluye funcionalidades como ordenar golosinas basado en criterios especificos, gestionar eventos cuando se alcanza la capacidad maxima del kiosco o cuando se agregan o eliminan golosinas, y sobrecargas de operadores para facilitar la manipulación de golosinas en el kiosco.
 
 ### clase Golosina
 Es una clase abstracta que representa una golosina generica. Contiene atributos como codigo, precio, peso y cantidad, tambien tiene propiedades para acceder y modifiar sus valores.

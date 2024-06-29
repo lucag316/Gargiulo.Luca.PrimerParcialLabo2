@@ -8,58 +8,69 @@ namespace Entidades.JerarquiaYContenedora
     /// <summary>
     /// Representa un kiosco que almacena golosinas.
     /// </summary>
+    //// <typeparam name="T">Tipo de golosina que puede almacenar el kiosco.</typeparam>
     public class Kiosco<T> : IOrdenable<T> where T : Golosina
     {
         #region Atributos
         private List<T> golosinas;
         private int capacidadGolosinasDistintas;
-        //private string detalle = "";    //inicializo asi no me tira advertencia
         #endregion
 
         #region Eventos
-        public static event MensajeKioscoHandler CapacidadMaximaAlcanzada; //lo hice estatic asi los puedo poner en +
-        public static event MensajeKioscoHandler GolosinaYaEstaEnLista;
-        public static event MensajeKioscoHandler GolosinaAgregadaExitosamente;
-        public static event MensajeKioscoHandler GolosinaEliminadaExitosamente;
-        public static event MensajeKioscoHandler GolosinaModificadaExitosamente;
-
+        /// <summary>
+        /// Evento lanzado cuando se alcanza la capacidad maxima del kiosco.
+        /// </summary>
+        public static event MensajeKioscoHandler? CapacidadMaximaAlcanzada; //lo hice estatic asi los puedo poner en +
+        public static event MensajeKioscoHandler? GolosinaYaEstaEnLista;
+        public static event MensajeKioscoHandler? GolosinaAgregadaExitosamente;
+        public static event MensajeKioscoHandler? GolosinaEliminadaExitosamente;
+        public static event MensajeKioscoHandler? GolosinaModificadaExitosamente;
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Lista de golosinas almacenadas en el kiosco.
+        /// </summary>
         public List<T> Golosinas
         {
-            get { return golosinas; }
+            get { return this.golosinas; }
         }
-
+        /// <summary>
+        /// Capacidad maxima de golosinas distintas que puede contener el kiosco.
+        /// </summary>
         public int CapacidadGolosinasDistintas
         {
-            get { return capacidadGolosinasDistintas; }
-            set { capacidadGolosinasDistintas = value; }
+            get => this.capacidadGolosinasDistintas;
+            set => this.capacidadGolosinasDistintas = value;
         }
         #endregion
 
         #region Constructores
 
         /// <summary>
-        /// Constructor sin parametros que inicializa la lista de golosinas y establece una capacidad predeterminada.
+        /// Constructor sin parametros que inicializa el kiosco con una capacidad predeterminada.
         /// </summary>
         public Kiosco()
         {
-            golosinas = new List<T>();
-            capacidadGolosinasDistintas = 4;
+            this.golosinas = new List<T>();
+            this.capacidadGolosinasDistintas = 4;
         }
+        /// <summary>
+        /// Constructor que inicializa el kiosco con una capacidad especificada.
+        /// </summary>
+        //// <param name="capacidadGolosinasDistintas">Capacidad maxima de golosinas distintas que puede contener el kiosco.</param>
         public Kiosco(int capacidadGolosinasDistintas) : this()
         {
             this.capacidadGolosinasDistintas = capacidadGolosinasDistintas;
         }
         #endregion
 
-        #region Metodos Mostrar y calcular
+        #region Metodos de visualizacion y calculo
 
         /// <summary>
-        /// Muestra una lista de golosinas en un formato adecuado para un visor.
+        /// Muestra la lista de golosinas en un formato adecuado para un visor.
         /// </summary>
-        /// <returns>Una cadena con la lista de golosinas.</returns>
+        /// <returns>Cadena con la lista de golosinas.</returns>
         public string MostrarListaEnVisor()
         {
             StringBuilder sb = new StringBuilder();
@@ -71,6 +82,10 @@ namespace Entidades.JerarquiaYContenedora
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Muestra la lista de golosinas junto con el precio total en un formato adecuado para un visor.
+        /// </summary>
+        /// <returns>Cadena con la lista de golosinas y el precio total.</returns>
         public string MostrarListaEnVisorDetalle()
         {
             StringBuilder sb = new StringBuilder();
@@ -84,15 +99,14 @@ namespace Entidades.JerarquiaYContenedora
             sb.AppendLine("\n============================================= PRECIOS TOTAL =============================================");
             sb.AppendLine($"  TOTAL: ${precioTotal.ToString()}");
             sb.AppendLine("========================================================================================================\n");
+            
             return sb.ToString();
         }
-
-
 
         /// <summary>
         /// Calcula el precio total de todas las golosinas en el kiosco.
         /// </summary>
-        /// <returns>El precio total de todas las golosinas.</returns>
+        /// <returns>Precio total de todas las golosinas.</returns>
         public double CalcularPrecioTotal()
         {
             double precioTotal = 0;
@@ -104,11 +118,17 @@ namespace Entidades.JerarquiaYContenedora
 
             return precioTotal;
         }
-
         #endregion
 
         #region Metodos de Ordenamiento
-
+        /// <summary>
+        /// Ordena las golosinas del kiosco segun los selectores especificados y el criterio de orden ascendente o descendente.
+        /// </summary>
+        //// <typeparam name="TPropiedad1">Tipo de la primera propiedad para ordenar.</typeparam>
+        //// <typeparam name="TPropiedad2">Tipo de la segunda propiedad para ordenar.</typeparam>
+        //// <param name="selector1">Selector de la primera propiedad.</param>
+        //// <param name="selector2">Selector de la segunda propiedad.</param>
+        //// <param name="ascendente">true para ordenar ascendente, false para ordenar descendente.</param>
         public void Ordenar<TPropiedad1, TPropiedad2>(Func<T, TPropiedad1> selector1, Func<T, TPropiedad2> selector2, bool ascendente)
         {
             if (ascendente)
@@ -145,18 +165,16 @@ namespace Entidades.JerarquiaYContenedora
             }
             throw new ArgumentException("Los tipos de propiedad no son comparables.");
         }
-
-
         #endregion
 
         #region Operadores suma y resta
 
         /// <summary>
-        /// Agrega una golosina al kiosco si no excede la capacidad maxima.
+        /// Agrega una golosina al kiosco si no se ha alcanzado la capacidad maxima.
         /// </summary>
-        //// <param name="kiosco">El kiosco al que se agrega la golosina.</param>
-        //// <param name="golosina">La golosina a agregar.</param>
-        /// <returns>El kiosco con la golosina agregada.</returns>
+        //// <param name="kiosco">Kiosco al que se agrega la golosina.</param>
+        //// <param name="golosina">Golosina a agregar.</param>
+        /// <returns>Kiosco con la golosina agregada.</returns>
         public static Kiosco<T> operator +(Kiosco<T> kiosco, T golosina)
         {
             if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas)
@@ -164,29 +182,26 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco != golosina) //si la golosina no esta en el kiosco, la agrego
                 {
                     kiosco.Golosinas.Add(golosina);
-                    GolosinaAgregadaExitosamente.Invoke($"Se agrego la golosina con el codigo de barra: {golosina.Codigo} exitosamente");
+                    GolosinaAgregadaExitosamente?.Invoke($"Se agrego la golosina con el codigo de barra: {golosina.Codigo} exitosamente");
                 }
                 else
                 {
-                    //Console.WriteLine("La golosina ya esta en el kiosco");
-                    GolosinaYaEstaEnLista.Invoke("La golosina ya esta en el kiosco");
-                    //throw new InvalidOperationException("La golosina ya esta en el kiosco.");
+                    GolosinaYaEstaEnLista?.Invoke("La golosina ya esta en el kiosco");
                 }
             }
             else
             {
-
-                CapacidadMaximaAlcanzada.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
+                CapacidadMaximaAlcanzada?.Invoke("No se puede agregar mas, se alcanzo la capacidad maxima del kiosco.");
             }
             return kiosco;
         }
 
         /// <summary>
-        /// Elimina una golosina del kiosco, solo si esta.
+        /// Elimina una golosina del kiosco si esta presente.
         /// </summary>
-        //// <param name="kiosco">El kiosco del que se elimina la golosina.</param>
-        //// <param name="golosina">La golosina a eliminar.</param>
-        /// <returns>El kiosco con la golosina eliminada.</returns>
+        //// <param name="kiosco">Kiosco del que se elimina la golosina.</param>
+        //// <param name="golosina">Golosina a eliminar.</param>
+        /// <returns>Kiosco con la golosina eliminada.</returns>
         public static Kiosco<T> operator -(Kiosco<T> kiosco, T golosina)
         {
             if (kiosco.Golosinas.Count > 0)
@@ -194,26 +209,22 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco == golosina)//si la golosina esta en el kiosco, la saco
                 {
                     kiosco.Golosinas.Remove(golosina);
-                    GolosinaEliminadaExitosamente.Invoke($"Se elimino la golosina con codigo de barra: {golosina.Codigo} exitosamente.");
+                    GolosinaEliminadaExitosamente?.Invoke($"Se elimino la golosina con codigo de barra: {golosina.Codigo} exitosamente.");
                 }
                 else
                 {
-                    GolosinaYaEstaEnLista?.Invoke($"La golosina {golosina.Codigo} ya está en el kiosco.");
+                    GolosinaYaEstaEnLista?.Invoke($"La golosina {golosina.Codigo} ya no esta en el kiosco.");
                 }
-            }
-            else
-            {
-                CapacidadMaximaAlcanzada?.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
             }
             return kiosco;
         }
 
         /// <summary>
-        /// Agrega una lista de golosinas al kiosco si no excede la capacidad maxima.
+        /// Agrega una lista de golosinas al kiosco si no se supera la capacidad maxima.
         /// </summary>
-        //// <param name="kiosco">El kiosco al que se agregan las golosinas.</param>
-        //// <param name="listaGolosina">La lista de golosinas a agregar.</param>
-        /// <returns>El kiosco con las golosinas agregadas.</returns>
+        //// <param name="kiosco">Kiosco al que se agregan las golosinas.</param>
+        //// <param name="listaGolosina">Lista de golosinas a agregar.</param>
+        /// <returns>Kiosco con las golosinas agregadas.</returns>
         public static Kiosco<T> operator +(Kiosco<T> kiosco, List<T> listaGolosina)
         {
             if (kiosco.Golosinas.Count + listaGolosina.Count <= kiosco.capacidadGolosinasDistintas)
@@ -235,7 +246,7 @@ namespace Entidades.JerarquiaYContenedora
         }
         #endregion
 
-        #region Operadores de igualdad
+        #region Operadores de igualdad //DOCUMENTAR MEJOR
 
         /// <summary>
         /// Determina si una golosina esta en el kiosco.
@@ -264,13 +275,19 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Operadores implicitos y explicitos
-
+        /// <summary>
+        /// Convierte el kiosco en una lista de golosinas implicitamente.
+        /// </summary>
+        //// <param name="kiosco">Kiosco a convertir.</param>
         public static implicit operator List<T>(Kiosco<T> kiosco)
         {
             return kiosco.Golosinas;
         }
 
-        // Conversión explícita de Kiosco<T> a string
+        /// <summary>
+        /// Convierte el kiosco en una cadena de texto explicitamente.
+        /// </summary>
+        //// <param name="kiosco">Kiosco a convertir.</param>
         public static explicit operator string(Kiosco<T> kiosco)
         {
             return $"Kiosco con {kiosco.Golosinas.Count} golosinas";
@@ -278,7 +295,11 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Metodos de object sobrescritos
-        //VER SI ESTA BIEN, DEJE COMENTADO EL VIEJO PARA VER SI CAMBIARLO O NO
+        /// <summary>
+        /// Determina si el objeto actual es igual a otro objeto.
+        /// </summary>
+        //// <param name="obj">Objeto a comparar.</param>
+        /// <returns>true si el objeto es igual al objeto actual; de lo contrario, false.</returns>
         public override bool Equals(object? obj)
         {
             if (obj is T golosina)
@@ -291,39 +312,342 @@ namespace Entidades.JerarquiaYContenedora
             }
             return false;
         }
-        //        public override bool Equals(object? obj)
-        //        {
-        //            bool estaEnKiosco = false;
-
-
-        //            if (obj is Golosina)
-        //            {
-        //                Golosina golosina = (Golosina)obj;
-
-        //                foreach (Golosina item in this.Golosinas)
-        //                {
-        //                    if (item == golosina)
-        //                    {
-        //                        estaEnKiosco = true;
-        //                    }
-        //                }
-        //            }
-        //            return estaEnKiosco;
-        //        }
 
         public override int GetHashCode() //lo agregue para que no me tire advertencia
         {
             throw new NotImplementedException();
         }
-
         #endregion
-
     }
 }
 
 
+//using Entidades.Interfaces;
+//using System.Runtime.CompilerServices;
+//using System.Text;
+
+//namespace Entidades.JerarquiaYContenedora
+//{
+
+//    /// <summary>
+//    /// Representa un kiosco que almacena golosinas.
+//    /// </summary>
+//    public class Kiosco<T> : IOrdenable<T> where T : Golosina
+//    {
+//        #region Atributos
+//        private List<T> golosinas;
+//        private int capacidadGolosinasDistintas;
+//        //private string detalle = "";    //inicializo asi no me tira advertencia
+//        #endregion
+
+//        #region Eventos
+//        public static event MensajeKioscoHandler CapacidadMaximaAlcanzada; //lo hice estatic asi los puedo poner en +
+//        public static event MensajeKioscoHandler GolosinaYaEstaEnLista;
+//        public static event MensajeKioscoHandler GolosinaAgregadaExitosamente;
+//        public static event MensajeKioscoHandler GolosinaEliminadaExitosamente;
+//        public static event MensajeKioscoHandler GolosinaModificadaExitosamente;
+
+//        #endregion
+
+//        #region Propiedades
+//        public List<T> Golosinas
+//        {
+//            get { return golosinas; }
+//        }
+
+//        public int CapacidadGolosinasDistintas
+//        {
+//            get { return capacidadGolosinasDistintas; }
+//            set { capacidadGolosinasDistintas = value; }
+//        }
+//        #endregion
+
+//        #region Constructores
+
+//        /// <summary>
+//        /// Constructor sin parametros que inicializa la lista de golosinas y establece una capacidad predeterminada.
+//        /// </summary>
+//        public Kiosco()
+//        {
+//            golosinas = new List<T>();
+//            capacidadGolosinasDistintas = 4;
+//        }
+//        public Kiosco(int capacidadGolosinasDistintas) : this()
+//        {
+//            this.capacidadGolosinasDistintas = capacidadGolosinasDistintas;
+//        }
+//        #endregion
+
+//        #region Metodos Mostrar y calcular
+
+//        /// <summary>
+//        /// Muestra una lista de golosinas en un formato adecuado para un visor.
+//        /// </summary>
+//        /// <returns>Una cadena con la lista de golosinas.</returns>
+//        public string MostrarListaEnVisor()
+//        {
+//            StringBuilder sb = new StringBuilder();
+
+//            foreach (T golosina in Golosinas)
+//            {
+//                sb.AppendLine(golosina.MostrarEnVisor());
+//            }
+//            return sb.ToString();
+//        }
+
+//        public string MostrarListaEnVisorDetalle()
+//        {
+//            StringBuilder sb = new StringBuilder();
+//            sb.AppendLine("============================================= LISTA DE GOLOSINAS ==========================================");
+//            foreach (T golosina in Golosinas)
+//            {
+//                sb.AppendLine(golosina.MostrarEnVisor());
+//            }
+//            double precioTotal = CalcularPrecioTotal();
+
+//            sb.AppendLine("\n============================================= PRECIOS TOTAL =============================================");
+//            sb.AppendLine($"  TOTAL: ${precioTotal.ToString()}");
+//            sb.AppendLine("========================================================================================================\n");
+//            return sb.ToString();
+//        }
 
 
+
+//        /// <summary>
+//        /// Calcula el precio total de todas las golosinas en el kiosco.
+//        /// </summary>
+//        /// <returns>El precio total de todas las golosinas.</returns>
+//        public double CalcularPrecioTotal()
+//        {
+//            double precioTotal = 0;
+
+//            foreach (T golosina in golosinas)
+//            {
+//                precioTotal += golosina.CalcularPrecioFinal();
+//            }
+
+//            return precioTotal;
+//        }
+
+//        #endregion
+
+//        #region Metodos de Ordenamiento
+
+//        public void Ordenar<TPropiedad1, TPropiedad2>(Func<T, TPropiedad1> selector1, Func<T, TPropiedad2> selector2, bool ascendente)
+//        {
+//            if (ascendente)
+//            {
+//                Golosinas.Sort((g1, g2) =>
+//                {
+//                    int resultado = Comparar(selector1(g1), selector1(g2));
+//                    if (resultado == 0)
+//                    {
+//                        resultado = Comparar(selector2(g1), selector2(g2));
+//                    }
+//                    return resultado;
+//                });
+//            }
+//            else
+//            {
+//                Golosinas.Sort((g1, g2) =>
+//                {
+//                    int resultado = Comparar(selector1(g2), selector1(g1));
+//                    if (resultado == 0)
+//                    {
+//                        resultado = Comparar(selector2(g2), selector2(g1));
+//                    }
+//                    return resultado;
+//                });
+//            }
+//        }
+
+//        private int Comparar<TPropiedad>(TPropiedad valor1, TPropiedad valor2)
+//        {
+//            if (valor1 is IComparable comparable)
+//            {
+//                return comparable.CompareTo(valor2);
+//            }
+//            throw new ArgumentException("Los tipos de propiedad no son comparables.");
+//        }
+
+
+//        #endregion
+
+//        #region Operadores suma y resta
+
+//        /// <summary>
+//        /// Agrega una golosina al kiosco si no excede la capacidad maxima.
+//        /// </summary>
+//        //// <param name="kiosco">El kiosco al que se agrega la golosina.</param>
+//        //// <param name="golosina">La golosina a agregar.</param>
+//        /// <returns>El kiosco con la golosina agregada.</returns>
+//        public static Kiosco<T> operator +(Kiosco<T> kiosco, T golosina)
+//        {
+//            if (kiosco.Golosinas.Count < kiosco.capacidadGolosinasDistintas)
+//            {
+//                if (kiosco != golosina) //si la golosina no esta en el kiosco, la agrego
+//                {
+//                    kiosco.Golosinas.Add(golosina);
+//                    GolosinaAgregadaExitosamente.Invoke($"Se agrego la golosina con el codigo de barra: {golosina.Codigo} exitosamente");
+//                }
+//                else
+//                {
+//                    //Console.WriteLine("La golosina ya esta en el kiosco");
+//                    GolosinaYaEstaEnLista.Invoke("La golosina ya esta en el kiosco");
+//                    //throw new InvalidOperationException("La golosina ya esta en el kiosco.");
+//                }
+//            }
+//            else
+//            {
+
+//                CapacidadMaximaAlcanzada.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
+//            }
+//            return kiosco;
+//        }
+
+//        /// <summary>
+//        /// Elimina una golosina del kiosco, solo si esta.
+//        /// </summary>
+//        //// <param name="kiosco">El kiosco del que se elimina la golosina.</param>
+//        //// <param name="golosina">La golosina a eliminar.</param>
+//        /// <returns>El kiosco con la golosina eliminada.</returns>
+//        public static Kiosco<T> operator -(Kiosco<T> kiosco, T golosina)
+//        {
+//            if (kiosco.Golosinas.Count > 0)
+//            {
+//                if (kiosco == golosina)//si la golosina esta en el kiosco, la saco
+//                {
+//                    kiosco.Golosinas.Remove(golosina);
+//                    GolosinaEliminadaExitosamente.Invoke($"Se elimino la golosina con codigo de barra: {golosina.Codigo} exitosamente.");
+//                }
+//                else
+//                {
+//                    GolosinaYaEstaEnLista?.Invoke($"La golosina {golosina.Codigo} ya está en el kiosco.");
+//                }
+//            }
+//            else
+//            {
+//                CapacidadMaximaAlcanzada?.Invoke("No se puede agregar más, se alcanzó la capacidad máxima del kiosco.");
+//            }
+//            return kiosco;
+//        }
+
+//        /// <summary>
+//        /// Agrega una lista de golosinas al kiosco si no excede la capacidad maxima.
+//        /// </summary>
+//        //// <param name="kiosco">El kiosco al que se agregan las golosinas.</param>
+//        //// <param name="listaGolosina">La lista de golosinas a agregar.</param>
+//        /// <returns>El kiosco con las golosinas agregadas.</returns>
+//        public static Kiosco<T> operator +(Kiosco<T> kiosco, List<T> listaGolosina)
+//        {
+//            if (kiosco.Golosinas.Count + listaGolosina.Count <= kiosco.capacidadGolosinasDistintas)
+//            {
+//                if (listaGolosina != null)
+//                {
+//                    kiosco.Golosinas.AddRange(listaGolosina);
+//                }
+//                else
+//                {
+//                    Console.WriteLine("Error, no se puede operar valores nulos");
+//                }
+//            }
+//            else
+//            {
+//                Console.WriteLine("No se puede agregar mas, es la capacidad maxima del kiosco");
+//            }
+//            return kiosco;
+//        }
+//        #endregion
+
+//        #region Operadores de igualdad
+
+//        /// <summary>
+//        /// Determina si una golosina esta en el kiosco.
+//        /// </summary>
+//        //// <param name="kiosco">El kiosco en el que se busca la golosina.</param>
+//        //// <param name="golosina">La golosina a buscar.</param>
+//        /// <returns>true si la golosina esta en el kiosco; de lo contrario, false.</returns>
+//        public static bool operator ==(Kiosco<T> kiosco, T golosina)
+//        {
+//            bool estaEnKiosco = false;
+
+//            foreach (Golosina item in kiosco.Golosinas)
+//            {
+//                if (item == golosina)
+//                {
+//                    estaEnKiosco = true;
+//                    break;
+//                }
+//            }
+//            return estaEnKiosco;
+//        }
+//        public static bool operator !=(Kiosco<T> kiosco, T golosina)
+//        {
+//            return !(kiosco == golosina); // va hacia el ==
+//        }
+//        #endregion
+
+//        #region Operadores implicitos y explicitos
+
+//        public static implicit operator List<T>(Kiosco<T> kiosco)
+//        {
+//            return kiosco.Golosinas;
+//        }
+
+//        // Conversión explícita de Kiosco<T> a string
+//        public static explicit operator string(Kiosco<T> kiosco)
+//        {
+//            return $"Kiosco con {kiosco.Golosinas.Count} golosinas";
+//        }
+//        #endregion
+
+//        #region Metodos de object sobrescritos
+//        //VER SI ESTA BIEN, DEJE COMENTADO EL VIEJO PARA VER SI CAMBIARLO O NO
+//        public override bool Equals(object? obj)
+//        {
+//            if (obj is T golosina)
+//            {
+//                return this == golosina;
+//            }
+//            else if (obj is Kiosco<T> otherKiosco)
+//            {
+//                return this.Golosinas.SequenceEqual(otherKiosco.Golosinas);
+//            }
+//            return false;
+//        }
+//        //        public override bool Equals(object? obj)
+//        //        {
+//        //            bool estaEnKiosco = false;
+
+
+//        //            if (obj is Golosina)
+//        //            {
+//        //                Golosina golosina = (Golosina)obj;
+
+//        //                foreach (Golosina item in this.Golosinas)
+//        //                {
+//        //                    if (item == golosina)
+//        //                    {
+//        //                        estaEnKiosco = true;
+//        //                    }
+//        //                }
+//        //            }
+//        //            return estaEnKiosco;
+//        //        }
+
+//        public override int GetHashCode() //lo agregue para que no me tire advertencia
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        #endregion
+
+//    }
+//}
+
+
+
+//----------------------------------
 
 
 
