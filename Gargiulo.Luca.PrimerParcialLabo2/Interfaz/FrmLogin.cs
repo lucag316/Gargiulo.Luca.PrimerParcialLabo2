@@ -1,5 +1,6 @@
 using Entidades;
 using Entidades.OtrasClases;
+using Entidades.Serializadoras;
 
 namespace Interfaz
 {
@@ -21,7 +22,7 @@ namespace Interfaz
 
             try
             {
-                this.usuarios = Serializadora.DeserializarUsuariosJSON(pathJsonUsuarios);
+                this.usuarios = SerializadorJSON<Usuario>.DeserializarUsuariosJSON(pathJsonUsuarios);
             }
             catch (Exception ex)
             {

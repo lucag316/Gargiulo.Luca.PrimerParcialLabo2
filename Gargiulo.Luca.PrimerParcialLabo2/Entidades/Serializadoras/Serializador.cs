@@ -6,24 +6,34 @@ using System.Threading.Tasks;
 
 namespace Entidades.Serializadoras
 {
+    /// <summary>
+    /// Clase abstracta base para serializacion, proporciona una funcionalidad comun para manejar rutas de archivos.
+    /// </summary>
     public abstract class Serializador
     {
         #region Atributos
-        //simplemente lo hago para no volver a escribir lo del path en las derivadas
+        /// <summary>
+        /// Ruta del archivo donde se realizaran las operaciones de serializacion/deserializacion.
+        /// </summary>
         private string path;
-
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Obtiene o establece la ruta del archivo de serializacion.
+        /// </summary>
         public string Path
         {
             get { return this.path; }
             set { this.path = value; }
         }
-
         #endregion
 
         #region Constructores
+        /// <summary>
+        /// Constructor que inicializa la ruta del archivo de serializacion.
+        /// </summary>
+        //// <param name="path">Ruta del archivo. Puede ser una ruta absoluta o relativa.</param>
         public Serializador(string path)
         {
             if (System.IO.Path.IsPathRooted(path))
@@ -36,9 +46,10 @@ namespace Entidades.Serializadoras
                 this.path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GolosinasSerializadas", path);
             }
 
-            string directory = System.IO.Path.GetDirectoryName(this.path);
+            string directory = System.IO.Path.GetDirectoryName(this.path) ?? String.Empty; // le doy un valor predeterminado si es null
 
-            if (!Directory.Exists(directory) && directory != null)
+
+            if (!Directory.Exists(directory) && directory != null) //si el directorio no existe, lo creo
             {
                 Directory.CreateDirectory(directory);
             }

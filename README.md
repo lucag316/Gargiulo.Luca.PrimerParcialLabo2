@@ -41,10 +41,18 @@ Esta clase representa un tipo especifico de golosina. Hereda de la clase base Go
 ### clase Chupetin
 Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chupetines
 
+### clase Serializador
+Es una clase abstracta que proporciona una base comun para la serializacion y deserializacion de archivos, manejando la ruta del archivo donde se realizaran estas operaciones. Permite establecer y obtener la ruta del archivo, asegurando que la ruta sea absoluta y creando automaticamente el directorio necesario si no existe.
+
+### clase SerializadorXML
+ Maneja la serializacion y deserializacion de objetos genericos en formato XML, con soporte especifico para los tipos Chocolate, Chicle y Chupetin. Hereda de la clase Serializador para gestionar las rutas de los archivos de manera flexible, permitiendo usar rutas absolutas o relativas. Implementa metodos estaticos para serializar y deserializar listas de objetos, manejando excepciones para asegurar la robustez del proceso.
+
+### clase SerializadorJSON
+
 ## Formularios:
 
 ### FrmGolosina
-Es un formulario que proporciona una base solida para formularios de golosinas mas especificas, para el ingreso de datos, facilitando la validacion y permitiendo la personalizacion mediante herencia. Esta clase, es Padre de FrmChocolate, FrmChicle y FrmChupetin.
+Es un formulario diseñado para capturar y validar información de golosinas, incluyendo codigo, precio, peso y cantidad. Utiliza eventos como btnAceptar_Click para validar los datos ingresados por el usuario y mostrar mensajes de error especificos mediante excepciones personalizadas (ExcepcionDatoNoNumerico, ExcepcionNumeroNegativo, ExcepcionNumeroMuyAlto). Ademas, ofrece la opcion de cancelar la operacion con el boton btnCancelar_Click, proporcionando una experiencia interactiva y segura al usuario al manejar adecuadamente las entradas numericas y el flujo de cancelacion.
 
 ### FrmChocolate
 
