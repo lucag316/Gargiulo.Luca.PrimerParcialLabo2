@@ -38,6 +38,8 @@ Esta clase representa un tipo especifico de golosina. Hereda de la clase base Go
 ### clase Chupetin
 Esta clase representa un tipo especifico de golosina. Hereda de la clase base Golosina y agrega atributos y comportamientos especificos para los chupetines
 
+![Diagrama de Clases Jerarquia](Gargiulo.Luca.PrimerParcialLabo2/DiagramaJerarquia.png)
+
 ### clase Serializador
 Es una clase abstracta que proporciona una base comun para la serializacion y deserializacion de archivos, manejando la ruta del archivo donde se realizaran estas operaciones. Permite establecer y obtener la ruta del archivo, asegurando que la ruta sea absoluta y creando automaticamente el directorio necesario si no existe.
 
@@ -68,4 +70,4 @@ Es un formulario diseñado para mostrar el detalle del kiosco de golosinas. Incl
 
 ### Diagrama de Clases
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
-![Diagrama de Clases Jerarquia](Gargiulo.Luca.PrimerParcialLabo2/Jerarquia.png)
+
