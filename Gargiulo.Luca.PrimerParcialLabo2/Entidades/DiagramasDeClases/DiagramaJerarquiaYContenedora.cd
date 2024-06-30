@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Entidades.JerarquiaYContenedora.Golosina">
+    <Position X="13.75" Y="0.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AQABAEEAAQBACAAEgAAAAAAQAAAAEIAACAAAAAAAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Golosina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chocolate">
+    <Position X="2.5" Y="8" Width="7.5" />
+    <TypeIdentifier>
+      <HashCode>AiACAAAAAAAACEAEwCAAAAAgAAAAAMAASAAAAAIAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chocolate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chupetin">
+    <Position X="21.5" Y="8" Width="9" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAEgAQAAAAEgAAAAICACAAAgAAAgiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chupetin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chicle">
+    <Position X="11" Y="8" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgAAACMAEggAAAAIAAAAAAIAACBAAAAAAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chicle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Kiosco&lt;T&gt;">
+    <Position X="3" Y="0.5" Width="8" />
+    <TypeIdentifier>
+      <HashCode>ABAAIAQAASAAEAgAwAUAgAIQAAAgAIAAIAAAAAEAEiQ=</HashCode>
+      <FileName>JerarquiaYContenedora\Kiosco.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Entidades.JerarquiaYContenedora.Golosina">
+    <Position X="19.25" Y="2.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AQABAEEAAQBACAAEgAAAAAAQAAAAEIAACAAAAAAAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Golosina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chocolate">
+    <Position X="7.75" Y="9.25" Width="7.5" />
+    <TypeIdentifier>
+      <HashCode>AiACAAAAAAAACEAEwCAAAAAgAAAAAMAASAAAAAIAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chocolate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chicle">
+    <Position X="16.5" Y="9.25" Width="9.5" />
+    <InheritanceLine Type="Entidades.JerarquiaYContenedora.Golosina" ManuallyRouted="true">
+      <Path>
+        <Point X="21.375" Y="7.776" />
+        <Point X="21.375" Y="9.126" />
+        <Point X="21.25" Y="9.126" />
+        <Point X="21.25" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgAAACMAEggAAAAIAAAAAAIAACBAAAAAAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chicle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chupetin">
+    <Position X="27.25" Y="9.25" Width="9.25" />
+    <InheritanceLine Type="Entidades.JerarquiaYContenedora.Golosina" ManuallyRouted="true">
+      <Path>
+        <Point X="21.375" Y="7.776" />
+        <Point X="21.375" Y="8.875" />
+        <Point X="31.875" Y="8.875" />
+        <Point X="31.875" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAEgAQAAAAEgAAAAICACAAAgAAAgiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chupetin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

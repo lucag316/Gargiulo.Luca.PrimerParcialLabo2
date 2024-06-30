@@ -11,22 +11,36 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario para visualizar el registro de usuarios almacenado en un archivo especifico.
+    /// </summary>
     public partial class FrmVisualizadorUsuariosLog : Form
     {
+        #region Atributos
         private UsuarioLog usuarioLog;
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Constructor que inicializa el formulario y carga el contenido del archivo de registro de usuarios.
+        /// </summary>
+        //// <param name="logFilePath">Ruta del archivo de registro de usuarios.</param>
         public FrmVisualizadorUsuariosLog(string logFilePath) //paso la ruta del archivo de registro de usuarios
         {
             InitializeComponent();
             this.usuarioLog = new UsuarioLog(logFilePath);
             MostrarLog();
         }
+        #endregion
 
+        #region Manejadores de eventos
         private void FrmVisualizadorUsuariosLog_Load(object sender, EventArgs e)
         {
 
         }
+        #endregion
 
+        #region Metodo Mostrar
         /// <summary>
         /// Muestra el contenido del archivo de registro de usuarios en el ListBox.
         /// </summary>
@@ -43,5 +57,6 @@ namespace Interfaz
                 this.lstVisualizadorUsuariosLog.Items.Add(line); // Agrego cada linea a la lista
             }
         }
+        #endregion
     }
 }

@@ -92,7 +92,7 @@ namespace Entidades.JerarquiaYContenedora
             sb.AppendLine("============================================= LISTA DE GOLOSINAS ==========================================");
             foreach (T golosina in Golosinas)
             {
-                sb.AppendLine(golosina.MostrarEnVisor());
+                sb.AppendLine(golosina.ToString());
             }
             double precioTotal = CalcularPrecioTotal();
 
