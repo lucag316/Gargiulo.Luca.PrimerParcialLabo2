@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario para ingresar informacion especifica de un chicle.
+    /// </summary>
     public partial class FrmChicle : FrmGolosina
     {
         #region Atributos
@@ -18,6 +21,9 @@ namespace Interfaz
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Obtiene el objeto Chicle modificado o creado en el formulario.
+        /// </summary>
         public Chicle MiChicle 
         { 
             get { return this.miChicle; } 
@@ -25,13 +31,21 @@ namespace Interfaz
         #endregion
 
         #region Constructores
+        /// <summary>
+        /// Constructor por defecto de FrmChicle.
+        /// </summary>
         public FrmChicle() : base()
         {
             InitializeComponent();
             ConfigurarComboBoxes();
-            this.miChicle = new Chicle(); //fijarme en chocolate
+            this.miChicle = new Chicle();
             
         }
+
+        /// <summary>
+        /// Constructor que inicializa el formulario con un objeto Chicle existente.
+        /// </summary>
+        //// <param name="chicle">Objeto Chicle a editar.</param>
         public FrmChicle(Chicle chicle) : this()
         {
             InicializarControlesGenerales(chicle);
@@ -44,10 +58,14 @@ namespace Interfaz
 
         }
 
+        /// <summary>
+        /// Manejador del evento Click del boton Aceptar.
+        /// </summary>
+        //// <param name="sender">Objeto que envia el evento.</param>
+        //// <param name="e">Argumentos del evento.</param>
         protected override void btnAceptar_Click(object sender, EventArgs e)
         {
             base.btnAceptar_Click(sender, e);
-
 
             if (this.DialogResult == DialogResult.OK)
             {
@@ -67,7 +85,11 @@ namespace Interfaz
         #endregion
 
         #region Metodos de inicializacion y configuracion
-        public void InicializarControlesGenerales(Chicle chicle) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
+        /// <summary>
+        /// Inicializa los controles del formulario con los datos de un objeto Chicle existente.
+        /// </summary>
+        //// <param name="chicle">Objeto Chicle a mostrar en los controles.</param>
+        public void InicializarControlesGenerales(Chicle chicle)
         {
             txtCodigo.Text = chicle.Codigo.ToString();
             txtPeso.Text = chicle.Peso.ToString();
@@ -81,6 +103,10 @@ namespace Interfaz
             this.txtCodigo.Enabled = false;
         }
 
+
+        /// <summary>
+        /// Configura los ComboBoxes del formulario con los valores de los Enums ENivelesDeelasticidad y ENivelesDuracionDelSabor.
+        /// </summary>
         public void ConfigurarComboBoxes()
         {
             foreach (ENivelesDeElasticidad elasticidad in Enum.GetValues(typeof(ENivelesDeElasticidad)))
@@ -88,16 +114,15 @@ namespace Interfaz
                 this.cboElasticidad.Items.Add(elasticidad);
             }
             this.cboElasticidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboElasticidad.SelectedItem = ENivelesDeElasticidad.Media; //valor predeterminado
+            this.cboElasticidad.SelectedItem = ENivelesDeElasticidad.Media;
 
             foreach (ENivelesDuracionDeSabor duracionSabor in Enum.GetValues(typeof(ENivelesDuracionDeSabor)))
             {
                 this.cboDuracionSabor.Items.Add(duracionSabor);
             }
             this.cboDuracionSabor.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboDuracionSabor.SelectedItem = ENivelesDuracionDeSabor.Media; //valor predeterminado
+            this.cboDuracionSabor.SelectedItem = ENivelesDuracionDeSabor.Media;
         }
         #endregion
-
     }
 }

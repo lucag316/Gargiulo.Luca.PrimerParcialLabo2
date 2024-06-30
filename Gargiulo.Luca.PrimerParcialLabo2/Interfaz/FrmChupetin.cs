@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
+    /// <summary>
+    /// Formulario para ingresar informacion especifica de un chupetin.
+    /// </summary>
     public partial class FrmChupetin : FrmGolosina
     {
         #region Atributos
@@ -19,6 +22,9 @@ namespace Interfaz
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Obtiene el objeto Chupetin modificado o creado en el formulario.
+        /// </summary>
         public Chupetin MiChupetin 
         { 
             get { return this.miChupetin; } 
@@ -26,13 +32,20 @@ namespace Interfaz
         #endregion
 
         #region Constructores
+        /// <summary>
+        /// Constructor por defecto de FrmChupetin.
+        /// </summary>
         public FrmChupetin() : base()
         {
             InitializeComponent();
             ConfigurarComboBoxes();
-            this.miChupetin = new Chupetin(); //fijarme en chocolate
+            this.miChupetin = new Chupetin();
         }
 
+        /// <summary>
+        /// Constructor que inicializa el formulario con un objeto Chupetin existente.
+        /// </summary>
+        //// <param name="chupetin">Objeto Chupetin a editar.</param>
         public FrmChupetin(Chupetin chupetin) : this()
         {
             InicializarControlesGenerales(chupetin);
@@ -45,6 +58,11 @@ namespace Interfaz
 
         }
 
+        /// <summary>
+        /// Manejador del evento Click del boton Aceptar.
+        /// </summary>
+        //// <param name="sender">Objeto que envia el evento.</param>
+        //// <param name="e">Argumentos del evento.</param>
         protected override void btnAceptar_Click(object sender, EventArgs e)
         {
             base.btnAceptar_Click(sender, e);
@@ -68,8 +86,11 @@ namespace Interfaz
         #endregion
 
         #region Metodos de inicializacion y configuracion
-
-        public void InicializarControlesGenerales(Chupetin chupetin) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
+        /// <summary>
+        /// Inicializa los controles del formulario con los datos de un objeto Chupetin existente.
+        /// </summary>
+        //// <param name="chupetin">Objeto Chupetin a mostrar en los controles.</param>
+        public void InicializarControlesGenerales(Chupetin chupetin) 
         {
             txtCodigo.Text = chupetin.Codigo.ToString();
             txtPeso.Text = chupetin.Peso.ToString();
@@ -83,6 +104,9 @@ namespace Interfaz
             this.txtCodigo.Enabled = false; 
         }
 
+        /// <summary>
+        /// Configura los ComboBoxes del formulario con los valores de los Enums EFormasDeChupetin y ENivelesDeDureza.
+        /// </summary>
         public void ConfigurarComboBoxes()
         {
             foreach (EFormasDeChupetin formaChupetin in Enum.GetValues(typeof(EFormasDeChupetin)))

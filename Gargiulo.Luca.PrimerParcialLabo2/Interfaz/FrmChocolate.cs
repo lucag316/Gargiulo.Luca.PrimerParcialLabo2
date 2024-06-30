@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Interfaz
 {
     /// <summary>
-    /// Formulario para ingresar informacion específica de un chocolate.
+    /// Formulario para ingresar informacion especifica de un chocolate.
     /// </summary>
     public partial class FrmChocolate : FrmGolosina
     {
@@ -22,6 +22,9 @@ namespace Interfaz
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Obtiene el objeto Chocolate modificado o creado en el formulario.
+        /// </summary>
         public Chocolate MiChocolate 
         { 
             get { return this.miChocolate; } //propiedad publica que devuelve el modificado
@@ -29,13 +32,20 @@ namespace Interfaz
         #endregion
 
         #region Constructores
-        public FrmChocolate() : base()//:base()//ACA VA?O NO?
+        /// <summary>
+        /// Constructor por defecto de FrmChocolate.
+        /// </summary>
+        public FrmChocolate() : base()
         {
             InitializeComponent();
             ConfigurarComboBoxes();
             this.miChocolate = new Chocolate(); // Inicializacion aca para evitar error ed que puede ser nulo, el codigo me funciona, lo tenga o no, solo para sacar la advertencia
         }
 
+        /// <summary>
+        /// Constructor que inicializa el formulario con un objeto Chocolate existente.
+        /// </summary>
+        //// <param name="chocolate">Objeto Chocolate a editar.</param>
         public FrmChocolate(Chocolate chocolate) : this()
         {
             InicializarControlesGenerales(chocolate);
@@ -48,15 +58,17 @@ namespace Interfaz
 
         }
 
+        /// <summary>
+        /// Manejador del evento Click del boton Aceptar.
+        /// </summary>
+        //// <param name="sender">Objeto que envia el evento.</param>
+        //// <param name="e">Argumentos del evento.</param>
         protected override void btnAceptar_Click(object sender, EventArgs e)
         {
-
             base.btnAceptar_Click(sender, e); //llamo al metodo de Golosina
-
 
             if (this.DialogResult == DialogResult.OK)
             {
-
                 ERellenos relleno = (ERellenos)this.cboRelleno.SelectedItem;
                 ETiposDeCacao tipoDeCacao = (ETiposDeCacao)this.cboTipoDeCacao.SelectedItem;
                 bool esVegano = this.chkEsVegano.Checked;
@@ -75,7 +87,11 @@ namespace Interfaz
         #endregion
 
         #region Metodos de inicializacion y configuracion
-        public void InicializarControlesGenerales(Chocolate chocolate) //podria hacerlo protected y virtual y los 4 primeros hacerlos en golosina
+        /// <summary>
+        /// Inicializa los controles del formulario con los datos de un objeto Chocolate existente.
+        /// </summary>
+        //// <param name="chocolate">Objeto Chocolate a mostrar en los controles.</param>
+        public void InicializarControlesGenerales(Chocolate chocolate) 
         {
             txtCodigo.Text = chocolate.Codigo.ToString();
             txtPeso.Text = chocolate.Peso.ToString();
@@ -86,8 +102,12 @@ namespace Interfaz
             this.cboTipoDeCacao.SelectedItem = chocolate.TipoDeCacao;
             this.chkEsVegano.Checked = chocolate.EsVegano;
 
-            this.txtCodigo.Enabled = false; // para no poder modificar
+            this.txtCodigo.Enabled = false; // para no poder modificar el codigo
         }
+
+        /// <summary>
+        /// Configura los ComboBoxes del formulario con los valores de los Enums ERellenos y ETiposDeCacao.
+        /// </summary>
         public void ConfigurarComboBoxes()
         {
             foreach (ERellenos relleno in Enum.GetValues(typeof(ERellenos)))
@@ -106,7 +126,7 @@ namespace Interfaz
 
         }
         #endregion
-
+        /*
         private void MostrarMensajeCodigoNegativoMsgBox(int numero)
         {
             MessageBox.Show($"Error: El código no puede ser negativo. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,6 +140,6 @@ namespace Interfaz
         private void MostrarMensajeCodigoNoNumericoMsgBox(int numero)
         {
             MessageBox.Show($"Error: El código debe ser numérico. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        }*/
     }
 }
