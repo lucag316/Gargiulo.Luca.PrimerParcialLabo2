@@ -63,7 +63,7 @@ namespace TestsUnitarios
             kiosco += listaGolosinas;
 
             //// ASSERT - THEN - que esperamos?
-            CollectionAssert.AreEqual(listaGolosinas, kiosco.Golosinas);
+            CollectionAssert.AreEqual(listaGolosinas, kiosco.Productos);
         }
 
         [TestMethod]
@@ -79,7 +79,7 @@ namespace TestsUnitarios
             kiosco.Ordenar(g => g.Codigo, g => g.Codigo, true);
 
             // Assert
-            Assert.AreEqual(1, kiosco.Golosinas[0].Codigo);
+            Assert.AreEqual(1, kiosco.Productos[0].Codigo);
         }
 
         [TestMethod]

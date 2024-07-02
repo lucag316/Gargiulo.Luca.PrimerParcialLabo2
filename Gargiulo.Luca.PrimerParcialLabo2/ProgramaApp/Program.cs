@@ -6,7 +6,7 @@ internal class Program
     private static void Main(string[] args)
     {
         Kiosco<Golosina>.CapacidadMaximaAlcanzada += MostrarMensajeCapacidadMaxima;
-        Kiosco<Golosina>.GolosinaYaEstaEnLista += MostrarMensajeGolosinaRepetida;
+        Kiosco<Golosina>.ProductoYaEstaEnLista += MostrarMensajeGolosinaRepetida;
         Kiosco<Golosina> kiosco = new Kiosco<Golosina>(3);
 
         Chocolate chocolate1 = new Chocolate(1646416, 15, 10, 5);

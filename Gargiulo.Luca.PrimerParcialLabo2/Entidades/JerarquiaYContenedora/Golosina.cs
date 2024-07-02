@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Text.Json;
 using Entidades.Excepciones;
+using Entidades.Interfaces;
 
 namespace Entidades.JerarquiaYContenedora
 {
@@ -15,7 +16,7 @@ namespace Entidades.JerarquiaYContenedora
     [XmlInclude(typeof(Chocolate))]
     [XmlInclude(typeof(Chicle))]
     [XmlInclude(typeof(Chupetin))]
-    public abstract class Golosina
+    public abstract class Golosina : IProductoDeUnKiosco
     {
         #region Atributos
         /// <summary>
@@ -145,16 +146,11 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>True si el objeto especificado es igual a la golosina actual, en caso contrario, false.</returns>
         public override bool Equals(object? obj)
         {
-            bool mismaGolosina = false;
-
-            if (obj is Golosina)
+            if (obj is Golosina otraGolosina)
             {
-                if ((Golosina)obj == this) // voy al == de Golosina y Golosina
-                {
-                    mismaGolosina = true;
-                }
+                return this == otraGolosina;
             }
-            return mismaGolosina;
+            return false;
         }
 
         /// <summary>
@@ -203,25 +199,17 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>True si las golosinas son iguales, sino false
         public static bool operator ==(Golosina golosina1, Golosina golosina2)
         {
-            bool mismaGolosina = false;
-
             if (ReferenceEquals(golosina1, golosina2))
             {
-                mismaGolosina = true;
+                return true;
             }
 
-            if (golosina1 is null || golosina2 is null) // le pongo is en vez de == para que no me advierta lo de valores null
+            if (golosina1 is null || golosina2 is null)
             {
-                mismaGolosina = false;
+                return false;
             }
-            else if (!(golosina1 is null && golosina2 is null))
-            {
-                if (golosina1.Codigo == golosina2.Codigo && golosina1.precio == golosina2.precio)
-                {
-                    mismaGolosina = true;
-                }
-            }
-            return mismaGolosina;
+
+            return golosina1.Codigo == golosina2.Codigo && golosina1.Precio == golosina2.Precio;
         }
 
         /// <summary>

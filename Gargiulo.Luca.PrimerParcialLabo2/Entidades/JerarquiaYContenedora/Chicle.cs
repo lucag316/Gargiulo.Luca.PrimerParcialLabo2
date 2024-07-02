@@ -129,16 +129,11 @@ namespace Entidades.JerarquiaYContenedora
         {
             bool mismaGolosina = base.Equals(obj);
 
-            bool mismoChicle = false;
-
-            if (obj is Chicle)
+            if (obj is Chicle otroChicle)
             {
-                if ((Chicle)obj == this && mismaGolosina == true)
-                {
-                    mismoChicle = true;
-                }
+                return this == otroChicle && mismaGolosina;
             }
-            return mismoChicle;
+            return false;
         }
 
         /// <summary>
@@ -207,7 +202,7 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chicle chicle1, Chicle chicle2)
         {
-            bool mismoGolosina = chicle1 == (Golosina)chicle2;
+            bool mismoGolosina = (Golosina)chicle1 == (Golosina)chicle2;
 
             bool mismoChicle = mismoGolosina && chicle1.Elasticidad == chicle2.Elasticidad &&
                                                 chicle1.DuracionSabor == chicle2.DuracionSabor &&

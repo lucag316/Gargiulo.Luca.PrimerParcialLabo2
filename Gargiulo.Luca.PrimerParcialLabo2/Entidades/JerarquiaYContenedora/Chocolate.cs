@@ -133,19 +133,13 @@ namespace Entidades.JerarquiaYContenedora
         //DOCUMENTAR
         public override bool Equals(object? obj)
         {
-            bool mismaGolosina = base.Equals(obj); //creo que estas modificaciones estan bien
+            bool mismaGolosina = base.Equals(obj);
 
-            bool mismoChocolate = false;
-
-
-            if (obj is Chocolate)
+            if (obj is Chocolate otroChocolate)
             {
-                if ((Chocolate)obj == this && mismaGolosina == true) // voy al == de chocolate y chocolate
-                {
-                    mismoChocolate = true;
-                }
+                return this == otroChocolate && mismaGolosina;
             }
-            return mismoChocolate;
+            return false;
         }
 
         /// <summary>
@@ -238,12 +232,11 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chocolate chocolate1, Chocolate chocolate2)
         {
-            // ESTO COMENTADO SE ME OCURRIO, VER SI ESTA BIEN
-            bool mismoGolosina = chocolate1 == (Golosina)chocolate2;
+            bool mismaGolosina = (Golosina)chocolate1 == (Golosina)chocolate2;
 
-            bool mismoChocolate = mismoGolosina && chocolate1.Relleno == chocolate2.Relleno &&
-                                                   chocolate1.TipoDeCacao == chocolate2.TipoDeCacao &&
-                                                   chocolate1.esVegano == chocolate2.esVegano;
+            bool mismoChocolate = mismaGolosina && chocolate1.Relleno == chocolate2.Relleno &&
+                                   chocolate1.TipoDeCacao == chocolate2.TipoDeCacao &&
+                                   chocolate1.EsVegano == chocolate2.EsVegano;
 
             return mismoChocolate;
         }

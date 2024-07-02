@@ -36,9 +36,9 @@ namespace Interfaz
             //this.kiosco = new Kiosco(5);
             this.kiosco = new Kiosco<Golosina>(10);
             Kiosco<Golosina>.CapacidadMaximaAlcanzada += MostrarMessageBoxCapacidadMaxima;
-            Kiosco<Golosina>.GolosinaYaEstaEnLista += MostrarMessageBoxGolosinaRepetida;
-            Kiosco<Golosina>.GolosinaAgregadaExitosamente += MostrarMessageBoxGolosinaAgregadaExitosamente;
-            Kiosco<Golosina>.GolosinaEliminadaExitosamente += MostrarMessageBoxGolosinaEliminadaExitosamente;
+            Kiosco<Golosina>.ProductoYaEstaEnLista += MostrarMessageBoxGolosinaRepetida;
+            Kiosco<Golosina>.ProductoAgregadoExitosamente += MostrarMessageBoxGolosinaAgregadaExitosamente;
+            Kiosco<Golosina>.ProductoEliminadoExitosamente += MostrarMessageBoxGolosinaEliminadaExitosamente;
             //Kiosco<Golosina>.GolosinaModificadaExitosamente += KioscoGolosinaModificada;
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
@@ -200,7 +200,7 @@ namespace Interfaz
                 return;
             }
 
-            Golosina golosinaSeleccionada = kiosco.Golosinas[i];//la golosina que seleccione en el visor
+            Golosina golosinaSeleccionada = kiosco.Productos[i];//la golosina que seleccione en el visor
 
             FrmGolosina frmGolosina = null;//lo declaro asi despues puedo llamarla
 
@@ -225,15 +225,15 @@ namespace Interfaz
                 {
                     if (frmGolosina is FrmChocolate frmChocolate)
                     {
-                        kiosco.Golosinas[i] = frmChocolate.MiChocolate; //lo modifico
+                        kiosco.Productos[i] = frmChocolate.MiChocolate; //lo modifico
                     }
                     else if (frmGolosina is FrmChicle frmChicle)
                     {
-                        kiosco.Golosinas[i] = frmChicle.MiChicle;
+                        kiosco.Productos[i] = frmChicle.MiChicle;
                     }
                     else if (frmGolosina is FrmChupetin frmChupetin)
                     {
-                        kiosco.Golosinas[i] = frmChupetin.MiChupetin;
+                        kiosco.Productos[i] = frmChupetin.MiChupetin;
                     }
 
                     this.ActualizarVisorGolosinas();
@@ -257,7 +257,7 @@ namespace Interfaz
             if (dialogResult == DialogResult.Yes)
             {
                 //this.kiosco.Golosinas.RemoveAt(i); //lo elimino
-                this.kiosco -= this.kiosco.Golosinas[i]; //lo elimino
+                this.kiosco -= this.kiosco.Productos[i]; //lo elimino
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -478,7 +478,7 @@ namespace Interfaz
         {
             this.lstVisorGolosinas.Items.Clear();//limpio para no duplicar ni agregar cosas
 
-            foreach (Golosina golosina in kiosco.Golosinas)
+            foreach (Golosina golosina in kiosco.Productos)
             {
                 this.lstVisorGolosinas.Items.Add(golosina.MostrarEnVisor());
             }
@@ -515,7 +515,7 @@ namespace Interfaz
                         List<Golosina> golosinasDeserializadas = SerializadorXML<Golosina>.Deserializar(pathArchivo);// Llamo al metodo estatico Deserializar de SerializadorXML<Golosina>
                         //Serializadora deserializadoraXml = new Serializadora(pathArchivo);
                         //List<Golosina> golosinasDeserializadas = deserializadoraXml.DeserialiazarGolosinasXML();
-                        this.kiosco.Golosinas.Clear();
+                        this.kiosco.Productos.Clear();
                         this.kiosco += golosinasDeserializadas;
                         this.ActualizarVisorGolosinas();
                         MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
@@ -551,7 +551,7 @@ namespace Interfaz
                     try
                     {
 
-                        SerializadorXML<Golosina>.Serializar(this.kiosco.Golosinas, pathArchivo);
+                        SerializadorXML<Golosina>.Serializar(this.kiosco.Productos, pathArchivo);
 
                         MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
                     }
@@ -630,11 +630,11 @@ namespace Interfaz
                 // cargar golosinas desde la base de datos
                 List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
 
-                kiosco.Golosinas.Clear(); // limpio la lista actual
+                kiosco.Productos.Clear(); // limpio la lista actual
                                           //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
                 foreach (Golosina golosina in golosinasBD)
                 {
-                    kiosco.Golosinas.Add(golosina);
+                    kiosco.Productos.Add(golosina);
                 }
                 ActualizarVisorGolosinas(); // actualizo despues de cargar
 
@@ -655,7 +655,7 @@ namespace Interfaz
                 AccesoDatos accesoDatos = new AccesoDatos();
                 accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
 
-                foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
+                foreach (Golosina golosina in kiosco.Productos) //guardar todas las golosinas en la base de datos
                 {
                     bool exito = accesoDatos.AgregarGolosina(golosina);
                     if (!exito)
@@ -676,7 +676,7 @@ namespace Interfaz
         #region Metodo Agregar
         private void AgregarGolosina(Golosina golosina)
         {
-            if (this.kiosco.Golosinas.Count < this.kiosco.CapacidadGolosinasDistintas)
+            if (this.kiosco.Productos.Count < this.kiosco.CapacidadProductosDistintos)
             {
                 if (this.kiosco != golosina)
                 {
