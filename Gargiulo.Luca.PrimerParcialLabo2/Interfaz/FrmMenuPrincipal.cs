@@ -26,14 +26,15 @@ namespace Interfaz
         private Kiosco<Golosina> kiosco;
         private string operador;
         private Usuario usuarioLogueado;
-        public Task? hilo;
+        public Task? hiloGuardarBD;
+        public Task? hiloCargarBD;
         #endregion
 
         #region Constructor
         public FrmMenuPrincipal(Usuario usuarioLogueado)
         {
             InitializeComponent();
-            //this.kiosco = new Kiosco(5);
+
             this.kiosco = new Kiosco<Golosina>(10);
             Kiosco<Golosina>.CapacidadMaximaAlcanzada += MostrarMessageBoxCapacidadMaxima;
             Kiosco<Golosina>.ProductoYaEstaEnLista += MostrarMessageBoxGolosinaRepetida;
@@ -42,68 +43,50 @@ namespace Interfaz
             //Kiosco<Golosina>.GolosinaModificadaExitosamente += KioscoGolosinaModificada;
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
-            //this.usuarioLogueado = new UsuarioLog("usuarios.log");
-            this.btnGuardarEnBaseDeDatos.Click += new EventHandler(this.ManejadorGuardarBase); //genero manejadores de eventos dinamicos
-            this.btnCargarDesdeBaseDeDatos.Click += new EventHandler(this.ManejadorAbrirBase);
+
+            this.btnGuardarEnBaseDeDatos.Click += new EventHandler(this.ManejadorGuardarEnBaseDeDatos); //genero manejadores de eventos dinamicos
+            this.btnCargarDesdeBaseDeDatos.Click += new EventHandler(this.ManejadorAbrirDesdeBaseDeDatos);
+            
             ConfigurarComboBoxes();
             ConfigurarPermisos();
-            //Task.Run(IniciarHiloHora);
             AsignarHora();
         }
         #endregion
 
-        /*private async Task IniciarHiloHora()
-        {
-            while (true)
-            {
-                // Espera 1 segundo antes de actualizar la hora
-                await Task.Delay(1000);
-
-                // Actualiza la hora en el hilo principal
-                BeginInvoke(new Action(() => AsignarHora()));
-            }
-        }
+        #region Manejadores con utilizacion de hilos
         private void AsignarHora()
         {
-            // Muestra la fecha y hora actual en el formato deseado
-            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
-        }*/
-        private void AsignarHora()
-        {
-            // Ejecuta continuamente en un hilo secundario
+            // Lo ejecuto continuamente en un hilo secundario(es para que vaya mostrando la hora con segundos y todo)
             Task.Run(async () =>
             {
                 while (true)
                 {
-                    // Actualiza la UI desde el hilo secundario usando Invoke
                     Invoke(new Action(() =>
                     {
                         lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
                     }));
-                    //MessageBox.Show("Hora actualizada desde hilo secundario: " + DateTime.Now.ToString("HH:mm:ss"));
-                    // Espera 1 segundo antes de volver a actualizar
-                    await Task.Delay(1000);
+                    await Task.Delay(1000);  //lo estey haciendo esperar 1 seg cada vez..
                 }
             });
         }
 
-        private void ManejadorGuardarBase(object? sender, EventArgs e)//por cada click que haga en este boton, instancio el Task invocando al metodo
+        private void ManejadorGuardarEnBaseDeDatos(object? sender, EventArgs e)//por cada click que haga en este boton, instancio el Task invocando al metodo
         {
             Task.Delay(3000).Wait();
-            this.hilo = Task.Run(() => this.GuardarGolosinasEnBaseDeDatos());
+            this.hiloGuardarBD = Task.Run(() => this.GuardarGolosinasEnBaseDeDatos());
         }
-        private void ManejadorAbrirBase(object? sender, EventArgs e)
+        private void ManejadorAbrirDesdeBaseDeDatos(object? sender, EventArgs e)
         {
             // Esperar 3 segundos en el hilo principal
             Task.Delay(3000).Wait();
-            this.hilo = Task.Run(() => this.CargarGolosinasDesdeBaseDeDatos());
+            this.hiloCargarBD = Task.Run(() => this.CargarGolosinasDesdeBaseDeDatos());
         }
+        #endregion
 
-
-        #region cambiar nombre
+        #region Mostrar mensajes de eventos
         private void MostrarMessageBoxCapacidadMaxima(string mensaje)
         {
-            MessageBox.Show($"Error: {mensaje}", "Capacidad Máxima Alcanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Error: {mensaje}", "Capacidad Maxima Alcanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void MostrarMessageBoxGolosinaRepetida(string mensaje)
         {
@@ -125,17 +108,25 @@ namespace Interfaz
         #region Manejadores de eventos 
 
         #region Load y Closing
+        /// <summary>
+        /// Maneja el evento de carga del formulario principal. Configura el formulario como contenedor MDI, 
+        /// actualiza la barra de informaciOn y el visor de golosinas.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
             this.IsMdiContainer = true;
-            //this.kiosco.GolosinaModificada += KioscoGolosinaModificada;
             ActualizarBarraDeInformacion();
             ActualizarVisorGolosinas();
         }
 
         /// <summary>
-        /// Muestra un mensaje de confirmacion antes de cerrar el formulario.
+        /// Maneja el evento de cierre del formulario principal. Muestra un mensaje de confirmaciOn antes de cerrar
+        /// el formulario y cancela el cierre si el usuario selecciona "No".
         /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto FormClosingEventArgs que contiene los datos del evento.</param>
         private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -155,7 +146,11 @@ namespace Interfaz
         #endregion
 
         #region Agregar
-        //Eventos click para agregar los diferentes tipos de golosina al kiosco
+        /// <summary>
+        /// Muestra el formulario para agregar un chocolate y lo añade al kiosco si el usuario confirma.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void cHOCOLATEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmChocolate frmChocolate = new FrmChocolate();
@@ -166,6 +161,11 @@ namespace Interfaz
                 this.AgregarGolosina(frmChocolate.MiChocolate);
             }
         }
+        /// <summary>
+        /// Muestra el formulario para agregar un chicle y lo añade al kiosco si el usuario confirma.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void cHICLEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmChicle frmChicle = new FrmChicle();
@@ -176,6 +176,11 @@ namespace Interfaz
                 this.AgregarGolosina(frmChicle.MiChicle);
             }
         }
+        /// <summary>
+        /// Muestra el formulario para agregar un chupetin y lo añade al kiosco si el usuario confirma.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void cHUPETINToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmChupetin frmChupetin = new FrmChupetin();
@@ -189,7 +194,11 @@ namespace Interfaz
         #endregion
 
         #region Modificar y Eliminar
-        //Modifica la Golosina que seleccione
+        /// <summary>
+        /// Muestra el formulario para modificar una golosina seleccionada del kiosco.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void mODIFICARToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int i = this.lstVisorGolosinas.SelectedIndex;//el indice que selecciono
@@ -241,7 +250,11 @@ namespace Interfaz
             }
         }
 
-        //Elimino la golosina que seleccione
+        /// <summary>
+        /// Elimina una golosina seleccionada del kiosco despues de una confirmacion del usuario.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void eLIMINARToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int i = this.lstVisorGolosinas.SelectedIndex;
@@ -264,11 +277,20 @@ namespace Interfaz
         #endregion
 
         #region Ordenar
+        /// <summary>
+        /// Ordena las golosinas segun el criterio seleccionado en el ComboBox correspondiente.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void cboOrden_SelectedIndexChanged(object? sender, EventArgs e) //el signo es para que no me tire advertencia de null
         {
             OrdenarGolosinas();
         }
-
+        /// <summary>
+        /// Ordena las golosinas segun el criterio de manera seleccionado en el ComboBox correspondiente.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void cboOrdenManera_SelectedIndexChanged(object? sender, EventArgs e)
         {
             OrdenarGolosinas();
@@ -276,12 +298,20 @@ namespace Interfaz
         #endregion
 
         #region Archivos
-
+        /// <summary>
+        /// Maneja el evento de clic para guardar los datos del kiosco en un archivo XML.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void xMLToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             this.GuardarXML();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic para abrir un archivo XML y cargar los datos del kiosco.
+        //// </summary>
+        //// <param name="sender">El origen del evento.</param>
         private void xMLToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             this.AbrirXML();
@@ -291,8 +321,11 @@ namespace Interfaz
 
         #region Volver, Detalle e Informacion
         /// <summary>
-        /// Cierra el formulario actual y muestra el formulario del login.
+        /// Maneja el evento de clic para volver al formulario de login. 
+        /// Pregunta al usuario si esta seguro de querer volver y, si es asi, cierra el formulario actual y muestra el formulario de login.
         /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void vOLVERToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -308,8 +341,10 @@ namespace Interfaz
         }
 
         /// <summary>
-        /// Abre un formulario para mostrar el detalle del kiosco.
+        /// Maneja el evento de clic para mostrar el detalle del kiosco en un formulario.
         /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void dETALLEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDetalleKiosco frmDetalleKiosco = new FrmDetalleKiosco();
@@ -319,6 +354,11 @@ namespace Interfaz
             frmDetalleKiosco.ShowDialog();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic para mostrar información sobre los descuentos aplicables a las golosinas.
+        /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void iNFORMACIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StringBuilder info = new StringBuilder();
@@ -327,7 +367,6 @@ namespace Interfaz
             info.AppendLine("=========== DESCUENTOS ===========");
             info.AppendLine("CHOCOLATE: Si la cantidad es mayor a 3, tiene un 30% de descuento");
             info.AppendLine("CHICLE: Si la cantidad es mayor a 5, tiene un 15% de descuento");
-            info.AppendLine("CHUPETIN: Si la cantidad es mayor a 2, tiene un 20% de descuento");
             info.AppendLine("=================================");
             info.AppendLine("");
 
@@ -341,8 +380,10 @@ namespace Interfaz
         #region Visualizador usuarios logeados
 
         /// <summary>
-        /// Abre un formulario para visualizar el registro de usuarios.
+        /// Maneja el evento de clic para abrir un formulario que muestra el registro de usuarios logueados.
         /// </summary>
+        //// <param name="sender">El origen del evento.</param>
+        //// <param name="e">Un objeto EventArgs que contiene los datos del evento.</param>
         private void uSUARIOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVisualizadorUsuariosLog frmVisualizadorUsuariosLog = new FrmVisualizadorUsuariosLog("usuarios.log");
@@ -355,6 +396,9 @@ namespace Interfaz
 
 
         #region Metodos de configuracion
+        /// <summary>
+        /// Configura los ComboBoxes para la seleccion de criterios y maneras de ordenamiento.
+        /// </summary>
         public void ConfigurarComboBoxes()
         {
             this.cboOrden.SelectedIndexChanged -= cboOrden_SelectedIndexChanged; //descubro los eventos antes de inicializar sino me tira excepcion
@@ -381,6 +425,9 @@ namespace Interfaz
             OrdenarGolosinas(false);
         }
 
+        /// <summary>
+        /// Configura los permisos de los usuarios segun su perfil.
+        /// </summary>
         private void ConfigurarPermisos()
         {
             switch (usuarioLogueado.perfil)
@@ -414,13 +461,17 @@ namespace Interfaz
 
                     GuardarToolStripMenuItem2.Enabled = false;
                     GuardarToolStripMenuItem2.Visible = false;
+
+
                     break;
             }
         }
         #endregion
 
         #region Metodos de ordenamiento
-
+        /// <summary>
+        /// Ordena las golosinas del kiosco segun el criterio seleccionado.
+        /// </summary>
         private void OrdenarGolosinas(bool mostrarMensaje = true)
         {
             EOrdenes ordenSeleccionado = (EOrdenes)this.cboOrden.SelectedItem;
@@ -571,10 +622,11 @@ namespace Interfaz
         #endregion
 
         #region Metodos de Base De Datos
-
+        /// <summary>
+        /// Guarda las golosinas en la base de datos desde el hilo principal.
+        /// </summary>
         private void GuardarGolosinasEnBaseDeDatos()
         {
-            
             //tengo que hacerlo desde el hilo principal
             if (this.btnCargarDesdeBaseDeDatos.InvokeRequired)//si alguien invoco desde otro subprocesosi alguien solicito cambiar este elemento
             {
@@ -596,7 +648,9 @@ namespace Interfaz
             }
 
         }
-
+        /// <summary>
+        /// Carga las golosinas desde la base de datos desde el hilo principal.
+        /// </summary>
         private void CargarGolosinasDesdeBaseDeDatos()
         {
             
@@ -611,7 +665,7 @@ namespace Interfaz
                 if (exito)
                 {
                     MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
+                    ActualizarVisorGolosinas(); 
                 }
                 else
                 {
@@ -620,6 +674,10 @@ namespace Interfaz
             }
         }
 
+        /// <summary>
+        /// Carga las golosinas desde la base de datos.
+        /// </summary>
+        /// <returns>Retorna true si la operación fue exitosa, de lo contrario false.</returns>
         private bool CargarGolosinas()
         {
             bool retorno = true;
@@ -647,6 +705,10 @@ namespace Interfaz
             return retorno;
         }
 
+        /// <summary>
+        /// Guarda las golosinas en la base de datos.
+        /// </summary>
+        /// <returns>Retorna true si la operación fue exitosa, de lo contrario false.</returns>
         private bool GuardarGolosinas()
         {
             bool retorno = true;
@@ -674,6 +736,10 @@ namespace Interfaz
         #endregion
 
         #region Metodo Agregar
+        /// <summary>
+        /// Agrega una golosina al kiosco, ordena las golosinas y actualiza el visor de golosinas.
+        /// </summary>
+        //// <param name="golosina">La golosina a agregar.</param>
         private void AgregarGolosina(Golosina golosina)
         {
             if (this.kiosco.Productos.Count < this.kiosco.CapacidadProductosDistintos)
@@ -697,89 +763,3 @@ namespace Interfaz
         #endregion
     }
 }
-
-
-//private bool GuardarGolosinasEnBaseDeDatos()
-//{
-//    bool retorno = true;
-//    try
-//    {
-//        AccesoDatos accesoDatos = new AccesoDatos();
-
-//        accesoDatos.BorrarTodasLasGolosinas();// SI QUIERO QUE SE MANTENGAN LOS DATOS, SACAR ESTA LINEA
-
-//        foreach (Golosina golosina in kiosco.Golosinas) //guardar todas las golosinas en la base de datos
-//        {
-//            bool exito = accesoDatos.AgregarGolosina(golosina);
-//            if (!exito)
-//            {
-//                retorno = false;
-//            }
-//        }
-//        //retorno = true;
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine("Error al guardar golosinas en la base de datos: " + ex.Message);
-//        retorno = false;
-//    }
-//    return retorno;
-//}
-
-//private bool CargarGolosinasDesdeBaseDeDatos()
-//{
-//    bool retorno = true;
-//    try
-//    {
-//        AccesoDatos accesoDatos = new AccesoDatos();
-
-//        // cargar golosinas desde la base de datos
-//        List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
-
-//        kiosco.Golosinas.Clear(); // limpio la lista actual
-//                                  //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
-//        foreach (Golosina golosina in golosinasBD)
-//        {
-//            kiosco.Golosinas.Add(golosina);
-//        }
-//        ActualizarVisorGolosinas(); // actualizo despues de cargar
-
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine("Error al cargar golosinas desde la base de datos: " + ex.Message);
-//        retorno = false;
-//    }
-//    return retorno;
-//}
-
-
-
-//private void bASEDEDATOSToolStripMenuItem_Click(object sender, EventArgs e)
-//{
-//    bool exito = GuardarGolosinasEnBaseDeDatos();
-
-//    if (exito)
-//    {
-//        MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//    }
-//    else
-//    {
-//        MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//    }
-//}
-
-//private void bASEDEDATOSToolStripMenuItem1_Click(object sender, EventArgs e)
-//{
-//    bool exito = CargarGolosinasDesdeBaseDeDatos();
-
-//    if (exito)
-//    {
-//        MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//        ActualizarVisorGolosinas(); // Asegúrate de actualizar el visor después de cargar
-//    }
-//    else
-//    {
-//        MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//    }
-//}

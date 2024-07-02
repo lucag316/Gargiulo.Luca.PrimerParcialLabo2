@@ -13,7 +13,7 @@ namespace Entidades.JerarquiaYContenedora
     /// Representa una golosina del tipo chupetin.
     /// </summary>
     [Serializable]
-    public class Chupetin : Golosina, ICalculos
+    public class Chupetin : Golosina
     {
         #region Atributos
         protected EFormasDeChupetin formaChupetin;
@@ -150,15 +150,6 @@ namespace Entidades.JerarquiaYContenedora
         }
         #endregion
 
-        #region Metodos Interfaces
-
-        double ICalculos.CalcularDescuento(double precio)
-        {
-            return precio * 0.80;
-        }
-
-        #endregion
-
         #region Metodos sobrescritos
 
         /// <summary>
@@ -186,14 +177,6 @@ namespace Entidades.JerarquiaYContenedora
         {
             double precioFinal = Precio * Cantidad;
 
-            if (Cantidad > 2)
-            {
-                precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal);
-            }
-            if (cantidad < 0)
-            {
-                throw new MiExcepcion("La cantidad de golosinas no puede ser negativa");
-            }
             return precioFinal;
         }
         #endregion

@@ -14,7 +14,7 @@ namespace Entidades.JerarquiaYContenedora
     /// Representa una golosina del tipo chocolate.
     /// </summary>
     [Serializable]
-    public class Chocolate : Golosina, ICalculos, IValidable
+    public class Chocolate : Golosina, IDescuentoCalculable
     {
         #region Atributos
         protected ERellenos relleno;
@@ -153,31 +153,7 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Metodos Interfaces
-
-        void IValidable.ValidarRangoPrecio()
-        {
-            if (Precio < 0 || Precio > 2000)
-            {
-                throw new ArgumentException("El precio del chocolate esta fuera del rango permitido($0 - $2000)");
-            }
-        }
-
-        void IValidable.ValidarRangoPeso()
-        {
-            if (Peso < 0 || Peso > 1000)
-            {
-                throw new ArgumentException("El peso del chocolate esta fuera del rango permitido(0 g - 1000 g)");
-            }
-        }
-        void IValidable.ValidarRangoCantidad()
-        {
-            if (Cantidad < 0 || Cantidad > 50)
-            {
-                throw new ArgumentException("La cantidad del chocolate esta fuera del rango permitido(0 - 50)");
-            }
-        }
-
-        double ICalculos.CalcularDescuento(double precio)
+        public double CalcularDescuento(double precio)
         {
             return precio * 0.7;
         }
@@ -213,7 +189,7 @@ namespace Entidades.JerarquiaYContenedora
 
             if (Cantidad > 3)
             {
-                precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal); 
+                precioFinal = CalcularDescuento(precioFinal); 
                 //precioFinal *= 0.7;
             }
             if (cantidad < 0)

@@ -126,20 +126,6 @@ namespace Interfaz
 
         }
         #endregion
-        /*
-        private void MostrarMensajeCodigoNegativoMsgBox(int numero)
-        {
-            MessageBox.Show($"Error: El código no puede ser negativo. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 
-        private void MostrarMensajeCodigoMuyAltoMsgBox(int numero)
-        {
-            MessageBox.Show($"Error: El código no puede ser mayor que 100. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void MostrarMensajeCodigoNoNumericoMsgBox(int numero)
-        {
-            MessageBox.Show($"Error: El código debe ser numérico. Código ingresado: {numero}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }*/
     }
 }

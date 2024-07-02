@@ -182,11 +182,11 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco != producto) //si la golosina no esta en el kiosco, la agrego
                 {
                     kiosco.Productos.Add(producto);
-                    ProductoAgregadoExitosamente?.Invoke($"Se agrego la golosina con el codigo de barra: {producto.Codigo} exitosamente");
+                    ProductoAgregadoExitosamente?.Invoke($"Se agrego un producto con el codigo de barra: {producto.Codigo} exitosamente");
                 }
                 else
                 {
-                    ProductoYaEstaEnLista?.Invoke("La golosina ya esta en el kiosco");
+                    ProductoYaEstaEnLista?.Invoke("El producto ya esta en el kiosco");
                 }
             }
             else
@@ -209,11 +209,11 @@ namespace Entidades.JerarquiaYContenedora
                 if (kiosco == producto)//si la golosina esta en el kiosco, la saco
                 {
                     kiosco.Productos.Remove(producto);
-                    ProductoEliminadoExitosamente?.Invoke($"Se elimino la golosina con codigo de barra: {producto.Codigo} exitosamente.");
+                    ProductoEliminadoExitosamente?.Invoke($"Se elimino el producto con codigo de barra: {producto.Codigo} exitosamente.");
                 }
                 else
                 {
-                    ProductoYaEstaEnLista?.Invoke($"La golosina {producto.Codigo} ya no esta en el kiosco.");
+                    ProductoYaEstaEnLista?.Invoke($"El producto {producto.Codigo} ya no esta en el kiosco.");
                 }
             }
             return kiosco;

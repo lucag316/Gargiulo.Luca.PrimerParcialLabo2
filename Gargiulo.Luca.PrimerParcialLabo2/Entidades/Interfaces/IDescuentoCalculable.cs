@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entidades.Interfaces
 {
-    public interface ICalculos
+    public interface IDescuentoCalculable
     {
         double CalcularDescuento(double precio);
-
     }
 }

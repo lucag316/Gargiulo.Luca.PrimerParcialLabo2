@@ -13,7 +13,7 @@ namespace Entidades.JerarquiaYContenedora
     /// Representa una golosina del tipo chicle.
     /// </summary>
     [Serializable]
-    public class Chicle : Golosina, ICalculos
+    public class Chicle : Golosina, IDescuentoCalculable
     {
         #region Atributos
         protected ENivelesDeElasticidad elasticidad;
@@ -148,7 +148,7 @@ namespace Entidades.JerarquiaYContenedora
 
         #region Metodos Interfaces
 
-        double ICalculos.CalcularDescuento(double precio)
+        public double CalcularDescuento(double precio)
         {
             return precio * 0.85;
         }
@@ -184,7 +184,7 @@ namespace Entidades.JerarquiaYContenedora
 
             if (Cantidad > 5)
             {
-                precioFinal = ((ICalculos)this).CalcularDescuento(precioFinal);
+                precioFinal = CalcularDescuento(precioFinal);
             }
             if (cantidad < 0)
             {

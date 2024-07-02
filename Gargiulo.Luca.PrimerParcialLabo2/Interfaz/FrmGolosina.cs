@@ -71,7 +71,13 @@ namespace Interfaz
                     throw new ExcepcionNumeroNegativo("Por favor, ingrese valores positivos");
 
                 if (codigo > 1000)
-                    throw new ExcepcionNumeroMuyAlto("El codigo debe ser menor o igual a 1000");
+                    throw new ExcepcionNumeroMuyAlto("El codigo debe ser menor o igual a 1.000");
+                if (precio > 10000)
+                    throw new ExcepcionNumeroMuyAlto("El precio es muy alto, debe ser menor a $10.000");
+                if(peso > 5000)
+                    new ExcepcionNumeroMuyAlto("El peso es mucho, debe ser menor a 5.000 gramos");
+                if(cantidad > 100)
+                    new ExcepcionNumeroMuyAlto("Demasiada cantidad, el maximo es 100 unidades");
 
                 this.DialogResult = DialogResult.OK;
             }
@@ -112,14 +118,6 @@ namespace Interfaz
         }
 
         #endregion
-
-        //protected virtual void InicializarControlesGenerales()
-        //{
-        //    txtCodigo.Text = golosina.Codigo.ToString();
-        //    txtPeso.Text = golosina.Peso.ToString();
-        //    txtPrecio.Text = golosina.Precio.ToString();
-        //    txtCantidad.Text = golosina.Cantidad.ToString();
-        //}
 
     }
 }
