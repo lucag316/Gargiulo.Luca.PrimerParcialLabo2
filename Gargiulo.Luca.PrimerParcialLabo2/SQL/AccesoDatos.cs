@@ -26,6 +26,9 @@ namespace SQL
                                                                           // ES LO MISMO HACER CUALQUIERA DE LAS DOS
         }
 
+        /// <summary>
+        /// Constructor de la clase AccesoDatos que inicializa la conexion a la base de datos.
+        /// </summary>
         public AccesoDatos()
         {
             // CREO UN OBJETO SQLCONECTION, primero poner probar conexion (no se porque le tengo que poner opcional para que me deje)
@@ -33,6 +36,11 @@ namespace SQL
         }
         #endregion
 
+        #region Probar conexion
+        /// <summary>
+        /// Metodo para probar la conexion a la base de datos.
+        /// </summary>
+        /// <returns>True si la conexion es exitosa, False si hay un error.</returns>
         public bool ProbarConexion()
         {
             bool rta = true;
@@ -56,7 +64,14 @@ namespace SQL
             }
             return rta;
         }
-        public List<Golosina> ObtenerListaDato() //para obtener el listado que tengo en la base de datos
+        #endregion
+
+        #region Obtener lista
+        /// <summary>
+        /// Obtiene una lista de golosinas desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Golosina cargados desde la base de datos.</returns>
+        public List<Golosina> ObtenerListaGolosinas() //para obtener el listado que tengo en la base de datos
         {
             List<Golosina> lista = new List<Golosina>();
 
@@ -101,11 +116,12 @@ namespace SQL
             return lista;
 
         }
+        #endregion
 
         #region Metodos Interfaz
         public List<Golosina> ObtenerLista()
         {
-            return ObtenerListaDato();
+            return ObtenerListaGolosinas();
         }
 
         public bool Agregar(Golosina entidad)
@@ -126,6 +142,12 @@ namespace SQL
         #endregion
 
         #region Insert
+
+        /// <summary>
+        /// Agrega una golosina a la base de datos.
+        /// </summary>
+        //// <param name="golosina">Golosina a agregar.</param>
+        /// <returns>True si la operacion fue exitosa, False si hubo un error.</returns>
         public bool AgregarGolosina(Golosina golosina)
         {
             bool rta = true;
@@ -192,6 +214,11 @@ namespace SQL
 
         #region Update
 
+        /// <summary>
+        /// Modifica una golosina en la base de datos.
+        /// </summary>
+        //// <param name="golosina">Golosina a modificar.</param>
+        //// <returns>True si la operacion fue exitosa, False si hubo un error.</returns>
         public bool ModificarGolosina(Golosina golosina)
         {
             bool rta = true;
@@ -265,6 +292,11 @@ namespace SQL
 
         #region Delete
 
+        /// <summary>
+        /// Elimina una golosina de la base de datos por su codigo.
+        /// </summary>
+        //// <param name="codigo">Codigo de la golosina a eliminar.</param>
+        //// <returns>True si la operación fue exitosa, False si hubo un error.</returns>
         public bool EliminarGolosina(int codigo)
         {
             bool rta = true;
@@ -350,15 +382,20 @@ namespace SQL
 
         #endregion
 
+        #region Mis metodos auxiliares borrar y crear
+        /// <summary>
+        /// Crea un objeto Golosina desde los datos leidos del lector de datos.
+        /// </summary>
+        /// <returns>Objeto Golosina creado desde los datos leidos.</returns>
         private Golosina CrearGolosinaDesdeDataReader()
         {
             Golosina golosina = null;
             string tipoDeGolosina = this.lector.GetString(0);
 
-            int codigo = this.lector.GetInt32(1); // Código
-            float precio = (float)this.lector.GetDouble(2); // Precio
-            float peso = (float)this.lector.GetDouble(3); // Peso
-            int cantidad = this.lector.GetInt32(4); // Cantidad
+            int codigo = this.lector.GetInt32(1);
+            float precio = (float)this.lector.GetDouble(2);
+            float peso = (float)this.lector.GetDouble(3);
+            int cantidad = this.lector.GetInt32(4);
 
             switch (tipoDeGolosina)
             {
@@ -368,9 +405,9 @@ namespace SQL
                     chocolate.Precio = precio;
                     chocolate.Peso = peso;
                     chocolate.Cantidad = cantidad;
-                    chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5)); // TipoDeCacao (enum)
-                    chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6)); // Relleno
-                    chocolate.EsVegano = this.lector.GetBoolean(7); // esVegano (bool)
+                    chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5)); 
+                    chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6)); 
+                    chocolate.EsVegano = this.lector.GetBoolean(7); 
 
                     golosina = chocolate;
                     break;
@@ -381,9 +418,9 @@ namespace SQL
                     chicle.Precio = precio;
                     chicle.Peso = peso;
                     chicle.Cantidad = cantidad;
-                    chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8)); // Elasticidad
-                    chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9)); // DuracionSabor
-                    chicle.BlanqueadorDental = this.lector.GetBoolean(10); // BlanqueadorDental (bool)
+                    chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8)); 
+                    chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9));
+                    chicle.BlanqueadorDental = this.lector.GetBoolean(10); 
 
                     golosina = chicle;
                     break;
@@ -394,15 +431,20 @@ namespace SQL
                     chupetin.Precio = precio;
                     chupetin.Peso = peso;
                     chupetin.Cantidad = cantidad;
-                    chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11)); // FormaChupetin (enum)
-                    chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12)); // Dureza
-                    chupetin.EnvolturaTransparente = this.lector.GetBoolean(13); // EnvolturaTransparente (bool)
+                    chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11)); 
+                    chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12)); 
+                    chupetin.EnvolturaTransparente = this.lector.GetBoolean(13); 
 
                     golosina = chupetin;
                     break;
             }
             return golosina;
         }
+
+        /// <summary>
+        /// Borra todas las golosinas de la base de datos.
+        /// </summary>
+        /// <returns>True si la operacion fue exitosa, False si hubo un error.</returns>
         public bool BorrarTodasLasGolosinas()
         {
             bool exito = false;
@@ -415,7 +457,7 @@ namespace SQL
 
                 this.conexion.Open();
                 int filasAfectadas = this.comando.ExecuteNonQuery();
-                exito = filasAfectadas > 0; // Si se eliminaron filas, éxito es verdadero
+                exito = filasAfectadas > 0; // Si se eliminaron filas, exito es verdadero
             }
             catch (Exception ex)
             {
@@ -431,6 +473,7 @@ namespace SQL
             }
             return exito;
         }
+        #endregion
     }
 }
 

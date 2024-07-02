@@ -30,7 +30,20 @@ namespace Interfaz
         public Task? hiloCargarBD;
         #endregion
 
+        #region Eventos
+        public event EventHandler<string> ErrorAlGuardarEnBaseDeDatos;
+        public event EventHandler<string> ErrorAlCargarDesdeBaseDeDatos;
+        public event EventHandler<string> GolosinasGuardadasExitosamenteBd;
+        public event EventHandler<string> GolosinasCargadasExitosamenteBD;
+        public event EventHandler<string> ErrorAlGuardarEnXML;
+        public event EventHandler<string> ErrorAlCargarDesdeXML;
+        public event EventHandler<string> GolosinasGuardadasExitosamenteXML;
+        public event EventHandler<string> GolosinasCargadasExitosamenteXML;
+        #endregion
+
         #region Constructor
+
+        //// <param name="usuarioLogueado">Usuario que ha iniciado sesión.</param>
         public FrmMenuPrincipal(Usuario usuarioLogueado)
         {
             InitializeComponent();
@@ -41,6 +54,16 @@ namespace Interfaz
             Kiosco<Golosina>.ProductoAgregadoExitosamente += MostrarMessageBoxGolosinaAgregadaExitosamente;
             Kiosco<Golosina>.ProductoEliminadoExitosamente += MostrarMessageBoxGolosinaEliminadaExitosamente;
             //Kiosco<Golosina>.GolosinaModificadaExitosamente += KioscoGolosinaModificada;
+
+            ErrorAlGuardarEnBaseDeDatos += MostrarMensajeDeError;
+            ErrorAlCargarDesdeBaseDeDatos += MostrarMensajeDeError;
+            GolosinasGuardadasExitosamenteBd += MostrarMensajeDeExito;
+            GolosinasCargadasExitosamenteBD += MostrarMensajeDeExito;
+            ErrorAlGuardarEnXML += MostrarMensajeDeError;
+            ErrorAlCargarDesdeXML += MostrarMensajeDeError;
+            GolosinasGuardadasExitosamenteXML += MostrarMensajeDeExito;
+            GolosinasCargadasExitosamenteXML += MostrarMensajeDeExito;
+
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
 
@@ -54,6 +77,10 @@ namespace Interfaz
         #endregion
 
         #region Manejadores con utilizacion de hilos
+        /// <summary>
+        /// Actualiza continuamente el control lblHora con la hora actual, incluyendo segundos.
+        /// Ejecuta la actualizacion en un hilo secundario para evitar bloqueos en la interfaz de usuario.
+        /// </summary>
         private void AsignarHora()
         {
             // Lo ejecuto continuamente en un hilo secundario(es para que vaya mostrando la hora con segundos y todo)
@@ -70,11 +97,24 @@ namespace Interfaz
             });
         }
 
+        /// <summary>
+        /// Maneja el evento de guardar golosinas en la base de datos.
+        /// Crea un Task que espera 3 segundos y luego llama al metodo GuardarGolosinasEnBaseDeDatos en un hilo separado.
+        /// </summary>
+        //// <param name="sender">El objeto que desencadenó el evento.</param>
+        //// <param name="e">Argumentos del evento.</param>
         private void ManejadorGuardarEnBaseDeDatos(object? sender, EventArgs e)//por cada click que haga en este boton, instancio el Task invocando al metodo
         {
             Task.Delay(3000).Wait();
             this.hiloGuardarBD = Task.Run(() => this.GuardarGolosinasEnBaseDeDatos());
         }
+
+        /// <summary>
+        /// Maneja el evento de abrir golosinas desde la base de datos.
+        /// Crea un Task que espera 3 segundos y luego llama al metodo CargarGolosinasDesdeBaseDeDatos en un hilo separado.
+        /// </summary>
+        //// <param name="sender">El objeto que desencadenó el evento.</param>
+        //// <param name="e">Argumentos del evento.</param>
         private void ManejadorAbrirDesdeBaseDeDatos(object? sender, EventArgs e)
         {
             // Esperar 3 segundos en el hilo principal
@@ -83,7 +123,7 @@ namespace Interfaz
         }
         #endregion
 
-        #region Mostrar mensajes de eventos
+        #region Mostrar mensajes de eventos kiosco
         private void MostrarMessageBoxCapacidadMaxima(string mensaje)
         {
             MessageBox.Show($"Error: {mensaje}", "Capacidad Maxima Alcanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -101,6 +141,53 @@ namespace Interfaz
         {
             MessageBox.Show(mensaje, "Golosina Eliminada Exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        #endregion
+
+        #region Mostrar mensaje de eventos menu
+
+        private void MostrarMensajeDeError(object sender, string mensaje)
+        {
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void MostrarMensajeDeExito(object sender, string mensaje)
+        {
+            MessageBox.Show(mensaje, "informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void OnErrorAlGuardarEnBaseDeDatos(string mensaje)
+        {
+            ErrorAlGuardarEnBaseDeDatos?.Invoke(this, mensaje);
+        }
+        public void OnErrorAlCargarDesdeBaseDeDatos(string mensaje)
+        {
+            ErrorAlCargarDesdeBaseDeDatos?.Invoke(this, mensaje);
+        }
+        public void OnGolosinasGuardadasExitosamenteBD(string mensaje)
+        {
+            GolosinasGuardadasExitosamenteBd?.Invoke(this, mensaje);
+        }
+        public void OnGolosinasCargadasExitosamenteBD(string mensaje)
+        {
+            GolosinasCargadasExitosamenteBD?.Invoke(this, mensaje);
+        }
+        public void OnErrorAlGuardarEnXML(string mensaje)
+        {
+            ErrorAlGuardarEnXML?.Invoke(this, mensaje);
+        }
+        public void OnErrorAlCargarDesdeXML(string mensaje)
+        {
+            ErrorAlCargarDesdeXML?.Invoke(this, mensaje);
+        }
+        public void onGolosinasGuardadasExitosamenteXML(string mensaje)
+        {
+            GolosinasGuardadasExitosamenteXML?.Invoke(this, mensaje);
+        }
+        public void onGolosinasCargadasExitosamenteXML(string mensaje)
+        {
+            GolosinasCargadasExitosamenteXML?.Invoke(this, mensaje);
+        }
+
 
         #endregion
 
@@ -265,7 +352,7 @@ namespace Interfaz
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Esta seguro que desa eliminar esta golosina?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que desea eliminar esta golosina?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -367,6 +454,7 @@ namespace Interfaz
             info.AppendLine("=========== DESCUENTOS ===========");
             info.AppendLine("CHOCOLATE: Si la cantidad es mayor a 3, tiene un 30% de descuento");
             info.AppendLine("CHICLE: Si la cantidad es mayor a 5, tiene un 15% de descuento");
+            info.AppendLine("CHUPETIN: No tiene descuento");
             info.AppendLine("=================================");
             info.AppendLine("");
 
@@ -569,7 +657,8 @@ namespace Interfaz
                         this.kiosco.Productos.Clear();
                         this.kiosco += golosinasDeserializadas;
                         this.ActualizarVisorGolosinas();
-                        MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
+                        onGolosinasCargadasExitosamenteXML("Lista de golosinas cargada correctamente desde el archivo XML");
+                        //MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
                     }
                     catch (InvalidOperationException ex)
                     {
@@ -577,7 +666,8 @@ namespace Interfaz
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
+                        OnErrorAlCargarDesdeXML("Error al cargar golosinas");
+                        //MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
                     }
                 }
             }
@@ -604,7 +694,8 @@ namespace Interfaz
 
                         SerializadorXML<Golosina>.Serializar(this.kiosco.Productos, pathArchivo);
 
-                        MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
+                        onGolosinasGuardadasExitosamenteXML("Lista de golosinas guardada correctamente en un archivo XML.");
+                        //MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
                     }
                     catch (InvalidOperationException ex)
                     {
@@ -612,7 +703,8 @@ namespace Interfaz
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
+                        OnErrorAlGuardarEnXML("Error al guardar golosinas");
+                        //MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
                     }
                 }
             }
@@ -623,7 +715,7 @@ namespace Interfaz
 
         #region Metodos de Base De Datos
         /// <summary>
-        /// Guarda las golosinas en la base de datos desde el hilo principal.
+        /// Guarda las golosinas en la base de datos
         /// </summary>
         private void GuardarGolosinasEnBaseDeDatos()
         {
@@ -639,17 +731,19 @@ namespace Interfaz
                 bool exito = GuardarGolosinas();
                 if (exito)
                 {
-                    MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OnGolosinasGuardadasExitosamenteBD("Golosinas guardadas en la base de datos exitosamente");
+                    //MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OnErrorAlGuardarEnBaseDeDatos("Error al guardar golosinas en la base de datos.");
+                    //MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
         }
         /// <summary>
-        /// Carga las golosinas desde la base de datos desde el hilo principal.
+        /// Carga las golosinas desde la base de datos 
         /// </summary>
         private void CargarGolosinasDesdeBaseDeDatos()
         {
@@ -664,12 +758,14 @@ namespace Interfaz
                 bool exito = CargarGolosinas();
                 if (exito)
                 {
-                    MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OnGolosinasCargadasExitosamenteBD("Golosinas cargadas exitosamente desde la base de datos");
+                    //MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ActualizarVisorGolosinas(); 
                 }
                 else
                 {
-                    MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OnErrorAlCargarDesdeBaseDeDatos("Error al cargar golosinas desde la base de datos");
+                    //MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -686,7 +782,7 @@ namespace Interfaz
                 AccesoDatos accesoDatos = new AccesoDatos();
 
                 // cargar golosinas desde la base de datos
-                List<Golosina> golosinasBD = accesoDatos.ObtenerListaDato();
+                List<Golosina> golosinasBD = accesoDatos.ObtenerListaGolosinas();
 
                 kiosco.Productos.Clear(); // limpio la lista actual
                                           //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
