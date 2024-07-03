@@ -46,9 +46,9 @@ namespace Entidades.JerarquiaYContenedora
         /// </summary>
         public Chupetin() : base()
         {
-            formaChupetin = EFormasDeChupetin.Redondo;
-            dureza = ENivelesDeDureza.Media;
-            envolturaTransparente = false;
+            this.formaChupetin = EFormasDeChupetin.Redondo;
+            this.dureza = ENivelesDeDureza.Media;
+            this.envolturaTransparente = false;
         }
 
         /// <summary>
@@ -124,6 +124,13 @@ namespace Entidades.JerarquiaYContenedora
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Compara el objeto actual con otro objeto para determinar si son iguales.
+        /// Dos chupetines se consideran iguales si comparten el mismo codigo, precio, cantidad
+        /// y otros atributos especificos de la clase Chupetin.
+        /// </summary>
+        //// <param name="obj">El objeto a comparar con el chupetin actual.</param>
+        /// <returns>True si el objeto especificado es igual al chupetin actual; de lo contrario, false.</returns>
         public override bool Equals(object? obj)
         {
             bool mismaGolosina = base.Equals(obj);
@@ -175,7 +182,7 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>El precio final del chupetin.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = Precio * Cantidad;
+            double precioFinal = this.Precio * this.Cantidad;
 
             return precioFinal;
         }
@@ -189,7 +196,7 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>true si las instancias son iguales, sino false
         public static bool operator ==(Chupetin chupetin1, Chupetin chupetin2)
         {
-            bool mismoGolosina = chupetin1 == (Golosina)chupetin2;
+            bool mismoGolosina = (Golosina)chupetin1 == (Golosina)chupetin2;
 
             bool mismoChupetin = mismoGolosina && chupetin1.FormaChupetin == chupetin2.FormaChupetin &&
                                                   chupetin1.Dureza == chupetin2.Dureza &&

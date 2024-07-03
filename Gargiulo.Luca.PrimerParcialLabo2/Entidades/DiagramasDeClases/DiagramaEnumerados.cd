@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Enum Name="ERellenos">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAIAAAACCCAIgAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ETiposDeCacao">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAQACAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EFormasDeChupetin">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeDureza">
+    <Position X="7" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAgAAAABAQAAAABAQAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeElasticidad">
+    <Position X="8.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABQUAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDuracionDeSabor">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABAUAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EOrdenes">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAgAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EOrdenManera">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

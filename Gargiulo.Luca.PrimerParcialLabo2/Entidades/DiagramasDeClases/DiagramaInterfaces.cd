@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Interface Name="Entidades.Interfaces.IAccesibleDatos&lt;T&gt;">
+    <Position X="4.25" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAAAACAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Interfaces\IAccesibleDatos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IDescuentoCalculable">
+    <Position X="6.75" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Interfaces\IDescuentoCalculable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IOrdenable&lt;T&gt;">
+    <Position X="2" Y="0.75" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Interfaces\IOrdenable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IProductoDeUnKiosco">
+    <Position X="1.75" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAQBACAAAAAAAAAAQAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IProductoDeUnKiosco.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

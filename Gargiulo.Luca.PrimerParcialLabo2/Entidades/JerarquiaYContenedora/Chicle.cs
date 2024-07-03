@@ -47,9 +47,9 @@ namespace Entidades.JerarquiaYContenedora
         /// </summary>
         public Chicle() : base()
         {
-            elasticidad = ENivelesDeElasticidad.Media;
-            duracionSabor = ENivelesDuracionDeSabor.Media;
-            blanqueadorDental = false;
+            this.elasticidad = ENivelesDeElasticidad.Media;
+            this.duracionSabor = ENivelesDuracionDeSabor.Media;
+            this.blanqueadorDental = false;
         }
 
         /// <summary>
@@ -125,15 +125,29 @@ namespace Entidades.JerarquiaYContenedora
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Compara el objeto actual con otro objeto para determinar si son iguales.
+        /// Dos chicles se consideran iguales si comparten los mismos atributos heredados
+        /// de la clase base Golosina y los especIficos de la clase Chicle.
+        /// </summary>
+        //// <param name="obj">El objeto a comparar con el chicle actual.</param>
+        /// <returns>
+        /// true si el objeto especificado es igual al chicle actual; de lo contrario, false.
+        /// </returns>
         public override bool Equals(object? obj)
         {
             bool mismaGolosina = base.Equals(obj);
 
-            if (obj is Chicle otroChicle)
+            bool mismoChicle = false;
+
+            if (obj is Chicle)
             {
-                return this == otroChicle && mismaGolosina;
+                if ((Chicle)obj == this && mismoChicle == true)
+                {
+                    mismoChicle = true;
+                }
             }
-            return false;
+            return mismoChicle;
         }
 
         /// <summary>
@@ -147,7 +161,13 @@ namespace Entidades.JerarquiaYContenedora
         #endregion
 
         #region Metodos Interfaces
-
+        /// <summary>
+        /// Calcula el descuento aplicado al precio original de la golosina.
+        /// Este metodo implementa la logica para aplicar un descuento del 15%
+        /// al precio proporcionado.
+        /// </summary>
+        //// <param name="precio">El precio original de la golosina.</param>
+        /// <returns>El precio con el descuento aplicado.</returns>
         public double CalcularDescuento(double precio)
         {
             return precio * 0.85;
@@ -180,13 +200,13 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>El precio final del chicle.</returns>
         public override double CalcularPrecioFinal()
         {
-            double precioFinal = Precio * Cantidad;
+            double precioFinal = this.Precio * this.Cantidad;
 
-            if (Cantidad > 5)
+            if (this.Cantidad > 5)
             {
                 precioFinal = CalcularDescuento(precioFinal);
             }
-            if (cantidad < 0)
+            if (this.Cantidad < 0)
             {
                 throw new ExcepcionNumeroNegativo("La cantidad de golosinas no puede ser negativa");
             }

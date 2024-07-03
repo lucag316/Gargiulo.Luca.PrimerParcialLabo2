@@ -15,7 +15,7 @@ internal class Program
             Console.WriteLine("No se pudo conectar");
         }
 
-        List<Golosina> lista = ado.ObtenerListaDato();
+        List<Golosina> lista = ado.ObtenerListaGolosinas();
 
         foreach (Golosina item in lista)
         {
@@ -39,7 +39,7 @@ internal class Program
             Console.WriteLine("No se agrego");
         }
 
-        lista = ado.ObtenerListaDato();
+        lista = ado.ObtenerListaGolosinas();
 
         foreach (Golosina item in lista)
         {
@@ -63,7 +63,7 @@ internal class Program
             Console.WriteLine("No se modifico");
         }
 
-        lista = ado.ObtenerListaDato();
+        lista = ado.ObtenerListaGolosinas();
 
         foreach (Golosina item in lista)
         {
@@ -82,7 +82,7 @@ internal class Program
             Console.WriteLine("No se elimino");
         }
 
-        lista = ado.ObtenerListaDato();
+        lista = ado.ObtenerListaGolosinas();
 
         foreach (Golosina item in lista)
         {

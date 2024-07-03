@@ -49,7 +49,7 @@ namespace SQL
             {
                 this.conexion.Open();   // lo itento enlazar con el motor de la base de datos
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 rta = false;
             }
@@ -196,7 +196,7 @@ namespace SQL
                 }
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 rta = false;
             }
@@ -341,6 +341,10 @@ namespace SQL
         #endregion
 
         #region Metodos Asignaciones depende la golosina
+        /// <summary>
+        /// Configura los parametros del comando SQL para un objeto Chocolate.
+        /// </summary>
+        //// <param name="chocolate">Objeto de tipo Chocolate con los datos a asignar.</param>
         private void AsignarParametrosChocolate(Chocolate chocolate)
         {
             this.comando.Parameters.AddWithValue("@tipoDeCacao", chocolate.TipoDeCacao.ToString());
@@ -354,6 +358,10 @@ namespace SQL
             this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
         }
 
+        /// <summary>
+        /// Configura los parametros del comando SQL para un objeto Chicle.
+        /// </summary>
+        //// <param name="chicle">Objeto de tipo Chicle con los datos a asignar.</param>
         private void AsignarParametrosChicle(Chicle chicle)
         {
             this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
@@ -367,6 +375,10 @@ namespace SQL
             this.comando.Parameters.AddWithValue("@envolturaTransparente", DBNull.Value);
         }
 
+        /// <summary>
+        /// Configura los parametros del comando SQL para un objeto Chupetin.
+        /// </summary>
+        //// <param name="chupetin">Objeto de tipo Chupetin con los datos a asignar.</param>
         private void AsignarParametrosChupetin(Chupetin chupetin)
         {
             this.comando.Parameters.AddWithValue("@tipoDeCacao", DBNull.Value);
@@ -390,53 +402,75 @@ namespace SQL
         private Golosina CrearGolosinaDesdeDataReader()
         {
             Golosina golosina = null;
-            string tipoDeGolosina = this.lector.GetString(0);
-
-            int codigo = this.lector.GetInt32(1);
-            float precio = (float)this.lector.GetDouble(2);
-            float peso = (float)this.lector.GetDouble(3);
-            int cantidad = this.lector.GetInt32(4);
-
-            switch (tipoDeGolosina)
+            //string tipoDeGolosina = this.lector.GetString(0);
+            try
             {
-                case "Chocolate":
-                    Chocolate chocolate = new Chocolate();
-                    chocolate.Codigo = codigo;
-                    chocolate.Precio = precio;
-                    chocolate.Peso = peso;
-                    chocolate.Cantidad = cantidad;
-                    chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5)); 
-                    chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6)); 
-                    chocolate.EsVegano = this.lector.GetBoolean(7); 
+                if (this.lector != null)
+                {
+                    string tipoDeGolosina = this.lector.GetString(0);
 
-                    golosina = chocolate;
-                    break;
-                case "Chicle":
-                    Chicle chicle = new Chicle();
+                    int codigo = this.lector.GetInt32(1);
+                    float precio = (float)this.lector.GetDouble(2);
+                    float peso = (float)this.lector.GetDouble(3);
+                    int cantidad = this.lector.GetInt32(4);
 
-                    chicle.Codigo = codigo;
-                    chicle.Precio = precio;
-                    chicle.Peso = peso;
-                    chicle.Cantidad = cantidad;
-                    chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8)); 
-                    chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9));
-                    chicle.BlanqueadorDental = this.lector.GetBoolean(10); 
+                    switch (tipoDeGolosina)
+                    {
+                        case "Chocolate":
+                            Chocolate chocolate = new Chocolate();
+                            chocolate.Codigo = codigo;
+                            chocolate.Precio = precio;
+                            chocolate.Peso = peso;
+                            chocolate.Cantidad = cantidad;
+                            chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5));
+                            chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6));
+                            chocolate.EsVegano = this.lector.GetBoolean(7);
 
-                    golosina = chicle;
-                    break;
-                case "Chupetin":
-                    Chupetin chupetin = new Chupetin();
+                            golosina = chocolate;
+                            break;
+                        case "Chicle":
+                            Chicle chicle = new Chicle();
 
-                    chupetin.Codigo = codigo;
-                    chupetin.Precio = precio;
-                    chupetin.Peso = peso;
-                    chupetin.Cantidad = cantidad;
-                    chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11)); 
-                    chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12)); 
-                    chupetin.EnvolturaTransparente = this.lector.GetBoolean(13); 
+                            chicle.Codigo = codigo;
+                            chicle.Precio = precio;
+                            chicle.Peso = peso;
+                            chicle.Cantidad = cantidad;
+                            chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8));
+                            chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9));
+                            chicle.BlanqueadorDental = this.lector.GetBoolean(10);
 
-                    golosina = chupetin;
-                    break;
+                            golosina = chicle;
+                            break;
+                        case "Chupetin":
+                            Chupetin chupetin = new Chupetin();
+
+                            chupetin.Codigo = codigo;
+                            chupetin.Precio = precio;
+                            chupetin.Peso = peso;
+                            chupetin.Cantidad = cantidad;
+                            chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11));
+                            chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12));
+                            chupetin.EnvolturaTransparente = this.lector.GetBoolean(13);
+
+                            golosina = chupetin;
+                            break;
+                        default:
+                            throw new InvalidOperationException("Tipo de golosina no valido.");
+                    }
+                }
+                else
+                {
+                    throw new InvalidOperationException("El lector de datos es nulo.");
+                }
+            
+            }
+            catch(InvalidOperationException ex)
+            {
+                Console.WriteLine($"Error al crear golosina desde DataReader: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al crear golosina desde DataReader: {ex.Message}");
             }
             return golosina;
         }

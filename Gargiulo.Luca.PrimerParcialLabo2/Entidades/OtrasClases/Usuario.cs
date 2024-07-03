@@ -17,23 +17,23 @@ namespace Entidades.OtrasClases
 
         public string apellido
         {
-            get { return _apellido; }
-            set { _apellido = value; }
+            get { return this._apellido; }
+            set { this._apellido = value; }
         }
         public string nombre
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return this._nombre; }
+            set { this._nombre = value; }
         }
         public int legajo
         {
-            get { return _legajo; }
-            set { _legajo = value; }
+            get { return this._legajo; }
+            set { this._legajo = value; }
         }
         public string correo
         {
-            get { return _correo; }
-            set { _correo = value; }
+            get { return this._correo; }
+            set { this._correo = value; }
         }
 
         public string clave

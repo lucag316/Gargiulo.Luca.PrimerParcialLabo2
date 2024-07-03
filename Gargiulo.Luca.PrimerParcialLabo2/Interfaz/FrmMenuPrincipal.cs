@@ -31,14 +31,14 @@ namespace Interfaz
         #endregion
 
         #region Eventos
-        public event EventHandler<string> ErrorAlGuardarEnBaseDeDatos;
-        public event EventHandler<string> ErrorAlCargarDesdeBaseDeDatos;
-        public event EventHandler<string> GolosinasGuardadasExitosamenteBd;
-        public event EventHandler<string> GolosinasCargadasExitosamenteBD;
-        public event EventHandler<string> ErrorAlGuardarEnXML;
-        public event EventHandler<string> ErrorAlCargarDesdeXML;
-        public event EventHandler<string> GolosinasGuardadasExitosamenteXML;
-        public event EventHandler<string> GolosinasCargadasExitosamenteXML;
+        public event DelegadoMensajeMenuHandler? ErrorAlGuardarEnBaseDeDatos;
+        public event DelegadoMensajeMenuHandler? ErrorAlCargarDesdeBaseDeDatos;
+        public event DelegadoMensajeMenuHandler? GolosinasGuardadasExitosamenteBd;
+        public event DelegadoMensajeMenuHandler? GolosinasCargadasExitosamenteBD;
+        public event DelegadoMensajeMenuHandler? ErrorAlGuardarEnXML;
+        public event DelegadoMensajeMenuHandler? ErrorAlCargarDesdeXML;
+        public event DelegadoMensajeMenuHandler? GolosinasGuardadasExitosamenteXML;
+        public event DelegadoMensajeMenuHandler? GolosinasCargadasExitosamenteXML;
         #endregion
 
         #region Constructor
@@ -55,14 +55,14 @@ namespace Interfaz
             Kiosco<Golosina>.ProductoEliminadoExitosamente += MostrarMessageBoxGolosinaEliminadaExitosamente;
             //Kiosco<Golosina>.GolosinaModificadaExitosamente += KioscoGolosinaModificada;
 
-            ErrorAlGuardarEnBaseDeDatos += MostrarMensajeDeError;
-            ErrorAlCargarDesdeBaseDeDatos += MostrarMensajeDeError;
-            GolosinasGuardadasExitosamenteBd += MostrarMensajeDeExito;
-            GolosinasCargadasExitosamenteBD += MostrarMensajeDeExito;
-            ErrorAlGuardarEnXML += MostrarMensajeDeError;
-            ErrorAlCargarDesdeXML += MostrarMensajeDeError;
-            GolosinasGuardadasExitosamenteXML += MostrarMensajeDeExito;
-            GolosinasCargadasExitosamenteXML += MostrarMensajeDeExito;
+            this.ErrorAlGuardarEnBaseDeDatos += MostrarMensajeDeError;
+            this.ErrorAlCargarDesdeBaseDeDatos += MostrarMensajeDeError;
+            this.GolosinasGuardadasExitosamenteBd += MostrarMensajeDeInformacion;
+            this.GolosinasCargadasExitosamenteBD += MostrarMensajeDeInformacion;
+            this.ErrorAlGuardarEnXML += MostrarMensajeDeError;
+            this.ErrorAlCargarDesdeXML += MostrarMensajeDeError;
+            this.GolosinasGuardadasExitosamenteXML += MostrarMensajeDeInformacion;
+            this.GolosinasCargadasExitosamenteXML += MostrarMensajeDeInformacion;
 
             this.operador = usuarioLogueado.nombre;
             this.usuarioLogueado = usuarioLogueado;
@@ -146,48 +146,14 @@ namespace Interfaz
 
         #region Mostrar mensaje de eventos menu
 
-        private void MostrarMensajeDeError(object sender, string mensaje)
+        private void MostrarMensajeDeError(string mensaje)
         {
             MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        private void MostrarMensajeDeExito(object sender, string mensaje)
+        private void MostrarMensajeDeInformacion(string mensaje)
         {
             MessageBox.Show(mensaje, "informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        public void OnErrorAlGuardarEnBaseDeDatos(string mensaje)
-        {
-            ErrorAlGuardarEnBaseDeDatos?.Invoke(this, mensaje);
-        }
-        public void OnErrorAlCargarDesdeBaseDeDatos(string mensaje)
-        {
-            ErrorAlCargarDesdeBaseDeDatos?.Invoke(this, mensaje);
-        }
-        public void OnGolosinasGuardadasExitosamenteBD(string mensaje)
-        {
-            GolosinasGuardadasExitosamenteBd?.Invoke(this, mensaje);
-        }
-        public void OnGolosinasCargadasExitosamenteBD(string mensaje)
-        {
-            GolosinasCargadasExitosamenteBD?.Invoke(this, mensaje);
-        }
-        public void OnErrorAlGuardarEnXML(string mensaje)
-        {
-            ErrorAlGuardarEnXML?.Invoke(this, mensaje);
-        }
-        public void OnErrorAlCargarDesdeXML(string mensaje)
-        {
-            ErrorAlCargarDesdeXML?.Invoke(this, mensaje);
-        }
-        public void onGolosinasGuardadasExitosamenteXML(string mensaje)
-        {
-            GolosinasGuardadasExitosamenteXML?.Invoke(this, mensaje);
-        }
-        public void onGolosinasCargadasExitosamenteXML(string mensaje)
-        {
-            GolosinasCargadasExitosamenteXML?.Invoke(this, mensaje);
-        }
-
 
         #endregion
 
@@ -657,16 +623,16 @@ namespace Interfaz
                         this.kiosco.Productos.Clear();
                         this.kiosco += golosinasDeserializadas;
                         this.ActualizarVisorGolosinas();
-                        onGolosinasCargadasExitosamenteXML("Lista de golosinas cargada correctamente desde el archivo XML");
+                        this.GolosinasCargadasExitosamenteXML?.Invoke("Lista de golosinas cargada correctamente desde el archivo XML");
                         //MessageBox.Show("Lista de golosinas cargada correctamente desde el archivo XML.");
                     }
                     catch (InvalidOperationException ex)
                     {
                         MessageBox.Show($"Error al cargar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        OnErrorAlCargarDesdeXML("Error al cargar golosinas");
+                        this.ErrorAlCargarDesdeXML?.Invoke("Error al cargar golosinas");
                         //MessageBox.Show($"Error al cargar golosinas: {ex.Message}");
                     }
                 }
@@ -694,16 +660,16 @@ namespace Interfaz
 
                         SerializadorXML<Golosina>.Serializar(this.kiosco.Productos, pathArchivo);
 
-                        onGolosinasGuardadasExitosamenteXML("Lista de golosinas guardada correctamente en un archivo XML.");
+                        this.GolosinasGuardadasExitosamenteXML?.Invoke("Lista de golosinas guardada correctamente en un archivo XML.");
                         //MessageBox.Show("Lista de golosinas guardada correctamente en un archivo XML.");
                     }
                     catch (InvalidOperationException ex)
                     {
                         MessageBox.Show($"Error al guardar golosinas: {ex.Message}\n{ex.InnerException?.Message}");
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        OnErrorAlGuardarEnXML("Error al guardar golosinas");
+                        this.ErrorAlGuardarEnXML?.Invoke("Error al guardar golosinas");
                         //MessageBox.Show($"Error al guardar golosinas: {ex.Message}");
                     }
                 }
@@ -731,12 +697,12 @@ namespace Interfaz
                 bool exito = GuardarGolosinas();
                 if (exito)
                 {
-                    OnGolosinasGuardadasExitosamenteBD("Golosinas guardadas en la base de datos exitosamente");
+                    this.GolosinasGuardadasExitosamenteBd?.Invoke("Golosinas guardadas en la base de datos exitosamente");
                     //MessageBox.Show("Golosinas guardadas correctamente en la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    OnErrorAlGuardarEnBaseDeDatos("Error al guardar golosinas en la base de datos.");
+                    this.ErrorAlGuardarEnBaseDeDatos?.Invoke("Error al guardar golosinas en la base de datos.");
                     //MessageBox.Show("Error al guardar golosinas en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -758,13 +724,13 @@ namespace Interfaz
                 bool exito = CargarGolosinas();
                 if (exito)
                 {
-                    OnGolosinasCargadasExitosamenteBD("Golosinas cargadas exitosamente desde la base de datos");
+                    this.GolosinasCargadasExitosamenteBD?.Invoke("Golosinas cargadas exitosamente desde la base de datos");
                     //MessageBox.Show("Golosinas cargadas correctamente desde la base de datos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ActualizarVisorGolosinas(); 
                 }
                 else
                 {
-                    OnErrorAlCargarDesdeBaseDeDatos("Error al cargar golosinas desde la base de datos");
+                    this.ErrorAlCargarDesdeBaseDeDatos?.Invoke("Error al cargar golosinas desde la base de datos");
                     //MessageBox.Show("Error al cargar golosinas desde la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
