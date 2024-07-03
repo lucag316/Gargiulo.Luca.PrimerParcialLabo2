@@ -55,6 +55,16 @@ namespace Entidades.Serializadoras
 
 
 
+
+
+
+
+
+
+
+
+
+
 /*
 /// <summary>
 /// Serializa una lista de objetos en formato JSON.

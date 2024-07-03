@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Entidades.Serializadoras.Serializador">
+    <Position X="5.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\Serializador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Serializadoras.SerializadorJSON&lt;T&gt;">
+    <Position X="2.5" Y="3" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\SerializadorJSON.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Serializadoras.SerializadorXML&lt;T&gt;">
+    <Position X="7" Y="3" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\SerializadorXML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.OtrasClases.Usuario">
+    <Position X="11.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQBAASAAAAAAAAAIAQIAACAAAAQAAIAAAA=</HashCode>
+      <FileName>OtrasClases\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.OtrasClases.UsuarioLog">
+    <Position X="11.5" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAE=</HashCode>
+      <FileName>OtrasClases\UsuarioLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

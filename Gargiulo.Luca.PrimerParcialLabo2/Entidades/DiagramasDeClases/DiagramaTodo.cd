@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Entidades.JerarquiaYContenedora.Golosina">
+    <Position X="62.5" Y="16.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AQABAEEAAQBACAAEgAAAAAAQAAAAEIAACAAAAAAAAiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Golosina.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chocolate">
+    <Position X="51.75" Y="23" Width="7.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAACAAEwCAAAAAgAAAAAIAASAAAAAIAAmA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chocolate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chicle">
+    <Position X="60" Y="23" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgAAACIAEggAAAAIAAAAAAIAACBAAAAAAAmA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chicle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Chupetin">
+    <Position X="70.5" Y="23.25" Width="9.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAEgAQAAAAEgAAAAICACAAAgAAAgiA=</HashCode>
+      <FileName>JerarquiaYContenedora\Chupetin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.JerarquiaYContenedora.Kiosco&lt;T&gt;">
+    <Position X="51.5" Y="15.75" Width="8" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAQAAQBgEAgAwAUQAAAQAAAAAIBAAAAAAAAQEiQ=</HashCode>
+      <FileName>JerarquiaYContenedora\Kiosco.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.OtrasClases.Usuario">
+    <Position X="81.25" Y="15.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQBAASAAAAAAAAAIAQIAACAAAAQAAIAAAA=</HashCode>
+      <FileName>OtrasClases\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.OtrasClases.UsuarioLog">
+    <Position X="83.75" Y="15.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAE=</HashCode>
+      <FileName>OtrasClases\UsuarioLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Excepciones.MiExcepcion">
+    <Position X="83.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excepciones\MiExcepcion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Excepciones.ExcepcionNumeroNegativo">
+    <Position X="77.5" Y="21.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excepciones\ExcepcionNumeroNegativo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Excepciones.ExcepcionNumeroMuyAlto">
+    <Position X="82.25" Y="21.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excepciones\ExcepcionNumeroMuyAlto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Excepciones.ExcepcionDatoNoNumerico">
+    <Position X="87" Y="21.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excepciones\ExcepcionDatoNoNumerico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Serializadoras.Serializador">
+    <Position X="86.25" Y="24" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\Serializador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Serializadoras.SerializadorJSON&lt;T&gt;">
+    <Position X="82.5" Y="26.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\SerializadorJSON.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Serializadoras.SerializadorXML&lt;T&gt;">
+    <Position X="88" Y="26.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Serializadoras\SerializadorXML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Entidades.Interfaces.IAccesibleDatos&lt;T&gt;">
+    <Position X="76.25" Y="19" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAAAACAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Interfaces\IAccesibleDatos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IDescuentoCalculable">
+    <Position X="73.75" Y="17.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Interfaces\IDescuentoCalculable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IOrdenable&lt;T&gt;">
+    <Position X="73.75" Y="16" Width="7" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Interfaces\IOrdenable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.IProductoDeUnKiosco">
+    <Position X="73.75" Y="18.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAQBACAAAAAAAAAAQAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IProductoDeUnKiosco.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ERellenos">
+    <Position X="68.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAIAAAACCCAIgAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ETiposDeCacao">
+    <Position X="70" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAQACAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EFormasDeChupetin">
+    <Position X="68.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeDureza">
+    <Position X="70" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAgAAAABAQAAAABAQAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDeElasticidad">
+    <Position X="72" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABQUAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENivelesDuracionDeSabor">
+    <Position X="68.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAABAUAAAAAAQ=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EOrdenes">
+    <Position X="70" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAgAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EOrdenManera">
+    <Position X="72" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Enumerados\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="MensajeKioscoHandler">
+    <Position X="78.75" Y="19.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Delegados\Delegados.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="DelegadotaskHandler">
+    <Position X="78.75" Y="18.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Delegados\Delegados.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="DelegadoMensajeMenuHandler">
+    <Position X="77.75" Y="17.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Delegados\Delegados.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

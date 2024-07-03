@@ -827,7 +827,7 @@ namespace Interfaz
             }
             else
             {
-                MostrarMessageBoxCapacidadMaxima("Se alcanzo la capacidad maxima EVENTO");
+                MostrarMessageBoxCapacidadMaxima("Se alcanzo la capacidad maxima de la lista de productos");
             }
         }
         #endregion

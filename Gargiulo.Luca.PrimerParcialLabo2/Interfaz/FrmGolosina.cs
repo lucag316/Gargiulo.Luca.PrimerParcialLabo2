@@ -65,7 +65,7 @@ namespace Interfaz
                 if (!float.TryParse(this.txtPeso.Text, out peso))
                     throw new ExcepcionDatoNoNumerico("Por favor, ingrese un peso valido numerico");
                 if (!int.TryParse(this.txtCantidad.Text, out cantidad))
-                    throw new ExcepcionDatoNoNumerico("Por favor, ingrese una cantidad valido numerica");
+                    throw new ExcepcionDatoNoNumerico("Por favor, ingrese una cantidad valida numerica");
 
                 if (codigo < 0 || precio < 0 || peso < 0 || cantidad < 0)
                     throw new ExcepcionNumeroNegativo("Por favor, ingrese valores positivos");

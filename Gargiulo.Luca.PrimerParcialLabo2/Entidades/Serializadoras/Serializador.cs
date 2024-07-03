@@ -57,10 +57,5 @@ namespace Entidades.Serializadoras
 
         #endregion
 
-        //si ya tengo interfaz creo que no va
-        #region Métodos abstractos
-        //public abstract bool Serializar<T>(List<T> datos);
-        //public abstract List<T> Deserializar<T>();
-        #endregion
     }
 }

@@ -153,13 +153,16 @@ Es un formulario diseñado para mostrar el detalle del kiosco de golosinas. Incl
 # Diagrama con los Enumerados
 ![Diagrama de clases, Enumerados](Gargiulo.Luca.PrimerParcialLabo2/DiagramaEnumerados.png)
 
+# Diagrama con otras clases
+![Diagrama de clases, otras clases](Gargiulo.Luca.PrimerParcialLabo2/DiagramasOtrasClases.png)
+
 # Diagrama de Clases con todo:
-![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
+![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/DiagramaTodo.png)
 
 # Script:
 USE [master]
 GO
-/****** Object:  Database [Kiosco]    Script Date: 26/6/2024 13:24:46 ******/
+/****** Object:  Database [Kiosco]    Script Date: 2/7/2024 22:22:42 ******/
 CREATE DATABASE [Kiosco]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -241,7 +244,7 @@ ALTER DATABASE [Kiosco] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_PO
 GO
 USE [Kiosco]
 GO
-/****** Object:  Table [dbo].[DatosGolosinas]    Script Date: 26/6/2024 13:24:46 ******/
+/****** Object:  Table [dbo].[DatosGolosinas]    Script Date: 2/7/2024 22:22:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -263,11 +266,12 @@ CREATE TABLE [dbo].[DatosGolosinas](
 	[envolturaTransparente] [bit] NULL
 ) ON [PRIMARY]
 GO
-INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 0, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
-INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 2, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
-INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 3, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
-INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 5, 100, 20, 4, NULL, NULL, NULL, NULL, NULL, NULL, N'Paleta', N'Alta', 1)
-INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 10, 10, 2, 0, NULL, NULL, NULL, N'Media', N'Media', 1, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chocolate', 1, 10, 10, 10, N'Almendra', N'ConLeche', 0, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chocolate', 2, 20, 4, 1, N'Caramelo', N'Blanco', 1, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chocolate', 4, 10, 20, 200, N'Nuez', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chupetin', 5, 20, 7, 8, NULL, NULL, NULL, NULL, NULL, NULL, N'PicoDulce', N'Poca', 1)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chicle', 6, 10, 2000, 20, NULL, NULL, NULL, N'Poca', N'NoTiene', 1, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (N'Chocolate', 7, 100, 10, 10, N'Nutela', N'Blanco', 1, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 USE [master]
 GO
