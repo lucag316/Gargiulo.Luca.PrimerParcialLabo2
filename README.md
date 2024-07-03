@@ -68,7 +68,7 @@ Es un formulario diseñado para la autenticacion de usuarios mediante un sistema
 - Implementados para tareas como la actualizacion continua del reloj en la interfaz y para ejecutar operaciones de guardado y carga en segundo plano, sin bloquear la interfaz principal.
 
 
-# SQl:
+# SQL:
 ### clase AccesoDatos:
 La clase AccesoDatos facilita la interaccion con una base de datos SQL Server para operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre objetos Golosina. Utiliza la biblioteca Microsoft.Data.SqlClient para la conexion y ejecucion de comandos SQL.
 
@@ -158,6 +158,7 @@ Es un formulario diseñado para mostrar el detalle del kiosco de golosinas. Incl
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/DiagramaTodo.png)
 
 # Script:
+```
 USE [master]
 GO
 /****** Object:  Database [Kiosco]    Script Date: 2/7/2024 22:22:42 ******/
@@ -275,3 +276,4 @@ USE [master]
 GO
 ALTER DATABASE [Kiosco] SET  READ_WRITE 
 GO
+```
