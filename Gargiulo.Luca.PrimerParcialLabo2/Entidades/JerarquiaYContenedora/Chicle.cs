@@ -142,7 +142,7 @@ namespace Entidades.JerarquiaYContenedora
 
             if (obj is Chicle)
             {
-                if ((Chicle)obj == this && mismoChicle == true)
+                if ((Chicle)obj == this && mismaGolosina == true)
                 {
                     mismoChicle = true;
                 }

@@ -206,7 +206,7 @@ namespace Entidades.JerarquiaYContenedora
         {
             if (kiosco.Productos.Count > 0)
             {
-                if (kiosco == producto)//si el producto esta en el kiosco, la saco
+                if (kiosco == producto)//kiosco.productos.Contains(producto))//si el producto esta en el kiosco, la saco
                 {
                     kiosco.Productos.Remove(producto);
                     ProductoEliminadoExitosamente?.Invoke($"Se elimino el producto con codigo de barra: {producto.Codigo} exitosamente.");

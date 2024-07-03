@@ -95,10 +95,12 @@ namespace SQL
                 while (this.lector.Read()) // lee por fila
                 {
                     Golosina golosina = CrearGolosinaDesdeDataReader();
+
                     if (golosina != null)
                     {
                         lista.Add(golosina);
                     }
+                    
                 }
                 lector.Close();
             }
@@ -402,76 +404,56 @@ namespace SQL
         private Golosina CrearGolosinaDesdeDataReader()
         {
             Golosina golosina = null;
+            string tipoDeGolosina = this.lector.GetString(0);
+
             //string tipoDeGolosina = this.lector.GetString(0);
-            try
+
+            int codigo = this.lector.GetInt32(1);
+            float precio = (float)this.lector.GetDouble(2);
+            float peso = (float)this.lector.GetDouble(3);
+            int cantidad = this.lector.GetInt32(4);
+
+            switch (tipoDeGolosina)
             {
-                if (this.lector != null)
-                {
-                    string tipoDeGolosina = this.lector.GetString(0);
+                case "Chocolate":
+                    Chocolate chocolate = new Chocolate();
+                    chocolate.Codigo = codigo;
+                    chocolate.Precio = precio;
+                    chocolate.Peso = peso;
+                    chocolate.Cantidad = cantidad;
+                    chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5));
+                    chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6));
+                    chocolate.EsVegano = this.lector.GetBoolean(7);
 
-                    int codigo = this.lector.GetInt32(1);
-                    float precio = (float)this.lector.GetDouble(2);
-                    float peso = (float)this.lector.GetDouble(3);
-                    int cantidad = this.lector.GetInt32(4);
+                    golosina = chocolate;
+                    break;
+                case "Chicle":
+                    Chicle chicle = new Chicle();
 
-                    switch (tipoDeGolosina)
-                    {
-                        case "Chocolate":
-                            Chocolate chocolate = new Chocolate();
-                            chocolate.Codigo = codigo;
-                            chocolate.Precio = precio;
-                            chocolate.Peso = peso;
-                            chocolate.Cantidad = cantidad;
-                            chocolate.TipoDeCacao = (ETiposDeCacao)Enum.Parse(typeof(ETiposDeCacao), this.lector.GetString(5));
-                            chocolate.Relleno = (ERellenos)Enum.Parse(typeof(ERellenos), this.lector.GetString(6));
-                            chocolate.EsVegano = this.lector.GetBoolean(7);
+                    chicle.Codigo = codigo;
+                    chicle.Precio = precio;
+                    chicle.Peso = peso;
+                    chicle.Cantidad = cantidad;
+                    chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8));
+                    chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9));
+                    chicle.BlanqueadorDental = this.lector.GetBoolean(10);
 
-                            golosina = chocolate;
-                            break;
-                        case "Chicle":
-                            Chicle chicle = new Chicle();
+                    golosina = chicle;
+                    break;
+                case "Chupetin":
+                    Chupetin chupetin = new Chupetin();
 
-                            chicle.Codigo = codigo;
-                            chicle.Precio = precio;
-                            chicle.Peso = peso;
-                            chicle.Cantidad = cantidad;
-                            chicle.Elasticidad = (ENivelesDeElasticidad)Enum.Parse(typeof(ENivelesDeElasticidad), this.lector.GetString(8));
-                            chicle.DuracionSabor = (ENivelesDuracionDeSabor)Enum.Parse(typeof(ENivelesDuracionDeSabor), this.lector.GetString(9));
-                            chicle.BlanqueadorDental = this.lector.GetBoolean(10);
+                    chupetin.Codigo = codigo;
+                    chupetin.Precio = precio;
+                    chupetin.Peso = peso;
+                    chupetin.Cantidad = cantidad;
+                    chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11));
+                    chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12));
+                    chupetin.EnvolturaTransparente = this.lector.GetBoolean(13);
 
-                            golosina = chicle;
-                            break;
-                        case "Chupetin":
-                            Chupetin chupetin = new Chupetin();
-
-                            chupetin.Codigo = codigo;
-                            chupetin.Precio = precio;
-                            chupetin.Peso = peso;
-                            chupetin.Cantidad = cantidad;
-                            chupetin.FormaChupetin = (EFormasDeChupetin)Enum.Parse(typeof(EFormasDeChupetin), this.lector.GetString(11));
-                            chupetin.Dureza = (ENivelesDeDureza)Enum.Parse(typeof(ENivelesDeDureza), this.lector.GetString(12));
-                            chupetin.EnvolturaTransparente = this.lector.GetBoolean(13);
-
-                            golosina = chupetin;
-                            break;
-                        default:
-                            throw new InvalidOperationException("Tipo de golosina no valido.");
-                    }
+                    golosina = chupetin;
+                    break;
                 }
-                else
-                {
-                    throw new InvalidOperationException("El lector de datos es nulo.");
-                }
-            
-            }
-            catch(InvalidOperationException ex)
-            {
-                Console.WriteLine($"Error al crear golosina desde DataReader: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al crear golosina desde DataReader: {ex.Message}");
-            }
             return golosina;
         }
 

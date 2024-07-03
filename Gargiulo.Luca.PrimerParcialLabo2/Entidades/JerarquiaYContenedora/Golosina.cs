@@ -146,11 +146,16 @@ namespace Entidades.JerarquiaYContenedora
         /// <returns>True si el objeto especificado es igual a la golosina actual, en caso contrario, false.</returns>
         public override bool Equals(object? obj)
         {
-            if (obj is Golosina otraGolosina)
+            bool mismaGolosina = false;
+
+            if (obj is Golosina)
             {
-                return this == otraGolosina;
+                if((Golosina)obj == this)
+                {
+                    mismaGolosina = true;
+                }
             }
-            return false;
+            return mismaGolosina;
         }
 
         /// <summary>
@@ -210,6 +215,24 @@ namespace Entidades.JerarquiaYContenedora
             }
 
             return golosina1.Codigo == golosina2.Codigo && golosina1.Precio == golosina2.Precio;
+            /*bool mismaGolosina = false;
+
+            if (ReferenceEquals(golosina1, golosina2))
+            {
+                mismaGolosina = true;
+            }
+
+            if (golosina1 is null || golosina2 is null)
+            {
+                mismaGolosina = false;
+            }
+
+            if (golosina1.Codigo == golosina2.Codigo && golosina1.precio == golosina2.precio)
+            {
+                mismaGolosina = true;
+            }
+
+            return mismaGolosina;*/
         }
 
         /// <summary>

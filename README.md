@@ -13,62 +13,61 @@ La aplicacion KioscoApp esta diseñada para administrar un kiosco de golosinas. 
 ### Log In
 Es un formulario diseñado para la autenticacion de usuarios mediante un sistema de login. Permite cargar una lista de usuarios desde un archivo JSON al inicializarse, validar las credenciales ingresadas por el usuario (correo electronico y clave), registrar accesos exitosos utilizando un archivo de registro, y abrir un formulario principal (FrmMenuPrincipal) si las credenciales son validas. Ademas, incluye manejo de eventos para confirmar la salida del programa, garantizando una terminacion adecuada de la aplicacian.
 
-### Menu Principal
-- Al iniciar sesion corectamente, se muestra el formulario principal donde se puede ver el nombre del operador y la fecha actual.
-### 1. Administracion de Golosinas
-- **Agregar Golosinas:**
-  - Permite agregar chocolates, chicles y chupetines al kiosco mediante formularios especificos.
-  
-- **Modificar Golosinas:**
-  - Permite modificar las golosinas existentes seleccionando y editando desde un ListBox.
+## Menú Principal
 
-- **Eliminar Golosinas:**
-  - Permite eliminar golosinas seleccionadas del kiosco despues de una confirmacion del usuario.
+### Inicio de Sesion
+- Al iniciar sesion correctamente, se muestra el nombre del operador y la fecha actual en el formulario principal.
+
+## Sus funcionalidades son: 
+
+### 1. Administracion de Golosinas
+#### Agregar Golosinas
+- Permite añadir chocolates, chicles y chupetines al kiosco usando formularios especificos.
+#### Modificar Golosinas
+- Permite cambiar los detalles de golosinas existentes seleccionandolas desde una lista y editandolas.
+#### Eliminar Golosinas
+- Permite eliminar golosinas seleccionadas del kiosco después de confirmacion del usuario.
 
 ### 2. Ordenamiento de Golosinas
-- **Ordenar por Criterios:**
-  - Permite ordenar las golosinas en el kiosco segun diferentes criterios seleccionados desde un ComboBox, tanto de forma ascendente como descendente.
+#### Ordenar por Criterios
+- Permite organizar las golosinas en el kiosco segun diferentes criterios elegidos desde un menu ComboBox, tanto en orden ascendente como descendente.
 
 ### 3. Gestion de Archivos
-- **Guardar y Cargar Datos:**
-  - Proporciona funcionalidades para guardar y cargar datos de golosinas en archivos XML, utilizando la clase SerializadorXML.
+#### Guardar y Cargar Datos
+- Ofrece opciones para guardar y cargar informacion de golosinas en archivos XML usando la clase SerializadorXML.
 
 ### 4. Administracion del Formulario
-- **Configuracion de Formulario:**
-  - Configura el formulario principal como contenedor MDI para una gestion mas eficiente de multiples formularios.
+#### Configuracion de Formulario
+- Ajusta el formulario principal para gestionar multiples ventanas de manera eficiente usando MDI.
 
-- **Cierre del Formulario:**
-  - Muestra un mensaje de confirmacion al usuario antes de cerrar el formulario principal para evitar perdida de datos.
+#### Cierre del Formulario
+- Muestra un mensaje de confirmacion antes de cerrar el formulario principal para evitar perdida de datos accidentales.
 
 ### 5. Informacion y Detalles del Kiosco
-- **Mostrar Detalles del Kiosco:**
-  - Muestra en un formulario los detalles del kiosco, incluyendo informacion sobre los descuentos aplicables a las golosinas.
+#### Mostrar Detalles del Kiosco
+- Presenta detalles del kiosco, incluyendo informacion sobre descuentos aplicables a las golosinas, en un formulario separado.
 
 ### 6. Gestion de Usuarios Logueados
-- **Visualizacion de Usuarios Logueados:**
-  - Abre un formulario que muestra un registro de los usuarios que estan actualmente logueados en la aplicacion.
+#### Visualizacion de Usuarios Logueados
+- Abre un formulario que lleva un registro de los usuarios que ingresaron a la aplicacion.
 
 ### 7. Retroceso
-- **Volver al Formulario de Login:**
-  - Permite al usuario regresar al formulario de login, con confirmación previa.
+#### Volver al Formulario de Login
+- Permite al usuario regresar al formulario de inicio de sesión, con confirmacion previa para evitar salidas accidentales.
 
 ### 8. Utilizacion de Eventos
-- **Eventos:**
-  -  En la aplicacion se utilizan varios eventos para notificar y manejar diferentes situaciones, por ej:CapacidadMaximaAlcanzada, ProductoYaEstaEnLista, ProductoAgregadoExitosamente, etc.
+#### Eventos
+- La aplicacion utiliza eventos para manejar diversas situaciones, como alcanzar la capacidad máxima del kiosco, agregar o eliminar golosinas con exito, entre otros.
 
-### 8. Gestion Base de Datos
-- **Guardar y Cargar Datos:**
-   - La aplicación interactua con una base de datos SQL Server para persistir los datos de las golosinas. Las operaciones principales incluyen:
-        - GuardarGolosinasEnBaseDeDatos: Metodo que guarda las golosinas en la base de datos de manera asincrona, utilizando un hilo separado para no bloquear la interfaz de usuario.
-        - CargarGolosinasDesdeBaseDeDatos: Metodo que carga las golosinas desde la base de datos de manera asincrona, utilizando un hilo separado para no bloquear la interfaz de usuario.
-        - GuardarGolosinas: Funcion que realiza el proceso de guardar golosinas en la base de datos, maneja posibles excepciones y notifica el resultado mediante eventos.
-        - CargarGolosinas: Funcion que carga golosinas desde la base de datos, actualiza la interfaz y maneja errores usando eventos.
+### 9. Gestion Base de Datos
+#### Guardar y Cargar Datos
+- Interactua con una base de datos SQL Server para almacenar y recuperar informacion de golosinas. Esto incluye operaciones como guardar y cargar golosinas, implementadas de manera asincronica para no bloquear la interfaz de usuario.
 
-### 8. Utilizacion de Delegados e Hilos
-- **Delegados:**
-   - Se utilizan para manejar los eventos y asegurar que las operaciones se ejecuten en el hilo correcto para interactuar con la interfaz de usuario de manera segura.
-- **Hilos:**
-   - Se implementan para tareas como la actualizacion continua del reloj en la interfaz (AsignarHora) y para ejecutar operaciones de guardado y carga en segundo plano, manteniendo la responsividad de la aplicacion.
+### 10. Utilizacion de Delegados e Hilos
+#### Delegados
+- Se utilizan para manejar eventos y asegurar que las operaciones se realicen en el hilo adecuado para interactuar de manera segura con la interfaz de usuario.
+#### Hilos
+- Implementados para tareas como la actualizacion continua del reloj en la interfaz y para ejecutar operaciones de guardado y carga en segundo plano, sin bloquear la interfaz principal.
 
 
 # SQl:
@@ -104,6 +103,8 @@ Representa un tipo especifico de golosina, un chupetin. Tiene atributos que defi
 
 ### Clase Kiosco
 Es una implementacion generica que representa un kiosco capaz de almacenar una variedad de productos. Utiliza una lista interna para mantener los productos y ofrece metodos y operadores para agregar, eliminar y visualizar estos productos. Con eventos estaticos, notifica sobre eventos como alcanzar la capacidad maxima del kiosco, agregar o eliminar exitosamente productos, y permite la personalizacion del ordenamiento de productos basado en criterios especificos. Ademas, la clase sobrecarga operadores para facilitar la gestion de productos, y proporciona metodos para calcular el precio total de los productos almacenados y para convertir el kiosco en una lista o una cadena de texto segun sea necesario. Esta estructura ofrece flexibilidad y funcionalidad robusta para la gestion eficiente de inventarios en un entorno de kiosco. Tiene una restriccion que es que los productos que se manejan deben tener implementada la interfaz IProductoDeUnKiosco.
+
+![Diagrama de la clase contenedora](Gargiulo.Luca.PrimerParcialLabo2/DiagramaContenedora.png)
 
 ## Serializadoras:
 
@@ -146,7 +147,129 @@ Esta clase tiene como objetivo mostrar el contenido de un archivo de registro de
 ### FrmDetalleKiosco
 Es un formulario diseñado para mostrar el detalle del kiosco de golosinas. Incluye un metodo publico MostrarDetalleEnVisor que toma una cadena de detalle y la muestra en un ListBox (lstVisorDetalleKiosco), separando cada linea para una presentacion clara y ordenada del contenido del kiosco.
 
+# Diagrama con las Interfaces
+![Diagrama de clases, interfaces](Gargiulo.Luca.PrimerParcialLabo2/DiagramaInterfaces.png)
+
+# Diagrama con los Enumerados
+![Diagrama de clases, Enumerados](Gargiulo.Luca.PrimerParcialLabo2/DiagramaEnumerados.png)
+
 # Diagrama de Clases con todo:
 ![Diagrama de Clases](Gargiulo.Luca.PrimerParcialLabo2/ClassDiagram1.png)
 
 # Script:
+USE [master]
+GO
+/****** Object:  Database [Kiosco]    Script Date: 26/6/2024 13:24:46 ******/
+CREATE DATABASE [Kiosco]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Kiosco', FILENAME = N'C:\SQLData\Kiosco.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Kiosco_log', FILENAME = N'C:\SQLData\Kiosco_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [Kiosco] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Kiosco].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Kiosco] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Kiosco] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Kiosco] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Kiosco] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Kiosco] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Kiosco] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Kiosco] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Kiosco] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Kiosco] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Kiosco] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Kiosco] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Kiosco] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Kiosco] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Kiosco] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Kiosco] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Kiosco] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Kiosco] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Kiosco] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Kiosco] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Kiosco] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Kiosco] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Kiosco] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Kiosco] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [Kiosco] SET  MULTI_USER 
+GO
+ALTER DATABASE [Kiosco] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Kiosco] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Kiosco] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Kiosco] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [Kiosco] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [Kiosco] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [Kiosco] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [Kiosco] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [Kiosco]
+GO
+/****** Object:  Table [dbo].[DatosGolosinas]    Script Date: 26/6/2024 13:24:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DatosGolosinas](
+	[tipoDeGolosina] [nvarchar](50) NULL,
+	[codigo] [int] NOT NULL,
+	[precio] [float] NOT NULL,
+	[peso] [float] NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[tipoDeCacao] [nvarchar](50) NULL,
+	[relleno] [nvarchar](50) NULL,
+	[esVegano] [bit] NULL,
+	[elasticidad] [nvarchar](50) NULL,
+	[duracionSabor] [nvarchar](50) NULL,
+	[blanqueadorDental] [bit] NULL,
+	[formaChupetin] [nvarchar](50) NULL,
+	[dureza] [nvarchar](50) NULL,
+	[envolturaTransparente] [bit] NULL
+) ON [PRIMARY]
+GO
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 0, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 2, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 3, 0, 0, 0, N'SinRelleno', N'Negro', 0, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 5, 100, 20, 4, NULL, NULL, NULL, NULL, NULL, NULL, N'Paleta', N'Alta', 1)
+INSERT [dbo].[DatosGolosinas] ([tipoDeGolosina], [codigo], [precio], [peso], [cantidad], [tipoDeCacao], [relleno], [esVegano], [elasticidad], [duracionSabor], [blanqueadorDental], [formaChupetin], [dureza], [envolturaTransparente]) VALUES (NULL, 10, 10, 2, 0, NULL, NULL, NULL, N'Media', N'Media', 1, NULL, NULL, NULL)
+GO
+USE [master]
+GO
+ALTER DATABASE [Kiosco] SET  READ_WRITE 
+GO

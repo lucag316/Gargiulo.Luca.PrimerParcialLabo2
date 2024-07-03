@@ -145,7 +145,7 @@ namespace Entidades.JerarquiaYContenedora
 
             if (obj is Chocolate)
             {
-                if((Chocolate)obj == this && mismoChocolate == true)
+                if((Chocolate)obj == this && mismaGolosina == true)
                 {
                     mismoChocolate = true;
                 }

@@ -323,7 +323,7 @@ namespace Interfaz
             if (dialogResult == DialogResult.Yes)
             {
                 //this.kiosco.Golosinas.RemoveAt(i); //lo elimino
-                this.kiosco -= this.kiosco.Productos[i]; //lo elimino
+                kiosco -= kiosco.Productos[i]; //lo elimino
                 this.ActualizarVisorGolosinas();
             }
         }
@@ -752,11 +752,19 @@ namespace Interfaz
 
                 kiosco.Productos.Clear(); // limpio la lista actual
                                           //kiosco += golosinasBD; // NOSE PORQUE NO ME DEJA DE ESTA MANERA cargo la de la abse de datos
-                foreach (Golosina golosina in golosinasBD)
+                if (golosinasBD == null)
                 {
-                    kiosco.Productos.Add(golosina);
+                    Console.WriteLine("La lista de golosinas desde la base de datos es nula.");
+                    retorno = false;
                 }
-                ActualizarVisorGolosinas(); // actualizo despues de cargar
+                else
+                {
+                    foreach (Golosina golosina in golosinasBD)
+                    {
+                        kiosco.Productos.Add(golosina);
+                    }
+                    ActualizarVisorGolosinas(); // actualizo despues de cargar
+                }
 
             }
             catch (Exception ex)
